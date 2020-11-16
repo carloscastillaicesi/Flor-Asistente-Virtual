@@ -1,8 +1,6 @@
-const db = require('../../Models/userModel');
+const User = require('../../Models/userModel');
 
 saludo = (processed) => {
-
-  console.log("desde" + processed.answer);
 
   var obj = {
     answer: processed.answer,
@@ -28,7 +26,7 @@ foto = (processed) => {
 };
 nombre = (processed) => {
 
-  console.log(processed.entities);
+
 
   var obj = {
     answer: processed.answer,
