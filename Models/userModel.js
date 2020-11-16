@@ -1,17 +1,21 @@
-var admin = require("firebase-admin");
-var db = admin.database();
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-(() => {
- (db) ? console.log("Established Connection here") : console.log("Connection not establishedhere");
-})();
-var writeUserDB = (obj, key) => {
 
- db.ref("users")
-  .child(key)
-  .once("value")
-  .then((snapshot) => { db.ref("users").child(from).set({ obj }) })
+const userSchema = new Schema({
+  _id: false,
+  userID: {
+    type: String,
+    unique: true,
+    required: true
+  }
+}, { timestamps: true });
 
-};
+const User = mongoose.model('User', userSchema);
+
+
+module.exports = User;
+
 
 
   // try {

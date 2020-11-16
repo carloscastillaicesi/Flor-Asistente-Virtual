@@ -1,5 +1,13 @@
 const MessagingResponse = require("twilio").twiml.MessagingResponse;
 
+/* Other way to send messages in twilio
+const { ModelBuildContext } = require("twilio/lib/rest/preview/understand/assistant/modelBuild");*/
+
+const client = require("twilio")(
+ process.env.TWILIO_ACCOUNT_SID,
+ process.env.TWILIO_AUTH_TOKEN
+);
+
 
 const sendTMessage = (res, mssg) => {
  // Start our TwiML response.

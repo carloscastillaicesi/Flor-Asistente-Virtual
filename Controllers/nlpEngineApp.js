@@ -33,7 +33,9 @@ var main = async (input) => {
   //Maybe later try to check this out
   //nlp.onIntent = onIntent;
   await nlp.train();
-  const response = await nlp.process('es', input, context);
+  console.log(input);
+  const response = await nlp.process('es', input.body, context);
+
   return response;
 };
 
