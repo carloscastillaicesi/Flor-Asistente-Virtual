@@ -13,7 +13,7 @@ const sendTMessage = (res, mssg) => {
  // Start our TwiML response.
  const twiml = new MessagingResponse();
  const messages = twiml.message();
- var NewUserMessage = mssg.toString().trim();
+ let NewUserMessage = mssg.answer.toString();
  messages.body(NewUserMessage);
  res.writeHead(200, { "Content-Type": "text/xml" });
  res.end(twiml.toString());

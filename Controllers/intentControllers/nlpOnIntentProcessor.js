@@ -1,57 +1,19 @@
-const User = require('../../Models/userModel');
+const userModel = require('../../Models/userModel');
+const userLocal = require('../UserLocalCRUD');
 
 saludo = (processed) => {
-
-  var obj = {
-    answer: processed.answer,
-    intent: processed.intent,
-    utterance: processed.utterance,
-    entities: processed.entities,
-    stage: 1
-  };
-
-  return obj;
+  return processed;
 };
 
-foto = (processed) => {
-  var obj = {
-    answer: processed.answer,
-    intent: processed.intent,
-    utterance: processed.utterance,
-    entities: processed.entities,
-    stage: 1
-  };
-
-  return obj;
-};
 nombre = (processed) => {
-
-
-
-  var obj = {
-    answer: processed.answer,
-    intent: processed.intent,
-    utterance: processed.utterance,
-    entities: processed.entities,
-    stage: 2
-  };
-
-  return obj;
+  return processed;
 };
+
 
 foto = (processed) => {
 
-  var obj = {
-    answer: processed.answer,
-    intent: processed.intent,
-    utterance: processed.utterance,
-    entities: processed.entities,
-    stage: 1
-  };
-
-  return obj;
-
 };
+
 
 edad = (processed) => {
 
@@ -74,8 +36,27 @@ mapa = (processed) => {
 
 };
 
+mapa = (processed) => {
+
+};
+
+none = (processed) => {
+
+  let target = {
+    "answer": "no te entendí amigue",
+  };
+
+  const newMssg_Intent = Object.assign(processed, target);
+
+  return newMssg_Intent;
+};
+
+
+
 intentClassifier = (fun) => {
-  var fn = fun.intent.toString().trim();
+
+  var fn = fun.intent.toString().trim().toLowerCase();
+
   // function exists
   if (fn in global && typeof global[fn] === "function") {
     return global[fn](fun);
