@@ -48,6 +48,15 @@
       "answers": [
         "tu foto quedo guardada"
       ]
+   }, {
+      "intent": "None",
+      "utterances": [
+        ""
+      ],
+      "answers": [
+        "No te entendi", 
+        "podrías repetirlo"
+      ]
    }   
   ],
   "entities": {

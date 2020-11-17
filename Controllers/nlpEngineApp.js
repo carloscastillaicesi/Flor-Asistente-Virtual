@@ -3,19 +3,9 @@ const { dockStart } = require('@nlpjs/basic');
 const { ConversationContext } = require('node-nlp');
 var json = require('../corpus.json');
 
-/* 
-Maybe explore later
-function onIntent(nlp, input) {
-  if (input.intent === 'despedida') {
-    const output = input;
-    output.answer = 'this has been modified';
-    console.log(output.answer);
-  }
-  return input;
-}
- */
 
 var main = async (input) => {
+  let body = input.body;
   const context = new ConversationContext();
   const dock = await dockStart({
     "settings": {
@@ -28,15 +18,27 @@ var main = async (input) => {
     },
     "use": ["Basic"]
   });
-
   const nlp = dock.get('nlp');
-  //Maybe later try to check this out
-  //nlp.onIntent = onIntent;
   await nlp.train();
-  console.log(input);
-  const response = await nlp.process('es', input.body, context);
+  const response = await nlp.process('es', body, context);
 
-  return response;
+  /**
+   * Assigning some properties of @constant response to the incoming @param input to append just some of the objects propeties: 
+   * @property {string} answer - suggested answer that nlp.js sends
+   * @property {string} intent - suggested intent that nlp.js interpreted given a certain utterance
+   * @property {string} score -  certainty expresed in percentage of how accurate the intent clasiffication is (<0.5 is not recommended, ask user to clarify)
+   * @property {string} entities - contains the recognized entities by NER
+  */
+
+  let target = {
+    "answer": response.answers[0].answer,
+    "intent": response.intent,
+    "score": response.score,
+    "entities": response.entities
+  }
+  const newMssg_nlp = Object.assign(input, target)
+  console.log(newMssg_nlp);
+  return newMssg_nlp;
 };
 
 
