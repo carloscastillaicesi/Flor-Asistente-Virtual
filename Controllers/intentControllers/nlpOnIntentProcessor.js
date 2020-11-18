@@ -2,6 +2,9 @@ const userModel = require('../../Models/userModel');
 const userLocal = require('../UserLocalCRUD');
 
 saludo = (processed) => {
+
+  var data = userLocal.searchData(processed.number);
+  console.log(Object.keys(data));
   return processed;
 };
 
@@ -42,13 +45,13 @@ mapa = (processed) => {
 
 none = (processed) => {
 
-  let target = {
-    "answer": "no te entendí amigue",
-  };
+  // let target = {
+  //   "answer": "no te entendí amigue",
+  // };
 
-  const newMssg_Intent = Object.assign(processed, target);
+  // const newMssg_Intent = Object.assign(processed, target);
 
-  return newMssg_Intent;
+  return processed;
 };
 
 

@@ -16,18 +16,33 @@
    },{
       "intent": "saludo",
       "utterances": [
-        "buenas flor",
-        "hola flor",
-        "buenos dias",
+        "buenas","hola","buenos","buen","buens","bueans","buen as",
         "como le va", 
-        "buenos tardes",
-        "como le va"
+        "como esta",
+        "holis",
+        "hoals", 
+        "holes",
+        "holus",
+        "alos", 
+        "halos", 
+        "hlao",
+        "holas", 
+        "holi",
+        "hoal", 
+        "hole",
+        "holu",
+        "alo", 
+        "halo", 
+        "hlao",
+        "hola", 
+        "alo", 
+        "aol"
       ],
       "answers": [
         "Hola bienvenid@, Soy *Flor* la asistente virtual de Sembrando Vida 👩🏽‍🌾. Me gusta ayudar a las personas y orientarlas desde mis experiencias y saberes 🙌🌱 *¿Quieres compartir alguna infomación tuya conmigo?* 😊 Esta información alimentará la Red de Sembrando Vida, se utilizará con fines sin animo de lucro y para el desarrollo de actividades de la red. Alguna de esta información sera para crear tu perfil y que otras personas puedan encontrarte. Piensa que es como sembrar una semilla, que hará cada día más fuerte a Sembrando Vida. Tu información alimentará el proceso de fortalecer dicha semillara para que crezca fuerte 🌱"
       ]
    }, {
-      "intent": "apellido",
+      "intent": "mapa",
       "utterances": [
         "ver mapa", 
         "ver mapita",
@@ -51,11 +66,12 @@
    }, {
       "intent": "None",
       "utterances": [
-        ""
       ],
       "answers": [
         "No te entendi", 
-        "podrías repetirlo"
+        "podrías repetirlo",
+        "Dimelo de Nuevo",
+        "No he entendido lo que has dicho"
       ]
    }   
   ],

@@ -29,15 +29,13 @@ var main = async (input) => {
    * @property {string} score -  certainty expresed in percentage of how accurate the intent clasiffication is (<0.5 is not recommended, ask user to clarify)
    * @property {string} entities - contains the recognized entities by NER
   */
-
   let target = {
-    "answer": response.answers[0].answer,
+    "answer": response.answer,
     "intent": response.intent,
     "score": response.score,
     "entities": response.entities
   }
   const newMssg_nlp = Object.assign(input, target)
-  console.log(newMssg_nlp);
   return newMssg_nlp;
 };
 

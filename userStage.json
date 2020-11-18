@@ -1,7 +1,11 @@
 {
- "id": "",
- "stage": {
-  "step": "",
-  "registered": false
- }
+  "users": [
+    {
+      "f272b487729937829f453b5029511e79:bc89e35212b1597cde3f5bf03ac42b54": {
+        "step": 1,
+        "stage": "registro",
+        "name": ""
+      }
+    }
+  ]
 }
