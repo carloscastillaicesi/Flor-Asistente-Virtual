@@ -1,10 +1,17 @@
-const userModel = require('../../Models/userModel');
+const User = require('../../Models/userModel');
 const userLocal = require('../UserLocalCRUD');
 
 saludo = (processed, fn) => {
-
   var data = userLocal.dataObject(processed.number);
-  console.log(Object.keys(data));
+  var user = userLocal.getData(data.id);
+  console.log(data.id);
+  const userDB = new User({
+    userID: user.id,
+
+
+  })
+
+
   return processed;
 };
 
@@ -42,9 +49,6 @@ mapa = (processed) => {
 
 };
 
-mapa = (processed) => {
-
-};
 
 none = (processed) => {
 
