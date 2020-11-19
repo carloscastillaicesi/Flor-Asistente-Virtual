@@ -1,13 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-
 const userSchema = new Schema({
-  _id: false,
-  userID: {
+  _id: {
     type: String,
-    unique: true,
-    required: true
+    required: true,
   },
   step: {
     type: Number,
@@ -20,7 +17,11 @@ const userSchema = new Schema({
   }
 }, { timestamps: true });
 
-const User = mongoose.model('User', userSchema);
+/**
+ * This issue is probably coming from the fact that you are creating a mongoose model without specifying the name of the collection.
+ * const Model = mongoose.model("Model", fileSchema, "NameOfCollection");
+ */
+const User = mongoose.model('User', userSchema, 'users');
 
 
 module.exports = User;

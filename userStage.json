@@ -1,10 +1,15 @@
 {
   "users": [
     {
-      "838943f2900f240505e3231a28b265b0:4f52e61456bb7811bb4663e4d4c23052": {
+      "bf98f45ddd99b7891720001f33721238:74e333efb4bc2f3c5321d58743814481": {
         "step": 1,
-        "stage": "registro",
-        "name": ""
+        "stage": "saludo"
+      }
+    },
+    {
+      "1e3762ea9483bb905e10341ca273418d:c4a8ce9cf2ab23856da2198ce891a4c2": {
+        "step": 1,
+        "stage": "saludo"
       }
     }
   ]

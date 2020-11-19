@@ -3,23 +3,35 @@ const userLocal = require('../UserLocalCRUD');
 
 saludo = (processed, fn) => {
   var data = userLocal.dataObject(processed.number);
-  var user = userLocal.getData(data.id);
-  console.log(data.id);
-  const userDB = new User({
-    userID: user.id,
-
-
-  })
-
-
+  if (data === processed.number) {
+    var user = new User({
+      _id: data,
+      step: 1,
+      stage: fn
+    })
+    user.save().then((result) => {
+      var localUser = userLocal.createUser(result._id, result.step, result.stage)
+      console.log(`Local User = ${localUser} & Mongo User : ${result._id} `)
+    }).catch((err) => console.log(err.message))
+  } else {
+    let target = {
+      "answer": "¡Hola! Ya he guardado tu número, pero no tengo tu nombre. Me lo podrías decir, porfavor",
+    };
+    Object.assign(processed, target);
+  }
   return processed;
 };
 
 nombre = (processed, fn) => {
-  var data = userLocal.updateData(processed.number, 2, fn, "carlos");
-  console.log("\n Inside Nombre: \n");
-  console.log(data);
-  return processed;
+  var getData = userLocal.getData(processed.number);
+  User.findById(getData.id).then((result) => {
+    console.log("\n Mongo DB response: \n");
+    console.log(result);
+    console.log("\n Updating Local\n");
+    var data = userLocal.updateData(processed.number, 3, fn, "carlos");
+  }).catch((err) => console.log(err.message))
+
+
 };
 
 
@@ -52,11 +64,7 @@ mapa = (processed) => {
 
 none = (processed) => {
 
-  // let target = {
-  //   "answer": "no te entendí amigue",
-  // };
 
-  // const newMssg_Intent = Object.assign(processed, target);
 
   return processed;
 };
