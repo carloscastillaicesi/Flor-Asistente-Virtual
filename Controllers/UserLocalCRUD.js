@@ -18,7 +18,6 @@ function User(id, step, stage, name) { return { [id]: { "step": step, "stage": s
 
 /**
  */
-
 dataObject = (id) => {
  var desiredObject;
  try {
@@ -54,12 +53,11 @@ existsData = (id) => {
  }
 }
 
-
 updateData = (id, step, stage, name) => {
  try {
   var desiredObject = dataObject(id)
   if (desiredObject) {
-   var currentKey = Object.keys(desiredObject)[0];
+   var currentKey = desiredObject.id;
    console.log("\n Changing Users data \n");
    console.log(`Id: ${Object.keys(desiredObject)[0]}`);
    file.users[0][currentKey].stage = stage;
@@ -67,8 +65,9 @@ updateData = (id, step, stage, name) => {
    file.users[0][currentKey].name = name;
    fs.writeFile('userStage.json', JSON.stringify(file, null, 2), function (err, content) {
     if (err) throw err;
+    console.log(content);
    })
-   return desiredObject;
+   return currentKey;
   } else {
    return "No such user";
   }
@@ -79,7 +78,6 @@ updateData = (id, step, stage, name) => {
 
 /**
  */
-
 createUser = (id, step, stage) => {
  var data = new User(id, step, stage);
  fs.readFile('userStage.json', function (err, content) {

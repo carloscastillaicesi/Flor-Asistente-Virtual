@@ -23,16 +23,26 @@ saludo = (processed, fn) => {
 };
 
 nombre = (processed, fn) => {
-  var getData = userLocal.getData(processed.number);
-  User.findById(getData.id).then((result) => {
-    console.log("\n Mongo DB response: \n");
-    console.log(result);
-    console.log("\n Updating Local\n");
-    var data = userLocal.updateData(processed.number, 3, fn, "carlos");
-  }).catch((err) => console.log(err.message))
+  var data = userLocal.dataObject(processed.number);
+  User.findOneAndUpdate(data.id, { step: 2, stage: fn, name: 'Daniel Manso' },
+    function (err, docs) {
+      if (err) {
+        console.log(err)
+      }
+      else {
+        console.log("Updated User : ", docs);
+        var localUser = userLocal.updateData(data.id, docs.step, docs.stage, docs.name)
+        console.log(`Local User = ${localUser} & Mongo User : ${docs._id} `)
+      }
+    });
+  return processed;
+  // let target = {
+  //   "answer": "¡Hola! Ya he guardado tu número, pero no tengo tu nombre. Me lo podrías decir, porfavor",
+  // };
+  // Object.assign(processed, target);
+}
 
 
-};
 
 
 foto = (processed) => {
