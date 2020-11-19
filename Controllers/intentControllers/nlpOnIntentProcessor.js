@@ -1,14 +1,17 @@
 const userModel = require('../../Models/userModel');
 const userLocal = require('../UserLocalCRUD');
 
-saludo = (processed) => {
+saludo = (processed, fn) => {
 
-  var data = userLocal.searchData(processed.number);
+  var data = userLocal.dataObject(processed.number);
   console.log(Object.keys(data));
   return processed;
 };
 
-nombre = (processed) => {
+nombre = (processed, fn) => {
+  var data = userLocal.updateData(processed.number, 2, fn, "carlos");
+  console.log("\n Inside Nombre: \n");
+  console.log(data);
   return processed;
 };
 
@@ -62,7 +65,7 @@ intentClassifier = (fun) => {
 
   // function exists
   if (fn in global && typeof global[fn] === "function") {
-    return global[fn](fun);
+    return global[fn](fun, fn);
   }
 
   // function does not exist
