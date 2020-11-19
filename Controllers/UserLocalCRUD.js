@@ -47,15 +47,19 @@ existsData = (id) => {
 
 }
 
-getData = (id, desiredKey) => {
+getData = (id) => {
  try {
-  var desiredObject = dataObject(id)
-  var desiredKey = desiredKey.toString();
+  var desiredObject = dataObject(id);
   if (desiredObject) {
    var currentKey = Object.keys(desiredObject)[0];
    console.log("\n Changin User: \n");
-   console.log(`Id: ${Object.keys(desiredObject)[0]}`);
-   return desiredObject[currentKey].desiredKey;
+   var user = {
+    id: Object.keys(desiredObject)[0],
+    step: desiredObject[currentKey].step,
+    stage: desiredObject[currentKey].stage,
+    name: desiredObject[currentKey].name
+   }
+   return user;
   } else {
    return "No such user";
   }
@@ -105,7 +109,7 @@ writeData = (data) => {
  return data;
 };
 
-module.exports = { dataObject, existsData, writeData, updateData };
+module.exports = { dataObject, existsData, getData, writeData, updateData };
 
 
 

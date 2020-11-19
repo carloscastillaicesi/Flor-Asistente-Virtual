@@ -1,10 +1,10 @@
 {
   "users": [
     {
-      "9b99f19548427473e292c10eb0f999de:8acab93271a3b98c463d45a23e5e13ed": {
-        "step": 2,
-        "stage": "nombre",
-        "name": "carlos"
+      "838943f2900f240505e3231a28b265b0:4f52e61456bb7811bb4663e4d4c23052": {
+        "step": 1,
+        "stage": "registro",
+        "name": ""
       }
     }
   ]

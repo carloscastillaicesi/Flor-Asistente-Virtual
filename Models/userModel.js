@@ -8,6 +8,15 @@ const userSchema = new Schema({
     type: String,
     unique: true,
     required: true
+  },
+  step: {
+    type: Number,
+  },
+  stage: {
+    type: String,
+  },
+  name: {
+    type: String,
   }
 }, { timestamps: true });
 
@@ -15,8 +24,6 @@ const User = mongoose.model('User', userSchema);
 
 
 module.exports = User;
-
-
 
   // try {
   //   var proccessedObject = nlpOnIntent.intentClassifier(result);
