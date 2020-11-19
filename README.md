@@ -12,6 +12,13 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
+Also, to run this code create a _.env_ file that contains this structure <br />
+
+TWILIO_ACCOUNT_SID=
+TWILIO_AUTH_TOKEN=
+TWILIO_PHONE_NUMBER=
+SECRET_KEY =
+
 ### `yarn test`
 
 Launches the test runner in the interactive watch mode.<br />
