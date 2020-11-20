@@ -1,22 +1,10 @@
 {
   "users": [
     {
-      "bf98f45ddd99b7891720001f33721238:74e333efb4bc2f3c5321d58743814481": {
+      "91fd2f8164c8e2510c96f8ef601abe13:cdd9f000d64972a91a9e592e369522c5": {
         "step": 2,
         "stage": "nombre",
-        "name": "Carlos Castilla"
-      }
-    },
-    {
-      "1e3762ea9483bb905e10341ca273418d:c4a8ce9cf2ab23856da2198ce891a4c2": {
-        "step": 1,
-        "stage": "saludo"
-      }
-    },
-    {
-      "e70b33b42e1c811ed4785120065d0ad7:3dbd20e82b4980d62eff16d4dd1c2b94": {
-        "step": 1,
-        "stage": "saludo"
+        "name": "Daniel Manso"
       }
     }
   ]

@@ -22,19 +22,20 @@ saludo = (processed, fn) => {
   return processed;
 };
 
-nombre = (processed, fn) => {
+nombre = async (processed, fn) => {
   var data = userLocal.dataObject(processed.number);
-  User.findOneAndUpdate(data.id, { step: 2, stage: fn, name: 'Daniel Manso' },
-    function (err, docs) {
-      if (err) {
-        console.log(err)
-      }
-      else {
-        console.log("Updated User : ", docs);
-        var localUser = userLocal.updateData(data.id, docs.step, docs.stage, docs.name)
-        console.log(`Local User = ${localUser} & Mongo User : ${docs._id} `)
-      }
-    });
+  try {
+    var response = await User.findOneAndUpdate(data.id, { step: 2, stage: fn, name: 'Daniel Manso' });
+    console.log(JSON.stringify(response));
+    var localUser = userLocal.updateData(response.id, response.step, response.stage, response.name);
+    console.log(`Local User = ${localUser} & Mongo User : ${response._id} `)
+  } catch (error) {
+    console.log(error.message);
+  }
+
+
+
+
   return processed;
   // let target = {
   //   "answer": "¡Hola! Ya he guardado tu número, pero no tengo tu nombre. Me lo podrías decir, porfavor",

@@ -5,7 +5,7 @@ var file = JSON.parse(fileData);
 const { encrypt, decrypt } = require('./crypto');
 
 /**
- * cleans the incoming Twilio Message object, just getting what i want.
+ * Creates a
  * Using property value shorthand
  * @constructor
  * @params id - number passed in the Twilio Message Object
@@ -53,6 +53,10 @@ existsData = (id) => {
  }
 }
 
+
+
+
+
 updateData = (id, step, stage, name) => {
  try {
   var desiredObject = dataObject(id)
@@ -75,6 +79,10 @@ updateData = (id, step, stage, name) => {
   return desiredObject = null;
  }
 }
+
+
+
+
 
 /**
  */
