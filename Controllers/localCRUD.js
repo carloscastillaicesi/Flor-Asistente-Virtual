@@ -2,7 +2,7 @@ var fs = require("fs");
 const { search } = require("../Routes/inboundRouter");
 var fileData = fs.readFileSync('userStage.json');
 var file = JSON.parse(fileData);
-const { encrypt, decrypt } = require('./crypto');
+const { decrypt } = require('./crypto');
 
 /**
  * Creates a
@@ -20,27 +20,32 @@ function User(id, step, stage, name) { return { [id]: { "step": step, "stage": s
  */
 dataObject = (id) => {
  var desiredObject;
+ console.log(Object.keys(file.users).length);
  try {
-  desiredObject = file.users.filter((users) => { return decrypt(Object.keys(users)[0]) === decrypt(id); })[0];
-  if (desiredObject) {
-   console.log("\n User Found \n");
-   var currentKey = Object.keys(desiredObject)[0];
-   console.log("\n Getting Data\n");
-   var user = {
-    id: Object.keys(desiredObject)[0],
-    step: desiredObject[currentKey].step,
-    stage: desiredObject[currentKey].stage,
-    name: desiredObject[currentKey].name
+  if (Object.keys(file.users).length > 0) {
+   desiredObject = file.users.filter((users) => { return decrypt(Object.keys(users)[0]) === decrypt(id); })[0];
+   if (desiredObject) {
+    console.log("\n User Found \n");
+    var currentKey = Object.keys(desiredObject)[0];
+    console.log("\n Getting Data\n");
+    var user = {
+     id: Object.keys(desiredObject)[0],
+     step: desiredObject[currentKey].step,
+     stage: desiredObject[currentKey].stage,
+     name: desiredObject[currentKey].name
+    }
+    desiredObject = user;
+   } else {
+    console.log("\n Creating new User \n");
+    desiredObject = id;
    }
-   desiredObject = user;
   } else {
    console.log("\n Creating new User \n");
    desiredObject = id;
   }
  } catch (error) {
-  desiredObject = "";
+  desiredObject = error.message;
  }
-
  return desiredObject;
 };
 
@@ -52,9 +57,6 @@ existsData = (id) => {
   return desiredObject = null;
  }
 }
-
-
-
 
 
 updateData = (id, step, stage, name) => {
@@ -80,10 +82,6 @@ updateData = (id, step, stage, name) => {
  }
 }
 
-
-
-
-
 /**
  */
 createUser = (id, step, stage) => {
@@ -96,7 +94,7 @@ createUser = (id, step, stage) => {
    if (err) throw err;
   })
  })
- return Object.keys(data)[0];
+ return data;
 };
 
 module.exports = { dataObject, existsData, createUser, updateData };

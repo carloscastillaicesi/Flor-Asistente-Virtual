@@ -1,25 +1,11 @@
 const User = require('../../Models/userModel');
-const userLocal = require('../UserLocalCRUD');
+var userLocal = require('../localCRUD');
+const intentSaludo = require('./intentSaludo');
 
 saludo = (processed, fn) => {
-  var data = userLocal.dataObject(processed.number);
-  if (data === processed.number) {
-    var user = new User({
-      _id: data,
-      step: 1,
-      stage: fn
-    })
-    user.save().then((result) => {
-      var localUser = userLocal.createUser(result._id, result.step, result.stage)
-      console.log(`Local User = ${localUser} & Mongo User : ${result._id} `)
-    }).catch((err) => console.log(err.message))
-  } else {
-    let target = {
-      "answer": "¡Hola! Ya he guardado tu número, pero no tengo tu nombre. Me lo podrías decir, porfavor",
-    };
-    Object.assign(processed, target);
-  }
-  return processed;
+  console.log(processed);
+  return intentSaludo(processed, fn);
+
 };
 
 nombre = async (processed, fn) => {
@@ -33,17 +19,12 @@ nombre = async (processed, fn) => {
     console.log(error.message);
   }
 
-
-
-
   return processed;
   // let target = {
   //   "answer": "¡Hola! Ya he guardado tu número, pero no tengo tu nombre. Me lo podrías decir, porfavor",
   // };
   // Object.assign(processed, target);
 }
-
-
 
 
 foto = (processed) => {
