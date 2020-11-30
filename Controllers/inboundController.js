@@ -7,11 +7,13 @@ var userMessageController = require('./userMessageController');
  */
 
 const inboundReceiver = (req, res) => {
-  console.log(req.body);
+
   var newMssg = receiveTMessage(req.body);
-  // userMessageController.userCheck(req)
-  //   .then((result) => console.log(result))
-  //   .catch((error) => console.log(error.message));
+
+
+  userMessageController.userCheck(newMssg)
+    .then((result) => console.log(result))
+    .catch((error) => console.log(error.message));
   // .then((result) => nlpEngineApp(result))
   // .then((result) => nlpOnIntent.intentClassifier(result))
   // .then((result) => TMessagingController.sendTMessage(res, result))

@@ -21,7 +21,6 @@ var main = async (input) => {
   const nlp = dock.get('nlp');
   await nlp.train();
   const response = await nlp.process('es', body, context);
-
   /**
    * Assigning some properties of @constant response to the incoming @param input to append just some of the objects propeties: 
    * @property {string} answer - suggested answer that nlp.js sends

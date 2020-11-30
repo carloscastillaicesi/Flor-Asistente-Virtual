@@ -14,33 +14,33 @@ const { decrypt } = require('./crypto');
  * This is called a constructor Function
 */
 
-function User(id, step, stage, name) { return { [id]: { "step": step, "stage": stage, "name": name } } };
+function User(id, currentActivity, currentStep, registered, name) { return { [id]: { "currentActivity": currentActivity, "currentStep": currentStep, "registered": registered, "name": name } } };
 
 /**
  */
 dataObject = (id) => {
  var desiredObject;
- console.log(Object.keys(file.users).length);
  try {
   if (Object.keys(file.users).length > 0) {
    desiredObject = file.users.filter((users) => { return decrypt(Object.keys(users)[0]) === decrypt(id); })[0];
    if (desiredObject) {
-    console.log("\n User Found \n");
+    console.log("\n User Found !!! \n");
     var currentKey = Object.keys(desiredObject)[0];
-    console.log("\n Getting Data\n");
+    console.log("\n Getting Data...\n");
     var user = {
      id: Object.keys(desiredObject)[0],
-     step: desiredObject[currentKey].step,
-     stage: desiredObject[currentKey].stage,
+     currentActivity: desiredObject[currentKey].currentActivity,
+     currentStep: desiredObject[currentKey].currentStep,
+     registered: desiredObject[currentKey].registered,
      name: desiredObject[currentKey].name
     }
     desiredObject = user;
    } else {
-    console.log("\n Creating new User \n");
+    console.log(`\n User not found...Create a new user with id: ${id}\n`);
     desiredObject = id;
    }
   } else {
-   console.log("\n Creating new User \n");
+   console.log(`\n There are no users in the local collection....Create a new user with id: ${id}\n`);
    desiredObject = id;
   }
  } catch (error) {
@@ -84,19 +84,23 @@ updateData = (id, step, stage, name) => {
 
 /**
  */
-createUser = (id, step, stage) => {
- var data = new User(id, step, stage);
- fs.readFile('userStage.json', function (err, content) {
-  if (err) throw err;
-  var parseJson = JSON.parse(content);
-  parseJson.users.push(data);
-  fs.writeFile('userStage.json', JSON.stringify(parseJson, null, 2), function (err) {
+function createUser(id, currentActivity, currentStep, registered, name) {
+ return new Promise(function (resolve, reject) {
+  fs.readFile('userStage.json', function (err, content) {
    if (err) throw err;
+   var parseJson = JSON.parse(content);
+   let data = new User(id, currentActivity, currentStep, registered, name);
+   parseJson.users.push(data);
+   fs.writeFile('userStage.json', JSON.stringify(parseJson, null, 2), function (err) {
+    if (err) {
+     reject(err);
+    } else {
+     resolve(data);
+    }
+   })
   })
  })
- return data;
 };
-
 module.exports = { dataObject, existsData, createUser, updateData };
 
 

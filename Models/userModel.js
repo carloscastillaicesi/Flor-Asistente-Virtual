@@ -6,11 +6,14 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  step: {
+  currentActivity: {
+    type: String,
+  },
+  currentStep: {
     type: Number,
   },
-  stage: {
-    type: String,
+  registered: {
+    type: Number,
   },
   name: {
     type: String,
