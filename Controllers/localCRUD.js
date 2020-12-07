@@ -58,7 +58,6 @@ existsData = (id) => {
  }
 }
 
-
 updateData = (id, step, stage, name) => {
  try {
   var desiredObject = dataObject(id)
@@ -101,6 +100,13 @@ function createUser(id, currentActivity, currentStep, registered, name) {
   })
  })
 };
+
+/** Changing json key 
+ * function renameKey(obj, oldKey, newKey) {
+  obj[newKey] = obj[oldKey];
+  delete obj[oldKey];
+}
+ */
 module.exports = { dataObject, existsData, createUser, updateData };
 
 

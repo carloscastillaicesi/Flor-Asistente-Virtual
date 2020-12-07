@@ -3,6 +3,15 @@
   "locale": "es",
   "data": [
     {
+      "intent": "media",
+      "utterances": [
+        "@media"
+      ],
+      "answers": [
+        "haz enviado una {{media}}"
+      ]
+   },
+   {
       "intent": "nombre",
       "utterances": [
         "buenas me llamo @nombre @apellido",
@@ -17,29 +26,12 @@
       "intent": "saludo",
       "utterances": [
         "buenas","hola","buenos","buen","buens","bueans","buen as",
-        "como le va", 
-        "como esta",
-        "holis",
-        "hoals", 
-        "holes",
-        "holus",
-        "alos", 
-        "halos", 
-        "hlao",
-        "holas", 
-        "holi",
-        "hoal", 
-        "hole",
-        "holu",
-        "alo", 
-        "halo", 
-        "hlao",
-        "hola", 
-        "alo", 
-        "aol"
+        "buneas","hoola","ho la","h ola","hol a","bu enas","buen as",
+        "quiubo","que hubo","que mas","quemas","hablame","que dice","buen os","como le va", "como esta", "holis", "q mas", "hoals", "holes", "holus","alos",  "halos", "hlao",  "holas",  "holi", "hoal", "hole", "holu", "alo", "halo", "hlao",  "hola", "alo", "aol"
       ],
       "answers": [
-        "Hola bienvenid@, Soy *Flor* la asistente virtual de Sembrando Vida 👩🏽‍🌾. Me gusta ayudar a las personas y orientarlas desde mis experiencias y saberes 🙌🌱 *¿Quieres compartir alguna infomación tuya conmigo?* 😊 Esta información alimentará la Red de Sembrando Vida, se utilizará con fines sin animo de lucro y para el desarrollo de actividades de la red. Alguna de esta información sera para crear tu perfil y que otras personas puedan encontrarte. Piensa que es como sembrar una semilla, que hará cada día más fuerte a Sembrando Vida. Tu información alimentará el proceso de fortalecer dicha semillara para que crezca fuerte 🌱"
+        "Hola bienvenid@, Soy *Flor* la asistente virtual de Sembrando Vida 👩🏽‍🌾. Me gusta ayudar a las personas y orientarlas desde mis experiencias y saberes 🙌🌱 *¿Quieres compartir alguna infomación tuya conmigo?* 😊 Esta información alimentará la Red de Sembrando Vida, se utilizará con fines sin animo de lucro y para el desarrollo de actividades de la red. Alguna de esta información sera para crear tu perfil y que otras personas puedan encontrarte. Piensa que es como sembrar una semilla, que hará cada día más fuerte a Sembrando Vida. Tu información alimentará el proceso de fortalecer dicha semillara para que crezca fuerte 🌱","Hola bienvenid@,. Alguna de esta información sera para crear tu perfil y que otras personas puedan encontrarte. Piensa que es como sembrar una semilla, que hará cada día más fuerte a Sembrando Vida. Tu información alimentará el proceso de fortalecer dicha semillara para que crezca fuerte 🌱", "Hola bienvenid@, Soy *Flor* la asistente virtual de Sembrando Vida 👩🏽‍🌾. Me gusta ayudar a las personas y orientarlas desde mis experiencias y saberes 🙌🌱 *¿Quieres compartir alguna infomación tuya conmigo?* 😊 Esta información alimentará la Red de Sembrando Vida, se utilizará con fines sin animo de lucro y para el desarrollo de actividades de la red. Alguna de esta información sera para crear tu perfil y que otras personas puedan encontrarte. Piensa que es como sembrar una semilla, que hará cada día más fuerte a Sembrando Vida. Tu información alimentará el proceso de fortalecer dicha semillara para que crezca fuerte 🌱"
+
       ]
    }, {
       "intent": "mapa",
@@ -88,6 +80,17 @@
         "manso": ["Manso ", "manso"],
         "beltran": ["beltran","Beltran"]
       }
-   }
+   },
+      "media": {
+      "options": {
+        "image": ["image", "Imagen", "Foto"],
+        "video": ["video", "Video"],
+        "audio": ["beltran","Beltran"]
+      }}, 
+
+       "email": {
+      "locale": ["en", "es"],
+      "regex": "/\\b(\\w[-._\\w]*\\w@\\w[-._\\w]*\\w\\.\\w{2,3})\\b/gi"
+    }
  }
 }

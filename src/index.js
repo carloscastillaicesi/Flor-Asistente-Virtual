@@ -1,10 +1,12 @@
-import React from "react";
-import ReactDom from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
 
-function Initial() {
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
 
-  return <h6>Initial Component</h6>;
 
-}
-
-ReactDom.render(<Initial />, document.getElementById('root')); 
+  document.getElementById('root')
+);

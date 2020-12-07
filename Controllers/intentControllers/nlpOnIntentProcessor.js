@@ -3,9 +3,7 @@ var userLocal = require('../localCRUD');
 const intentSaludo = require('./intentSaludo');
 
 saludo = (processed, fn) => {
-  console.log(processed);
   return intentSaludo(processed, fn);
-
 };
 
 nombre = async (processed, fn) => {

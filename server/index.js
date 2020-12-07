@@ -26,6 +26,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(pino);
 
+app.get('/:userId', function (req, res) {
+
+  console.log();
+})
+
 /**Inbound Route - Twilio Endpoint*/
 app.use(inboundRoutes);
 

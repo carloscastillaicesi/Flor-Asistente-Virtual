@@ -1,19 +1,11 @@
 {
   "users": [
     {
-      "df1d29e0597292aa54baa3f705d1e27f:8bc27a00cfd9a86db615af88055a102a": {
+      "26510a2d5c3c42bd26507e960fb21c3e:90091b37ecef1890f2c4330b119343bb": {
         "currentActivity": "Registration",
         "currentStep": 0,
         "registered": 0,
-        "name": ""
-      }
-    },
-    {
-      "0b86b4b80470ec78afa6b5d22e7781cb:abe3f656a5cbd7964b958b2902834833": {
-        "currentActivity": "Registration",
-        "currentStep": 0,
-        "registered": 0,
-        "name": ""
+        "name": "Daniel Manso"
       }
     }
   ]

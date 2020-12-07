@@ -17,7 +17,6 @@ function UserData(data) {
 
 };
 
-
 function userCheck(mssg) {
  return new Promise(function (resolve, reject) {
   var newMssgUser;
@@ -35,7 +34,7 @@ function userCheck(mssg) {
      userLocal.createUser(response._id, response.currentActivity, response.currentStep, response.registered, response.name)
       .then((result) => {
        var target = new UserData(result);
-       console.log(`New Local User = ${target.id} & Mongo User : ${response._id} `);
+       console.log(`New Local User = ${target.from} & Mongo User : ${response._id} `);
        newMssgUser = Object.assign(mssg, target)
       })
 
