@@ -2,6 +2,8 @@ import React, { useEffect, useState, useContext } from "react";
 import { NrowserRouter as Router, useHistory, Link, useParams } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 import MapView from "./MapView";
+import florInicial from "../assets/Flor_geo.svg"
+import florFinal from "../assets/flor_inicio.svg"
 
 const HomeUsers = () => {
   let { userid } = useParams();
@@ -14,6 +16,9 @@ const HomeUsers = () => {
     buttonText: "Activar Geolocalización",
     geo: false
   });
+
+
+
 
   const [currentUser, setcurrentUser] = useState({
     user: '123456',
@@ -53,20 +58,18 @@ const HomeUsers = () => {
   };
 
 
-
   return (
-    <div className="HomeUser-Container">
-      <h1>Geolocation</h1>
-      <p>Latitude: {state.latitude}</p>
-      <p>longitude: {state.longitude}</p>
-      <p>Latitude: {geometry.lat}</p>
-      <p>longitude: {stage}</p>
-      <p>longitude: {name}</p><p>longitude: {user}</p>
-      {!state.geo ?
-        <button onClick={getGeo.bind(this)}>{state.buttonText}</button>
-        : <Link to={{ pathname: `/map`, state }}>See marker</Link>}
-    </div>
-
+    <div>
+      <div className="homeuser-container">
+        <h1>Hola, {name}</h1>
+        <img src={state.geo ? florInicial : florFinal} alt="" />
+        <p>Para poder ingresar al mapa, necesito me permitas permitas conocer tu ubicación</p>
+        {!state.geo ?
+          <div className="option-button" onClick={getGeo.bind(this)}>{state.buttonText}</div>
+          :
+          <Link to={{ pathname: `/map`, state }}><div className="option-button"> Ingresar al Mapa</div></Link>}
+      </div >
+    </div >
   );
 }
 
