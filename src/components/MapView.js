@@ -1,152 +1,184 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
+import { UserContext } from "../contexts/UserContext";
 import { useLocation, useHistory } from "react-router-dom";
 import "leaflet/dist/leaflet.css";
 import MarkerPopup from "./MarkerPopup";
 import { Icon } from "./Icon";
+import { IconUser } from "./IconUser";
 import image from "../assets/sembrandovida.png";
 
 const MapView = () => {
 
- const [state, setState] = useState({
-  currentLocation: { lat: 52.52437, lng: 13.41053 },
-  zoom: 15,
- });
+  const [state, setState] = useState({
+    currentLocation: { lat: 3.4194719680257584, lng: -76.52423502012975 },
+    zoom: 15,
 
- const location = useLocation();
- const history = useHistory();
+  });
+  const { name } = useContext(UserContext);
+  const [mapUrl, setMapUrl] = useState(true)
 
- const mapRef = useRef(null);
+  const location = useLocation();
+  const history = useHistory();
 
- const [open, setOpen] = useState(true);
+  const mapRef = useRef(null);
 
- const [locations] = useState([
-  [3.3603201110286225, -76.57668773559288],
-  [3.337014026145643, -76.56072322837524],
-  [3.405902458606593, -76.58475581988567]
- ]);
+  const [open, setOpen] = useState(true);
 
- useEffect(() => {
-  if (location) {
-   console.log(location);
-   if (location.state !== undefined) {
-    console.log(location.state);
-    if (location.state.latitude && location.state.longitude) {
-     const currentLocation = {
-      lat: location.state.latitude,
-      lng: location.state.longitude,
-     };
-     console.log(location);
-     setState({
-      ...state,
-      currentLocation,
-     });
+  const [locations] = useState({
+    "users":
+      [
+        {
+          name: "Carlos Castilla",
+          pic: "https://images.generated.photos/7xzxPeS5XipKhSWDIhMDMMHkfTlQ1Jg4klIe1JUtL8M/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzAyODcwNTkuanBn.jpg",
+          geometry: [3.3603201110286225, -76.57668773559288]
+        }, {
+          name: "Daniel Manso",
+          pic: "https://images.generated.photos/Ur_ZGtK2Tu9crC8buZfl3B5ZTGXo_LcUq0jZ4C0P_hc/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzAzMTE3NzcuanBn.jpg",
+          geometry: [3.337014026145643, -76.56072322837524]
+        }, {
+          name: "Pepe Perez",
+          pic: "https://images.generated.photos/0sNmVYMBUe6Fih2ocxw0o0M7SI1sgr3XMIDiGaoy3rA/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA1MDI5NTdfMDU3/NDQwNl8wMjEwNTI4/LmpwZw.jpg",
+          geometry: [3.405902458606593, -76.55399031982945]
+        }, {
+          name: "Julien Assange",
+          pic: " ",
+          geometry: [3.4545836014772595, -76.5556425605519]
+        }, {
+          name: "Florinde Mesa",
+          pic: "https://images.generated.photos/XXlJY4hwb4OD7vKtWn0-xZOyuLpLQbUfA2Pff0YMxUM/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzAzNDY4MDJfMDM4/NjI3MV8wNzg5OTI4/LmpwZw.jpg",
+          geometry: [3.453073583273669, -76.55904360157757]
+        }
+      ]
+  });
 
-     history.replace({
-      pathname: "/map",
-      state: {},
-     });
+
+
+  useEffect(() => {
+    if (location) {
+      console.log(location);
+      if (location.state !== undefined) {
+        console.log(location.state);
+        if (location.state.latitude && location.state.longitude) {
+          const currentLocation = {
+            lat: location.state.latitude,
+            lng: location.state.longitude,
+          };
+          console.log(location);
+          setState({
+            ...state,
+            currentLocation,
+          });
+
+          history.replace({
+            pathname: "/map",
+            state: {},
+          });
+        }
+      }
     }
-   }
+  }, [location]);
+
+
+  function centerMapView(e) {
+    const { leafletElement } = mapRef.current;
+    if (e) {
+      leafletElement.setView(e.popup._latlng, e.zoom);
+      const point = leafletElement.project(e.target._popup._latlng);
+      const currentLocation = {
+        lat: e.popup._latlng.lat,
+        lng: e.popup._latlng.lng,
+      };
+
+      leafletElement.panTo(leafletElement.unproject(point), { animate: true });
+    }
   }
- }, [location]);
 
 
- function centerMapView(e) {
-  const { leafletElement } = mapRef.current;
-  if (e) {
-   leafletElement.setView(e.popup._latlng);
-   const point = leafletElement.project(e.target._popup._latlng);
-   const currentLocation = {
-    lat: e.popup._latlng.lat,
-    lng: e.popup._latlng.lng,
-   };
-   setState({
-    ...state,
-    currentLocation,
-   });
-   leafletElement.panTo(leafletElement.unproject(point), { animate: true });
+  function centerMapViewMe() {
+    const { leafletElement } = mapRef.current;
+    var latitude;
+    var longitude;
+
+    navigator.geolocation.getCurrentPosition(
+      function (position) {
+        latitude = position.coords.latitude;
+        longitude = position.coords.longitude;
+        const currentLocation = { lat: latitude, lng: longitude };
+        console.log(currentLocation);
+        console.log(state.currentLocation);
+        leafletElement.setView(currentLocation);
+        const point = leafletElement.project(currentLocation);
+        leafletElement.panTo(leafletElement.unproject(point), { animate: true });
+        setState({
+          ...state,
+          currentLocation,
+        });
+      },
+      function (error) {
+        console.error("Error Code = " + error.code + " - " + error.message);
+      },
+      {
+        enableHighAccuracy: true,
+      }
+    );
   }
- }
+  function changeMap() {
+    setMapUrl(!mapUrl);
+  }
+
+  return (
+    <div className="mapview-container">
+      {open ?
+        <div>
+          <div className="top-bar">
+            <img src={image} alt="" />
+            <h2>Hola, {name}</h2>
+            <div className="button-menu" />
+          </div>
+          <div className="button-group">
+            <div className="button-rise" onClick={centerMapViewMe.bind(this)}><div class="icon-bar-location" /></div>
+            <div className="button-rise" onClick={centerMapViewMe.bind(this)}><div class="icon-bar-person" /></div>
+            <div className="button-rise" onClick={changeMap.bind(this)}><div class="icon-bar-huerta" /></div>
+          </div>
+
+        </div>
+
+        : ''}
 
 
- function centerMapViewMe() {
-  const { leafletElement } = mapRef.current;
-  var latitude;
-  var longitude;
+      <Map ref={mapRef}
+        center={state.currentLocation}
+        onPopupopen={centerMapView.bind(this)}
+        zoom={state.zoom}
+        dragging={open}
+        zoomControl={false}>
 
-  navigator.geolocation.getCurrentPosition(
-   function (position) {
-    latitude = position.coords.latitude;
-    longitude = position.coords.longitude;
-    const currentLocation = { lat: latitude, lng: longitude };
-    console.log(currentLocation);
-    console.log(state.currentLocation);
-    leafletElement.setView(currentLocation);
-    const point = leafletElement.project(currentLocation);
-    leafletElement.panTo(leafletElement.unproject(point), { animate: true });
-    setState({
-     ...state,
-     currentLocation,
-    });
-   },
-   function (error) {
-    console.error("Error Code = " + error.code + " - " + error.message);
-   },
-   {
-    enableHighAccuracy: true,
-   }
+        <TileLayer
+          url={mapUrl ? 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}' : "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"}
+          attribution={`&copy; <a href="http://osm.org/copyright">${mapUrl ? 'ArGis' : 'OpenStreetMap'}</a> contributors`} />
+
+        <Marker
+          position={state.currentLocation}
+          icon={IconUser}>
+        </Marker>
+
+        {locations.users.map((locations, i) => (
+          <Marker key={i}
+            position={locations.geometry}
+            icon={Icon} >
+
+            <MarkerPopup position={locations.geometry}
+              name={locations.name}
+              open={open}
+              setOpen={setOpen} pic={locations.pic} />
+
+          </Marker>
+        ))}
+
+      </Map>
+    </div >
   );
- }
-
- return (
-  <div className="mapview-container">
-
-   <div className="top-bar">
-    <img src={image} alt="" />
-    <h2>Sembrando Vida</h2>
-    <div className="button-menu" />
-   </div>
-   <div className="button-group">
-    <div className="button-rise" onClick={centerMapViewMe.bind(this)}><div class="icon-bar-location" /></div>
-    <div className="button-rise" onClick={centerMapViewMe.bind(this)}><div class="icon-bar-person" /></div>
-    <div className="button-rise" onClick={centerMapViewMe.bind(this)}><div class="icon-bar-huerta" /></div>
-   </div>
-
-   <Map ref={mapRef}
-    center={state.currentLocation}
-    onPopupopen={centerMapView.bind(this)}
-    zoom={state.zoom}
-    dragging={open}
-    zoomControl={false}>
-
-
-    <TileLayer
-     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' />
-
-    <Marker
-     position={state.currentLocation}
-     icon={Icon}>
-     <Popup
-      autoPan={false}
-      closeButton={false}
-      onClose={() => { }}> Estas Aquí </Popup>
-    </Marker>
-
-    {locations.map((locations, i) => (
-     <Marker key={i}
-      position={locations}
-      icon={Icon} >
-      <MarkerPopup position={state.currentLocation}
-       open={open}
-       setOpen={setOpen} />
-     </Marker>
-    ))}
-
-   </Map>
-  </div >
- );
 };
 
 export default MapView;

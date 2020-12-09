@@ -5,6 +5,11 @@ const HomeGuests = () => {
 
   const [state, setstate] = useState('')
 
+  function handleSubmit(e) {
+    alert('An essay was submitted: ');
+    e.preventDefault();
+  }
+
   return (
 
     <div className="homeguest-container">
@@ -31,12 +36,13 @@ const HomeGuests = () => {
             ?
             <div>
               <p className="paragraph">Si ya eres parte de la Red ingresa tu numero para que Flor pueda enviarte un Link de acceso</p>
-
-              <label>
-                <h4 className="paragraph">Número de Celular</h4>
-                <input type="text" name="phone" placeholder="Número" />
-                <br />
-              </label>
+              <form onSubmit={handleSubmit.bind(this)}>
+                <label>
+                  <h4 className="paragraph">Número de Celular</h4>
+                  <input type="text" name="phone" placeholder="Número" value={() => console.log("Hola")} onChange={() => console.log("Hola")} />
+                  <br />
+                </label>
+              </form>
               <h5 className="underline" onClick={() => { setstate('') }}>Ir Atrás</h5>
             </div>
             :

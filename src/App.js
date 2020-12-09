@@ -18,7 +18,7 @@ function App() {
                     <Route path="/map">
                         <MapView />
                     </Route>
-                    <Route path="/guests">
+                    <Route path="/map/guest">
                         <h1>Guest Map</h1>
                     </Route>
                     <Route path="/usernotfound">

@@ -2,8 +2,8 @@ import React, { useEffect, useState, useContext } from "react";
 import { NrowserRouter as Router, useHistory, Link, useParams } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 import MapView from "./MapView";
-import florInicial from "../assets/Flor_geo.svg"
-import florFinal from "../assets/flor_inicio.svg"
+import florInicial from "../assets/flor_inicio.svg"
+import florFinal from "../assets/Flor_geo.svg"
 
 const HomeUsers = () => {
   let { userid } = useParams();
@@ -22,7 +22,7 @@ const HomeUsers = () => {
 
   const [currentUser, setcurrentUser] = useState({
     user: '123456',
-    name: 'Carlos Castilla',
+    name: 'Orbay Beltrán',
     geometry: { lat: state.latitude, lng: state.longitude },
     stage: 1,
     auth: false,
@@ -62,8 +62,10 @@ const HomeUsers = () => {
     <div>
       <div className="homeuser-container">
         <h1>Hola, {name}</h1>
-        <img src={state.geo ? florInicial : florFinal} alt="" />
-        <p>Para poder ingresar al mapa, necesito me permitas permitas conocer tu ubicación</p>
+        <br />
+        <img src={!state.geo ? florInicial : florFinal} alt="" />
+        <br />
+        <p className="paragraph">Para poder ingresar al mapa, necesito me permitas permitas conocer tu ubicación</p>
         {!state.geo ?
           <div className="option-button" onClick={getGeo.bind(this)}>{state.buttonText}</div>
           :
