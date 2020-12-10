@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
 import defaultPic from "../assets/defaultphotouser.png"
-import huerta from "../assets/huerta.png"
 import stageOne from "../assets/seed_marker.svg";
-function AboutMe({ name, pic }) {
+function AboutMe({ name, pic, gallery, setPage }) {
 
-  //0% 1
-  //20% 2
-  //40% 3
-  //60% 4
+  // 0% (1) - 20% (2) - 40% (3) - 60% (4)
 
   const progress = "20%";
+
 
 
   return (
@@ -29,10 +26,10 @@ function AboutMe({ name, pic }) {
         <div className="progress">
           <div style={{ width: progress }} className="progress-bar">
           </div>
-          <img src={stageOne} alt="" className="progress-badges" />
-          <img src={stageOne} alt="" className="progress-badges" />
-          <img src={stageOne} alt="" className="progress-badges" />
-          <img src={stageOne} alt="" className="progress-badges" />
+          <img src={stageOne} alt="Seed-One" className="progress-badges" />
+          <img src={stageOne} alt="Seed-Two" className="progress-badges" />
+          <img src={stageOne} alt="Seed-Three" className="progress-badges" />
+          <img src={stageOne} alt="Seed-Four" className="progress-badges" />
         </div>
 
       </div>
@@ -41,7 +38,7 @@ function AboutMe({ name, pic }) {
         <div className="gallery-info">
           <h4>Acerca de Mí</h4>
           <div>
-            <div className="arrow-gallery right"></div>
+
           </div>
 
         </div>
@@ -54,23 +51,20 @@ function AboutMe({ name, pic }) {
         <div className="gallery-info">
           <h4>Imágenes</h4>
           <div>
-            <h4>5</h4>
+            <h4>{gallery ? gallery.length : 0}</h4>
             <div className="arrow-gallery right"></div>
           </div>
 
         </div>
-
         <div class="wrapper">
-          <img src={huerta} alt="" className="carrousel-image" />
-          <img src={huerta} alt="" className="carrousel-image" />
-          <img src={huerta} alt="" className="carrousel-image" />
-          <img src={huerta} alt="" className="carrousel-image" />
-          <img src={huerta} alt="" className="carrousel-image" />
-          <img src={huerta} alt="" className="carrousel-image" />
+          {gallery ?
+            <div>{
+              gallery.length > 5
+                ? gallery.slice(0, 5).map((data, i) => <img key={i} src={data} alt="gallery" />)
+                : gallery.map((data, i) => <img key={i} src={data} alt="gallery" />)
+            }</div> : <p>{name} no ha subido imágenes</p>}
         </div>
       </div>
-
-
     </div>
 
   )

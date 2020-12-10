@@ -4,7 +4,13 @@
   --color-primary-active: #268766;
   --color-secondary: #263238;
 }
+.homeuser-container {
+  background: #fff;
+}
 
+.fullscreen-enabled .my-component {
+  background: #fff !important;
+}
 * {
   margin: 0;
   padding: 0;
@@ -423,22 +429,40 @@ input[type="tel"]:focus {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
   overflow: hidden;
   cursor: pointer;
-  padding: 10px;
+  padding: 0px 10px 15px 10px;
 }
 .mouseInfo {
   background-color: lightcoral;
-}
-.carrousel-image {
-  margin: 3px 10px;
-  height: 73px;
 }
 
 .wrapper {
   overflow-x: scroll;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
-  max-width: 340px;
+  max-width: 330px;
   white-space: nowrap;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  min-height: 75px;
+}
+
+.wrapper p {
+  margin-left: 15% !important;
+  font-weight: bold;
+  color: grey;
+}
+
+.wrapper img {
+  width: 100px;
+  height: 75px;
+
+  object-fit: cover;
+  margin: 3px 8px;
+  height: 73px;
+  border-radius: 3px;
+  background-image: url(./assets/defaultgallery.png);
+  background-size: 100px;
 }
 
 .gallery-info {
@@ -447,19 +471,19 @@ input[type="tel"]:focus {
   justify-content: space-between;
   flex-direction: row;
   padding: 0 10px;
-  margin: 5px 0;
 }
 .gallery-info div {
   display: flex;
   align-items: center;
   flex-direction: row;
+  margin: 10px 0;
 }
 
 .arrow-gallery {
   border: solid black;
   border-width: 0 3px 3px 0;
   display: inline-block;
-  padding: 3px;
+  padding: 4px;
 }
 
 .right {
@@ -493,4 +517,11 @@ input[type="tel"]:focus {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-primary-active);
+}
+
+@media only screen and (max-width: 727px) {
+  ::-webkit-scrollbar,
+  ::-webkit-scrollbar {
+    display: none;
+  }
 }

@@ -1,26 +1,29 @@
 import React, { useEffect, useState, useContext } from "react";
-import { NrowserRouter as Router, useHistory, Link, useParams } from "react-router-dom";
+import { useHistory, Link, useParams } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
-import MapView from "./MapView";
+import { SettingContext } from "../contexts/SettingContext";
 import florInicial from "../assets/flor_inicio.svg"
-import florFinal from "../assets/Flor_geo.svg"
+
+
 
 const HomeUsers = () => {
+
   let { userid } = useParams();
   const history = useHistory();
-  const { name, user, stage, toggleAuth, userData, geometry } = useContext(UserContext);
+  const { name, toggleAuth, userData } = useContext(UserContext);
+
+  const { toggleFullscreen } = useContext(SettingContext);
 
   const [state, setState] = useState({
     longitude: 0,
     latitude: 0,
     buttonText: "Activar Geolocalización",
-    geo: false
+    geo: false,
+
   });
 
-
-
-
-  const [currentUser, setcurrentUser] = useState({
+  /** if it was data from the server */
+  const [currentUser] = useState({
     user: '123456',
     name: 'Orbay Beltrán',
     geometry: { lat: state.latitude, lng: state.longitude },
@@ -28,14 +31,16 @@ const HomeUsers = () => {
     auth: false,
   })
 
+  var authUser = toggleAuth(userid)
   useEffect(() => {
-    var authUser = toggleAuth(userid)
+    toggleFullscreen('');
+
     if (authUser) {
       userData(currentUser);
     } else {
       history.push("/usernotfound");
     }
-  }, [toggleAuth, state, history])
+  }, [authUser, currentUser, history, userData, toggleFullscreen])
 
   function getGeo() {
     navigator.geolocation.getCurrentPosition(
@@ -47,6 +52,19 @@ const HomeUsers = () => {
           buttonText: "Entrar al Mapa",
           geo: true
         });
+        setTimeout(() => {
+
+
+          history.push({
+            pathname: "/map",
+            state: {
+              longitude: position.coords.longitude,
+              latitude: position.coords.latitude,
+              buttonText: "Entrar al Mapa",
+              geo: true
+            }
+          });
+        }, 1000);
       },
       function (error) {
         console.error("Error Code = " + error.code + " - " + error.message);
@@ -54,6 +72,7 @@ const HomeUsers = () => {
       {
         enableHighAccuracy: true,
       }
+
     );
   };
 
@@ -63,16 +82,15 @@ const HomeUsers = () => {
       <div className="homeuser-container">
         <h1>Hola, {name}</h1>
         <br />
-        <img src={!state.geo ? florInicial : florFinal} alt="" />
+        <img src={florInicial} alt="" />
         <br />
         <p className="paragraph">Para poder ingresar al mapa, necesito me permitas permitas conocer tu ubicación</p>
-        {!state.geo ?
-          <div className="option-button" onClick={getGeo.bind(this)}>{state.buttonText}</div>
-          :
-          <Link to={{ pathname: `/map`, state }}><div className="option-button"> Ingresar al Mapa</div></Link>}
+
+        <div onClick={getGeo.bind()} className="option-button"> Activar Geolocalización</div>
       </div >
     </div >
   );
 }
 
 export default HomeUsers;
+

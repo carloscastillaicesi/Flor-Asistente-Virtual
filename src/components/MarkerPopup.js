@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as ReactLeaflet from "react-leaflet";
 import Peek from "./Peek";
 import AboutMe from "./AboutMe";
 import { BrowserRouter as Router, Switch, Route, useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
 const { Popup } = ReactLeaflet;
-export default function MarkerPopup({ open, setOpen, position, name, pic }) {
+export default function MarkerPopup({ open, setOpen, position, name, pic, gallery }) {
+
 
 
  const [state, setPage] = useState(false)
@@ -17,7 +17,7 @@ export default function MarkerPopup({ open, setOpen, position, name, pic }) {
    history.push("/map");
    setPage(false);
   }
- }, [state])
+ }, [state, history])
 
 
  function handleOpen() {
@@ -45,7 +45,7 @@ export default function MarkerPopup({ open, setOpen, position, name, pic }) {
       <Peek position={position} name={name} pic={pic} />
      </Route>
      <Route path="/map/aboutme">
-      <AboutMe name={name} pic={pic} />
+      <AboutMe name={name} pic={pic} gallery={gallery} />
      </Route>
      <Route path="/map/aboutme">
       <AboutMe />
