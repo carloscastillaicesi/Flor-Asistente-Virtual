@@ -8,7 +8,8 @@ class UserContextProvider extends Component {
     user: '123456',
     name: '',
     geometry: { lat: '', lng: '' },
-    stage: 4,
+    pic: '',
+    stage: 0,
     auth: false,
   }
   toggleAuth = (user) => {
@@ -19,6 +20,7 @@ class UserContextProvider extends Component {
     this.setState({
       name: data.name,
       geometry: data.geometry,
+      pic: '',
       stage: data.stage,
       auth: true,
     })

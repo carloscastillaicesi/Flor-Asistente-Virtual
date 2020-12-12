@@ -25,8 +25,9 @@ const HomeUsers = () => {
   /** if it was data from the server */
   const [currentUser] = useState({
     user: '123456',
-    name: 'Orbay Beltrán',
+    name: 'Carlos Castilla',
     geometry: { lat: state.latitude, lng: state.longitude },
+    pic: "https://media-exp1.licdn.com/dms/image/C5603AQH29Jl-gCmxnw/profile-displayphoto-shrink_400_400/0/1606338912409?e=1613001600&v=beta&t=0BtdomoWkGBp4g3Pun25X3Aw7aORZ0sA5Dwb9Lbr9Bc",
     stage: 1,
     auth: false,
   })
@@ -34,7 +35,6 @@ const HomeUsers = () => {
   var authUser = toggleAuth(userid)
   useEffect(() => {
     toggleFullscreen('');
-
     if (authUser) {
       userData(currentUser);
     } else {
@@ -85,7 +85,6 @@ const HomeUsers = () => {
         <img src={florInicial} alt="" />
         <br />
         <p className="paragraph">Para poder ingresar al mapa, necesito me permitas permitas conocer tu ubicación</p>
-
         <div onClick={getGeo.bind()} className="option-button"> Activar Geolocalización</div>
       </div >
     </div >
