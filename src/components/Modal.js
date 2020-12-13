@@ -21,9 +21,7 @@ function Modal() {
   display: { open }
  }
 
-
  return (
-
   <div className="modal" style={style}>
    <div className="modal-content">
     <h2>Se enviará este contacto</h2>

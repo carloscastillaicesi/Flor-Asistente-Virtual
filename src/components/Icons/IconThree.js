@@ -1,8 +1,8 @@
 
 import L from 'leaflet'
-import MarkerSeed from "../assets/defaultphotouser.png";
+import MarkerSeed from "../../assets/seed_marker_three.svg";
 
-export const IconUser = L.icon({
+export const IconThree = L.icon({
  iconUrl: MarkerSeed,
  iconRetinaUrl: MarkerSeed,
  iconAnchor: null,

@@ -1,13 +1,11 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { BrowserRouter as Router, useHistory, Switch, Route } from "react-router-dom";
-import Modal from "../components/Modal";
-import Detailed from "../components/Detailed";
-import Galler from "../components/Gallery";
-import UserInfo from "../components/UserInfo";
-import { SettingContext } from "../contexts/SettingContext";
-import { popup } from 'leaflet';
-import Gallery from '../components/Gallery';
-import Documents from '../components/Documents';
+import Modal from "../Modal";
+import Detailed from "./Detailed";
+import UserInfo from "./UserInfo";
+import { SettingContext } from "../../contexts/SettingContext";
+import Gallery from './Gallery';
+import Documents from './Documents';
 
 function AboutMe({ name, pic }) {
 
@@ -49,7 +47,6 @@ function AboutMe({ name, pic }) {
             url: "https://repository.eafit.edu.co/xmlui/bitstream/handle/10784/804/0709_1896.pdf;jsessionid=0A154852439875F95711BEEC01633F46?sequence=2",
             categorias: ["Cultivo", "Clima Tropical"]
           }]
-
         }, {
           name: "Daniel Manso",
           level: 3,
@@ -77,8 +74,7 @@ function AboutMe({ name, pic }) {
             url: "https://repository.eafit.edu.co/xmlui/bitstream/handle/10784/804/0709_1896.pdf;jsessionid=0A154852439875F95711BEEC01633F46?sequence=2",
             categorias: ["Cultivo", "Clima Tropical"]
           }]
-        }
-        , {
+        }, {
           name: "Carlos Castilla",
           level: 3,
           gallery: ["https://www.generatormix.com/%2Fimages%2Fplant%2Fmoneywort.jpg", "https://www.generatormix.com/%2Fimages%2Fplant%2Fmimosa-tree.jpg", "https://www.generatormix.com/%2Fimages%2Fplant%2Fmoneywort.jpg", "https://www.generatormix.com/%2Fimages%2Fplant%2Fvolcano-ruby-garden-phlox.jpg", "https://www.generatormix.com/%2Fimages%2Fplant%2Fpoplar-trees-%28false%29%2C-tulip.jpg"], documentos: [{
@@ -90,11 +86,9 @@ function AboutMe({ name, pic }) {
             url: "https://repository.eafit.edu.co/xmlui/bitstream/handle/10784/804/0709_1896.pdf;jsessionid=0A154852439875F95711BEEC01633F46?sequence=2",
             categorias: ["Cultivo", "Clima Tropical"]
           }]
-        },
+        }
       ]
   });
-
-
 
   useEffect(() => {
     setTimeout(() => {
@@ -116,18 +110,22 @@ function AboutMe({ name, pic }) {
         <div className="modal-component">
           <div className="top-bar-component">
             <div onClick={goBack.bind()} class="arrow-icon">
-              <div class="arrow"></div>
+              <div class="arrow" />
             </div>
             <h3>Sembrando Vida</h3>
-            <div className="button-menu" onClick={toggleModal.bind()}></div>
+            <div className="button-menu" onClick={toggleModal.bind()} />
           </div>
           <Router>
             <Switch>
               <Route path="/map/aboutme/documents">
-                <Documents user={pickedUser} name={pickedUser.name} pic={pic} />
+                <Documents
+                  user={pickedUser}
+                  name={pickedUser.name}
+                  pic={pic} />
               </Route>
               <Route path="/map/aboutme/gallery">
-                <Gallery gallery={pickedUser.gallery}
+                <Gallery
+                  gallery={pickedUser.gallery}
                   name={pickedUser.name} />
               </Route>
               <Route path="/map/aboutme/detail">
@@ -136,7 +134,6 @@ function AboutMe({ name, pic }) {
               <Route path="/map/aboutme">
                 <UserInfo user={pickedUser} pic={pic} />
               </Route>
-
             </Switch>
           </Router>
         </div>

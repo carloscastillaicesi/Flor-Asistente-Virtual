@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import defaultPic from "../assets/defaultphotouser.png"
+import defaultPic from "../../assets/defaultphotouser.png"
 
 export default function Peek({ name, pic }) {
 

@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import defaultPic from "../assets/defaultphotouser.png";
-import huerta from "../assets/Huertas.svg";
-import conocimiento from "../assets/Conocimiento.svg";
-import experiencia from "../assets/Experiencia.svg";
-import expectativa from "../assets/Expectativas.svg";
+import defaultPic from "../../assets/defaultphotouser.png";
+import huerta from "../../assets/Huertas.svg";
+import conocimiento from "../../assets/Conocimiento.svg";
+import experiencia from "../../assets/Experiencia.svg";
+import expectativa from "../../assets/Expectativas.svg";
 export default function Detailed({ pic, user }) {
 
  const { name, gallery, level, NoHuertas, Conocimiento, Experiencia, Expectativa } = user

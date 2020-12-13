@@ -6,11 +6,11 @@ import { useLocation, useHistory } from "react-router-dom";
 import "leaflet/dist/leaflet.css";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import MarkerPopup from "./MarkerPopup";
-import { Icon } from "./Icon";
-import { IconTwo } from "./IconTwo";
-import { IconThree } from "./IconThree";
-import { IconFour } from "./IconFour";
-import { IconUser } from "./IconUser";
+import { Icon } from "./Icons/Icon";
+import { IconTwo } from "./Icons/IconTwo";
+import { IconThree } from "./Icons/IconThree";
+import { IconFour } from "./Icons/IconFour";
+import { IconUser } from "./Icons/IconUser";
 import defaultPic from "../assets/defaultphotouser.png"
 import florFinal from "../assets/Flor_geo.svg"
 import image from "../assets/sembrandovida.png";

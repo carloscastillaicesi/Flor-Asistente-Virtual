@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as ReactLeaflet from "react-leaflet";
-import Peek from "./Peek";
-import AboutMe from "./AboutMe";
+import Peek from "./Profile-Components/Peek";
+import AboutMe from "./Profile-Components/AboutMe";
 import { BrowserRouter as Router, Switch, Route, useHistory } from "react-router-dom";
 const { Popup } = ReactLeaflet;
 
