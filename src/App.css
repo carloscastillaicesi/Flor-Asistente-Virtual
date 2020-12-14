@@ -59,7 +59,6 @@ a {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 2px grey;
   border-radius: 10px;
 }
 
@@ -302,8 +301,8 @@ input[type="tel"]:focus {
 }
 
 .loading-screen-modal {
-  min-height: 75vh;
-  width: 320px;
+  height: 70px;
+  width: 300px;
   background-color: white;
   border-radius: 20px 20px 20px 20px;
   display: flex;
@@ -392,19 +391,20 @@ input[type="tel"]:focus {
 
 .plus {
   margin-right: 12px;
+  margin-bottom: 5px;
 }
 
 .plus::before {
   content: "+";
-  height: 20px;
-  width: 20px;
-  font-size: 35px;
+  height: 18px;
+  width: 18px;
+  font-size: 32px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  font-family: "Lato";
+  font-family: cursive;
   color: var(--color-primary);
 }
 
@@ -564,8 +564,8 @@ input[type="tel"]:focus {
 }
 
 .single-action img {
-  width: 32px;
-  height: 32px;
+  width: 38px;
+  height: 38px;
   margin: 10px 20px 0px 0px;
 }
 
@@ -637,11 +637,13 @@ input[type="tel"]:focus {
 .component-detailed {
   height: 607px;
   width: 320px;
-  background-color: white;
+  background-color: var(--color-primary);
   overflow-y: scroll;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
-  padding: 0 20px;
+}
+.component-detailed .user-info {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 .action-info {
@@ -659,6 +661,12 @@ input[type="tel"]:focus {
   width: 95%;
   justify-content: space-between;
 }
+.detailed-info-container {
+  background-color: white;
+  margin-top: 7px;
+  padding: 10px 20px 20px 20px;
+  height: 100%;
+}
 
 /*COMPONENT EXCLUSIVE STYLES: Detailed */
 
@@ -669,6 +677,8 @@ input[type="tel"]:focus {
 /* width */
 .component-detailed::-webkit-scrollbar {
   display: none;
+  -ms-overflow-style: none;
+  scrollbar-color: transparent transparent;
 }
 .component-detailed .single-action img {
   width: 14px;
@@ -698,6 +708,8 @@ input[type="tel"]:focus {
 }
 .component-gallery::-webkit-scrollbar {
   display: none;
+  -ms-overflow-style: none;
+  scrollbar-color: transparent transparent;
 }
 
 /*COMPONENT EXCLUSIVE STYLES: Detailed */
@@ -730,6 +742,7 @@ input[type="tel"]:focus {
 
 .all-users-content {
   background: var(--color-primary);
+  max-height: 80vh;
   border-radius: 20px 20px 20px 20px;
   overflow: hidden;
   display: flex;
@@ -743,7 +756,10 @@ input[type="tel"]:focus {
 
 .all-users-content .top-bar-component {
   justify-content: none;
-  padding: 8% 20% 8% 5%;
+  padding: 8% 25% 7% 5%;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .all-users-group {
@@ -757,7 +773,7 @@ input[type="tel"]:focus {
   flex-direction: row;
   cursor: pointer;
   width: 320px;
-  padding: 10px 0px 10px 10px;
+  padding: 8px 0px 10px 10px;
   margin: 5px;
 }
 
@@ -778,7 +794,7 @@ input[type="tel"]:focus {
   align-content: center;
   align-items: center;
   margin: 0px 0px 0px 10px;
-  padding: 5px 0px 15px 10px;
+  padding: 0px 0px 10px 10px;
 }
 
 .all-users-info-container {
@@ -797,7 +813,7 @@ input[type="tel"]:focus {
   color: white;
   font-family: "Lato", sans-serif;
   font-weight: bold !important;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 /*COMPONENT EXCLUSIVE STYLES: All Users Popup */
@@ -824,6 +840,10 @@ input[type="tel"]:focus {
   width: inherit;
 }
 
+.document {
+  width: 90%;
+}
+
 .document-list-container {
   width: inherit;
   height: inherit;
@@ -848,4 +868,164 @@ input[type="tel"]:focus {
 
 /*<--------------------->*/
 
-/* EXCLUSIVE STYLES: MyPlants*/
+/* EXCLUSIVE STYLES: Exchange*/
+
+.component-exchange {
+  height: 607px;
+  width: 320px;
+  background-color: var(--color-primary);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.component-exchange::-webkit-scrollbar {
+  display: none;
+}
+
+.component-exchange .user-info {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+  width: inherit;
+}
+
+.products-list-container {
+  width: inherit;
+  height: inherit;
+  background-color: white;
+
+  padding: 17px;
+}
+.products-list-container p {
+  text-align: center;
+}
+.products-list-element {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  border-left: var(--color-primary) 10px solid;
+  padding: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  margin: 0px 0px 10px 0px;
+}
+
+.product-description {
+  width: 60%;
+}
+
+.product-picked {
+  background: white;
+  height: 80%;
+  width: 90%;
+  margin: 7% 2%;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+}
+
+.product-picked-container {
+  background-color: white;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.product-picked-gallery-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-picked-gallery-wrapper p {
+  margin-left: 18% !important;
+  margin-top: 5% !important;
+  font-weight: bold;
+  color: grey;
+}
+
+.product-picked-gallery-wrapper img {
+  width: 200px;
+  object-fit: cover;
+  margin: 0px 8px;
+  border-radius: 3px;
+  background-image: url(./assets/defaultgallery.png);
+  background-size: 100px;
+}
+
+.product-picked h4 {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.product-picked img {
+  max-width: 100%;
+}
+
+.exchange-switch {
+  margin-top: 7px;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  padding: 5px 10px;
+}
+
+.exchange-switch div {
+  width: 50%;
+  height: 20px;
+  padding: 16px 0;
+  margin: 0px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.component-detailed {
+  height: 607px;
+  width: 320px;
+  background-color: var(--color-primary);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/*COMPONENT EXCLUSIVE STYLES: Exchange */
+
+/*<--------------------->*/
+
+/* EXCLUSIVE STYLES: Plants*/
+
+.component-plants {
+  height: 607px;
+  width: 320px;
+  background-color: var(--color-primary);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.component-plants::-webkit-scrollbar {
+  display: none;
+}
+
+.plant-info {
+  border-bottom: 2px var(--color-lines) solid;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0px 20px 2px 5px;
+  margin-right: -20px;
+  margin-bottom: 10px;
+}
+.plant-list-container .single-action img {
+  background-image: url(./assets/defaultphotouser.png);
+  background-size: 50px;
+  border-radius: 50%;
+}

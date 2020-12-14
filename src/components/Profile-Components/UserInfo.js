@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from "react-router-dom";
 import defaultPic from "../../assets/defaultphotouser.png";
 import stageOne from "../../assets/seed_marker.svg";
@@ -14,6 +14,7 @@ function UserInfo({ user, pic }) {
   // 0% (1) - 20% (2) - 40% (3) - 60% (4)
   const { name, gallery, level } = user
   const progress = [(level * 20) - 20, "%"].join('');
+
 
   return (
     <div className="component-userinfo">
@@ -44,30 +45,34 @@ function UserInfo({ user, pic }) {
               <div className="arrow-gallery right" />
             </div>
           </div>
+
           <div class="gallery-wrapper">
+
             {gallery ?
               <div>{
                 gallery.length > 5
-                  ? gallery.slice(0, 5).map((data, i) => <img key={i} src={data} alt="gallery" />)
-                  : gallery.map((data, i) => <img key={i} src={data} alt="gallery" />)
+                  ? gallery.slice(0, 5).map((data, i) => <img key={i} src={data} alt="gallery" onError={(e) => { e.target.src = 'https://developers.google.com/maps/documentation/streetview/images/error-image-generic.png'; e.target.onError = null; }} />)
+                  : gallery.map((data, i) => <img key={i} src={data} alt="gallery" onError={(e) => { e.target.src = 'https://developers.google.com/maps/documentation/streetview/images/error-image-generic.png'; e.target.onError = null; }} />)
               }</div> : <p>{name} no ha subido imágenes</p>}
           </div>
         </div>
       </Link>
 
       <div className="action-list">
-        <div className="single-action">
-          <img src={intercambiar} alt="" />
-          <div className="action-info">
-            <div className="action-container">
-              <div>
-                <h3>Para intercambiar</h3>
-                <h5>Mira que podemos intercambiar</h5>
+        <Link to="/map/aboutme/exchange">
+          <div className="single-action">
+            <img src={intercambiar} alt="" />
+            <div className="action-info">
+              <div className="action-container">
+                <div>
+                  <h3>Para intercambiar</h3>
+                  <h5>Mira que podemos intercambiar</h5>
+                </div>
+                <div className="arrow-gallery right" />
               </div>
-              <div className="arrow-gallery right" />
             </div>
           </div>
-        </div>
+        </Link>
         <Link to="/map/aboutme/documents">
           <div className="single-action">
             <img src={biblioteca} alt="" />
@@ -82,18 +87,20 @@ function UserInfo({ user, pic }) {
             </div>
           </div>
         </Link >
-        <div className="single-action">
-          <img src={plantas} alt="" />
-          <div className="action-info" style={{ borderBottom: "none" }}>
-            <div className="action-container">
-              <div>
-                <h3>Mis plantas</h3>
-                <h5>Conoce lo que tengo en mi huerta</h5>
+        <Link to="/map/aboutme/plants">
+          <div className="single-action">
+            <img src={plantas} alt="" />
+            <div className="action-info" style={{ borderBottom: "none" }}>
+              <div className="action-container">
+                <div>
+                  <h3>Mis plantas</h3>
+                  <h5>Conoce lo que tengo en mi huerta</h5>
+                </div>
+                <div className="arrow-gallery right" />
               </div>
-              <div className="arrow-gallery right" />
             </div>
           </div>
-        </div>
+        </Link >
       </div>
     </div>
   )

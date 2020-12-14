@@ -3,7 +3,7 @@ import document from "../../assets/ver-documento.svg";
 function Documents({ user, name, pic }) {
 
   const { documentos } = user
-  console.log(documentos)
+
   return (
     <div>
       <div className="component-documents">

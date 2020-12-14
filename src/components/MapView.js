@@ -27,7 +27,7 @@ const MapView = () => {
     "users":
       [{
         name: "Orbay Beltrán",
-        level: 1,
+        level: 4,
         pic: "https://i.ibb.co/8g5YNwy/orbay.png",
         geometry: [3.4545836014772595, -76.5556425605519]
       }, {
@@ -195,7 +195,7 @@ const MapView = () => {
                     <div onClick={allUsersToggle.bind()} class="arrow-icon">
                       <div class="arrow"></div>
                     </div>
-                    <h3>Sembradores de Vida</h3>
+                    <h4>Sembradores de Vida</h4>
                   </div>
                   <div className="user-info">
                     <img src={sembrando} alt="" className="user-profile-image" />
@@ -205,7 +205,7 @@ const MapView = () => {
                   {/*The Sketchiest way to overcome the fact that setting a state inside of an OnClick event just*/}
 
                   <div className="all-users-group">
-                    {locations.users.map((locations, i) => (
+                    {locations.users.slice(0, locations.users.length - 1).map((locations, i) => (
                       <div onClick={pickedUser === ''
                         ? () => { setpickedUser(locations.geometry); }
                         : pickedUser === locations.geometry
@@ -218,12 +218,29 @@ const MapView = () => {
                           style={pickedUser === '' ? { filter: "none" } : pickedUser === locations.geometry ? { filter: "none" } : { filter: "grayscale(100%)" }} />
                         <div className="all-users-info">
                           <div className="all-users-info-container">
-                            <h4 style={pickedUser === '' ? { opacity: "1" } : pickedUser === locations.geometry ? { opacity: "1" } : { opacity: "0.5" }}>{locations.name}</h4>
+                            <h5 style={pickedUser === '' ? { opacity: "1" } : pickedUser === locations.geometry ? { opacity: "1" } : { opacity: "0.5" }}>{locations.name}</h5>
                             <div className="modal-button-green" style={pickedUser === '' ? { display: "none" } : pickedUser === locations.geometry ? { display: "initial" } : { display: "none" }}>Conocer Más</div>
                           </div>
                         </div>
                       </div>
                     ))}
+                    <div onClick={pickedUser === ''
+                      ? () => { setpickedUser(locations.users[locations.users.length - 1].geometry); }
+                      : pickedUser === locations.users[locations.users.length - 1].geometry
+                        ? () => { centerMapViewUser() }
+                        : () => { setpickedUser('') }}
+                      className="all-users-single" >
+                      <img
+                        src={locations.users[locations.users.length - 1].pic ? locations.users[locations.users.length - 1].pic : defaultPic}
+                        alt=""
+                        style={pickedUser === '' ? { filter: "none" } : pickedUser === locations.users[locations.users.length - 1].geometry ? { filter: "none" } : { filter: "grayscale(100%)" }} />
+                      <div className="all-users-info" style={{ borderBottom: "none" }}>
+                        <div className="all-users-info-container">
+                          <h5 style={pickedUser === '' ? { opacity: "1" } : pickedUser === locations.users[locations.users.length - 1].geometry ? { opacity: "1" } : { opacity: "0.5" }}>{locations.users[locations.users.length - 1].name}</h5>
+                          <div className="modal-button-green" style={pickedUser === '' ? { display: "none" } : pickedUser === locations.users[locations.users.length - 1].geometry ? { display: "initial" } : { display: "none" }}>Conocer Más</div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>}
