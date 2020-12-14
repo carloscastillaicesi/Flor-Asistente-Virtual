@@ -166,7 +166,8 @@ function AboutMe({ name, pic }) {
                 <Exchange
                   user={pickedUser}
                   name={pickedUser.name}
-                  pic={pic} />
+                  pic={pic}
+                  setModal={toggleModal} />
               </Route>
               <Route path="/map/aboutme/documents">
                 <Documents

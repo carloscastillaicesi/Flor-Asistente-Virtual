@@ -1,6 +1,7 @@
 /*Global Styles */
 
 @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+@import url("//fonts.googleapis.com/css?family=Varela+Round");
 
 :root {
   --color-primary: #00cf88;
@@ -390,8 +391,8 @@ input[type="tel"]:focus {
 }
 
 .plus {
-  margin-right: 12px;
-  margin-bottom: 5px;
+  margin-right: 8px;
+  margin-bottom: 0px;
 }
 
 .plus::before {
@@ -404,7 +405,7 @@ input[type="tel"]:focus {
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  font-family: cursive;
+  font-family: "Varela Round", cursive;
   color: var(--color-primary);
 }
 
@@ -889,10 +890,8 @@ input[type="tel"]:focus {
 }
 
 .products-list-container {
-  width: inherit;
-  height: inherit;
+  height: 100%;
   background-color: white;
-
   padding: 17px;
 }
 .products-list-container p {
@@ -914,22 +913,24 @@ input[type="tel"]:focus {
   width: 60%;
 }
 
+.product-picked-modal-background-container {
+  height: 92.2%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 4;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0px 0px 20px 20px;
+}
 .product-picked {
   background: white;
-  height: 80%;
+  height: 85%;
   width: 90%;
-  margin: 7% 2%;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 20px;
-}
-
-.product-picked-container {
-  background-color: white;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
+  padding: 10px 0px 10px 10px;
 }
 
 .product-picked-gallery-wrapper {
@@ -941,6 +942,8 @@ input[type="tel"]:focus {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 20px 0;
+  margin-left: -10px;
 }
 
 .product-picked-gallery-wrapper p {
@@ -951,21 +954,35 @@ input[type="tel"]:focus {
 }
 
 .product-picked-gallery-wrapper img {
-  width: 200px;
+  width: 85%;
   object-fit: cover;
   margin: 0px 8px;
   border-radius: 3px;
   background-image: url(./assets/defaultgallery.png);
-  background-size: 100px;
+  background-repeat: no-repeat;
+  background-position: center;
+  object-fit: cover;
 }
 
 .product-picked h4 {
   font-weight: bold;
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 
 .product-picked img {
   max-width: 100%;
+}
+
+.contact-product-picked {
+  cursor: pointer;
+  background-color: var(--color-primary);
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+
+  margin: 10px 10px 10px 0px;
 }
 
 .exchange-switch {
@@ -975,6 +992,12 @@ input[type="tel"]:focus {
   display: flex;
   flex-direction: row;
   padding: 5px 10px;
+}
+
+.products-list-element .eye {
+  margin-top: 2px;
+  margin-left: 15px;
+  cursor: pointer;
 }
 
 .exchange-switch div {
@@ -1028,4 +1051,13 @@ input[type="tel"]:focus {
   background-image: url(./assets/defaultphotouser.png);
   background-size: 50px;
   border-radius: 50%;
+}
+
+.close-product-picked {
+  margin-left: 90%;
+  cursor: pointer;
+  font-size: 1.5em;
+  font-family: "Varela Round", cursive;
+  font-weight: bold;
+  color: gray;
 }
