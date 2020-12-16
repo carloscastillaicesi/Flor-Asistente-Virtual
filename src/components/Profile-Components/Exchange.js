@@ -83,7 +83,6 @@ function Exchange({ user, name, pic, setModal }) {
                 <h5>{data.categorias.join(", ")}</h5>
               </div>
               <img src={document} onClick={() => pickedProductToggle(data.nombre, data.categorias, data.fotos, data.descripcion)} alt="eye" className="eye" />
-
             </div>)
           :
           <p>{name} no ha registrado productos o servicios para intercambiar u ofertar</p>}

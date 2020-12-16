@@ -6,6 +6,7 @@ import HomeUsers from './components/HomeUsers';
 import UserContext from "./contexts/UserContext";
 import SettingContext from "./contexts/SettingContext";
 import MapView from './components/MapView';
+import MenuComponent from "./components/Menu-Components/MenuComponent";
 
 
 function App() {
@@ -20,6 +21,9 @@ function App() {
                         <Switch>
                             <Route path="/user/:userid">
                                 <HomeUsers />
+                            </Route>
+                            <Route path="/menu">
+                                <MenuComponent />
                             </Route>
                             <Route path="/map">
                                 <MapView />

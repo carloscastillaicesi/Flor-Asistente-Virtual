@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import { Map, TileLayer, Marker } from "react-leaflet";
 import { UserContext } from "../contexts/UserContext";
 import { SettingContext } from "../contexts/SettingContext";
-import { useLocation, useHistory } from "react-router-dom";
+import { useLocation, useHistory, Link } from "react-router-dom";
 import "leaflet/dist/leaflet.css";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import MarkerPopup from "./MarkerPopup";
@@ -185,8 +185,6 @@ const MapView = () => {
             {options === "map"
               ? ""
               : <div className="all-users" >
-
-
                 <div className="all-users-map-scape-area"
                   onClick={() => { setOpen(true); setOptions("map") }}>
                 </div>
@@ -251,7 +249,7 @@ const MapView = () => {
                 <div className="top-bar">
                   <img src={image} alt="" />
                   <h2>Hola, {name}</h2>
-                  <div className="button-menu" />
+                  <Link to="/menu"> <div className="button-menu" /></Link>
                 </div>
                 <div className="button-group">
                   <div className="button-rise" onClick={centerMapViewMe.bind(this)}><div class="icon-bar-location" /></div>
