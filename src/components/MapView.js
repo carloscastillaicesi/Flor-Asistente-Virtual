@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import { Map, TileLayer, Marker } from "react-leaflet";
 import { UserContext } from "../contexts/UserContext";
 import { SettingContext } from "../contexts/SettingContext";
+import * as ReactLeaflet from "react-leaflet";
 import { useLocation, useHistory, Link } from "react-router-dom";
 import "leaflet/dist/leaflet.css";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
@@ -14,8 +15,15 @@ import { IconUser } from "./Icons/IconUser";
 import defaultPic from "../assets/defaultphotouser.png"
 import florFinal from "../assets/Flor_geo.svg"
 import image from "../assets/sembrandovida.png";
-import sembrando from "../assets/all-users.svg";
-
+import sembrando from "../assets/sembranovidalogo.png";
+import mihuerta from "../assets/mihuerta.svg";
+import geolocation from "../assets/geolocation2.svg";
+import allusersicon from "../assets/allusersicon.svg";
+import terrain from "../assets/terrain.svg";
+import street from "../assets/street.svg";
+import fullscreeni from "../assets/fullscreen.svg";
+import normalscreen from "../assets/normalscreen.svg";
+const { Popup } = ReactLeaflet;
 const MapView = () => {
 
   const [state, setState] = useState({
@@ -23,7 +31,7 @@ const MapView = () => {
     zoom: 15,
   });
 
-  const [locations, setLocation] = useState({
+  const [locations] = useState({
     "users":
       [{
         name: "Orbay Beltrán",
@@ -45,6 +53,11 @@ const MapView = () => {
         level: 4,
         pic: "https://i.ibb.co/vDk43hb/alexander.png",
         geometry: [3.337014026145643, -76.56072322837524]
+      }, {
+        name: "Carlos Castilla",
+        level: 4,
+        pic: "https://i.ibb.co/z5Y5wdS/carlos.png",
+        geometry: [3.3786396334561846, -76.53985514664332]
       }]
   });
 
@@ -64,7 +77,6 @@ const MapView = () => {
 
   const handle = useFullScreenHandle();
 
-
   useEffect(() => {
     setModal(false);
     if (location) {
@@ -74,12 +86,6 @@ const MapView = () => {
             lat: location.state.latitude,
             lng: location.state.longitude,
           };
-          const currentUser = {
-            name: "Yo",
-            level: 4,
-            pic: "https://images.generated.photos/XXlJY4hwb4OD7vKtWn0-xZOyuLpLQbUfA2Pff0YMxUM/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzAzNDY4MDJfMDM4/NjI3MV8wNzg5OTI4/LmpwZw.jpg",
-            geometry: [currentLocation.lat, currentLocation.lng]
-          }
           setState({
             ...state,
             currentLocation,
@@ -88,10 +94,10 @@ const MapView = () => {
             pathname: "/map",
             state: {},
           });
-
         }
       }
     }
+
   }, [location, history, state, setModal]);
 
 
@@ -161,147 +167,141 @@ const MapView = () => {
   return (
     <div>
       <FullScreen handle={handle}>
-        {fullScreenMode === '' ?
-
-          <div className="homeuser-container">
-            <img src={florFinal} alt="Flor" />
-            <p className="paragraph">Explora el mapa</p>
-            <div className="option-button"
-              onClick={() => {
-                toggleFullscreen("true");
-                handle.enter();
-              }}>Activar Pantalla Completa</div>
-            <div className="option-button"
-              onClick={() => {
-                toggleFullscreen("false");
-                handle.exit();
-              }}>Desactivar Pantalla Completa</div>
-            <p> Para desactivarlo, presiona atrás o la tecla "esc"</p>
-          </div>
-
-          :
-
-          <div className="mapview-container">
-            {options === "map"
-              ? ""
-              : <div className="all-users" >
-                <div className="all-users-map-scape-area"
-                  onClick={() => { setOpen(true); setOptions("map") }}>
+        <div className="mapview-container">
+          {options === "map"
+            ? ""
+            : <div className="all-users" >
+              <div className="all-users-map-scape-area"
+                onClick={() => { setOpen(true); setOptions("map") }}>
+              </div>
+              <div className="all-users-content">
+                <div className="top-bar-component">
+                  <div onClick={allUsersToggle.bind()} class="arrow-icon">
+                    <div class="arrow"></div>
+                  </div>
+                  <h4>Sembradores de Vida</h4>
                 </div>
-                <div className="all-users-content">
-                  <div className="top-bar-component">
-                    <div onClick={allUsersToggle.bind()} class="arrow-icon">
-                      <div class="arrow"></div>
-                    </div>
-                    <h4>Sembradores de Vida</h4>
-                  </div>
-                  <div className="user-info">
-                    <img src={sembrando} alt="" className="user-profile-image" />
-                    <h2>{name}</h2>
-                    <h5>Conoce a otros Sembradores de vida de tu comunidad</h5>
-                  </div>
-                  {/*The Sketchiest way to overcome the fact that setting a state inside of an OnClick event just*/}
+                <div className="user-info">
+                  <img src={sembrando} alt="" className="user-profile-image" />
+                  <h2>{name}</h2>
+                  <h5>Conoce a otros Sembradores de vida de tu comunidad</h5>
+                </div>
 
-                  <div className="all-users-group">
-                    {locations.users.slice(0, locations.users.length - 1).map((locations, i) => (
-                      <div onClick={pickedUser === ''
-                        ? () => { setpickedUser(locations.geometry); }
-                        : pickedUser === locations.geometry
-                          ? () => { centerMapViewUser() }
-                          : () => { setpickedUser('') }}
-                        className="all-users-single" key={i}>
-                        <img
-                          src={locations.pic.length > 5 ? locations.pic : defaultPic}
-                          alt=""
-                          style={pickedUser === '' ? { filter: "none" } : pickedUser === locations.geometry ? { filter: "none" } : { filter: "grayscale(100%)" }} />
-                        <div className="all-users-info">
-                          <div className="all-users-info-container">
-                            <h5 style={pickedUser === '' ? { opacity: "1" } : pickedUser === locations.geometry ? { opacity: "1" } : { opacity: "0.5" }}>{locations.name}</h5>
-                            <div className="modal-button-green" style={pickedUser === '' ? { display: "none" } : pickedUser === locations.geometry ? { display: "initial" } : { display: "none" }}>Conocer Más</div>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
+                {/*The Sketchiest way to overcome the fact that setting a state inside of an OnClick event just*/}
+
+                <div className="all-users-group">
+                  {locations.users.slice(0, locations.users.length - 1).map((locations, i) => (
                     <div onClick={pickedUser === ''
-                      ? () => { setpickedUser(locations.users[locations.users.length - 1].geometry); }
-                      : pickedUser === locations.users[locations.users.length - 1].geometry
+                      ? () => { setpickedUser(locations.geometry); }
+                      : pickedUser === locations.geometry
                         ? () => { centerMapViewUser() }
                         : () => { setpickedUser('') }}
-                      className="all-users-single" >
+                      className="all-users-single" key={i}>
                       <img
-                        src={locations.users[locations.users.length - 1].pic ? locations.users[locations.users.length - 1].pic : defaultPic}
+                        src={locations.pic.length > 5 ? locations.pic : defaultPic}
                         alt=""
-                        style={pickedUser === '' ? { filter: "none" } : pickedUser === locations.users[locations.users.length - 1].geometry ? { filter: "none" } : { filter: "grayscale(100%)" }} />
-                      <div className="all-users-info" style={{ borderBottom: "none" }}>
+                        style={pickedUser === '' ? { filter: "none" } : pickedUser === locations.geometry ? { filter: "none" } : { filter: "grayscale(100%)" }} />
+                      <div className="all-users-info">
                         <div className="all-users-info-container">
-                          <h5 style={pickedUser === '' ? { opacity: "1" } : pickedUser === locations.users[locations.users.length - 1].geometry ? { opacity: "1" } : { opacity: "0.5" }}>{locations.users[locations.users.length - 1].name}</h5>
-                          <div className="modal-button-green" style={pickedUser === '' ? { display: "none" } : pickedUser === locations.users[locations.users.length - 1].geometry ? { display: "initial" } : { display: "none" }}>Conocer Más</div>
+                          <h5 style={pickedUser === '' ? { opacity: "1" } : pickedUser === locations.geometry ? { opacity: "1" } : { opacity: "0.5" }}>{locations.name}</h5>
+                          <div className="modal-button-green" style={pickedUser === '' ? { display: "none" } : pickedUser === locations.geometry ? { display: "initial" } : { display: "none" }}>Conocer Más</div>
                         </div>
+                      </div>
+                    </div>
+                  ))}
+                  <div onClick={pickedUser === ''
+                    ? () => { setpickedUser(locations.users[locations.users.length - 1].geometry); }
+                    : pickedUser === locations.users[locations.users.length - 1].geometry
+                      ? () => { centerMapViewUser() }
+                      : () => { setpickedUser('') }}
+                    className="all-users-single" >
+                    <img
+                      src={locations.users[locations.users.length - 1].pic ? locations.users[locations.users.length - 1].pic : defaultPic}
+                      alt=""
+                      style={pickedUser === '' ? { filter: "none" } : pickedUser === locations.users[locations.users.length - 1].geometry ? { filter: "none" } : { filter: "grayscale(100%)" }} />
+                    <div className="all-users-info" style={{ borderBottom: "none" }}>
+                      <div className="all-users-info-container">
+                        <h5 style={pickedUser === '' ? { opacity: "1" } : pickedUser === locations.users[locations.users.length - 1].geometry ? { opacity: "1" } : { opacity: "0.5" }}>{locations.users[locations.users.length - 1].name}</h5>
+                        <div className="modal-button-green" style={pickedUser === '' ? { display: "none" } : pickedUser === locations.users[locations.users.length - 1].geometry ? { display: "initial" } : { display: "none" }}>Conocer Más</div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>}
-
-            {open
-              ?
-              <div>
-                <div className="top-bar">
-                  <img src={image} alt="" />
-                  <h2>Hola, {name}</h2>
-                  <Link to="/menu"> <div className="button-menu" /></Link>
-                </div>
-                <div className="button-group">
-                  <div className="button-rise" onClick={centerMapViewMe.bind(this)}><div class="icon-bar-location" /></div>
-                  <div className="button-rise" onClick={allUsersToggle.bind(this)}><div class="icon-bar-person" /></div>
-                  <div className="button-rise" onClick={changeMap.bind(this)}><div class="icon-bar-huerta" /></div>
-                </div>
               </div>
-              :
-              ''}
+            </div>}
 
-            <Map ref={mapRef}
-              center={state.currentLocation}
-              onPopupopen={centerMapView.bind(this)}
-              zoom={state.zoom}
-              dragging={open}
-              zoomControl={false}
-              touchZoom={open}
-              doubleClickZoom={open}
-              scrollWheelZoom={open}>
+          {open
+            ?
+            <div>
+              <div className="top-bar">
+                <img src={image} alt="" />
+                <h2>Hola, {name}</h2>
+                <Link to="/menu"> <div className="button-menu" /></Link>
+              </div>
+              <div className="button-group">
+                <div className="button-rise" onClick={centerMapViewMe.bind(this)}><img src={geolocation} alt="" /></div>
+                <div className="button-rise" onClick={allUsersToggle.bind(this)}><img src={allusersicon} alt="" /><div class="icon-bar-person" /></div>
 
-              <TileLayer
-                url={mapUrl ? 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}' : "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"}
-                attribution={`&copy; <a href="http://osm.org/copyright">${mapUrl ? 'ArGis' : 'OpenStreetMap'}</a> contributors`} />
+              </div>
+              <div className="button-group-left">
+                <div className="button-rise-left" onClick={changeMap.bind(this)}><img src={!mapUrl ? terrain : street} alt="" /></div>
+                <div className="button-rise-left" onClick={fullScreenMode === "false" ? () => {
+                  toggleFullscreen("true");
+                  handle.enter();
+                } : () => {
+                  toggleFullscreen("false");
+                  handle.exit();
+                }}><img src={fullScreenMode === "true" ? fullscreeni : normalscreen} alt="" /></div>
+              </div>
+            </div>
+            :
+            ''}
 
-              <Marker
-                position={state.currentLocation}
-                icon={IconUser}
+          <Map ref={mapRef}
+            center={state.currentLocation}
+            onPopupopen={centerMapView.bind(this)}
+            zoom={state.zoom}
+            dragging={open}
+            zoomControl={false}
+            touchZoom={open}
+            doubleClickZoom={open}
+            scrollWheelZoom={open}>
+
+            <TileLayer
+              url={mapUrl ? 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}' : "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"} />
+            {/* {attribution = {`&copy; <a href="http://osm.org/copyright">${mapUrl ? 'ArGis' : 'OpenStreetMap'}</a> contributors`}} */}
+
+            <Marker
+              position={state.currentLocation}
+              icon={IconUser}
+              opacity={open ? 100 : 0}>
+              <Popup autoPan={false} closeButton={false} onClose={() => setOpen(true)} onOpen={() => { setOpen(false); centerMapViewMe(this); }}>
+                <div className="mihuerta-container">
+                  <img src="https://i.ibb.co/z5Y5wdS/carlos.png" alt="" />
+                  <h2>Mi posición actual</h2>
+                  <br />
+                  {/* <div className="mihuerta" onClick={
+                      () => { setpickedUser([3.3786396334561846, -76.53985514664332]); centerMapViewUser() }}><img src={mihuerta} alt="" /></div> */}
+                </div>
+              </Popup>
+
+            </Marker>
+
+            {locations.users.map((locations, i) => (
+              <Marker key={i}
+                position={locations.geometry}
+                icon={locations.level === 1 ? Icon : locations.level === 2 ? IconTwo : locations.level === 3 ? IconThree : locations.level === 4 ? IconFour : Icon}
                 opacity={open ? 100 : 0}>
 
-                <MarkerPopup position={state.currentLocation}
-                  name={name}
+                <MarkerPopup
+                  name={locations.name}
                   open={open}
-                  setOpen={setOpen} setOptions={setOptions} pic={"https://i.ibb.co/z5Y5wdS/carlos.png"}
+                  setOpen={setOpen} setOptions={setOptions} pic={locations.pic}
                 />
-
               </Marker>
-
-              {locations.users.map((locations, i) => (
-                <Marker key={i}
-                  position={locations.geometry}
-                  icon={locations.level === 1 ? Icon : locations.level === 2 ? IconTwo : locations.level === 3 ? IconThree : locations.level === 4 ? IconFour : Icon}
-                  opacity={open ? 100 : 0}>
-
-                  <MarkerPopup position={locations.geometry}
-                    name={locations.name}
-                    open={open}
-                    setOpen={setOpen} setOptions={setOptions} pic={locations.pic}
-                  />
-                </Marker>
-              ))};
+            ))};
             </Map>
-          </div >}
+        </div >
       </FullScreen >
     </div >
   );

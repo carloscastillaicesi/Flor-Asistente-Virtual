@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from "react-router-dom";
 import defaultPic from "../../assets/defaultphotouser.png"
 
 export default function Peek({ name, pic }) {
+
 
   return (
     <div className="peek">
@@ -10,7 +11,7 @@ export default function Peek({ name, pic }) {
       <h2>{name}</h2>
       <br />
       <Link
-        to={{ pathname: "/map/aboutme" }}> <div className="plus" /></Link>
+        to={{ pathname: "/map/aboutme/userinfo" }}> <div className="plus" /></Link>
     </div>
   )
 }

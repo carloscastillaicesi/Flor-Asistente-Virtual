@@ -8,7 +8,7 @@
   --color-primary-active: #268766;
   --color-secondary: #263238;
   --color-lines: #c4c4c4;
-  --color-terciary: #fff100;
+  --color-terciary: #ede221;
 }
 * {
   margin: 0;
@@ -201,8 +201,6 @@ input[type="tel"]:focus {
   padding: 0px;
   width: 100% !important;
   height: inherit;
-  background-color: rgba(255, 255, 255, 0.3);
-  outline: 1000px solid rgba(255, 255, 255, 0.3);
 }
 /*Leaflet Override Styles */
 
@@ -220,36 +218,71 @@ input[type="tel"]:focus {
   margin: auto;
   left: 0;
   right: 0;
-  width: 20%;
-  bottom: 3vh;
+  width: 10%;
+  bottom: 3%;
 }
 
+.button-group-left {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 1;
+  margin: auto;
+  top: 50%;
+  bottom: 50%;
+  right: 0;
+}
+
+.button-rise-left {
+  height: 51px;
+  width: 51px;
+  margin: 3px 0;
+  background-color: white;
+  box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.3);
+}
+.icon-user {
+  background-color: var(--color-primary);
+  padding: 3px;
+  border-radius: 50%;
+}
 .button-rise {
   height: 51px;
   width: 51px;
   border-radius: 50%;
-  margin: 0 25px;
+  margin: 0 10px;
   background-color: var(--color-primary);
   box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.3);
 }
 
-.icon-bar-location {
-  background-image: url(./assets/geolocation2.svg);
-  background-repeat: no-repeat;
-  padding: 20px 33px;
+.mihuerta {
+  height: 51px;
+  width: 51px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.3);
 }
 
-.icon-bar-huerta {
-  background-image: url(./assets/huerta.svg);
-  background-repeat: no-repeat;
-  padding: 20px 33px;
+.mihuerta-container {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 250px;
+  border-radius: 25px;
+  padding: 2px;
 }
-
-.icon-bar-person {
-  background-image: url(./assets/person.svg);
-  background-repeat: no-repeat;
-  padding: 20px 33px;
+.mihuerta-container img {
+  height: 50px;
+  width: 50px;
+  background-size: 50px;
+  border-radius: 50%;
+}
+.mihuerta-container h4 {
+  font-weight: bold;
 }
 
 /*Top Floating Bar*/
@@ -316,11 +349,13 @@ input[type="tel"]:focus {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 20;
 }
 
 .top-bar-component {
   top: 0;
   padding: 25px 5px 26px 10px;
+  border-radius: 20px 20px 0px 0px;
   height: 40px;
   width: inherit;
   background-color: var(--color-primary);
@@ -331,6 +366,7 @@ input[type="tel"]:focus {
 
 .top-bar-component h3 {
   color: white;
+  margin-left: 20%;
 }
 
 /*<--------Arrow Icon---------->*/
@@ -386,6 +422,14 @@ input[type="tel"]:focus {
   border-radius: 25px;
   padding: 2px;
 }
+
+.peek::after {
+  content: "";
+  position: relative;
+  z-index: -1;
+  outline: 110vw solid rgba(255, 255, 255, 0.3);
+}
+
 .peek img {
   height: 50px;
   width: 50px;
@@ -398,7 +442,7 @@ input[type="tel"]:focus {
 }
 
 .plus {
-  margin-right: 8px;
+  margin-right: -5px;
   margin-bottom: 0px;
 }
 
@@ -421,6 +465,12 @@ input[type="tel"]:focus {
 /*<--------------------->*/
 
 /*COMPONENT EXCLUSIVE STYLES: userinfo*/
+
+.component-userinfo {
+  background-color: var(--color-primary);
+  border-radius: 0px 0px 20px 20px;
+  overflow: hidden;
+}
 .user-info {
   background-color: white;
   display: flex;
@@ -1186,7 +1236,7 @@ input[type="tel"]:focus {
   flex-direction: column;
   align-items: center;
   padding-top: 30px;
-  overflow: scroll;
+  overflow-x: scroll;
 }
 
 .component-library-categories-container {
@@ -1248,14 +1298,14 @@ input[type="tel"]:focus {
   flex-direction: column;
   align-items: center;
   padding-top: 30px;
-  overflow: scroll;
+  overflow-x: scroll;
 }
 
 .component-library-category-categories {
   background-color: white;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
-  width: 100%;
+  width: 90%;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
