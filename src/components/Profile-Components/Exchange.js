@@ -62,7 +62,7 @@ function Exchange({ user, name, pic, setModal }) {
         </div>
       </div>
       : ""}
-    <div className="component-exchange">
+    <div className="profile-component">
       <div className="user-info">
         <img src={pic} alt="" className="user-profile-image" />
         <h5>Mira lo que tiene y desea intercambiar</h5>

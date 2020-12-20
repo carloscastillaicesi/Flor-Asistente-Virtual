@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const pino = require("express-pino-logger")();
 const mongoose = require('mongoose');
 const cors = require('cors');
-
+const User = require('../Models/userModel');
 const inboundRoutes = require('../Routes/inboundRouter');
 
 
@@ -26,9 +26,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(pino);
 
-app.get('/:userId', function (req, res) {
-
-  console.log();
+app.get('/user/:userId', function (req, res) {
+  User
+    .findOne({ _id: req.params.userId }, function (err, user) {
+      if (err) throw err;
+      res.status(200);
+      res.json(user); // returns null
+    });
 })
 
 /**Inbound Route - Twilio Endpoint*/

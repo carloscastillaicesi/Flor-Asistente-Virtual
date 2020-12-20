@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
-import { Map, TileLayer, Marker } from "react-leaflet";
+import { Map, TileLayer, Marker, Circle } from "react-leaflet";
 import { UserContext } from "../contexts/UserContext";
 import { SettingContext } from "../contexts/SettingContext";
 import * as ReactLeaflet from "react-leaflet";
@@ -23,13 +23,9 @@ import terrain from "../assets/terrain.svg";
 import street from "../assets/street.svg";
 import fullscreeni from "../assets/fullscreen.svg";
 import normalscreen from "../assets/normalscreen.svg";
+import { pulse } from "../components/Icons/pulse"
 const { Popup } = ReactLeaflet;
 const MapView = () => {
-
-  const [state, setState] = useState({
-    currentLocation: { lat: 3.4194719680257584, lng: -76.52423502012975 },
-    zoom: 15,
-  });
 
   const [locations] = useState({
     "users":
@@ -40,7 +36,7 @@ const MapView = () => {
         geometry: [3.4545836014772595, -76.5556425605519]
       }, {
         name: "Maria del Mar",
-        level: 2,
+        level: 1,
         pic: "https://i.ibb.co/3k2zwdp/mariadelmar.png",
         geometry: [3.453073583273669, -76.55904360157757]
       }, {
@@ -66,9 +62,12 @@ const MapView = () => {
   const [open, setOpen] = useState(true);
   const [options, setOptions] = useState("map");
 
-  const { name, pic } = useContext(UserContext);
+  const { name, pic, geometry } = useContext(UserContext);
   const { fullScreenMode, toggleFullscreen, setModal } = useContext(SettingContext);
-
+  const [state, setState] = useState({
+    currentLocation: geometry.lat ? { lat: geometry.lat, lng: geometry.lng } : { lat: 3.4194719680257584, lng: -76.52423502012975 },
+    zoom: 15,
+  });
   const location = useLocation();
 
   const history = useHistory();
@@ -78,7 +77,9 @@ const MapView = () => {
   const handle = useFullScreenHandle();
 
   useEffect(() => {
+
     setModal(false);
+
     if (location) {
       if (location.state !== undefined) {
         if (location.state.latitude && location.state.longitude) {
@@ -97,8 +98,7 @@ const MapView = () => {
         }
       }
     }
-
-  }, [location, history, state, setModal]);
+  }, [location, history, state, setModal, geometry]);
 
 
   function centerMapView(e) {
@@ -117,7 +117,7 @@ const MapView = () => {
       leafletElement.setView(latlng, 19);
       const point = leafletElement.project(latlng);
       leafletElement.panTo(leafletElement.unproject(point), { animate: true });
-      setpickedUser('');
+
       setOpen(true);
       setOptions("map");
     }
@@ -127,7 +127,6 @@ const MapView = () => {
     const { leafletElement } = mapRef.current;
     var latitude;
     var longitude;
-
     navigator.geolocation.getCurrentPosition(
       function (position) {
         latitude = position.coords.latitude;
@@ -239,8 +238,9 @@ const MapView = () => {
                 <Link to="/menu"> <div className="button-menu" /></Link>
               </div>
               <div className="button-group">
-                <div className="button-rise" onClick={centerMapViewMe.bind(this)}><img src={geolocation} alt="" /></div>
+
                 <div className="button-rise" onClick={allUsersToggle.bind(this)}><img src={allusersicon} alt="" /><div class="icon-bar-person" /></div>
+                <div className="button-rise" onClick={centerMapViewMe.bind(this)}><img src={geolocation} alt="" /></div>
 
               </div>
               <div className="button-group-left">
@@ -284,8 +284,13 @@ const MapView = () => {
                       () => { setpickedUser([3.3786396334561846, -76.53985514664332]); centerMapViewUser() }}><img src={mihuerta} alt="" /></div> */}
                 </div>
               </Popup>
-
+              <Circle
+                center={state.currentLocation}
+                fillColor="white"
+                weight={0}
+                radius={40} />
             </Marker>
+
 
             {locations.users.map((locations, i) => (
               <Marker key={i}
@@ -296,11 +301,22 @@ const MapView = () => {
                 <MarkerPopup
                   name={locations.name}
                   open={open}
-                  setOpen={setOpen} setOptions={setOptions} pic={locations.pic}
+                  setOpen={setOpen} setOptions={setOptions} setpickedUserMapView={setpickedUser} pic={locations.pic}
                 />
+
               </Marker>
+
             ))};
-            </Map>
+
+    {pickedUser !== '' ?
+              <Marker
+                position={pickedUser}
+                icon={pulse}
+                opacity={open ? 100 : 0}>
+              </Marker> : ""}
+
+
+          </Map>
         </div >
       </FullScreen >
     </div >

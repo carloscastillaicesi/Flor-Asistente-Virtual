@@ -6,7 +6,7 @@ function Documents({ user, name, pic }) {
 
   return (
     <div>
-      <div className="component-documents">
+      <div className="profile-component">
         <div className="user-info">
           <img src={pic} alt="" className="user-profile-image" />
           <h5>Conoce los documentos que ha compartido</h5>

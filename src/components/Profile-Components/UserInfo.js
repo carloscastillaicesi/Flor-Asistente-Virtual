@@ -17,19 +17,27 @@ function UserInfo({ user, pic }) {
 
 
   return (
-    <div className="component-userinfo">
-      <div className="user-info">
-        <img src={pic.length > 5 ? pic : defaultPic} alt="" className="user-profile-image" />
-        <h2>{name}</h2>
-        <div className="progress">
-          <div style={{ width: progress }} className="progress-bar">
+
+    <div className="profile-component">
+
+      <Link to="/map/aboutme/badge">
+        <div className="user-info">
+          <img src={pic.length > 5 ? pic : defaultPic} alt="" className="user-profile-image" />
+          <h2>{name}</h2>
+          <div className="progress">
+            <div style={{ width: progress }} className="progress-bar">
+            </div>
+            <div className="progress-badges">
+              <img src={stageOne} alt="Seed-One" style={level >= 0 ? { filter: "none" } : { filter: "grayscale(100%)" }} /></div>
+            <div className="progress-badges">
+              <img src={stageTwo} alt="Seed-Two" style={level >= 2 ? { filter: "none" } : { filter: "grayscale(100%)" }} /></div>
+            <div className="progress-badges">
+              <img src={stageThree} alt="Seed-Three" style={level >= 3 ? { filter: "none" } : { filter: "grayscale(100%)" }} /></div>
+            <div className="progress-badges">
+              <img src={stageFour} alt="Seed-Four" style={level >= 4 ? { filter: "none" } : { filter: "grayscale(100%)" }} /></div>
           </div>
-          <img src={stageOne} alt="Seed-One" className="progress-badges" style={level >= 0 ? { filter: "none" } : { filter: "grayscale(100%)" }} />
-          <img src={stageTwo} alt="Seed-Two" className="progress-badges" style={level >= 2 ? { filter: "none" } : { filter: "grayscale(100%)" }} />
-          <img src={stageThree} alt="Seed-Three" className="progress-badges" style={level >= 3 ? { filter: "none" } : { filter: "grayscale(100%)" }} />
-          <img src={stageFour} alt="Seed-Four" className="progress-badges" style={level >= 4 ? { filter: "none" } : { filter: "grayscale(100%)" }} />
         </div>
-      </div>
+      </Link >
       <Link to="/map/aboutme/detail">
         <div className="about-me">
           <div className="gallery-info"><h4>Acerca de Mí</h4></div>
@@ -102,7 +110,7 @@ function UserInfo({ user, pic }) {
           </div>
         </Link >
       </div>
-    </div>
+    </div >
   )
 }
 

@@ -5,25 +5,28 @@ export const UserContext = createContext();
 
 class UserContextProvider extends Component {
   state = {
-    user: '123456',
+    _id: '',
     name: '',
     geometry: { lat: '', lng: '' },
     pic: '',
     stage: 0,
     auth: false,
   }
+
   toggleAuth = (user) => {
     return user === this.state.user ? true : false
   }
 
   userData = (data) => {
     this.setState({
+      _id: data._id,
       name: data.name,
       geometry: data.geometry,
       pic: '',
       stage: data.stage,
       auth: true,
     })
+
 
   }
   render() {

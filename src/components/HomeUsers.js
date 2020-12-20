@@ -3,14 +3,30 @@ import { useHistory, Link, useParams } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 import { SettingContext } from "../contexts/SettingContext";
 import florInicial from "../assets/flor_inicio.svg"
-
+import { useQuery } from "react-query";
 
 
 const HomeUsers = () => {
 
   let { userid } = useParams();
+
+  console.log(userid);
+
+  const fetchUser = async () => {
+    const res = await fetch(`/user/${userid}`, {
+      crossDomain: true
+    })
+    return res.json();
+  }
+
+
+  const { data, status } = useQuery('user', fetchUser);
+
+  console.log(status)
+  console.log(data)
+
   const history = useHistory();
-  const { name, toggleAuth, userData } = useContext(UserContext);
+  const { name, userData, geometry } = useContext(UserContext);
 
   const { toggleFullscreen } = useContext(SettingContext);
 
@@ -21,26 +37,6 @@ const HomeUsers = () => {
     geo: false,
 
   });
-
-  /** if it was data from the server */
-  const [currentUser] = useState({
-    user: '123456',
-    name: 'Carlos Castilla',
-    geometry: { lat: state.latitude, lng: state.longitude },
-    pic: "https://media-exp1.licdn.com/dms/image/C5603AQH29Jl-gCmxnw/profile-displayphoto-shrink_400_400/0/1606338912409?e=1613001600&v=beta&t=0BtdomoWkGBp4g3Pun25X3Aw7aORZ0sA5Dwb9Lbr9Bc",
-    stage: 1,
-    auth: false,
-  })
-
-  var authUser = toggleAuth(userid)
-  useEffect(() => {
-    toggleFullscreen('');
-    if (authUser) {
-      userData(currentUser);
-    } else {
-      history.push("/usernotfound");
-    }
-  }, [authUser, currentUser, history, userData, toggleFullscreen])
 
   function getGeo() {
     navigator.geolocation.getCurrentPosition(
@@ -53,7 +49,6 @@ const HomeUsers = () => {
           geo: true
         });
         setTimeout(() => {
-
 
           history.push({
             pathname: "/map",
@@ -77,10 +72,22 @@ const HomeUsers = () => {
   };
 
 
+
+  useEffect(() => {
+    toggleFullscreen('');
+    if (status === "success") {
+      userData(data);
+      console.log("Data from server");
+      console.log(data);
+    }
+  }, [history, status, userData, toggleFullscreen, geometry])
+
   return (
     <div>
       <div className="homeuser-container">
         <h1>Hola, {name}</h1>
+        <h2>{userid}</h2>
+        <h2>{status}</h2>
         <br />
         <img src={florInicial} alt="" />
         <br />

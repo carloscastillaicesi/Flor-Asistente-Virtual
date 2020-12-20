@@ -6,8 +6,12 @@ import Exchange from "./MenuExchange";
 import Library from "./MenuLibrary";
 import MenuFirst from "./MenuFirst";
 import LibraryCategory from "./LibraryCategory";
+import ExchangeGot from "./ExchangeGot";
+import ExchangeNeed from "./ExchangeNeed";
 import { SettingContext } from "../../contexts/SettingContext";
+
 function MenuComponent() {
+
   const history = useHistory();
   const [userInfo] = useState({
     "users":
@@ -20,7 +24,6 @@ function MenuComponent() {
           categorias: ["Abonos", "Siembra"]
         }, {
           nombre: "Manual de Agricultura Tropical",
-
           url: "https://repository.eafit.edu.co/xmlui/bitstream/handle/10784/804/0709_1896.pdf;jsessionid=0A154852439875F95711BEEC01633F46?sequence=2",
           categorias: ["Plagas/Enfermedades", "Terreno"]
         }], tengo: [{
@@ -102,18 +105,40 @@ function MenuComponent() {
           nombre: "Manual de Agricultura Tropical",
           url: "https://repository.eafit.edu.co/xmlui/bitstream/handle/10784/804/0709_1896.pdf;jsessionid=0A154852439875F95711BEEC01633F46?sequence=2",
           categorias: ["Cultivo", "Clima Tropical"]
+        }], tengo: [{
+          nombre: "Abono Orgánico",
+          descripcion: "Tengo 4 kg de este abono si alguien lo quiere tomar contacteme",
+          fotos: ["https://www.jardineriaon.com/wp-content/uploads/2011/11/abono-1-1024x768.jpg"],
+          categorias: ["Abonos Orgánicos", "Humus"]
+        }, {
+          nombre: "Semillas de Tomate",
+          descripcion: "Intercambio estas semillas de tomate",
+          opciones: "Quiero intercambiarlo por una llanta",
+          fotos: ["https://i2.wp.com/infoagro.com.ar/wp-content/uploads/2019/09/Semillas-de-tomate-criollos-5.png?fit=998%2C636&ssl=1", "https://i2.wp.com/infoagro.com.ar/wp-content/uploads/2019/09/Semillas-de-tomate-criollos-5.png?fit=998%2C636&ssl=1", "https://i2.wp.com/infoagro.com.ar/wp-content/uploads/2019/09/Semillas-de-tomate-criollos-5.png?fit=998%2C636&ssl=1", "https://i2.wp.com/infoagro.com.ar/wp-content/uploads/2019/09/Semillas-de-tomate-criollos-5.png?fit=998%2C636&ssl=1", "https://i2.wp.com/infoagro.com.ar/wp-content/uploads/2019/09/Semillas-de-tomate-criollos-5.png?fit=998%2C636&ssl=1"],
+          categorias: ["Abonos Orgánicos", "Clima Tropical"]
+        }], necesito: [{
+          nombre: "Semilla de Aguacate",
+          descripcion: "Ando Buscando semillas de aguacate",
+          fotos: ["https://www.jardineriaon.com/wp-content/uploads/2011/11/abono-1-1024x768.jpg"],
+          categorias: ["Abonos Orgánicos", "Humus"]
+        }, {
+          nombre: "Polisombra",
+          descripcion: "Intercambio estas semillas de tomate",
+          fotos: ["https://i2.wp.com/infoagro.com.ar/wp-content/uploads/2019/09/Semillas-de-tomate-criollos-5.png?fit=998%2C636&ssl=1"],
+          categorias: ["Abonos Orgánicos", "Clima Tropical"]
         }]
       }
       ]
   });
+
   const { modal, toggleModal } = useContext(SettingContext);
+
   function goBack() {
     history.goBack();
   }
 
   return (
     <div className="component-menu">
-
       <div className="top-bar-menu-component">
         <div onClick={goBack.bind()} class="arrow-icon">
           <div class="arrow" />
@@ -123,8 +148,13 @@ function MenuComponent() {
       </div>
       <div className="component-menu-content">
         {modal ? <Modal /> : ""}
-
-        <Route path="/menu/exchange">
+        <Route path="/menu/exchange/got">
+          <ExchangeGot />
+        </Route>
+        <Route path="/menu/exchange/need">
+          <ExchangeNeed />
+        </Route>
+        <Route strict exact path="/menu/exchange">
           <Exchange />
         </Route>
         <Route path="/menu/library/:category">

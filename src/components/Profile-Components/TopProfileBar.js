@@ -3,7 +3,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import { SettingContext } from "../../contexts/SettingContext";
 
 
-function TopProfileBar({ setOpen }) {
+function TopProfileBar({ setOpen, setPage }) {
   const history = useHistory();
   let location = useLocation();
   const { modal, toggleModal } = useContext(SettingContext);
@@ -11,8 +11,10 @@ function TopProfileBar({ setOpen }) {
   function goBack() {
 
     if (location.pathname === '/map/aboutme/userinfo') {
-      history.push("/map");
       setOpen(true);
+      setPage(true);
+      history.push("/map");
+      console.log("Cerró")
     } else {
       history.goBack();
     }
