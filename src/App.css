@@ -521,7 +521,7 @@ input[type="tel"]:focus {
 .peek img {
   height: 50px;
   width: 50px;
-
+  object-fit: cover;
   background-repeat: no-repeat;
   background-size: 50px;
   border-radius: 50%;
@@ -556,6 +556,7 @@ input[type="tel"]:focus {
   height: 90px;
   width: 90px;
   background-image: url(./assets/defaultphotouser.png);
+  object-fit: cover;
   background-size: 50px;
   border-radius: 50%;
   margin-bottom: 5px;
@@ -761,6 +762,7 @@ input[type="tel"]:focus {
   justify-content: center;
   align-content: center;
   border: 3px var(--color-primary) solid;
+
   border-radius: 50px;
 }
 
@@ -772,6 +774,7 @@ input[type="tel"]:focus {
   z-index: 1;
   width: 90px;
   height: 90px;
+
   margin-top: -23px;
 }
 
@@ -780,6 +783,7 @@ input[type="tel"]:focus {
   height: 120px;
   width: 120px;
   align-self: center;
+  object-fit: cover;
   background-image: url(./assets/defaultphotouser.png);
   background-size: 50px;
   border-radius: 50%;

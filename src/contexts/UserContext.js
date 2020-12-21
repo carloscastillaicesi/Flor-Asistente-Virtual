@@ -8,6 +8,7 @@ class UserContextProvider extends Component {
     _id: '',
     name: '',
     geometry: { lat: '', lng: '' },
+    current: { lat: 3.4194719680257584, lng: -76.52423502012975 },
     pic: '',
     stage: 0,
     auth: false,
@@ -22,16 +23,24 @@ class UserContextProvider extends Component {
       _id: data._id,
       name: data.name,
       geometry: data.geometry,
-      pic: '',
+      pic: data.pic,
       stage: data.stage,
       auth: true,
     })
 
 
   }
+
+  setCurrentLocation = (data) => {
+    this.setState({
+      ...this.state, current: data
+    })
+
+
+  }
   render() {
     return (
-      <UserContext.Provider value={{ ...this.state, toggleAuth: this.toggleAuth, userData: this.userData }}>
+      <UserContext.Provider value={{ ...this.state, toggleAuth: this.toggleAuth, userData: this.userData, setCurrentLocation: this.setCurrentLocation }}>
         {this.props.children}
       </UserContext.Provider>
     )

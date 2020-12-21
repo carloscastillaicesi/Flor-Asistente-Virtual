@@ -4,7 +4,7 @@ import { UserContext } from "../contexts/UserContext";
 import { SettingContext } from "../contexts/SettingContext";
 import florInicial from "../assets/flor_inicio.svg"
 import { useQuery } from "react-query";
-
+import spinner from "../assets/spinner.svg"
 
 const HomeUsers = () => {
 
@@ -19,37 +19,25 @@ const HomeUsers = () => {
     return res.json();
   }
 
+  const { isLoading, isError, data, status } = useQuery('currentUser', fetchUser);
 
-  const { data, status } = useQuery('user', fetchUser);
 
-  console.log(status)
-  console.log(data)
 
   const history = useHistory();
-  const { name, userData, geometry } = useContext(UserContext);
+  const { name, userData, geometry, setCurrentLocation, current } = useContext(UserContext);
 
   const { toggleFullscreen } = useContext(SettingContext);
 
-  const [state, setState] = useState({
-    longitude: 0,
-    latitude: 0,
-    buttonText: "Activar Geolocalización",
-    geo: false,
-
-  });
 
   function getGeo() {
+
     navigator.geolocation.getCurrentPosition(
       function (position) {
-        // console.log(position);
-        setState({
-          longitude: position.coords.longitude,
-          latitude: position.coords.latitude,
-          buttonText: "Entrar al Mapa",
-          geo: true
+        setCurrentLocation({
+          lng: position.coords.longitude,
+          lat: position.coords.latitude
         });
         setTimeout(() => {
-
           history.push({
             pathname: "/map",
             state: {
@@ -70,30 +58,32 @@ const HomeUsers = () => {
 
     );
   };
-
-
-
   useEffect(() => {
     toggleFullscreen('');
-    if (status === "success") {
+    if (status === "success" && data !== null) {
       userData(data);
-      console.log("Data from server");
-      console.log(data);
+    }
+    if (data === null) {
+      history.push("/usernotfound");
     }
   }, [history, status, userData, toggleFullscreen, geometry])
 
   return (
     <div>
-      <div className="homeuser-container">
-        <h1>Hola, {name}</h1>
-        <h2>{userid}</h2>
-        <h2>{status}</h2>
-        <br />
-        <img src={florInicial} alt="" />
-        <br />
-        <p className="paragraph">Para poder ingresar al mapa, necesito me permitas permitas conocer tu ubicación</p>
-        <div onClick={getGeo.bind()} className="option-button"> Activar Geolocalización</div>
-      </div >
+      {isLoading ?
+        <div className="homeuser-container">
+          <img src={spinner} alt="" />
+          <h2>{status}</h2>
+        </div>
+        : <div className="homeuser-container">
+          <h1>Hola, {name}</h1>
+          <br />
+          <img src={florInicial} alt="" />
+          <br />
+          <p className="paragraph">Para poder ingresar al mapa, necesito me permitas permitas conocer tu ubicación</p>
+          <div onClick={getGeo.bind()} className="option-button">Activar Geolocalización</div>
+        </div >}
+
     </div >
   );
 }

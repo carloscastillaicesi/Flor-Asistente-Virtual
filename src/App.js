@@ -41,6 +41,10 @@ function App() {
                                 <Route exact path="/">
                                     <HomeGuest />
                                 </Route>
+                                <Route path="*">
+                                    <h2>Error404</h2>
+                                </Route>
+
                             </Switch>
                         </BrowserRouter>
                     </UserContext>

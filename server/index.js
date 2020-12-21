@@ -35,6 +35,15 @@ app.get('/user/:userId', function (req, res) {
     });
 })
 
+app.get('/map', function (req, res) {
+  User
+    .find({}, function (err, user) {
+      if (err) throw err;
+      res.status(200);
+      res.json(user); // returns null
+    });
+})
+
 /**Inbound Route - Twilio Endpoint*/
 app.use(inboundRoutes);
 

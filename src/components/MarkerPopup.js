@@ -14,7 +14,7 @@ import { Route, useHistory, useLocation } from "react-router-dom";
 import * as ReactLeaflet from "react-leaflet";
 const { Popup } = ReactLeaflet;
 
-export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMapView }) {
+export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMapView, id }) {
 
   const history = useHistory();
   let location = useLocation();
@@ -43,6 +43,7 @@ export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMap
       [
         {
           name: "Orbay Beltrán",
+          _id: "5fde9fa8221310a83a32b6bb",
           level: 4,
           gallery: ["https://www.generatormix.com/%2Fimages%2Fplant%2Fhosta-frances-williams.jpg", "https://www.generatormix.com/%2Fimages%2Fplant%2Fenglish-ivy.jpg", "https://www.generatormix.com/%2Fimages%2Fplant%2Fsweetspire%2C-virginia.jpg", "https://www.generatormix.com/%2Fimages%2Fplant%2Fviburnum%2C-snowball.jpg", "generatormix.com/%2Fimages%2Fplant%2Fmoonshadow-euonymus.jpg", "https://www.generatormix.com/%2Fimages%2Fplant%2Fmount-airy-fothergilla.jpg"],
           NoHuertas: 2,
@@ -92,6 +93,7 @@ export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMap
           }]
         }, {
           name: "Maria del Mar",
+          _id: "5fdfdcf82a749924113b7724",
           level: 2,
           gallery: ["https://www.generatormix.com/%2Fimages%2Fplant%2Fsweetspire%2C-virginia.jpg", "https://www.generatormix.com/%2Fimages%2Fplant%2Fviburnum%2C-snowball.jpg", "https://www.generatormix.com/%2Fimages%2Fplant%2Fpurple-fountain-grass.jpg", "https://www.generatormix.com/%2Fimages%2Fplant%2Fmount-airy-fothergilla.jpg"],
           NoHuertas: 3,
@@ -106,6 +108,7 @@ export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMap
           }]
         }, {
           name: "Daniel Manso",
+          _id: "5fe0048d2a749924113b7725",
           level: 3,
           gallery: ["https://www.generatormix.com/%2Fimages%2Fplant%2Fmoneywort.jpg", "https://www.generatormix.com/%2Fimages%2Fplant%2Fmimosa-tree.jpg", "https://www.generatormix.com/%2Fimages%2Fplant%2Fmoneywort.jpg", "https://www.generatormix.com/%2Fimages%2Fplant%2Fsweetspire%2C-virginia.jpg", "https://www.generatormix.com/%2Fimages%2Fplant%2Fviburnum%2C-snowball.jpg", "https://www.generatormix.com/%2Fimages%2Fplant%2Fpurple-fountain-grass.jpg", "https://www.generatormix.com/%2Fimages%2Fplant%2Fmount-airy-fothergilla.jpg"],
           Expectativa: "Poder crear mi propio alimento, una alimentacion mas saludable ya q esta libre de quimicos, La idea es ahorrar al no tener que comprar los alimentos y poder vender para obtener ganancias",
@@ -120,6 +123,7 @@ export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMap
           }]
         }, {
           name: "Alexander Gómez",
+          _id: "5fe0052d2a749924113b7726",
           level: 4,
           gallery: ["https://www.generatormix.com/%2Fimages%2Fplant%2Fvolcano-ruby-garden-phlox.jpg", "https://www.generatormix.com/%2Fimages%2Fplant%2Fpoplar-trees-%28false%29%2C-tulip.jpg"],
           documentos: [{
@@ -131,19 +135,20 @@ export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMap
             url: "https://repository.eafit.edu.co/xmlui/bitstream/handle/10784/804/0709_1896.pdf;jsessionid=0A154852439875F95711BEEC01633F46?sequence=2",
             categorias: ["Cultivo", "Clima Tropical"]
           }]
-        }, {
-          name: "Carlos Castilla",
-          level: 3,
-          gallery: ["https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/houseplants-asplenium-nidus-peperomia-and-fittonia-royalty-free-image-946085220-1557179507.jpg", "https://www.generatormix.com/%2Fimages%2Fplant%2Fmimosa-tree.jpg", "https://www.generatormix.com/%2Fimages%2Fplant%2Fmoneywort.jpg", "https://www.generatormix.com/%2Fimages%2Fplant%2Fvolcano-ruby-garden-phlox.jpg", "https://www.generatormix.com/%2Fimages%2Fplant%2Fpoplar-trees-%28false%29%2C-tulip.jpg"], documentos: [{
-            nombre: "Sistema de Uso de la tierra en Trópico",
-            url: "http://www.fao.org/3/a-x4590s.pdf",
-            categorias: ["Abonos", "Trópico"]
-          }, {
-            nombre: "Manual de Agricultura Tropical",
-            url: "https://repository.eafit.edu.co/xmlui/bitstream/handle/10784/804/0709_1896.pdf;jsessionid=0A154852439875F95711BEEC01633F46?sequence=2",
-            categorias: ["Cultivo", "Clima Tropical"]
-          }]
         }
+        // }, {
+        //   name: "Carlos Castilla",
+        //   level: 3,
+        //   gallery: ["https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/houseplants-asplenium-nidus-peperomia-and-fittonia-royalty-free-image-946085220-1557179507.jpg", "https://www.generatormix.com/%2Fimages%2Fplant%2Fmimosa-tree.jpg", "https://www.generatormix.com/%2Fimages%2Fplant%2Fmoneywort.jpg", "https://www.generatormix.com/%2Fimages%2Fplant%2Fvolcano-ruby-garden-phlox.jpg", "https://www.generatormix.com/%2Fimages%2Fplant%2Fpoplar-trees-%28false%29%2C-tulip.jpg"], documentos: [{
+        //     nombre: "Sistema de Uso de la tierra en Trópico",
+        //     url: "http://www.fao.org/3/a-x4590s.pdf",
+        //     categorias: ["Abonos", "Trópico"]
+        //   }, {
+        //     nombre: "Manual de Agricultura Tropical",
+        //     url: "https://repository.eafit.edu.co/xmlui/bitstream/handle/10784/804/0709_1896.pdf;jsessionid=0A154852439875F95711BEEC01633F46?sequence=2",
+        //     categorias: ["Cultivo", "Clima Tropical"]
+        //   }]
+        // }
       ]
   });
 
@@ -155,7 +160,7 @@ export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMap
       setOpen(false);
       history.push("map/aboutme");
       //picks the user out of the database
-      userInformation = userInfo.users.filter((users) => { return users.name === name })[0];
+      userInformation = userInfo.users.filter((users) => { return users.id === id })[0];
       setpickedUser(userInformation);
       if (!userInformation) {
         setmessage("Hubo un error");
