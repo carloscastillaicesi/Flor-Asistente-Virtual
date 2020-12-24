@@ -40,8 +40,8 @@ app.get('/map/documents', function (req, res) {
 
 })
 
-app.get('/map/:userId/barters', function (req, res) {
-  Barters.find({ uId: req.params.userId }, function (err, user) {
+app.get('/map/barters', function (req, res) {
+  Barters.find({}, function (err, user) {
     if (err) throw err;
     res.status(200);
     res.json(user); // returns null

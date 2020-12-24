@@ -56,7 +56,7 @@ function Badge({ name, pic, level }) {
             <img src={stageFour} alt="Seed-Four" onClick={() => setSelectedBadgeF(4)} /></div>
         </div>
         <br />
-        <h3>Conoce de qué se tratan las etapas</h3>
+        <h3>Conoce de qué se trata la</h3>
         <h2>{`Etapa # ${selectedBadge}`}</h2>
         <h4>{selectedBadgeText}</h4>
       </div>

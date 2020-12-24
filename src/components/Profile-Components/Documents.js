@@ -57,7 +57,6 @@ function Documents({ documents, name, pic, setModal }) {
       {pickedDocument ?
         <div className="picked-modal-background-container">
           <div onClick={() => pickedDocumentToggle()} className="picked-modal-background-container-scape-area"> </div>
-
           <div className="picked">
             <div onClick={() => pickedDocumentToggle()} className="close-picked">x</div>
             <h5>{pickedDocID.includes(pickedDocument.id) ? "Este documento se encuentra oculto" : ""}</h5>
@@ -70,10 +69,8 @@ function Documents({ documents, name, pic, setModal }) {
               <img src={pic} alt="" />
               <h4>{name}</h4>
             </div>
-
             <a href={pickedDocument.url} target={"_blank"}>  <div className="picked-actions">Ver Documento</div> </a>
             <div className="picked-actions" onClick={setModal.bind()}>Contactar a {name.split(" ")[0]}</div>
-
           </div>
         </div>
         : ""}
@@ -108,6 +105,8 @@ function Documents({ documents, name, pic, setModal }) {
                       <h4 className="text-preview">{data.nombre}</h4>
                       <h5>{data.categorias.join(", ")}</h5>
                     </div>
+
+
 
                     {pickedDocID.includes(data._id)
                       ?

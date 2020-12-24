@@ -20,10 +20,10 @@ function UserInfo({ user, pic, name, level }) {
 
     <div className="profile-component">
 
-      <Link to="/map/aboutme/badge">
-        <div className="user-info">
-          <img src={pic.length > 5 ? pic : defaultPic} alt="" className="user-profile-image" />
-          <h2>{name}</h2>
+      <div className="user-info">
+        <img src={pic.length > 5 ? pic : defaultPic} alt="" className="user-profile-image" />
+        <h2>{name}</h2>
+        <Link to="/map/aboutme/badge">
           <div className="progress">
             <div style={{ width: progress }} className="progress-bar">
             </div>
@@ -36,11 +36,12 @@ function UserInfo({ user, pic, name, level }) {
             <div className="progress-badges">
               <img src={stageFour} alt="Seed-Four" style={level >= 4 ? { filter: "none" } : { filter: "grayscale(100%)" }} /></div>
           </div>
-        </div>
-      </Link >
+        </Link >
+      </div>
+
       <Link to="/map/aboutme/detail">
         <div className="about-me">
-          <div className="gallery-info"><h4>Acerca de Mí</h4></div>
+          <div ><h4>Acerca de Mí</h4></div>
           <div >Conoce más sobre mi</div>
         </div>
       </Link>
@@ -84,7 +85,7 @@ function UserInfo({ user, pic, name, level }) {
         <Link to="/map/aboutme/documents">
           <div className="single-action">
             <img src={biblioteca} alt="" />
-            <div className="action-info">
+            <div className="action-info" style={{ borderBottom: "none" }}>
               <div className="action-container">
                 <div>
                   <h3>Aportes</h3>
@@ -95,7 +96,7 @@ function UserInfo({ user, pic, name, level }) {
             </div>
           </div>
         </Link >
-        <Link to="/map/aboutme/plants">
+        {/* <Link to="/map/aboutme/plants">
           <div className="single-action">
             <img src={plantas} alt="" />
             <div className="action-info" style={{ borderBottom: "none" }}>
@@ -108,7 +109,7 @@ function UserInfo({ user, pic, name, level }) {
               </div>
             </div>
           </div>
-        </Link >
+        </Link > */}
       </div>
     </div >
   )

@@ -12,7 +12,7 @@ function Modal() {
  useEffect(() => {
   if (modal) {
    setOpen({
-    display: "flex",
+    display: "block",
    })
   }
  }, [modal])

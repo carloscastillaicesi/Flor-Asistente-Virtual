@@ -24,8 +24,12 @@ export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMap
   const { modal, toggleModal } = useContext(SettingContext);
 
   const [message, setmessage] = useState("Cargando...");
+
   const [pickedUser, setpickedUser] = useState(false);
   const [pickedUserDocuments, setpickedUserDocuments] = useState(false);
+  const [pickedUserBarters, setpickedUserBarters] = useState(false);
+
+
 
   const fetchDetails = async () => {
     const res = await fetch("/map/aboutme", {
@@ -33,7 +37,6 @@ export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMap
     })
     return res.json();
   }
-  const detailsQuery = useQuery('details', fetchDetails);
 
   const fetchDocuments = async () => {
     const res = await fetch("/map/documents", {
@@ -41,10 +44,21 @@ export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMap
     })
     return res.json();
   }
+
+  const fetchBarters = async () => {
+    const res = await fetch("/map/barters", {
+      crossDomain: true
+    })
+    return res.json();
+  }
+
+  const detailsQuery = useQuery('details', fetchDetails);
   const documentsQuery = useQuery('documents', fetchDocuments);
+  const bartersQuery = useQuery('barters', fetchBarters);
 
   useEffect(() => {
-    console.log(documentsQuery)
+
+    console.log(bartersQuery)
     if (state) {
       history.push("/map");
       setPage(false);
@@ -65,12 +79,13 @@ export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMap
       setOpen(false);
       history.push("map/aboutme");
       //picks the user out of the database
-      var userInfo = detailsQuery.data.filter(obj2 => { return obj2._id === _id })[0];
-      var userDocuments = documentsQuery.data.filter(obj2 => { return obj2.uId === _id });
+      var userInfo = detailsQuery.data.filter(i => { return i._id === _id })[0];
+      var userDocuments = documentsQuery.data.filter(d => { return d.uId === _id });
+      var userBarters = bartersQuery.data.filter(i => { return i.uId === _id });
       setpickedUser(userInfo);
       setpickedUserDocuments(userDocuments);
-      console.log("userDocuments", userDocuments)
-      if (detailsQuery.isError || !userInfo) {
+      setpickedUserBarters(userBarters);
+      if (detailsQuery.isError || userDocuments.isError || userBarters.isError || !userInfo) {
         setmessage(`Hubo un error cargando el perfil de ${name}, contactate con el administrador`);
       }
     }, 200);
@@ -116,7 +131,7 @@ export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMap
           </Route>
           <Route path="/map/aboutme/exchange">
             <Exchange
-              user={pickedUser}
+              barters={pickedUserBarters}
               name={name}
               pic={pic}
               setModal={toggleModal} />

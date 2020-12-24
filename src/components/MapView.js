@@ -85,7 +85,7 @@ const MapView = () => {
   function centerMapView(e) {
     const { leafletElement } = mapRef.current;
     if (e) {
-      leafletElement.setView(e.popup._latlng, e.zoom);
+      leafletElement.setView(e.popup._latlng, 17);
       const point = leafletElement.project(e.target._popup._latlng);
       leafletElement.panTo(leafletElement.unproject(point), { animate: true });
     }
@@ -95,7 +95,7 @@ const MapView = () => {
     const { leafletElement } = mapRef.current;
     if (pickedUser !== '') {
       let latlng = { lat: pickedUser[0], lng: pickedUser[1] }
-      leafletElement.setView(latlng, 19);
+      leafletElement.setView(latlng, 17);
       const point = leafletElement.project(latlng);
       leafletElement.panTo(leafletElement.unproject(point), { animate: true });
 
@@ -113,7 +113,7 @@ const MapView = () => {
         const currentLocation = { lat: latitude, lng: longitude };
         setCurrentLocation(currentLocation);
         setCurrentUserLocalStorage();
-        leafletElement.setView(currentLocation);
+        leafletElement.setView(currentLocation, 17);
         const point = leafletElement.project(currentLocation);
         leafletElement.panTo(leafletElement.unproject(point), { animate: true });
       },
