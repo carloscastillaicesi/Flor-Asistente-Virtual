@@ -4,6 +4,9 @@ const pino = require("express-pino-logger")();
 const mongoose = require('mongoose');
 const cors = require('cors');
 const User = require('../Models/userModel');
+const Details = require('../Models/detailsModel');
+const Documents = require('../Models/documentsModel');
+const Barters = require('../Models/bartersModels');
 const inboundRoutes = require('../Routes/inboundRouter');
 
 
@@ -26,6 +29,35 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(pino);
 
+
+
+app.get('/map/documents', function (req, res) {
+  Documents.find({}, function (err, user) {
+    if (err) throw err;
+    res.status(200);
+    res.json(user); // returns null
+  });
+
+})
+
+app.get('/map/:userId/barters', function (req, res) {
+  Barters.find({ uId: req.params.userId }, function (err, user) {
+    if (err) throw err;
+    res.status(200);
+    res.json(user); // returns null
+  });
+
+})
+app.get('/map/aboutme', function (req, res) {
+  Details
+    .find({}, function (err, user) {
+      if (err) throw err;
+      res.status(200);
+      res.json(user); // returns null
+    });
+})
+
+
 app.get('/user/:userId', function (req, res) {
   User
     .findOne({ _id: req.params.userId }, function (err, user) {
@@ -35,9 +67,11 @@ app.get('/user/:userId', function (req, res) {
     });
 })
 
-app.get('/map', function (req, res) {
+app.get('/map/:userId', function (req, res) {
   User
-    .find({}, function (err, user) {
+    .find({
+      "_id": { $ne: req.params.userId }
+    }, function (err, user) {
       if (err) throw err;
       res.status(200);
       res.json(user); // returns null

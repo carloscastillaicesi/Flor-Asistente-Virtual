@@ -9,10 +9,10 @@ import intercambiar from "../../assets/intercambiar.svg";
 import plantas from "../../assets/misplantas.svg";
 import biblioteca from "../../assets/biblioteca.svg";
 
-function UserInfo({ user, pic }) {
+function UserInfo({ user, pic, name, level }) {
 
   // 0% (1) - 20% (2) - 40% (3) - 60% (4)
-  const { name, gallery, level } = user
+  const { gallery } = user
   const progress = [(level * 20) - 20, "%"].join('');
 
 
@@ -41,7 +41,7 @@ function UserInfo({ user, pic }) {
       <Link to="/map/aboutme/detail">
         <div className="about-me">
           <div className="gallery-info"><h4>Acerca de Mí</h4></div>
-          <div class="text-preview">Conoce más sobre mi</div>
+          <div >Conoce más sobre mi</div>
         </div>
       </Link>
       <Link to="/map/aboutme/gallery">

@@ -24,7 +24,7 @@ const HomeUsers = () => {
 
 
   const history = useHistory();
-  const { name, userData, geometry, setCurrentLocation, current } = useContext(UserContext);
+  const { name, userData, geometry, setCurrentLocation, setCurrentUserLocalStorage } = useContext(UserContext);
 
   const { toggleFullscreen } = useContext(SettingContext);
 
@@ -37,6 +37,7 @@ const HomeUsers = () => {
           lng: position.coords.longitude,
           lat: position.coords.latitude
         });
+        setCurrentUserLocalStorage();
         setTimeout(() => {
           history.push({
             pathname: "/map",

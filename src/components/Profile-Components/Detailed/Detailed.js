@@ -2,13 +2,15 @@ import React from 'react'
 import { Link } from "react-router-dom";
 import defaultPic from "../../../assets/defaultphotouser.png";
 import huerta from "../../../assets/Huertas.svg";
-import conocimiento from "../../../assets/Conocimiento.svg";
-import experiencia from "../../../assets/Experiencia.svg";
-import expectativa from "../../../assets/Expectativas.svg";
+import conocimientoI from "../../../assets/Conocimiento.svg";
+import experienciaI from "../../../assets/Experiencia.svg";
+import expectativaI from "../../../assets/Expectativas.svg";
 import Information from "./Information";
-export default function Detailed({ pic, user }) {
+export default function Detailed({ pic, user, name, huertaPic }) {
 
- const { name, Conocimiento, Experiencia, Expectativa } = user
+ const { ubicacionHuerta, tiempoDedicadoHuerta, encargadosHuerta, gallery
+  , conocimiento, experiencia, expectativaHuerta
+ } = user
  return (
 
   <div className="profile-component">
@@ -20,10 +22,17 @@ export default function Detailed({ pic, user }) {
    </div>
    <div className="detailed-info-container">
 
-    <Information icon={huerta} imagen={null} info={`Tengo huertas`} titulo={"Huertas"} />
-    <Information icon={conocimiento} imagen={null} info={Conocimiento} titulo={"Conocimiento"} />
-    <Information icon={experiencia} imagen={null} info={Experiencia} titulo={"Experiencia"} />
-    <Information icon={expectativa} imagen={null} info={Expectativa} titulo={"Expectativa"} />
+    <Information icon={huerta} imagen={gallery[0]} info={ubicacionHuerta} titulo={"Ubicación Huerta"} />
+    <Information icon={huerta} imagen={null} info={encargadosHuerta
+    } titulo={"¿Quién Cuida de la Huerta?"} />
+    <Information icon={huerta} imagen={null} info={tiempoDedicadoHuerta
+    } titulo={"¿Cuánto tiempo le dedicas a tu huerta?"} />
+    <Information icon={conocimientoI} imagen={null} info={conocimiento} titulo={"Conocimiento"} />
+    <Information icon={experienciaI} imagen={null} info={experiencia} titulo={"Experiencia"} />
+    <Information icon={expectativaI} imagen={null} info={expectativaHuerta
+    } titulo={"¿Qué beneficios buscas para tu salud?"} />
+    <Information icon={expectativaI} imagen={null} info={expectativaHuerta
+    } titulo={"Expectativa"} />
 
    </div>
   </div>

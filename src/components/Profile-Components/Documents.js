@@ -1,26 +1,132 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import document from "../../assets/ver-documento.svg";
-function Documents({ user, name, pic }) {
+import Hdocument from "../../assets/ocultar-documento.svg";
+import deleteI from "../../assets/delete.svg";
+function Documents({ documents, name, pic, setModal }) {
 
-  const { documentos } = user
+  const [pickedDocID, setpickedDocID] = useState([]);
+  const [deletionpickedDocID, setdeletionpickedDocID] = useState();
+  const [deletedpickedDocID, setdeletepickedDocID] = useState([]);
+  const [pickedDocument, setpickedDocument] = useState()
+
+  function docSetter(id) {
+    if (pickedDocID.includes(id)) {
+      let filteredArray = pickedDocID.filter(item => item !== id)
+      setpickedDocID(filteredArray);
+    } else {
+      setpickedDocID([...pickedDocID, id]);
+    }
+  }
+
+
+  function docDelete(id) {
+    setdeletepickedDocID([...deletedpickedDocID, id]);
+  }
+
+
+  function deletionProcess(id) {
+    if (id !== deletionpickedDocID) {
+      setdeletionpickedDocID(id);
+    } else {
+      setdeletionpickedDocID();
+    }
+
+  }
+  function pickedDocumentToggle(nombre, categorias, url, id) {
+    if (nombre) {
+      const picked = {
+        nombre: nombre,
+        categorias: categorias,
+        url: url,
+        id: id
+      }
+      setpickedDocument(picked);
+    } else {
+      setpickedDocument();
+    }
+
+  }
+  useEffect(() => {
+    console.log("Hide Document: ", pickedDocID);
+    console.log("Deletion Process of Document: ", deletionpickedDocID);
+    console.log("Deleted Documents: ", deletedpickedDocID);
+  }, [pickedDocID, deletedpickedDocID, deletionpickedDocID])
 
   return (
     <div>
+      {pickedDocument ?
+        <div className="picked-modal-background-container">
+          <div onClick={() => pickedDocumentToggle()} className="picked-modal-background-container-scape-area"> </div>
+
+          <div className="picked">
+            <div onClick={() => pickedDocumentToggle()} className="close-picked">x</div>
+            <h5>{pickedDocID.includes(pickedDocument.id) ? "Este documento se encuentra oculto" : ""}</h5>
+            <h1>{pickedDocument.nombre}</h1>
+            <hr />
+            <h3><strong>Temas</strong></h3>
+            <h5>{pickedDocument.categorias.join(", ")}</h5>
+            <hr />
+            <div className="picked-owner">
+              <img src={pic} alt="" />
+              <h4>{name}</h4>
+            </div>
+
+            <a href={pickedDocument.url} target={"_blank"}>  <div className="picked-actions">Ver Documento</div> </a>
+            <div className="picked-actions" onClick={setModal.bind()}>Contactar a {name.split(" ")[0]}</div>
+
+          </div>
+        </div>
+        : ""}
+
       <div className="profile-component">
         <div className="user-info">
           <img src={pic} alt="" className="user-profile-image" />
           <h5>Conoce los documentos que ha compartido</h5>
           <h2>{name}</h2>
         </div>
-        <div className="document-list-container">
-          {documentos ?
-            documentos.map((data, i) => <div key={i} src={data} alt="documents" className="document-list-element">
-              <div className="document">
-                <h4>{data.nombre}</h4>
-                <h5>{data.categorias.join(", ")}</h5>
-              </div>
-              <a href={data.url} target={"_blank"}><img src={document} alt="eye" /></a>
-            </div>)
+        <div className="element-list-container">
+          {documents ?
+            documents.map((data, i) =>
+
+              <div className={deletedpickedDocID.includes(data._id) ? "element-list-item-container-deleted" : "element-list-item-container"} key={i} >
+
+                {deletionpickedDocID === data._id ?
+
+                  <div className={deletionpickedDocID.includes(data._id) ? "element-list-item-deletion" : "element-list-item"}>
+
+                    <img src={deleteI} alt="" />
+                    <h5>¿Deseas eliminar este documento?</h5>
+                    <div className="element-options" onClick={() => docDelete(data._id)}>Sí</div>
+                    <div className="element-options" onClick={() => deletionProcess(data._id)}>No</div>
+                  </div>
+
+                  :
+
+                  <div src={data} className={pickedDocID.includes(data._id) ? "element-list-item-hidden" : "element-list-item"} >
+                    <div className="element-description" onClick={() => pickedDocumentToggle(data.nombre, data.categorias, data.url, data._id)}>
+
+                      <h4 className="text-preview">{data.nombre}</h4>
+                      <h5>{data.categorias.join(", ")}</h5>
+                    </div>
+
+                    {pickedDocID.includes(data._id)
+                      ?
+                      ""
+                      :
+                      <div className="element-options" onClick={() => deletionProcess(data._id)}><img src={deleteI} alt="" /></div>
+                    }
+
+                    {!pickedDocID.includes(data._id)
+                      ?
+                      <div className="element-options" onClick={() => docSetter(data._id)}>
+                        <img src={document} alt="eye" /></div>
+                      :
+                      <div className="element-options" onClick={() => docSetter(data._id)}><img src={Hdocument} alt="eye" /></div>
+                    }
+
+                  </div>
+                }
+              </div>)
             :
             <p>{name} no ha subido documentos aún</p>}
         </div>

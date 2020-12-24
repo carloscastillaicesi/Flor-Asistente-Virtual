@@ -10,7 +10,7 @@ class UserContextProvider extends Component {
     geometry: { lat: '', lng: '' },
     current: { lat: 3.4194719680257584, lng: -76.52423502012975 },
     pic: '',
-    stage: 0,
+    level: 0,
     auth: false,
   }
 
@@ -24,23 +24,27 @@ class UserContextProvider extends Component {
       name: data.name,
       geometry: data.geometry,
       pic: data.pic,
-      stage: data.stage,
+      level: data.level,
+      current: data.current ? data.current : this.state.current,
       auth: true,
     })
-
-
   }
 
   setCurrentLocation = (data) => {
     this.setState({
       ...this.state, current: data
     })
-
-
   }
+
+  setCurrentUserLocalStorage = () => {
+    localStorage.setItem('state', JSON.stringify(this.state))
+  }
+
+
+
   render() {
     return (
-      <UserContext.Provider value={{ ...this.state, toggleAuth: this.toggleAuth, userData: this.userData, setCurrentLocation: this.setCurrentLocation }}>
+      <UserContext.Provider value={{ ...this.state, toggleAuth: this.toggleAuth, userData: this.userData, setCurrentLocation: this.setCurrentLocation, setCurrentUserLocalStorage: this.setCurrentUserLocalStorage }}>
         {this.props.children}
       </UserContext.Provider>
     )
