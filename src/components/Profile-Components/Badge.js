@@ -34,8 +34,9 @@ function Badge({ name, pic, level }) {
 
 
   return (
-    <div className="profile-component">
-      <div className="badges-component">
+    <div className="component-badge">
+
+      <div className="badges-container">
         <div className="user-image-badge">
           <div className="user-profile-badge">
             <img src={level === 1 ? stageOne : level === 2 ? stageTwo : level === 3 ? stageThree : level === 4 ? stageFour : stageOne} alt="Seed-One" /></div>
@@ -60,8 +61,8 @@ function Badge({ name, pic, level }) {
         <h2>{`Etapa # ${selectedBadge}`}</h2>
         <h4>{selectedBadgeText}</h4>
       </div>
-
     </div>
+
   )
 }
 

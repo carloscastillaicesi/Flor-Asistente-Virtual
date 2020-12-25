@@ -35,8 +35,6 @@ export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMap
 
 
   useEffect(() => {
-
-
     if (state) {
       history.push("/map");
       setPage(false);
@@ -52,7 +50,6 @@ export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMap
 
   function handleOpen() {
     setpickedUserMapView('');
-
     setTimeout(() => {
       setOpen(false);
       history.push("map/aboutme");
@@ -70,14 +67,14 @@ export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMap
         setpickedUser(userInfo);
       }
 
-      if (documentStatus === "error" || barterStatus === "error" || userStatus === "error") {
+      if (documentStatus === "error" || barterStatus === "error" || userStatus === "error" || !pickedUser || !pickedUserBarters || !pickedUserDocuments) {
         setmessage(`Hubo un error cargando el perfil de ${name}, contactate con el administrador`);
       }
+
     }, 200);
   }
 
   function handleClose() {
-
     setTimeout(() => {
       setOpen(true);
       setPage(true);
@@ -88,19 +85,15 @@ export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMap
   return (
     <Popup autoPan={false} closeButton={false} onClose={handleClose.bind(this)} onOpen={handleOpen.bind(this)} className={open ? "" : "popup"}>
 
-
       { modal ? <Modal /> : ""}
 
-      {!pickedUser && !pickedUserDocuments && !pickedUserBarters ? <div className="all-users-group"><h3>{message}</h3>
-      </div> :
-
+      {pickedUser && pickedUserBarters && pickedUserDocuments ?
         <div>
-
-          <Route exact path={["/map/aboutme/plants", "/map/aboutme/userinfo", "/map/aboutme/exchange", "/map/aboutme/documents", "/map/aboutme/gallery", "/map/aboutme/detail", "/map/aboutme/badge"]}>
-            <TopProfileBar setOpen={setOpen} setPage={setPage} />
-          </Route>
           <Route strict exact path="/map/aboutme">
             <Peek name={name} pic={pic} setOpen={setOpen} />
+          </Route>
+          <Route exact path={["/map/aboutme/plants", "/map/aboutme/userinfo", "/map/aboutme/exchange", "/map/aboutme/documents", "/map/aboutme/gallery", "/map/aboutme/detail", "/map/aboutme/badge"]}>
+            <TopProfileBar setOpen={setOpen} setPage={setPage} />
           </Route>
           <Route path="/map/aboutme/badge">
             <Badge
@@ -139,6 +132,8 @@ export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMap
           <Route path="/map/aboutme/userinfo">
             <UserInfo user={pickedUser} name={name} pic={pic} level={level} />
           </Route>
+        </div> :
+        <div className="all-users-group"><h3>{message}</h3>
         </div>}
     </Popup>
   );

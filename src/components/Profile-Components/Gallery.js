@@ -28,8 +28,7 @@ function Gallery({ gallery, name }) {
 
   console.log(gallery);
   return (
-    <div className="profile-component">
-
+    <div className={gallery < 2 ? "component-gallery" : "component-gallery-full "}>
       {image ?
         <div className="image-view">
           <div onClick={() => closeImage()} className="close-image-view">x</div>

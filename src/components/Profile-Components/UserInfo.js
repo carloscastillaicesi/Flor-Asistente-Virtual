@@ -17,9 +17,7 @@ function UserInfo({ user, pic, name, level }) {
 
 
   return (
-
-    <div className="profile-component">
-
+    <div className="component-userinfo">
       <div className="user-info">
         <img src={pic.length > 5 ? pic : defaultPic} alt="" className="user-profile-image" />
         <h2>{name}</h2>
@@ -42,7 +40,7 @@ function UserInfo({ user, pic, name, level }) {
       <Link to="/map/aboutme/detail">
         <div className="about-me">
           <div ><h4>Acerca de Mí</h4></div>
-          <div >Conoce más sobre mi</div>
+          <div >Conoce más sobre  {name.split(" ")[0]}</div>
         </div>
       </Link>
       <Link to="/map/aboutme/gallery">
@@ -111,7 +109,7 @@ function UserInfo({ user, pic, name, level }) {
           </div>
         </Link > */}
       </div>
-    </div >
+    </div>
   )
 }
 

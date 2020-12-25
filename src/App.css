@@ -349,8 +349,42 @@ input[type="tel"]:focus {
 /*<--------------------->*/
 
 /*POPUP COMPONENTS SHARED STYLES */
-.profile-component {
+.component-userinfo,
+.component-gallery-full {
   background-color: var(--color-primary);
+  border-radius: 0px 0px 20px 20px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: var(--height-profile-component);
+  width: var(--width-profile-component);
+  -webkit-overflow-scrolling: touch;
+}
+
+.component-document,
+.component-badge,
+.component-exchange,
+.component-gallery,
+.component-detailed {
+  background-color: var(--color-primary);
+  background: -moz-linear-gradient(
+    top,
+    #00cf88 0%,
+    #00cf88 50%,
+    #ffffff 50%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    top,
+    #00cf88 0%,
+    #00cf88 50%,
+    #ffffff 50%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #00cf88 0%,
+    #00cf88 50%,
+    #ffffff 50%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00cf88', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
   border-radius: 0px 0px 20px 20px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -364,13 +398,19 @@ input[type="tel"]:focus {
   backdrop-filter: blur(2px);
 }
 /* width */
-.profile-component::-webkit-scrollbar {
+.component-userinfo::-webkit-scrollbar,
+.component-gallery::-webkit-scrollbar,
+.component-gallery-full::-webkit-scrollbar,
+.component-document::-webkit-scrollbar,
+.component-badge::-webkit-scrollbar,
+.component-exchange::-webkit-scrollbar,
+.component-detailed::-webkit-scrollbar {
   display: none;
   -ms-overflow-style: none;
   scrollbar-color: transparent transparent;
 }
 
-.profile-component .user-info {
+.user-info {
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -472,16 +512,22 @@ input[type="tel"]:focus {
 /*<--------Modal for Picked items---------->*/
 
 .picked-modal-background-container {
-  height: 93.7%;
-  width: 103.2%;
+  height: var(--height-profile-component);
+  width: var(--width-profile-component);
   background-color: rgba(0, 0, 0, 0.3);
   z-index: 4;
   position: absolute;
   display: flex;
   justify-content: center;
-  align-items: center;
   border-radius: 0px 0px 20px 20px;
   backdrop-filter: blur(2px);
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+/* width */
+.picked-modal-background-container::-webkit-scrollbar {
+  display: none;
 }
 
 .picked-modal-background-container-scape-area {
@@ -492,7 +538,6 @@ input[type="tel"]:focus {
 }
 
 .close-picked {
-  margin-left: 95%;
   cursor: pointer;
   font-size: 1.5em;
   font-family: "Varela Round", cursive;
@@ -501,16 +546,38 @@ input[type="tel"]:focus {
 }
 
 .picked {
+  position: absolute;
   background: white;
   width: 90%;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 20px;
+  margin: 10px;
   padding: 10px 15px;
   z-index: 5;
 }
 
+.picked h2 {
+  color: var(--color-primary);
+  margin: 5px 0px;
+}
+
+.picked-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--color-lines);
+  margin-bottom: 10px;
+}
+
+.picked-top div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .picked-owner {
-  background-color: white;
   display: flex;
   align-items: center;
   padding: 5px 0px;
@@ -522,7 +589,6 @@ input[type="tel"]:focus {
   margin-right: 10px;
   object-fit: cover;
   background-repeat: no-repeat;
-
   border-radius: 50%;
 }
 .picked-owner h4 {
@@ -535,10 +601,7 @@ input[type="tel"]:focus {
   -webkit-overflow-scrolling: touch;
   white-space: nowrap;
   text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 20px 0;
+  margin: 5px 0;
   margin-left: -10px;
 }
 
@@ -602,7 +665,7 @@ input[type="tel"]:focus {
   transition: display 0.7s ease-out;
   height: inherit;
   background-color: white;
-  margin-top: 8px;
+  margin-top: 7px;
   padding: 17px;
 }
 
@@ -930,7 +993,7 @@ input[type="tel"]:focus {
 
 /*COMPONENT EXCLUSIVE STYLES: Badge*/
 
-.profile-component .badges-component {
+.badges-container {
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -1213,6 +1276,18 @@ input[type="tel"]:focus {
   display: flex;
   flex-direction: row;
   padding: 5px 10px;
+}
+
+.exchange-switch-item-checked {
+  border-bottom: 3px solid var(--color-primary);
+  color: var(--color-primary);
+  transition: border-bottom 0.5s ease-out, color 0.5s ease-out;
+}
+
+.exchange-switch-item-unchecked {
+  border-bottom: 3px solid white;
+  color: var(--color-secondary);
+  transition: border-bottom 0.5s ease-out, color 0.5s ease-out;
 }
 
 .element-list-item .eye {

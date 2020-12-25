@@ -51,13 +51,25 @@ function Documents({ documents, name, pic, setModal }) {
   }, [pickedDocID, deletedpickedDocID, deletionpickedDocID])
 
   return (
-    <div>
+    <div className="component-document">
+
       {pickedDocument ?
         <div className="picked-modal-background-container">
           <div onClick={() => pickedDocumentToggle()} className="picked-modal-background-container-scape-area"> </div>
           <div className="picked">
-            <div onClick={() => pickedDocumentToggle()} className="close-picked">x</div>
-            <h5>{pickedDocID.includes(pickedDocument.id) ? "Este documento se encuentra oculto" : ""}</h5>
+            <div className="picked-top">
+              <div>
+                {!pickedDocID.includes(pickedDocument.id)
+                  ?
+                  <div className="element-options">
+                    <img src={document} alt="eye" /></div>
+                  :
+                  <div className="element-options"><img src={Hdocument} alt="eye" /></div>
+                }
+                <h6>{pickedDocID.includes(pickedDocument.id) ? "Este documento se encuentra oculto" : "Este documento se encuentra visible"}</h6>
+              </div>
+              <div onClick={() => pickedDocumentToggle()} className="close-picked">x</div>
+            </div>
             <h1>{pickedDocument.nombre}</h1>
             <hr />
             <h3><strong>Temas</strong></h3>
@@ -65,7 +77,7 @@ function Documents({ documents, name, pic, setModal }) {
             <hr />
             <div className="picked-owner">
               <img src={pic} alt="" />
-              <h4>{name}</h4>
+              <h5> <strong>{name.split(" ")[0]} </strong>subió este documento</h5>
             </div>
             <a href={pickedDocument.url} target={"_blank"}>  <div className="picked-actions">Ver Documento</div> </a>
             <div className="picked-actions" onClick={setModal.bind()}>Contactar a {name.split(" ")[0]}</div>
@@ -73,14 +85,14 @@ function Documents({ documents, name, pic, setModal }) {
         </div>
         : ""}
 
-      <div className="profile-component">
+      <div >
         <div className="user-info">
           <img src={pic} alt="" className="user-profile-image" />
           <h5>Conoce los documentos que ha compartido</h5>
           <h2>{name}</h2>
         </div>
         <div className="element-list-container">
-          {documents ?
+          {documents.length > 0 ?
             documents.map((data, i) =>
 
               <div className={deletedpickedDocID.includes(data._id) ? "element-list-item-container-deleted" : "element-list-item-container"} key={i} >
@@ -129,6 +141,7 @@ function Documents({ documents, name, pic, setModal }) {
         </div>
       </div>
     </div>
+
   )
 }
 
