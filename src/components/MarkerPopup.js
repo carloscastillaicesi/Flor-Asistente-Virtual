@@ -10,9 +10,11 @@ import UserInfo from "../components/Profile-Components/UserInfo";
 import Badge from "./Profile-Components/Badge";
 import TopProfileBar from "./Profile-Components/TopProfileBar";
 import { SettingContext } from "../contexts/SettingContext";
+import { DocumentContext } from "../contexts/DocumentContext";
+import { BarterContext } from "../contexts/BarterContext";
+import { UserInfoContext } from "../contexts/UserInfoContext";
 import { Route, useHistory, useLocation } from "react-router-dom";
 import * as ReactLeaflet from "react-leaflet";
-import { useQuery } from "react-query";
 const { Popup } = ReactLeaflet;
 
 export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMapView, _id, level }) {
@@ -22,7 +24,9 @@ export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMap
 
   const [state, setPage] = useState(false)
   const { modal, toggleModal } = useContext(SettingContext);
-
+  const { documents, documentStatus } = useContext(DocumentContext);
+  const { barters, barterStatus } = useContext(BarterContext);
+  const { users, userStatus } = useContext(UserInfoContext);
   const [message, setmessage] = useState("Cargando...");
 
   const [pickedUser, setpickedUser] = useState(false);
@@ -30,35 +34,9 @@ export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMap
   const [pickedUserBarters, setpickedUserBarters] = useState(false);
 
 
-
-  const fetchDetails = async () => {
-    const res = await fetch("/map/aboutme", {
-      crossDomain: true
-    })
-    return res.json();
-  }
-
-  const fetchDocuments = async () => {
-    const res = await fetch("/map/documents", {
-      crossDomain: true
-    })
-    return res.json();
-  }
-
-  const fetchBarters = async () => {
-    const res = await fetch("/map/barters", {
-      crossDomain: true
-    })
-    return res.json();
-  }
-
-  const detailsQuery = useQuery('details', fetchDetails);
-  const documentsQuery = useQuery('documents', fetchDocuments);
-  const bartersQuery = useQuery('barters', fetchBarters);
-
   useEffect(() => {
 
-    console.log(bartersQuery)
+
     if (state) {
       history.push("/map");
       setPage(false);
@@ -79,13 +57,20 @@ export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMap
       setOpen(false);
       history.push("map/aboutme");
       //picks the user out of the database
-      var userInfo = detailsQuery.data.filter(i => { return i._id === _id })[0];
-      var userDocuments = documentsQuery.data.filter(d => { return d.uId === _id });
-      var userBarters = bartersQuery.data.filter(i => { return i.uId === _id });
-      setpickedUser(userInfo);
-      setpickedUserDocuments(userDocuments);
-      setpickedUserBarters(userBarters);
-      if (detailsQuery.isError || userDocuments.isError || userBarters.isError || !userInfo) {
+      if (documentStatus === "success") {
+        var userDocuments = documents.filter(d => { return d.uId === _id });
+        setpickedUserDocuments(userDocuments);
+      }
+      if (barterStatus === "success") {
+        var userBarters = barters.filter(d => { return d.uId === _id });
+        setpickedUserBarters(userBarters);
+      }
+      if (userStatus === "success") {
+        var userInfo = users.filter(i => { return i._id === _id })[0];
+        setpickedUser(userInfo);
+      }
+
+      if (documentStatus === "error" || barterStatus === "error" || userStatus === "error") {
         setmessage(`Hubo un error cargando el perfil de ${name}, contactate con el administrador`);
       }
     }, 200);
@@ -106,7 +91,7 @@ export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMap
 
       { modal ? <Modal /> : ""}
 
-      {!pickedUser ? <div className="all-users-group"><h3>{message}</h3>
+      {!pickedUser && !pickedUserDocuments && !pickedUserBarters ? <div className="all-users-group"><h3>{message}</h3>
       </div> :
 
         <div>

@@ -18,11 +18,9 @@ function Documents({ documents, name, pic, setModal }) {
     }
   }
 
-
   function docDelete(id) {
     setdeletepickedDocID([...deletedpickedDocID, id]);
   }
-
 
   function deletionProcess(id) {
     if (id !== deletionpickedDocID) {
@@ -30,8 +28,8 @@ function Documents({ documents, name, pic, setModal }) {
     } else {
       setdeletionpickedDocID();
     }
-
   }
+
   function pickedDocumentToggle(nombre, categorias, url, id) {
     if (nombre) {
       const picked = {
