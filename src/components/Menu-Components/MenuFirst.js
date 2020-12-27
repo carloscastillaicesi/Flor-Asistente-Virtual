@@ -1,8 +1,7 @@
 import React from 'react'
 import exchange from "../../assets/menu-exchange-option.svg";
 import library from "../../assets/menu-library-option.svg";
-import florc from "../../assets/flor-character-menufirst.png";
-import florf from "../../assets/flor-fill-menufirst.png";
+
 import { Link } from "react-router-dom";
 
 function MenuFirst() {
@@ -27,11 +26,6 @@ function MenuFirst() {
             </div>
             <div class="arrow-menu right" /></div>
         </Link>
-
-      </div>
-      <div className="illustrations-menufirst">
-        <img src={florf} alt="" />
-        <img src={florc} alt="" />
       </div>
     </div>
   )

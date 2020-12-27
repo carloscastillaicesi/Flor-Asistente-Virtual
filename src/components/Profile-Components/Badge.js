@@ -8,41 +8,39 @@ import stageFour from "../../assets/seed_marker_four.svg";
 function Badge({ name, pic, level }) {
 
   const progress = [(level * 20) - 20, "%"].join('');
-
-  const [selectedBadge, setselectedBadge] = useState(level)
-  const [selectedBadgeText, setselectedBadgeText] = useState("Badge 1")
+  const [selectedBadge, setselectedBadge] = useState()
+  const [selectedBadgeText, setselectedBadgeText] = useState("No has seleccionando ninguna etapa")
 
   function setSelectedBadgeF(params) {
+
     setselectedBadge(params);
     switch (params) {
       case 1:
-        setselectedBadgeText("Al completar esta primer etapa podrás ver tu huerta georeferenciada en el mapa de sembrado vida con tu nombre y foto de perfil, para que otros sembradores de vida puedan encontrarte");
+        setselectedBadgeText("Al completar la primer etapa podrás ver la semilla de tu huerta en el mapa de sembrado vida con tu nombre y foto de perfil, así otros sembradores de vida pueden encontrarte con tu información básica");
         break;
       case 2:
-        setselectedBadgeText("¡Genial! Tu semilla ahora ha germinado, gracias a que has completado la segunda etapa con más información");
+        setselectedBadgeText("Al completar la segunda etapa podrás ver que tu semilla ha germinado, en tuperfl puedes encontrar toda tu información básica También podrás ver información básica de otros usuarios registrados en el mapa.");
         break;
       case 3:
-        setselectedBadgeText("En esta etapa podras ver que tu semilla ha crecido. Puedes navegar por el mapa y ver en el pefil de otros sembradores de vida el proceso de sus registros; recuerda que puedes maximizar o minimizar la pantalla de la webApp para mejorar tu experiencia. ");
+        setselectedBadgeText("En esta tercera etapa podrás ver que tu semilla ha crecido fuerte gracias a la información que has registrado. Podrás ver las peticiones de otros usuarios registrados, ingresar a la biblioteca virtual y visualizar las cosas que otras personas tienen para intercambiar.");
         break;
       case 4:
-        setselectedBadgeText("Genial al terminar todo el proceso podras ver que tu semilla ha florecido; Las personas podran ver tu infromación personla, como tu experiencia y conocimiento en huertas. Podras registrar aquello que tines, necesitas y compartir o encontrar documentos sobre agricultura Urbana.");
+        setselectedBadgeText(": En esta última etapa tu planta ha florecido gracias a toda la información que has registrado. Ahora solo te queda disfrutar de las funcionalidades que flor tiene para ti Has peticiones de cosas que necesites, realiza intercambio con otros sembradores de vida, sube documentos a la biblioteca virtual y consulta documentos que te ayuden a mejorar tu experiencia como un huertero sembrador de vida.");
         break;
       default:
         break;
     }
   }
 
-
   return (
     <div className="component-badge">
-
       <div className="badges-container">
         <div className="user-image-badge">
           <div className="user-profile-badge">
             <img src={level === 1 ? stageOne : level === 2 ? stageTwo : level === 3 ? stageThree : level === 4 ? stageFour : stageOne} alt="Seed-One" /></div>
           <img src={pic.length > 5 ? pic : defaultPic} alt="" className="user-profile-image-badge" />
           <h2>{name}</h2>
-          <h4>Se encuentra en la </h4>
+          <h3>Se encuentra en la</h3>
           <h5><strong>Etapa {level}</strong> </h5>
         </div>
         <h5>Toca para conocer más</h5>
@@ -57,8 +55,8 @@ function Badge({ name, pic, level }) {
             <img src={stageFour} alt="Seed-Four" onClick={() => setSelectedBadgeF(4)} /></div>
         </div>
         <br />
-        <h3>Conoce de qué se trata la</h3>
-        <h2>{`Etapa # ${selectedBadge}`}</h2>
+        <h3>{selectedBadge ? `Conoce de qué se trata la` : ""}</h3>
+        <h2>{selectedBadge ? `Etapa # ${selectedBadge}` : ""}</h2>
         <h4>{selectedBadgeText}</h4>
       </div>
     </div>

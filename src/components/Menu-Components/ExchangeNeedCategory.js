@@ -1,21 +1,31 @@
-import React, { useState, useEffect, useContext } from 'react'
+
+import React, { useState, useEffect } from 'react'
+import { Link, useParams, useHistory } from "react-router-dom";
 import document from "../../assets/ver-documento.svg";
 import Hdocument from "../../assets/ocultar-documento.svg";
 import deleteI from "../../assets/delete.svg";
-import { BarterContext } from "../../contexts/BarterContext";
+function ExchangeNeedCategory({ products, userInfo }) {
 
-function ExchangeNeed() {
-  var localStore = JSON.parse(localStorage.getItem('state'));
-  const { barters } = useContext(BarterContext);
-  const [userHaves] = useState(barters.filter(b1 => b1.tipo === 1 && b1.uId === localStore._id));
-  const [pickedProduct, setpickedProduct] = useState();
+  //Loops through and gets all the documents from all the users 
+
+  let { category } = useParams();
+
+  var products2 = products.map(d => d = { user: userInfo.filter(u => u._id === d.uId), ...d }).flat();
+
+  function filterViaCategory(arr, category) {
+    return arr.filter(obj => obj.categorias.some(cat => cat.includes(category)));
+  }
+
+  var history = useHistory();
+  var productsPerCat = filterViaCategory(products2, category);
+  console.log("productsPerCat", productsPerCat)
+
   const [pickedProdID, setpickedProdID] = useState([]);
   const [deletionpickedProdID, setdeletionpickedProdID] = useState();
   const [deletedpickedProdID, setdeletepickedProdID] = useState([]);
+  const [pickedProduct, setpickedProduct] = useState()
 
-
-
-  function prodSetter(id) {
+  function docSetter(id) {
     if (pickedProdID.includes(id)) {
       let filteredArray = pickedProdID.filter(item => item !== id)
       setpickedProdID(filteredArray);
@@ -24,11 +34,9 @@ function ExchangeNeed() {
     }
   }
 
-
-  function prodDelete(id) {
+  function docDelete(id) {
     setdeletepickedProdID([...deletedpickedProdID, id]);
   }
-
 
   function deletionProcess(id) {
     if (id !== deletionpickedProdID) {
@@ -36,15 +44,17 @@ function ExchangeNeed() {
     } else {
       setdeletionpickedProdID();
     }
-
   }
 
-  function pickedProductToggle(descripcion, cambio, nombre, categorias, id) {
-
-    if (descripcion) {
+  function pickedProductToggle(userName, userPic, userId, fotos, descripcion, cambio, nombre, categorias, id) {
+    if (userName) {
       const picked = {
+        userName: userName,
+        userPic: userPic,
+        userId: userId,
         nombre: nombre,
         categorias: categorias,
+        fotos: fotos,
         descripcion: descripcion,
         cambio: cambio,
         id: id
@@ -55,29 +65,18 @@ function ExchangeNeed() {
     } else {
       setpickedProduct();
     }
-
   }
 
 
   useEffect(() => {
-
-    console.log(localStore._id)
-    console.log("Hide Product: ", pickedProdID);
-    console.log("Deletion Process of Product: ", deletionpickedProdID);
-    console.log("Deleted Products: ", deletedpickedProdID);
-  }, [pickedProdID, deletedpickedProdID, deletionpickedProdID, pickedProduct, userHaves])
-
-
+    console.log("Hide Document: ", pickedProdID);
+    console.log("Deletion Process of Document: ", deletionpickedProdID);
+    console.log("Deleted products: ", deletedpickedProdID);
+  }, [pickedProdID, deletedpickedProdID, deletionpickedProdID, pickedProduct])
 
 
   return (
-
-    <div className="component-menuexchange">
-      <div className="component-exchange-text">
-        <h2>Intercambios</h2>
-        <h6>Cosas que necesito</h6>
-      </div>
-
+    <div className="component-library-category">
       {pickedProduct ?
         <div className="menu-picked-modal-background-container">
           <div className="picked">
@@ -94,11 +93,17 @@ function ExchangeNeed() {
               </div>
               <div onClick={() => pickedProductToggle()} className="close-picked">x</div>
             </div>
-            <h2>{"Necesito"}</h2>
+            <h2>{"Tengo"}</h2>
             <h1>{pickedProduct.nombre}</h1>
             <h5><strong>Categorías: </strong>{pickedProduct.categorias.join(", ")}</h5>
 
-
+            <div class="picked-gallery-wrapper">
+              {pickedProduct.fotos ?
+                <div>{
+                  pickedProduct.fotos.map((data, i) =>
+                    <img key={i} src={data} alt="gallery" onError={(e) => { e.target.src = 'https://developers.google.com/maps/documentation/streetview/images/error-image-generic.png'; e.target.onError = null; }} />)
+                }</div> : <p> {pickedProduct.userName.split(" ")[0]} no ha subido imágenes</p>}
+            </div>
 
             <hr />
             <div className="product-description-box">
@@ -112,26 +117,34 @@ function ExchangeNeed() {
             </div>
             <hr />
             <div className="picked-owner">
-              <img src={localStore.pic} alt="" />
-              <h5>{"Necesitas este producto"}</h5>
+              <img src={pickedProduct.userPic} alt="" />
+              <h5> <strong>{pickedProduct.userName.split(" ")[0]} </strong> tiene este producto para intercambiar </h5>
             </div>
+            <div className="picked-actions" onClick={() => history.push(`/map/${pickedProduct.userId}`)}>Ir al perfil de {pickedProduct.userName.split(" ")[0]}</div>
           </div>
         </div>
         : ""}
-      <div >
 
 
-        {userHaves ?
-          userHaves.map((data, i) =>
-            <div key={i} className={deletedpickedProdID.includes(data._id) ? "element-list-item-container-deleted" : "element-list-item-container"}>
+      <div className="component-library-text">
+        <h2>Intercambios</h2>
+        <h4>{category}</h4>
+      </div>
+
+      <div className="component-library-categories-container">
+
+        {productsPerCat.length > 0 ?
+          productsPerCat.map((data, i) =>
+
+            <div div className={deletedpickedProdID.includes(data._id) ? "element-list-item-container-deleted" : "element-list-item-container"} key={i}>
 
               {deletionpickedProdID === data._id ?
 
                 <div className={deletionpickedProdID.includes(data._id) ? "element-list-item-deletion" : "element-list-item"}>
 
                   <img src={deleteI} alt="" />
-                  <h5>¿Deseas eliminar este Item?</h5>
-                  <div className="element-options" onClick={() => prodDelete(data._id)}>Sí</div>
+                  <h5>¿Deseas eliminar este documento?</h5>
+                  <div className="element-options" onClick={() => docDelete(data._id)}>Sí</div>
                   <div className="element-options" onClick={() => deletionProcess(data._id)}>No</div>
                 </div>
 
@@ -139,9 +152,11 @@ function ExchangeNeed() {
 
                 <div src={data} className={pickedProdID.includes(data._id) ? "element-list-item-hidden" : "element-list-item"} >
 
-                  <div className="element-description" onClick={() => pickedProductToggle(data.descripcion, data.cambio, data.nombre, data.categorias, data.id)}  >
-                    <h4>{data.nombre}</h4>
-                    <h5>{data.categorias.join(", ")}</h5>
+                  <div className="element-description" onClick={() => pickedProductToggle(data.user[0].name, data.user[0].pic, data.user[0]._id, data.fotos, data.descripcion, data.cambio, data.nombre, data.categorias, data.id)}>
+
+                    <h5 className="text-preview">{data.nombre}</h5>
+                    <h6>{data.user[0].name}</h6>
+                    <h6>{data.categorias.join(", ")}</h6>
                   </div>
 
                   {pickedProdID.includes(data._id)
@@ -153,20 +168,19 @@ function ExchangeNeed() {
 
                   {!pickedProdID.includes(data._id)
                     ?
-                    <div className="element-options" onClick={() => prodSetter(data._id)}>
+                    <div className="element-options" onClick={() => docSetter(data._id)}>
                       <img src={document} alt="eye" /></div>
                     :
-                    <div className="element-options" onClick={() => prodSetter(data._id)}><img src={Hdocument} alt="eye" /></div>
+                    <div className="element-options" onClick={() => docSetter(data._id)}><img src={Hdocument} alt="eye" /></div>
                   }
+
                 </div>
               }
             </div>)
-          :
-          "No has registrado productos o servicios para intercambiar u ofertar"}
+          : <p>{`La categoria ${category} no tiene documentos aún o no existe`}</p>}
       </div>
     </div>
-
   )
 }
 
-export default ExchangeNeed
+export default ExchangeNeedCategory

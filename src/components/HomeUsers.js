@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useContext } from "react";
-import { useHistory, Link, useParams } from "react-router-dom";
+import React, { useEffect, useContext } from "react";
+import { useHistory, useParams } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 import { SettingContext } from "../contexts/SettingContext";
-import florInicial from "../assets/flor_inicio.svg"
+import florInicial from "../assets/flor_inicio.png"
 import { useQuery } from "react-query";
 import spinner from "../assets/spinner.svg"
 
@@ -19,7 +19,7 @@ const HomeUsers = () => {
     return res.json();
   }
 
-  const { isLoading, isError, data, status } = useQuery('currentUser', fetchUser);
+  const { isLoading, data, status } = useQuery('currentUser', fetchUser);
 
 
 
@@ -44,8 +44,6 @@ const HomeUsers = () => {
             state: {
               longitude: position.coords.longitude,
               latitude: position.coords.latitude,
-              buttonText: "Entrar al Mapa",
-              geo: true
             }
           });
         }, 1000);
@@ -81,7 +79,7 @@ const HomeUsers = () => {
           <br />
           <img src={florInicial} alt="" />
           <br />
-          <p className="paragraph">Para poder ingresar al mapa, necesito me permitas permitas conocer tu ubicación</p>
+          <p className="paragraph">Para poder ingresar al mapa, necesito me permitas conocer tu ubicación</p>
           <div onClick={getGeo.bind()} className="option-button">Activar Geolocalización</div>
         </div >}
 

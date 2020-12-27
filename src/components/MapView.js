@@ -2,8 +2,9 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import { Map, TileLayer, Marker, Circle } from "react-leaflet";
 import { UserContext } from "../contexts/UserContext";
 import { SettingContext } from "../contexts/SettingContext";
+import { LocationContext } from "../contexts/LocationContext";
 import { Popup } from "react-leaflet";
-import { useLocation, useHistory, Link } from "react-router-dom";
+import { useLocation, useHistory, Link, useParams } from "react-router-dom";
 import "leaflet/dist/leaflet.css";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import MarkerPopup from "./MarkerPopup";
@@ -13,10 +14,7 @@ import { IconThree } from "./Icons/IconThree";
 import { IconFour } from "./Icons/IconFour";
 import { IconUser } from "./Icons/IconUser";
 import defaultPic from "../assets/defaultphotouser.png"
-import florFinal from "../assets/Flor_geo.svg"
-import image from "../assets/sembrandovida.png";
 import sembrando from "../assets/sembranovidalogo.png";
-import mihuerta from "../assets/mihuerta.svg";
 import geolocation from "../assets/geolocation2.svg";
 import allusersicon from "../assets/allusersicon.svg";
 import terrain from "../assets/terrain.svg";
@@ -31,6 +29,7 @@ import spinner from "../assets/spinner.svg"
 
 const MapView = () => {
 
+
   const { _id, name, geometry, current, pic, level, userData, setCurrentLocation, setCurrentUserLocalStorage } = useContext(UserContext);
 
   var localStore = JSON.parse(localStorage.getItem('state'));
@@ -44,26 +43,47 @@ const MapView = () => {
     return res.json();
   }
 
-  const { isLoading, isError, data, status } = useQuery('locations', fetchLocations);
-
+  const { isLoading, isError, data } = useQuery('locations', fetchLocations);
 
   const [pickedUser, setpickedUser] = useState('')
   const [mapUrl, setMapUrl] = useState(true)
   const [open, setOpen] = useState(true);
   const [options, setOptions] = useState("map");
+  const [posActual, setposActual] = useState(false);
 
   const { fullScreenMode, toggleFullscreen, setModal } = useContext(SettingContext);
-
+  const { locations, locationsStatus } = useContext(LocationContext);
   const location = useLocation();
 
   const history = useHistory();
+
+  let { userId } = useParams();
 
   const mapRef = useRef(null);
 
   const handle = useFullScreenHandle();
 
   useEffect(() => {
+
     setModal(false);
+
+    console.log("params", userId)
+
+    if (userId && userId !== "aboutme") {
+      if (locations) {
+        var result = [];
+        locations.forEach(function (o) { if (o['_id'] === userId) result.push(o); });
+        if (result) {
+          setpickedUser(result[0].geometry);
+          centerMapViewUser();
+          setTimeout(() => {
+            history.push("/map");
+          }, 500);
+        }
+      }
+    }
+
+
     if (location) {
       if (location.state !== undefined) {
         if (location.state.latitude && location.state.longitude) {
@@ -79,13 +99,13 @@ const MapView = () => {
         }
       }
     }
-  }, [location, history, setModal]);
+  }, [location, history, setModal, pickedUser, userId, isLoading, locations]);
 
 
   function centerMapView(e) {
     const { leafletElement } = mapRef.current;
     if (e) {
-      leafletElement.setView(e.popup._latlng, 17);
+      leafletElement.setView(e.popup._latlng, 18);
       const point = leafletElement.project(e.target._popup._latlng);
       leafletElement.panTo(leafletElement.unproject(point), { animate: true });
     }
@@ -95,10 +115,9 @@ const MapView = () => {
     const { leafletElement } = mapRef.current;
     if (pickedUser !== '') {
       let latlng = { lat: pickedUser[0], lng: pickedUser[1] }
-      leafletElement.setView(latlng, 17);
+      leafletElement.setView(latlng, 18);
       const point = leafletElement.project(latlng);
       leafletElement.panTo(leafletElement.unproject(point), { animate: true });
-
       setOpen(true);
       setOptions("map");
     }
@@ -113,7 +132,7 @@ const MapView = () => {
         const currentLocation = { lat: latitude, lng: longitude };
         setCurrentLocation(currentLocation);
         setCurrentUserLocalStorage();
-        leafletElement.setView(currentLocation, 17);
+        leafletElement.setView(currentLocation, 18);
         const point = leafletElement.project(currentLocation);
         leafletElement.panTo(leafletElement.unproject(point), { animate: true });
       },
@@ -131,6 +150,11 @@ const MapView = () => {
     setMapUrl(!mapUrl);
   }
 
+
+  function posActualToggle() {
+    setposActual(!posActual);
+  }
+
   function allUsersToggle() {
     if (open) {
       setOpen(false);
@@ -138,6 +162,7 @@ const MapView = () => {
     } else if (!open) {
       setOpen(true);
       setOptions("map");
+      setpickedUser('');
     }
   }
 
@@ -264,12 +289,16 @@ const MapView = () => {
                     icon={IconUser}
                     opacity={open ? 100 : 0}>
                     <Popup autoPan={false} closeButton={false} onClose={() => setOpen(true)} onOpen={() => { setOpen(false); centerMapViewMe(this); }}>
-                      <div className="mihuerta-container">
-                        <img src={pic} alt="" />
-                        <h2>Mi posición actual</h2>
-                        <br />
-                        {/* <div className="mihuerta" onClick={
-                      () => { setpickedUser([3.3786396334561846, -76.53985514664332]); centerMapViewUser() }}><img src={mihuerta} alt="" /></div> */}
+                      <div className={!posActual ? "mihuerta-container" : "mihuerta-container-expanded"}>
+
+                        <div className="mihuerta-container-item" onClick={!posActual ? () => { posActualToggle(); setpickedUser(geometry) } : () => { posActualToggle() }}>
+                          <img src={pic} alt="" />
+                          <h2>Mi posición actual</h2>
+                          <div className={!posActual ? "arrow-gallery down" : "arrow-gallery up"} />
+                        </div>
+
+                        <div onClick={posActual ? () => { centerMapViewUser(); posActualToggle() } : ""}><h3>Ir a mi huerta</h3></div>
+
                       </div>
                     </Popup>
                     <Circle
@@ -303,9 +332,10 @@ const MapView = () => {
                     opacity={open ? 100 : 0}>
 
                     <MarkerPopup
-                      name={"Mi Huerta"}
+                      name={name}
                       open={open}
                       _id={_id}
+                      level={level}
                       setOpen={setOpen} setOptions={setOptions} setpickedUserMapView={setpickedUser} pic={pic}
                     />
                   </Marker>

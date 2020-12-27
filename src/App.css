@@ -146,6 +146,22 @@ input[type="tel"]:focus {
   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  transition: transform 0.7s ease-out;
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transition: transform 0.7s ease-out;
+}
+
 /*Closing Global Styles */
 
 /*<--------------------->*/
@@ -282,13 +298,98 @@ input[type="tel"]:focus {
   min-width: 250px;
   border-radius: 25px;
   padding: 2px;
+  padding-bottom: 2px;
+  transition: padding-bottom 0.7s ease-out;
 }
+
+.mihuerta-container-expanded {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  min-width: 250px;
+  border-radius: 25px;
+  padding: 2px;
+  padding-bottom: 50px;
+  transition: padding-bottom 0.7s ease-out;
+}
+.mihuerta-container {
+  background-color: white;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  min-width: 250px;
+  border-radius: 25px;
+  padding: 2px;
+  padding-bottom: 2px;
+  transition: padding-bottom 1s ease-out;
+}
+.mihuerta-container-item {
+  padding: 2px 15px 2px 2px;
+  background-color: white;
+  width: 100%;
+  border-radius: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.mihuerta-container-expanded {
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  min-width: 250px;
+  border-radius: 25px;
+  padding: 2px;
+  padding-bottom: 10px;
+  transition: padding-bottom 1s ease-out;
+}
+
+.mihuerta-container-expanded h3 {
+  color: white;
+  margin-top: 10px;
+  opacity: 1;
+  height: initial;
+  background-color: var(--color-primary);
+  padding: 20px 70px;
+  border-radius: 25px;
+  transition: opacity 0.3s ease-out, background-color 0.5s ease-out,
+    margin-top 0.5s ease-out, height 0.5s ease-out,
+    background-color 0.5s ease-out;
+}
+.mihuerta-container h3 {
+  color: white;
+  margin-top: 0px;
+  opacity: 0;
+  height: 0px;
+  border-radius: 0px;
+  background-color: transparent;
+  transition: opacity 0.3s ease-out, background-color 0.5s ease-out,
+    margin-top 0.5s ease-out, height 0.5s ease-out,
+    background-color 0.5s ease-out;
+}
+
 .mihuerta-container img {
   height: 50px;
   width: 50px;
+  object-fit: cover;
   background-size: 50px;
   border-radius: 50%;
 }
+.mihuerta-container-expanded img,
+.mihuerta-container img {
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  background-size: 50px;
+  border-radius: 50%;
+}
+
 .mihuerta-container h4 {
   font-weight: bold;
 }
@@ -344,7 +445,41 @@ input[type="tel"]:focus {
   font-size: 28px;
 }
 
-/*Closing COMPONENT: HomeGuest Styles */
+/*Closing COMPONENT: Mapview */
+/*<--------------------->*/
+/*COMPONENTS MarkerPopup */
+
+.marker-popup-error {
+  background-color: white;
+  width: 274px;
+  height: 570px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+}
+.marker-popup-error-item {
+  text-align: center;
+  padding: 100px 30px;
+}
+
+.marker-popup-error-item a {
+  color: var(--color-primary) !important;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.marker-popup-loading {
+  background-color: white;
+  min-width: 150px;
+  text-align: center;
+  height: 50px;
+  border-radius: 25px;
+  padding-top: 15px;
+}
+/*Closing COMPONENT: MarkerPopup */
+
+/*<--------------------->*/
+
+/*POPUP COMPONENTS SHARED STYLES */
 
 /*<--------------------->*/
 
@@ -545,7 +680,7 @@ input[type="tel"]:focus {
   color: gray;
 }
 
-.picked {
+.picked-modal-background-container .picked {
   position: absolute;
   background: white;
   width: 90%;
@@ -656,7 +791,7 @@ input[type="tel"]:focus {
   text-overflow: ellipsis;
   white-space: nowrap;
   cursor: pointer;
-  width: 70%;
+  width: 75%;
 }
 
 .element-list-container {
@@ -945,11 +1080,6 @@ input[type="tel"]:focus {
   border-radius: 2px;
 }
 
-.right {
-  transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
-}
-
 .elem {
   display: inline-block;
 }
@@ -1002,7 +1132,12 @@ input[type="tel"]:focus {
   padding: 4%;
   width: inherit;
   height: 100%;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+  margin-bottom: 10px;
+}
+.badges-container h4 {
+  margin: 10px 0px;
+  padding: 10px 30px 30px 30px;
+  text-align: justify;
 }
 
 .user-image-badge {
@@ -1013,7 +1148,7 @@ input[type="tel"]:focus {
   justify-content: center;
   text-align: center;
   width: 90%;
-  margin: 10px 0 30px 0;
+  margin: 10px 0 15px 0;
   padding: 10px 0;
   border-bottom: 2px var(--color-lines) solid;
 }
@@ -1031,7 +1166,6 @@ input[type="tel"]:focus {
   justify-content: center;
   align-content: center;
   border: 3px var(--color-primary) solid;
-
   border-radius: 50px;
 }
 
@@ -1350,7 +1484,7 @@ input[type="tel"]:focus {
   align-items: center;
 }
 .component-menu-content {
-  height: 94%;
+  height: 65%;
 }
 
 .top-bar-menu-component h3 {
@@ -1363,10 +1497,53 @@ input[type="tel"]:focus {
   height: 45px;
 }
 
+.illustrations-menufirst {
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.illustrations-menufirst img {
+  max-width: 221;
+}
+
 /*COMPONENT EXCLUSIVE STYLES: Plants */
 
 /*<--------------------->*/
 
+/*COMPONENT EXCLUSIVE STYLES: Shared Within menus */
+
+/*<--------------------->*/
+
+.menu-picked-modal-background-container {
+  height: 89vh;
+  width: 100vw;
+  z-index: 4;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  border-radius: 0px 0px 20px 20px;
+  backdrop-filter: blur(2px);
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.menu-picked-modal-background-container .picked {
+  position: absolute;
+  align-self: center;
+  background: white;
+  max-width: 320px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  margin: 10px;
+  padding: 10px 15px;
+  z-index: 5;
+}
+
+/*COMPONENT EXCLUSIVE STYLES: Plants */
+
+/*<--------------------->*/
 /* EXCLUSIVE STYLES: MenuFirst*/
 
 .component-menufirst {
@@ -1422,15 +1599,6 @@ input[type="tel"]:focus {
   border-radius: 3px;
 }
 
-.illustrations-menufirst {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.illustrations-menufirst img {
-  max-width: 221;
-}
 /*COMPONENT EXCLUSIVE STYLES: MenuFirst */
 
 /*<--------------------->*/
@@ -1448,7 +1616,7 @@ input[type="tel"]:focus {
 }
 
 .component-library-categories-container {
-  min-width: var(--width-menu-component);
+  min-width: 300px;
   margin: 10px;
 }
 
@@ -1576,6 +1744,5 @@ input[type="tel"]:focus {
   display: inline-block;
   padding: 7px;
   height: 10px;
-
   border-radius: 3px;
 }
