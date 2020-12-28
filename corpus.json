@@ -14,13 +14,13 @@
    {
       "intent": "nombre",
       "utterances": [
-        "buenas me llamo @nombre @apellido",
-        "soy @nombre @apellido",
-        "me dicen @nombre @apellido",
-        "nombre es @nombre @apellido"
+        "me llamo",
+        "soy",
+        "me dicen",
+        "nombre es"
       ],
       "answers": [
-        "hola {{nombre}} {{apellido}}"
+        "hola [nombre]"
       ]
    },{
       "intent": "saludo",
@@ -68,26 +68,13 @@
    }   
   ],
   "entities": {
-    "nombre": {
-      "options": {
-        "carlos": ["carlos", "Carlos"],
-        "daniel": ["daniel", "Daniel"],
-        "orbay": ["orbay","Orbay"]
-      }},
-      "apellido": {
-      "options": {
-        "castilla": ["castilla", "Castilla"],
-        "manso": ["Manso ", "manso"],
-        "beltran": ["beltran","Beltran"]
-      }
-   },
+   
       "media": {
       "options": {
         "image": ["image", "Imagen", "Foto"],
         "video": ["video", "Video"],
         "audio": ["beltran","Beltran"]
       }}, 
-
        "email": {
       "locale": ["en", "es"],
       "regex": "/\\b(\\w[-._\\w]*\\w@\\w[-._\\w]*\\w\\.\\w{2,3})\\b/gi"

@@ -4,33 +4,16 @@ const { StemmerEs, StopwordsEs } = require('@nlpjs/lang-es');
 const { ConversationContext } = require('node-nlp');
 const fs = require('fs');
 var json = require('../corpus.json');
-var flatten = require('flat')
+
 const stemmer = new StemmerEs();
 const stopwords = new StopwordsEs();
 const context = new ConversationContext();
 
-function body(input) {
-  let body = input;
-  if (input.messageType === "noMedia") {
-    body = stemmer.tokenizeAndStem(body, false);
-    body = stopwords.removeStopwords(body);
-    body = body.join(' ');
-    return body;
-  } else if (input.messageType.includes("_text")) {
-    body = stemmer.tokenizeAndStem(body, false);
-    body = stopwords.removeStopwords(body);
-    body = body.join(' ');
-    return body;
-  } else {
-    body = input.messageType;
-    return body;
-  }
 
-}
 
 var main = async (input) => {
 
-  let body = body(input.body);
+  let body = input.body;
 
   const dock = await dockStart({
     "settings": {
@@ -45,9 +28,10 @@ var main = async (input) => {
   });
   const nlp = dock.get('nlp');
   await nlp.train();
-  const response = await nlp.process('es', body, context);
 
-  console.log(context);
+  console.log("body", body);
+  const response = await nlp.process('es', body, context);
+  console.log("response", response);
   /**
    * Assigning some properties of @constant response to the incoming @param input to append just some of the objects propeties: 
    * @property {string} answer - suggested answer that nlp.js sends
@@ -58,20 +42,23 @@ var main = async (input) => {
   /** Excluding key and flattening it with this module 
    * https://github.com/hughsk/flat
    */
-
+  var answers = [];
   var obj = { ...response.answers };
   for (const key in obj) {
     if (obj[key].hasOwnProperty('opts')) {
       delete obj[key].opts;
+      answers.push(obj[key].answer);
     }
   }
+
 
   let target = {
     "intent": response.intent,
     "score": response.score,
-    "entities": response.entities
+    "entities": response.entities,
+    "answers": answers,
   }
-  target = Object.assign(flatten(obj), target)
+
   const newMssg_nlp = Object.assign(input, target)
   return newMssg_nlp;
 };

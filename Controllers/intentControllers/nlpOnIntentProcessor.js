@@ -51,10 +51,7 @@ mapa = (processed) => {
 
 };
 
-
 none = (processed) => {
-
-
 
   return processed;
 };
@@ -70,7 +67,6 @@ intentClassifier = (fun) => {
     return global[fn](fun, fn);
   }
 
-  // function does not exist
   else {
     console.log("could not find " + fn + " function");
   }

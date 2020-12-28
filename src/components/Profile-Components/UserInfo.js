@@ -58,8 +58,8 @@ function UserInfo({ user, pic, name, level }) {
             {gallery ?
               <div>{
                 gallery.length > 5
-                  ? gallery.slice(0, 5).map((data, i) => <img key={i} src={data} alt="gallery" onError={(e) => { e.target.src = 'https://developers.google.com/maps/documentation/streetview/images/error-image-generic.png'; e.target.onError = null; }} />)
-                  : gallery.map((data, i) => <img key={i} src={data} alt="gallery" onError={(e) => { e.target.src = 'https://developers.google.com/maps/documentation/streetview/images/error-image-generic.png'; e.target.onError = null; }} />)
+                  ? gallery.slice(0, 5).map((data, i) => <img key={i} src={data} alt="gallery" onError={(e) => { e.target.src = 'https://i.ibb.co/C1CcBXb/Imagen-Da-ada.png'; e.target.onError = null; }} />)
+                  : gallery.map((data, i) => <img key={i} src={data} alt="gallery" onError={(e) => { e.target.src = 'https://i.ibb.co/C1CcBXb/Imagen-Da-ada.png'; e.target.onError = null; }} />)
               }</div> : <p>{name} no ha subido imágenes</p>}
           </div>
         </div>

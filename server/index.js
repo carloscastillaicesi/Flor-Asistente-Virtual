@@ -10,6 +10,10 @@ const Barters = require('../Models/bartersModels');
 const inboundRoutes = require('../Routes/inboundRouter');
 
 
+/** Create something to get the user info and then the message info an then append de the NLP processing
+ */
+
+
 /**conection to db */
 const dbURI = 'mongodb+srv://admin:Guitarcenter1@flor.vqk0u.mongodb.net/Flor_DB?retryWrites=true&w=majority';
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }).then((result) => {
@@ -90,6 +94,7 @@ app.get('/map/users', function (req, res) {
 
 /**Inbound Route - Twilio Endpoint*/
 app.use(inboundRoutes);
+
 
 /**404 route*/
 app.use((req, res) => {

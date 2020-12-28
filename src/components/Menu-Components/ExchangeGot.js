@@ -98,7 +98,7 @@ function ExchangeGot() {
               {pickedProduct.fotos ?
                 <div>{
                   pickedProduct.fotos.map((data, i) =>
-                    <img key={i} src={data} alt="gallery" onError={(e) => { e.target.src = 'https://developers.google.com/maps/documentation/streetview/images/error-image-generic.png'; e.target.onError = null; }} />)
+                    <img key={i} src={data} alt="gallery" onError={(e) => { e.target.src = 'https://i.ibb.co/C1CcBXb/Imagen-Da-ada.png'; e.target.onError = null; }} />)
                 }</div> : <p> {pickedProduct.userName.split(" ")[0]} no ha subido imágenes</p>}
             </div>
 

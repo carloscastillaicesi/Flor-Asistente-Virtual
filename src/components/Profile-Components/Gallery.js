@@ -39,7 +39,7 @@ function Gallery({ gallery, name }) {
         :
         <div className="gallery">
           {gallery ?
-            gallery.map((data, i) => <img onError={(e) => { e.target.src = 'https://developers.google.com/maps/documentation/streetview/images/error-image-generic.png'; e.target.onError = null; }} key={i} src={data} alt="gallery" onClick={() => imageSetter(data)} />)
+            gallery.map((data, i) => <img onError={(e) => { e.target.src = 'https://i.ibb.co/C1CcBXb/Imagen-Da-ada.png'; e.target.onError = null; }} key={i} src={data} alt="gallery" onClick={() => imageSetter(data)} />)
             : <p>{name} no ha subido imágenes aún</p>}
         </div>}
     </div>

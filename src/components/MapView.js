@@ -74,7 +74,8 @@ const MapView = () => {
         var result = [];
         locations.forEach(function (o) { if (o['_id'] === userId) result.push(o); });
         if (result) {
-          setpickedUser(result[0].geometry);
+          //geomtry here is a number, and in the other context object is something else 
+          setpickedUser([result[0].geometry[0].toString(), result[0].geometry[1].toString()]);
           centerMapViewUser();
           setTimeout(() => {
             history.push("/map");
@@ -105,7 +106,7 @@ const MapView = () => {
   function centerMapView(e) {
     const { leafletElement } = mapRef.current;
     if (e) {
-      leafletElement.setView(e.popup._latlng, 18);
+      leafletElement.setView(e.popup._latlng, 16);
       const point = leafletElement.project(e.target._popup._latlng);
       leafletElement.panTo(leafletElement.unproject(point), { animate: true });
     }
@@ -114,13 +115,16 @@ const MapView = () => {
   function centerMapViewUser() {
     const { leafletElement } = mapRef.current;
     if (pickedUser !== '') {
+
       let latlng = { lat: pickedUser[0], lng: pickedUser[1] }
-      leafletElement.setView(latlng, 18);
+      leafletElement.setView(latlng, 16);
       const point = leafletElement.project(latlng);
       leafletElement.panTo(leafletElement.unproject(point), { animate: true });
       setOpen(true);
       setOptions("map");
+
     }
+
   }
 
   function centerMapViewMe() {
@@ -132,7 +136,7 @@ const MapView = () => {
         const currentLocation = { lat: latitude, lng: longitude };
         setCurrentLocation(currentLocation);
         setCurrentUserLocalStorage();
-        leafletElement.setView(currentLocation, 18);
+        leafletElement.setView(currentLocation, 16);
         const point = leafletElement.project(currentLocation);
         leafletElement.panTo(leafletElement.unproject(point), { animate: true });
       },
@@ -193,7 +197,7 @@ const MapView = () => {
                       </div>
                       <div className="user-info">
                         <img src={sembrando} alt="" className="user-profile-image" />
-                        <h2>{name}</h2>
+                        <h2> {name.split(" ").length >= 4 ? name.split(" ").slice(0, 2).join(" ") : name.split(" ")[0]}</h2>
                         <h5>Conoce a otros Sembradores de vida de tu comunidad</h5>
                       </div>
 
@@ -204,7 +208,7 @@ const MapView = () => {
                           <div onClick={pickedUser === ''
                             ? () => { setpickedUser(data.geometry); }
                             : pickedUser === data.geometry
-                              ? () => { centerMapViewUser() }
+                              ? () => { centerMapViewUser(); }
                               : () => { setpickedUser('') }}
                             className="all-users-single" key={i}>
                             <img
@@ -247,7 +251,7 @@ const MapView = () => {
                     <div className="top-bar">
                       <div >
                         <img src={pic} alt="" />
-                        <h3>Hola, {name}</h3>
+                        <h3>Hola, {name.split(" ").length >= 4 ? name.split(" ").slice(0, 2).join(" ") : name.split(" ")[0]}</h3>
                       </div>
                       <Link to="/menu"> <div className="button-menu" /></Link>
                     </div>
@@ -260,7 +264,7 @@ const MapView = () => {
                         toggleFullscreen("false");
                         handle.exit();
                       }}><img src={fullScreenMode === "true" ? fullscreeni : normalscreen} alt="" /></div>
-                      <div className="button-rise" onClick={allUsersToggle.bind(this)}><img src={allusersicon} alt="" /><div class="icon-bar-person" /></div>
+                      <div className="button-rise" onClick={() => { allUsersToggle(this); setpickedUser(''); }}><img src={allusersicon} alt="" /><div class="icon-bar-person" /></div>
                       <div className="button-rise" onClick={centerMapViewMe.bind(this)}><img src={geolocation} alt="" /></div>
                     </div>
 
@@ -287,10 +291,10 @@ const MapView = () => {
                   <Marker
                     position={current}
                     icon={IconUser}
-                    opacity={open ? 100 : 0}>
-                    <Popup autoPan={false} closeButton={false} onClose={() => setOpen(true)} onOpen={() => { setOpen(false); centerMapViewMe(this); }}>
+                    opacity={!pickedUser ? 100 : pickedUser === current ? 100 : 0.5}
+                  >
+                    <Popup autoPan={false} closeButton={false} onClose={() => setOpen(true)} onOpen={() => { setOpen(false); centerMapViewMe(this); setpickedUser(''); }}>
                       <div className={!posActual ? "mihuerta-container" : "mihuerta-container-expanded"}>
-
                         <div className="mihuerta-container-item" onClick={!posActual ? () => { posActualToggle(); setpickedUser(geometry) } : () => { posActualToggle() }}>
                           <img src={pic} alt="" />
                           <h2>Mi posición actual</h2>
@@ -313,7 +317,8 @@ const MapView = () => {
                     <Marker key={i}
                       position={data.geometry}
                       icon={data.level === 1 ? Icon : data.level === 2 ? IconTwo : data.level === 3 ? IconThree : data.level === 4 ? IconFour : Icon}
-                      opacity={open ? 100 : 0}>
+                      opacity={!pickedUser ? 100 : pickedUser === data.geometry ? 100 : 0.5}
+                      zIndexOffset={!pickedUser ? "" : pickedUser === data.geometry ? 10000 : ""}>
 
                       <MarkerPopup
                         name={data.name}
@@ -329,7 +334,8 @@ const MapView = () => {
                   <Marker
                     position={geometry}
                     icon={level === 1 ? Icon : level === 2 ? IconTwo : level === 3 ? IconThree : level === 4 ? IconFour : Icon}
-                    opacity={open ? 100 : 0}>
+                    opacity={!pickedUser ? 100 : pickedUser === geometry ? 100 : 0.5}
+                    zIndexOffset={!pickedUser ? "" : pickedUser === geometry ? 10000 : ""}>
 
                     <MarkerPopup
                       name={name}
@@ -345,6 +351,7 @@ const MapView = () => {
                       position={pickedUser}
                       icon={pulse}
                       opacity={open ? 100 : 0}>
+
                     </Marker> : ""}
                 </Map>
               </div >

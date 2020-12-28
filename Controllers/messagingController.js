@@ -122,7 +122,7 @@ const receiveTMessage = (req) => {
 const sendTMessage = (res, mssg) => {
   const twiml = new MessagingResponse();
   const messages = twiml.message();
-  let NewUserMessage = mssg.answer.toString();
+  let NewUserMessage = mssg.answer[0].toString();
   messages.body(NewUserMessage);
   res.writeHead(200, { "Content-Type": "text/xml" });
   res.end(twiml.toString());
