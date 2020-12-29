@@ -21,6 +21,7 @@ function userCheck(mssg) {
         user.save().then((response) => {
           var doc = response._doc;
           const { createdAt, updatedAt, __v, _id, ...target } = doc;
+
           userLocal.createUser(response._id, target)
             .then((result) => {
               console.log(`New Local User & Mongo User : ${Object.keys(result)} `);
@@ -28,7 +29,7 @@ function userCheck(mssg) {
         });
         var doc = user._doc;
         const { createdAt, updatedAt, __v, _id, ...data } = doc;
-        newMssgUser = Object.assign(mssg, data);
+        newMssgUser = "new user";
       } else {
         var data = userLocal.dataObject(mssg.from);
         newMssgUser = Object.assign(mssg, data)

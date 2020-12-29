@@ -22,15 +22,15 @@ userModify = (userI, id) => {
             var newMssgUser;
             try {
                   var response = await UserT.findOneAndUpdate(id, userI, { new: true });
-                  // var exampleFilter = ({ id, currentActivity, currentStep, registered, name, geometry, pic }) => ({ id, currentActivity, currentStep, registered, name, geometry, pic })
-                  // var localUser = userLocal.updateData(response);
-                  // console.log(`Local User = ${localUser} & Mongo User : ${response._id} `)
-
-                  resolve(response);
+                  var doc = response._doc;
+                  const { createdAt, updatedAt, __v, _id, ...target } = doc;
+                  console.log("responseUser", target);
+                  var localUser = await userLocal.updateData(id, target);
+                  console.log("localUser", localUser);
+                  resolve(localUser);
             } catch (error) {
-                  console.log(error.message);
                   var newMssgUser = "No such user";
-                  reject(newMssgUser);
+                  reject(newMssgUser).catch(error);
             }
       })
 

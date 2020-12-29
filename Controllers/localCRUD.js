@@ -59,35 +59,59 @@ existsData = (id) => {
   }
 }
 
-updateData = (userI) => {
-  try {
-    var desiredObject = dataObject(userI.id)
-    if (desiredObject) {
-      var currentKey = desiredObject.id;
-      console.log("\n Changing Users data \n");
-      console.log(`Id: ${Object.keys(desiredObject)[0]}`);
-      var userIk = Object.keys(userI)
-      for (let i = 0; i < JSON.stringify(userI).length; i++) {
-        userIk = userIk[ui]
-        file.users[0][currentKey].userIk = ui.userIk;
-      }
-      // array.forEach(ui => file.users[0][currentKey].userIKeys[ui] = ui.userIKeys[ui]);
-      //  userI.map(ui => file.users[0][currentKey].Object.keys(ui) = Object.keys(ui))
-      //  file.users[0][currentKey].stage = stage;
-      //  file.users[0][currentKey].step = step;
-      //  file.users[0][currentKey].name = name;
-
-      fs.writeFile('userStage.json', JSON.stringify(file, null, 2), function (err, content) {
-        if (err) throw err;
-        console.log(content);
+updateData = (id, userI) => {
+  return new Promise(function (resolve, reject) {
+    fs.readFile('userStage.json', function (err, content) {
+      if (err) throw err;
+      var parseJson = JSON.parse(content);
+      parseJson.users = parseJson.users.filter((users) => { return Object.keys(users)[0] !== id });
+      desiredObject = new User(id, userI);
+      parseJson.users.push(desiredObject);
+      fs.writeFile('userStage.json', JSON.stringify(parseJson, null, 2), function (err) {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(desiredObject);
+        }
       })
-      return currentKey;
-    } else {
-      return "No such user";
-    }
-  } catch (error) {
-    return desiredObject = null;
-  }
+    })
+  })
+
+
+
+  // return new Promise(function (resolve, reject) {
+
+  //   console.log("\n Changing Users data \n");
+  //   console.log(`Id: ${id}`);
+  //   // var userIk = Object.keys(userI)
+  //   // console.log("userIk", userIk)
+  //   // console.log("userIk.length", userIk.length)
+  //   // userIk.forEach(i => file.users[0][currentKey].userIk[i] = userI.userIk[i] ? userI.userIk[i] : file.users[0][currentKey].userIk[i]);
+  //   // for (let i = 0; i < userIk.length; i++) {
+  //   //   userIk = userIk[ui]
+  //   //   console.log("i", i)
+  //   //   file.users[0][currentKey].userIk = userI.userIk ? userI.userIk : file.users[0][currentKey].userIk;
+  //   // for (let i = 0; i < file.users; i++) {
+  //   //   file.users[i][id].geometry = userI.geometry ? userI.geometry : file.users[i][id].geometry;
+  //   //   file.users[i][id].currentActivity = userI.currentActivity ? userI.currentActivity : file.users[i][id].currentActivity;
+  //   //   file.users[i][id].currentStep = userI.currentStep ? userI.currentStep : file.users[i][id].currentStep;
+  //   //   file.users[i][id].registered = userI.registered ? userI.registered : file.users[i][id].registered;
+  //   //   file.users[i][id].name = userI.name ? userI.name : file.users[i][id].name;
+  //   //   file.users[i][id].pic = userI.pic ? userI.pic : file.users[i][id].pic;
+  //   // }
+
+  //   // array.forEach(ui => file.users[0][currentKey].userIKeys[ui] = ui.userIKeys[ui]);
+  //   //  userI.map(ui => file.users[0][currentKey].Object.keys(ui) = Object.keys(ui))
+
+  //   try {
+  //     fs.writeFile('userStage.json', JSON.stringify(file, null, 2), function (err, content) {
+  //       if (err) throw err;
+  //       resolve(content);
+  //     })
+  //   } catch (error) {
+  //     reject("no user").catch(() => { });
+  //   }
+  // })
 }
 
 /**
