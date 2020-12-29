@@ -19,6 +19,7 @@ const dbURI = 'mongodb+srv://admin:Guitarcenter1@flor.vqk0u.mongodb.net/Flor_DB?
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }).then((result) => {
   console.log("connected to DB");
   app.listen(5000, () => console.log("Running server in localhost:5000"));
+
 }).catch((error) => { console.log(error.message) });
 
 /**Correcting Mongoose error: collection.ensureIndex is deprecated. Use createIndexes instead.*/
