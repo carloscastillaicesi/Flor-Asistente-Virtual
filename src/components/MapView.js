@@ -197,7 +197,7 @@ const MapView = () => {
                       </div>
                       <div className="user-info">
                         <img src={sembrando} alt="" className="user-profile-image" />
-                        <h2> {name.split(" ").length >= 4 ? name.split(" ").slice(0, 2).join(" ") : name.split(" ")[0]}</h2>
+                        <h2> {name.split(" ").length >= 4 ? name.split(" ").slice(0, 3).join(" ") : name.split(" ")[0]}</h2>
                         <h5>Conoce a otros Sembradores de vida de tu comunidad</h5>
                       </div>
 
@@ -251,7 +251,7 @@ const MapView = () => {
                     <div className="top-bar">
                       <div >
                         <img src={pic} alt="" />
-                        <h3>Hola, {name.split(" ").length >= 4 ? name.split(" ").slice(0, 2).join(" ") : name.split(" ")[0]}</h3>
+                        <h3>Hola, {name.split(" ").length >= 4 ? name.split(" ").slice(0, 3).join(" ") : name.split(" ")[0]}</h3>
                       </div>
                       <Link to="/menu"> <div className="button-menu" /></Link>
                     </div>

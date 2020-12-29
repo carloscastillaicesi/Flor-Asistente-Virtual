@@ -17,7 +17,14 @@ const usertSchema = new Schema({
  },
  name: {
   type: String,
+ },
+ geometry: {
+  type: Array
+ },
+ pic: {
+  type: String
  }
+
 }, { timestamps: true });
 
 /**

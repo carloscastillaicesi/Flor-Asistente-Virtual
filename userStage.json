@@ -1,11 +1,13 @@
 {
   "users": [
     {
-      "f2db85b79e58790d501ea92234e6a0a1:e5d7fb27dd5a3894ae159951d50699b1": {
+      "03b91d15f2201670e7084e181aeca9ed:9081a6d3f1fd5e69347544e1068eb73e": {
+        "geometry": [],
         "currentActivity": "Registration",
         "currentStep": 0,
         "registered": 0,
-        "name": ""
+        "name": "",
+        "pic": ""
       }
     }
   ]

@@ -2,20 +2,11 @@ const User = require('../../Models/userModel');
 var userLocal = require('../localCRUD');
 const intentSaludo = require('./intentSaludo');
 
-saludo = (processed, fn) => {
-  return intentSaludo(processed, fn);
+saludo = (dialog) => {
+  return intentSaludo(dialog);
 };
 
-nombre = async (processed, fn) => {
-  var data = userLocal.dataObject(processed.number);
-  try {
-    var response = await User.findOneAndUpdate(data.id, { step: 2, stage: fn, name: 'Daniel Manso' });
-    console.log(JSON.stringify(response));
-    var localUser = userLocal.updateData(response.id, response.step, response.stage, response.name);
-    console.log(`Local User = ${localUser} & Mongo User : ${response._id} `)
-  } catch (error) {
-    console.log(error.message);
-  }
+nombre = (processed, fn) => {
 
   return processed;
   // let target = {
@@ -51,20 +42,63 @@ mapa = (processed) => {
 
 };
 
-none = (processed) => {
+none = (dialog) => {
+  var response;
+  switch (dialog.activity) {
 
-  return processed;
+    case "Registration":
+      switch (dialog.step) {
+        case 0:
+          response = "No se tu nombre, porfavor damelo."
+          break;
+
+        default:
+          break;
+      }
+      break;
+
+    default:
+      break;
+  }
+
+
+  return response;
 };
 
 
 
-intentClassifier = (fun) => {
+error = (dialog) => {
+  var response;
+  switch (dialog.activity) {
 
-  var fn = fun.intent.toString().trim().toLowerCase();
+    case "Registration":
+      switch (dialog.step) {
+        case 0:
+          response = "No se tu nombre, porfavor damelo."
+          break;
+
+        default:
+          break;
+      }
+      break;
+
+    default:
+      break;
+  }
+
+
+  return response;
+};
+
+
+
+intentClassifier = (dialog) => {
+
+  var fn = dialog.intent.toString().trim().toLowerCase();
 
   // function exists
   if (fn in global && typeof global[fn] === "function") {
-    return global[fn](fun, fn);
+    return global[fn](dialog);
   }
 
   else {

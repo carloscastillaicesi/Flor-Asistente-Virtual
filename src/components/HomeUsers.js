@@ -75,7 +75,7 @@ const HomeUsers = () => {
           <h2>Cargando...</h2>
         </div>
         : <div className="homeuser-container">
-          <h1>Hola, {name.split(" ").length >= 4 ? name.split(" ").slice(0, 2).join(" ") : name.split(" ")[0]}</h1>
+          <h1>Hola, {name.split(" ").length >= 4 ? name.split(" ").slice(0, 3).join(" ") : name.split(" ")[0]}</h1>
           <br />
           <img src={florInicial} alt="" />
           <br />

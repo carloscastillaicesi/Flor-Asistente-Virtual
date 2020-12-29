@@ -1,21 +1,7 @@
-const User = require('../Models/usertestModel');
+const { response } = require('express');
+const UserT = require('../Models/usertestModel');
 const userLocal = require('./localCRUD');
 
-/*
-from: id,
-     messageType: mediaType,
-      */
-
-function UserData(data) {
-
-  return userData = {
-    from: Object.keys(data)[0],
-    currentActivity: data.currentStep,
-    currentStep: data.currentStep,
-    registered: data.registered
-  }
-
-};
 
 function userCheck(mssg) {
   return new Promise(function (resolve, reject) {
@@ -23,22 +9,26 @@ function userCheck(mssg) {
     try {
       var data = userLocal.dataObject(mssg.from);
       if (data === mssg.from) {
-        var user = new User({
+        var user = new UserT({
           _id: mssg.from,
-          currentActivity: "Registration",
+          currentActivity: 'Registration',
           currentStep: 0,
           registered: 0,
-          name: ""
+          name: "",
+          geometry: [],
+          pic: ""
         });
         user.save().then((response) => {
-          userLocal.createUser(response._id, response.currentActivity, response.currentStep, response.registered, response.name)
+          var doc = response._doc;
+          const { createdAt, updatedAt, __v, _id, ...target } = doc;
+          userLocal.createUser(response._id, target)
             .then((result) => {
-              var target = new UserData(result);
-              console.log(`New Local User = ${target.from} & Mongo User : ${response._id} `);
-              newMssgUser = Object.assign(mssg, target)
+              console.log(`New Local User & Mongo User : ${Object.keys(result)} `);
             })
-
         });
+        var doc = user._doc;
+        const { createdAt, updatedAt, __v, _id, ...data } = doc;
+        newMssgUser = Object.assign(mssg, data);
       } else {
         var data = userLocal.dataObject(mssg.from);
         newMssgUser = Object.assign(mssg, data)
