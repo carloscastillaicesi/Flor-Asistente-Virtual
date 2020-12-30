@@ -12,7 +12,7 @@
       ]
    },
    {
-      "intent": "nombre",
+      "intent": "name",
       "utterances": [
         "me llamo",
         "soy",
@@ -20,7 +20,7 @@
         "nombre es"
       ],
       "answers": [
-        "hola [nombre]"
+        "hola #name, bienvenuo"
       ]
    },{
       "intent": "saludo",
@@ -48,12 +48,9 @@
          "genial",
          "si quisiera",
          "me gustaría"
-         
       ],
       "answers": [
-        "dame tu nombre",
-        "",
-        ""
+        "dame tu nombre"
       ]
    }, {
       "intent": "no",

@@ -37,7 +37,7 @@ var mediaTypeClassifier = (req) => {
     }
   } else if (long || latitude) {
     if (long.length > 1 && latitude.length > 1) {
-      return "location";
+      return "geometry";
     }
   } else if (body.includes(".doc") || body.includes(".docx") || body.includes(".xls") || body.includes(".xlsx") || body.includes(".csv") || body.includes(".ppt") || body.includes(".pptx") || body.includes(".html") || body.includes(".exe")) {
     return "other";
@@ -86,7 +86,7 @@ function Mssg(mediaType, mssg, id) {
           body: mssg.MediaUrl0,
         };
         break;
-      case 'location':
+      case 'geometry':
         newMssg = {
           from: id,
           messageType: mediaType,

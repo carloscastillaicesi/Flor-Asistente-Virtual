@@ -6,13 +6,13 @@ const usertSchema = new Schema({
   type: String,
   required: true,
  },
- currentActivity: {
+ activity: {
   type: String,
  },
- currentStep: {
+ step: {
   type: Number,
  },
- registered: {
+ level: {
   type: Number,
  },
  name: {

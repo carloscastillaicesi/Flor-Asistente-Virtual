@@ -1,40 +1,43 @@
 var dialog = [
- { activity: "Registration", step: 0, intent: "si", answer: 0 },
- { activity: "Registration", step: 0, intent: "no", answer: 1 },
- { activity: "Registration", step: 1, intent: "nombre", answer: 0 },
- { activity: "Registration", step: 2, intent: "si", answer: 2 },
- { activity: "Registration", step: 2, intent: "no", answer: 3 },
- { activity: "Registration", step: 3, intent: "image", answer: 1 },
- { activity: "Registration", step: 4, intent: "si", answer: 4 },
- { activity: "Registration", step: 4, intent: "no", answer: 5 },
- { activity: "Registration", step: 5, intent: "location", answer: 0 },
-
+ { activity: "Registration", step: 0, intent: "si", answer: 0, nextStep: 1, level: 0 },
+ { activity: "Registration", step: 0, intent: "no", answer: 0, nextStep: 0, level: 0 },
+ { activity: "Registration", step: 1, intent: "name", answer: 0, nextStep: 2, level: 0 },
+ { activity: "Registration", step: 2, intent: "si", answer: 2, nextStep: 3, level: 0 },
+ { activity: "Registration", step: 2, intent: "no", answer: 3, nextStep: 0, level: 0 },
+ { activity: "Registration", step: 3, intent: "image", answer: 1, nextStep: 1, level: 0 },
+ { activity: "Registration", step: 4, intent: "si", answer: 4, nextStep: 1, level: 0 },
+ { activity: "Registration", step: 4, intent: "no", answer: 5, nextStep: 1, level: 0 },
+ { activity: "Registration", step: 5, intent: "geometry", answer: 0, nextStep: 6, level: 0 },
 ]
 
-function check({ currentActivity, currentStep, intent }) {
- return intent === 'None' ? [{ intent: "none ", step: currentStep, activity: currentActivity }] : dialog.filter(f => f.activity === currentActivity && f.step === currentStep && f.intent === intent)
+function check({ activity, step, intent }) {
+ return intent === 'None' ? "none" : dialog.filter(f => f.activity === activity && f.step === step && f.intent === intent)
+}
+
+function errorDialog(obj) {
+ return { intent: obj.intent === 'None' ? 'none' : 'error', step: obj.step, activity: obj.activity, level: obj.level };
+}
+
+function dialogP(dialog, obj) {
+ const { answers, entities, from, score, mediaType, ...objF } = obj
+ return { activity: dialog.activity, step: dialog.step, nextStep: dialog.nextStep, level: dialog.level, intent: dialog.intent, answer: obj.answers[dialog.answer], entities: obj.entities ? obj.entities : "No Entities", ...objF }
 }
 
 function dialogController(obj) {
- return new Promise(function (resolve, reject) {
-  var mssg;
-  var errorMssg;
-  try {
-   if (check(obj).length > 0) {
-    mssg = check(obj)[0];
-    mssg = { id: obj.id, activity: mssg.activity, step: mssg.step, intent: mssg.intent, answer: obj[mssg.answer], body: obj.body, intent: obj.intent }
-   } else {
-    errorMssg = { intent: "error", uStep: obj.currentStep, activity: obj.currentActivity }
-    mssg = errorMssg;
-   }
-   resolve(mssg);
-  } catch (error) {
-   mssg = "error";
-   reject(mssg);
-   console.log("error", obj);
-  }
- })
 
+ var dialog;
+ try {
+
+  if (check(obj).length > 0 && check(obj) !== "none") {
+   dialog = dialogP(check(obj)[0], obj)
+  } else {
+   dialog = errorDialog(obj);
+  }
+  return dialog;
+
+ } catch (error) {
+  console.log(error)
+ }
 }
 
 module.exports = { dialogController };

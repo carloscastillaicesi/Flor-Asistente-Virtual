@@ -18,22 +18,20 @@ from: id,
 // };
 
 userModify = (userI, id) => {
-      return new Promise(async (resolve, reject) => {
-            var newMssgUser;
-            try {
+      try {
+            return new Promise(async (resolve, reject) => {
                   var response = await UserT.findOneAndUpdate(id, userI, { new: true });
                   var doc = response._doc;
                   const { createdAt, updatedAt, __v, _id, ...target } = doc;
                   console.log("responseUser", target);
                   var localUser = await userLocal.updateData(id, target);
                   console.log("localUser", localUser);
-                  resolve(localUser);
-            } catch (error) {
-                  var newMssgUser = "No such user";
-                  reject(newMssgUser).catch(error);
-            }
-      })
+                  resolve(localUser)
+            })
+      } catch (error) {
+            console.log("Cannot Modify User")
 
+      }
 }
 
 

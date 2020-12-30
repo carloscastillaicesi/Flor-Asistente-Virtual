@@ -1,69 +1,63 @@
 var { userModify } = require('../globalCRUD');
 
-registration = async (intent, dialog) => {
+/**
+ * Creates a
+ * Using property value shorthand
+ * @constructor
+ * @params id - number passed in the Twilio Message Object
+ * @params stage - number passed in the Twilio Message Object
+ * @params registered - number passed in the Twilio Message Object
+ * This is called a constructor Function
+*/
 
+function register({ geometry, activity, nextStep, level, name, pic }) {
+  return { geometry: geometry ? geometry : [], activity: activity, step: nextStep, level: level, name: name ? name : "", pic: pic ? pic : "" };
+}
+error = () => {
+  return "error";
+};
+
+none = () => {
+
+  return "none";
+};
+
+
+
+function processedEntity(dialog) {
+  var pDialog;
+  switch (dialog.intent) {
+    case "name":
+      var name = dialog.body
+      name = name.slice(dialog.entities[0].end + 2, dialog.body.length)
+      var answer = dialog.answer;
+      answer = answer.replace("#name", name);
+      pDialog = Object.assign(dialog, { name: name, answer: answer })
+      break;
+  }
+  return pDialog;
+}
+
+
+registration = async (intent, dialog) => {
   var fn = intent.toString().trim().toLowerCase();
-  // function exists
+
   if (fn in global && typeof global[fn] === "function") {
     return global[fn](dialog);
-  }
-  else {
-    console.log("could not find " + fn + " function");
+  } else {
+    if (dialog.entities === "No Entities") {
+      await userModify(register(dialog), dialog.id);
+      return dialog.answer;
+    } else {
+      dialog = processedEntity(dialog)
+      await userModify(register(dialog), dialog.id);
+      return dialog.answer;
+    }
   }
 }
 
-// var mssg = () => {
-//   return new Promise( function (resolve, reject) {
 
 
-
-// userModify({ currentStep: 1, currentActivity: activity }, id);
-
-
-//   }}
-
-saludo = async ({ step, activity, id, answer }) => {
-
-  return await mssg();
-
-}
-
-
-nombre = async ({ step, activity, id }) => {
-  var response = await userModify({ currentStep: 1, currentActivity: activity }, id);
-
-  var mssg = "Siguiente paso después del nombre"
-  return mssg;
-}
-
-
-none = (dialog) => {
-  var response;
-  switch (dialog.step) {
-    case 0:
-      response = "No se tu nombre, porfavor damelo."
-      break;
-
-  }
-
-  return response;
-};
-
-
-
-
-none = (dialog) => {
-  var response;
-  switch (dialog.step) {
-    case 0:
-      response = "No se tu nombre, porfavor damelo."
-      break;
-    default:
-      break;
-  }
-
-  return response;
-};
 
 
 

@@ -51,6 +51,7 @@ var main = async (input) => {
   var entities = [];
 
   for (let i = 0; i < response.entities.length; i++) {
+
     const { levenshtein, type, utteranceText, accuracy, len, start, ...entity } = response.entities[i];
     entities.push(entity);
   }
@@ -58,7 +59,7 @@ var main = async (input) => {
   let target = {
     "intent": response.intent,
     "score": response.score,
-    "entities": entities,
+    "entities": entities.length > 0 ? entities : null,
     "answers": answers,
   }
 

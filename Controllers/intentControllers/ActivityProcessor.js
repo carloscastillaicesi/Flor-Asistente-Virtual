@@ -1,12 +1,10 @@
 const registration = require("./Registration")
 var mssg;
-activityClassifier = ({ activity, step, intent, answer, id }) => {
+activityClassifier = (activity) => {
 
-  var dialog = { step: step, activity: activity, answer: answer, id: id };
-
-  switch (activity) {
+  switch (activity.activity) {
     case 'Registration':
-      mssg = registration(intent, dialog);
+      mssg = registration(activity.intent, activity);
       break;
     default:
       break;
