@@ -1,21 +1,10 @@
 {
   "users": [
     {
-      "ae1668dba7e32a2136a91168284998bd:17348f7555cea41e91e912b79d0976d3": {
+      "d37851dd715598317e4b8956a16409b3:ef6159b36a4006ba89dd7c06a487847e": {
         "geometry": [],
         "currentActivity": "Registration",
-        "currentStep": 1,
-        "registered": 0,
-        "name": "",
-        "pic": ""
-      }
-    },
-    {
-      "e4e3e2c27163fcc7e78b8731ae872ff0:ccf30b87d904fbdeda4e9726457ffdb0": {
-        "geometry": [],
-        "currentActivity": "Registration",
-        "currentStep": 1,
-        "registered": 0,
+        "currentStep": 0,
         "name": "",
         "pic": ""
       }

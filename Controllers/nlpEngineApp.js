@@ -1,19 +1,16 @@
 const { dockStart } = require('@nlpjs/basic');
-const { StemmerEs, StopwordsEs } = require('@nlpjs/lang-es');
 // can be used for context
 const { ConversationContext } = require('node-nlp');
 const fs = require('fs');
 var json = require('../corpus.json');
 
-const stemmer = new StemmerEs();
-const stopwords = new StopwordsEs();
 const context = new ConversationContext();
 
 
 
 var main = async (input) => {
 
-  let body = input.body;
+  let body = input.messageType === "noMedia" ? input.body : input.messageType;
 
   const dock = await dockStart({
     "settings": {
@@ -42,6 +39,7 @@ var main = async (input) => {
    * https://github.com/hughsk/flat
    */
   var answers = [];
+
   var obj = { ...response.answers };
   for (const key in obj) {
     if (obj[key].hasOwnProperty('opts')) {
@@ -50,11 +48,17 @@ var main = async (input) => {
     }
   }
 
+  var entities = [];
+
+  for (let i = 0; i < response.entities.length; i++) {
+    const { levenshtein, type, utteranceText, accuracy, len, start, ...entity } = response.entities[i];
+    entities.push(entity);
+  }
 
   let target = {
     "intent": response.intent,
     "score": response.score,
-    "entities": response.entities,
+    "entities": entities,
     "answers": answers,
   }
 

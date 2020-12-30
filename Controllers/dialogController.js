@@ -1,6 +1,14 @@
 var dialog = [
- { activity: "Registration", step: 0, intent: "nombre", answer: 0 },
- { activity: "Registration", step: 2, intent: "foto", answer: 0 }
+ { activity: "Registration", step: 0, intent: "si", answer: 0 },
+ { activity: "Registration", step: 0, intent: "no", answer: 1 },
+ { activity: "Registration", step: 1, intent: "nombre", answer: 0 },
+ { activity: "Registration", step: 2, intent: "si", answer: 2 },
+ { activity: "Registration", step: 2, intent: "no", answer: 3 },
+ { activity: "Registration", step: 3, intent: "image", answer: 1 },
+ { activity: "Registration", step: 4, intent: "si", answer: 4 },
+ { activity: "Registration", step: 4, intent: "no", answer: 5 },
+ { activity: "Registration", step: 5, intent: "location", answer: 0 },
+
 ]
 
 function check({ currentActivity, currentStep, intent }) {
@@ -14,11 +22,10 @@ function dialogController(obj) {
   try {
    if (check(obj).length > 0) {
     mssg = check(obj)[0];
-    mssg = { id: obj.id, activity: mssg.activity, step: mssg.step, intent: mssg.intent, answer: mssg.answer }
+    mssg = { id: obj.id, activity: mssg.activity, step: mssg.step, intent: mssg.intent, answer: obj[mssg.answer], body: obj.body, intent: obj.intent }
    } else {
     errorMssg = { intent: "error", uStep: obj.currentStep, activity: obj.currentActivity }
     mssg = errorMssg;
-
    }
    resolve(mssg);
   } catch (error) {

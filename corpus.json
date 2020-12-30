@@ -30,30 +30,47 @@
         "quiubo","que hubo","que mas","quemas","hablame","que dice","buen os","como le va", "como esta", "holis", "q mas", "hoals", "holes", "holus","alos",  "halos", "hlao",  "holas",  "holi", "hoal", "hole", "holu", "alo", "halo", "hlao",  "hola", "alo", "aol"
       ],
       "answers": [
-        "Hola bienvenid@, Soy *Flor* la asistente virtual de Sembrando Vida 👩🏽‍🌾. Me gusta ayudar a las personas y orientarlas desde mis experiencias y saberes 🙌🌱 *¿Quieres compartir alguna infomación tuya conmigo?* 😊 Esta información alimentará la Red de Sembrando Vida, se utilizará con fines sin animo de lucro y para el desarrollo de actividades de la red. Alguna de esta información sera para crear tu perfil y que otras personas puedan encontrarte. Piensa que es como sembrar una semilla, que hará cada día más fuerte a Sembrando Vida. Tu información alimentará el proceso de fortalecer dicha semillara para que crezca fuerte 🌱","Hola bienvenid@, no tengo aún tu nombre 🙌🌱"
+        ""
 
       ]
    }, {
-      "intent": "mapa",
+      "intent": "si",
       "utterances": [
-        "ver mapa", 
-        "ver mapita",
-        "mostrame el mapa",
-        "mandame el mapa ",
-        "dejame ver el mapa"
+        "claro", 
+        "de una",
+        "hagale",
+        "claro que si",
+        "si", 
+         "zi", 
+         "ci",
+        "bueno",
+          "buenito",
+         "genial",
+         "si quisiera",
+         "me gustaría"
+         
       ],
       "answers": [
-        "Wait, are you planning a party for me? It's today! My birthday is today!",
-        "I'm young. I'm not sure of my birth date",
-        "I don't know my birth date. Most virtual agents are young, though, like me."
+        "dame tu nombre",
+        "",
+        ""
       ]
    }, {
-      "intent": "foto",
+      "intent": "no",
       "utterances": [
-        "foto"
+            "que no ", 
+        "no",
+        "no quisiera",
+        "no quiero",
+        "nonas", 
+         "para nada", 
+         "no me gustaria",
+        "no me gusta",
+          "claro que no",
+         "no no "
       ],
       "answers": [
-        "tu foto quedo guardada"
+        "Piensa que es como sembrar una semilla, que hará cada día más fuerte a Sembrando Vida. Tu información alimentará el proceso de fortalecer dicha semilla para que crezca fuerte 🌱"
       ]
    }, {
       "intent": "None",
@@ -68,13 +85,18 @@
    }   
   ],
   "entities": {
-   
-      "media": {
+         "media": {
       "options": {
-        "image": ["image", "Imagen", "Foto"],
-        "video": ["video", "Video"],
-        "audio": ["beltran","Beltran"]
-      }}, 
+        "image": ["image"],
+        "video": ["video"],
+        "audio": ["audio"]
+      }},    "nombre": {
+      "options": {
+        "llamo": ["llamo"],
+        "soy": ["soy" ],
+        "dicen": ["dicen"],
+        "nombre es": ["nombre es"]
+      }},
        "email": {
       "locale": ["en", "es"],
       "regex": "/\\b(\\w[-._\\w]*\\w@\\w[-._\\w]*\\w\\.\\w{2,3})\\b/gi"

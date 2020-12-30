@@ -8,12 +8,13 @@ function userCheck(mssg) {
     var newMssgUser;
     try {
       var data = userLocal.dataObject(mssg.from);
+      console.log("data userCheck", data)
       if (data === mssg.from) {
         var user = new UserT({
           _id: mssg.from,
           currentActivity: 'Registration',
           currentStep: 0,
-          registered: 0,
+          level: 0,
           name: "",
           geometry: [],
           pic: ""
@@ -21,7 +22,6 @@ function userCheck(mssg) {
         user.save().then((response) => {
           var doc = response._doc;
           const { createdAt, updatedAt, __v, _id, ...target } = doc;
-
           userLocal.createUser(response._id, target)
             .then((result) => {
               console.log(`New Local User & Mongo User : ${Object.keys(result)} `);

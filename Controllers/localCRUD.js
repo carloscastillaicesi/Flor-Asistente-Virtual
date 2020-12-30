@@ -1,7 +1,5 @@
 var fs = require("fs");
 const { search } = require("../Routes/inboundRouter");
-var fileData = fs.readFileSync('userStage.json');
-var file = JSON.parse(fileData);
 const { decrypt } = require('./crypto');
 
 /**
@@ -21,6 +19,8 @@ function User(id, obj) {
  */
 dataObject = (id) => {
   var desiredObject;
+  var fileData = fs.readFileSync('userStage.json');
+  var file = JSON.parse(fileData);
   try {
     if (Object.keys(file.users).length > 0) {
       desiredObject = file.users.filter((users) => { return decrypt(Object.keys(users)[0]) === decrypt(id); })[0];
@@ -28,13 +28,7 @@ dataObject = (id) => {
         console.log("\n User Found !!! \n");
         var currentKey = Object.keys(desiredObject)[0];
         console.log("\n Getting Data...\n");
-        var user = {
-          id: Object.keys(desiredObject)[0],
-          currentActivity: desiredObject[currentKey].currentActivity,
-          currentStep: desiredObject[currentKey].currentStep,
-          registered: desiredObject[currentKey].registered,
-          name: desiredObject[currentKey].name
-        }
+        var user = { id: Object.keys(desiredObject)[0], ...desiredObject[currentKey] }
         desiredObject = user;
       } else {
         console.log(`\n User not found...Create a new user with id: ${id}\n`);

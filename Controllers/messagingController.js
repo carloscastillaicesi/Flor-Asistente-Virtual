@@ -74,7 +74,7 @@ function Mssg(mediaType, mssg, id) {
         newMssg = {
           from: id,
           messageType: mediaType,
-          media: mssg.MediaUrl0
+          body: mssg.MediaUrl0
         };
         break;
       case 'image_text':
@@ -83,7 +83,7 @@ function Mssg(mediaType, mssg, id) {
           from: id,
           body: mssg.Body,
           messageType: mediaType,
-          media: mssg.MediaUrl0,
+          body: mssg.MediaUrl0,
         };
         break;
       case 'location':
@@ -98,7 +98,7 @@ function Mssg(mediaType, mssg, id) {
         newMssg = {
           from: id,
           messageType: mediaType,
-          fileName: mssg.Body,
+          body: mssg.Body,
         };
         break;
       case 'noMedia':
@@ -128,4 +128,15 @@ const sendTMessage = (res, mssg) => {
   res.end(twiml.toString());
 };
 
-module.exports = { sendTMessage, receiveTMessage }; 
+const sendCustomTMessage = (body, number) => {
+  client.messages.create({
+    mediaUrl: ['https://images.unsplash.com/photo-1545093149-618ce3bcf49d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80'],
+    from: 'whatsapp:+14155238886',
+    to: number,
+    body: body
+  }).then(message => console.log(message.sid));
+
+};
+
+
+module.exports = { sendTMessage, receiveTMessage, sendCustomTMessage }; 
