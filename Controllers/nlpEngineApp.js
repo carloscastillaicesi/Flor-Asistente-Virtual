@@ -10,8 +10,8 @@ const context = new ConversationContext();
 
 var main = async (input) => {
 
-  let body = input.messageType === "noMedia" ? input.body : input.messageType;
-
+  let body = input.messageType === "noMedia" ? input.body.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '') : input.messageType;
+  body = body.toLowerCase();
   const dock = await dockStart({
     "settings": {
       "nlp": {
@@ -38,20 +38,19 @@ var main = async (input) => {
   /** Excluding key and flattening it with this module 
    * https://github.com/hughsk/flat
    */
-  var answers = [];
+  // var answers = [];
 
-  var obj = { ...response.answers };
-  for (const key in obj) {
-    if (obj[key].hasOwnProperty('opts')) {
-      delete obj[key].opts;
-      answers.push(obj[key].answer);
-    }
-  }
+  // var obj = { ...response.answers };
+  // for (const key in obj) {
+  //   if (obj[key].hasOwnProperty('opts')) {
+  //     delete obj[key].opts;
+  //     answers.push(obj[key].answer);
+  //   }
+  // }
 
   var entities = [];
 
   for (let i = 0; i < response.entities.length; i++) {
-
     const { levenshtein, type, utteranceText, accuracy, len, start, ...entity } = response.entities[i];
     entities.push(entity);
   }
@@ -59,8 +58,6 @@ var main = async (input) => {
   let target = {
     "intent": response.intent,
     "score": response.score,
-    "entities": entities.length > 0 ? entities : null,
-    "answers": answers,
   }
 
   const newMssg_nlp = Object.assign(input, target)

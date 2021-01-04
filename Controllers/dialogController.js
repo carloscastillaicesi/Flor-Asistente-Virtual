@@ -1,14 +1,7 @@
-var dialog = [
- { activity: "Registration", step: 0, intent: "si", answer: 0, nextStep: 1, level: 0 },
- { activity: "Registration", step: 0, intent: "no", answer: 0, nextStep: 0, level: 0 },
- { activity: "Registration", step: 1, intent: "name", answer: 0, nextStep: 2, level: 0 },
- { activity: "Registration", step: 2, intent: "si", answer: 2, nextStep: 3, level: 0 },
- { activity: "Registration", step: 2, intent: "no", answer: 3, nextStep: 0, level: 0 },
- { activity: "Registration", step: 3, intent: "image", answer: 1, nextStep: 1, level: 0 },
- { activity: "Registration", step: 4, intent: "si", answer: 4, nextStep: 1, level: 0 },
- { activity: "Registration", step: 4, intent: "no", answer: 5, nextStep: 1, level: 0 },
- { activity: "Registration", step: 5, intent: "geometry", answer: 0, nextStep: 6, level: 0 },
-]
+var fs = require("fs");
+var fileData = fs.readFileSync('dialog.json');
+var file = JSON.parse(fileData);
+var dialog = file.dialog
 
 function check({ activity, step, intent }) {
  return intent === 'None' ? "none" : dialog.filter(f => f.activity === activity && f.step === step && f.intent === intent)
@@ -19,12 +12,13 @@ function errorDialog(obj) {
 }
 
 function dialogP(dialog, obj) {
- const { answers, entities, from, score, mediaType, ...objF } = obj
- return { activity: dialog.activity, step: dialog.step, nextStep: dialog.nextStep, level: dialog.level, intent: dialog.intent, answer: obj.answers[dialog.answer], entities: obj.entities ? obj.entities : "No Entities", ...objF }
+ const { answers, entities, from, score, mediaType, step, level, ...objF } = obj
+
+ const { answer, ...dialogF } = dialog
+ return { ...dialogF, answer: dialog.answer, entities: obj.entities, ...objF }
 }
 
 function dialogController(obj) {
-
  var dialog;
  try {
 

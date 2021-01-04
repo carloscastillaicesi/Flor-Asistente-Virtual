@@ -3,31 +3,40 @@
   "locale": "es",
   "data": [
     {
-      "intent": "media",
+      "intent": "geometry",
       "utterances": [
-        "@media"
+        "geometry"
       ],
       "answers": [
-        "haz enviado una {{media}}"
+        ""
+      ]
+   },{
+      "intent": "image",
+      "utterances": [
+        "image"
+      ],
+      "answers": [
+        ""
       ]
    },
    {
       "intent": "name",
       "utterances": [
         "me llamo",
-        "soy",
-        "me dicen",
-        "nombre es"
+        "soy ",
+        "me dicen",      
+        "nombre es",
+        "nombre completo"
       ],
       "answers": [
-        "hola #name, bienvenuo"
+        ""
       ]
    },{
       "intent": "saludo",
       "utterances": [
-        "buenas","hola","buenos","buen","buens","bueans","buen as",
+        "buenas","hola","hola","buenos","buen","buens","bueans","buen as",
         "buneas","hoola","ho la","h ola","hol a","bu enas","buen as",
-        "quiubo","que hubo","que mas","quemas","hablame","que dice","buen os","como le va", "como esta", "holis", "q mas", "hoals", "holes", "holus","alos",  "halos", "hlao",  "holas",  "holi", "hoal", "hole", "holu", "alo", "halo", "hlao",  "hola", "alo", "aol"
+        "quiubo","que hubo","que mas","quemas","hablame","que dice","buen os","como le va", "como esta", "holis", "q mas", "hoals", "holes", "holus","alos",  "halos", "hlao", "holas",  "holi", "hoal", "hole", "holu", "alo", "halo", "hlao",  "hola", "alo", "aol"
       ],
       "answers": [
         ""
@@ -44,30 +53,46 @@
          "zi", 
          "ci",
         "bueno",
+        "dale", 
           "buenito",
          "genial",
          "si quisiera",
          "me gustaría"
       ],
       "answers": [
-        "dame tu nombre"
+        ""
+      
       ]
    }, {
       "intent": "no",
       "utterances": [
-            "que no ", 
+         "que no ", 
         "no",
         "no quisiera",
         "no quiero",
         "nonas", 
-         "para nada", 
-         "no me gustaria",
+        "para nada", 
+        "no me gustaria",
         "no me gusta",
-          "claro que no",
+        "claro que no",
          "no no "
       ],
       "answers": [
-        "Piensa que es como sembrar una semilla, que hará cada día más fuerte a Sembrando Vida. Tu información alimentará el proceso de fortalecer dicha semilla para que crezca fuerte 🌱"
+        ""
+      ]
+   }, {
+      "intent": "doubt",
+      "utterances": [
+        "para que", 
+        "pa que",
+        "eso pa que",
+        "para que seria ",
+        "como asi", 
+        "que información"
+    
+      ],
+      "answers": [
+        ""
       ]
    }, {
       "intent": "None",
@@ -87,12 +112,13 @@
         "image": ["image"],
         "video": ["video"],
         "audio": ["audio"]
-      }},    "nombre": {
+      }},   
+       "name": {
       "options": {
-        "llamo": ["llamo"],
-        "soy": ["soy" ],
+        "me llamo": ["jaja"],
+        "soy": ["soy"],
         "dicen": ["dicen"],
-        "nombre es": ["nombre es"]
+        "es": ["es"]
       }},
        "email": {
       "locale": ["en", "es"],

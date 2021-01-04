@@ -8,7 +8,7 @@ const detailsSchema = new Schema({
  }, ubicacionHuerta: {
   type: String
  },
- fotosHuerta: {
+ gallery: {
   type: Array
  },
  beneficiosSalud: {
@@ -20,10 +20,16 @@ const detailsSchema = new Schema({
  encargadosHuerta: {
   type: String
  },
- experiencia: {
+ tiempoDedicadoHuerta: {
+  type: String
+ },
+ serviciosHuerta: {
   type: String
  },
  tiempoExperiencia: {
+  type: String
+ },
+ conocimiento: {
   type: String
  }
 }, { timestamps: true });

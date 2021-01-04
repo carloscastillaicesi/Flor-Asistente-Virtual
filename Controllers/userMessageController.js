@@ -1,5 +1,6 @@
 const { response } = require('express');
-const UserT = require('../Models/usertestModel');
+const User = require('../Models/userModel');
+const Details = require('../Models/detailsModel');
 const userLocal = require('./localCRUD');
 
 
@@ -9,7 +10,7 @@ function userCheck(mssg) {
     var data = userLocal.dataObject(mssg.from);
     try {
       if (data === mssg.from) {
-        var user = new UserT({
+        var user = new User({
           _id: mssg.from,
           activity: 'Registration',
           step: 0,
@@ -26,6 +27,25 @@ function userCheck(mssg) {
               console.log(`New Local User & Mongo User : ${Object.keys(result)} `);
             })
         });
+
+        var detail = new Details({
+          _id: mssg.from,
+          ubicacionHuerta: "",
+          gallery: [],
+          beneficiosSalud: "",
+          expectativaHuerta: "",
+          encargadosHuerta: "",
+          tiempoDedicadoHuerta: "",
+          serviciosHuerta: "",
+          tiempoExperiencia: "",
+          conocimiento: "",
+        });
+
+        detail.save().then((response) => {
+          var doc = response._doc;
+          const { createdAt, updatedAt, __v, _id, ...target } = doc;
+          console.log("new user Details", target);
+        })
         newMssgUser = "new user";
       } else {
         newMssgUser = Object.assign(mssg, data)

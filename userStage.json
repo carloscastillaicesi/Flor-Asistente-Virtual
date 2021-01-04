@@ -1,5 +1,27 @@
 {
   "users": [
-
+    {
+      "9120842c8e154a4b90aba518bacf7445:d17dbc243c96a35006faaa92a8edfbbb": {
+        "geometry": [
+          "3.3761195",
+          "-76.5276743"
+        ],
+        "activity": "Detailed",
+        "step": 8,
+        "level": 1,
+        "name": "Juanita Orozco",
+        "pic": "https://api.twilio.com/2010-04-01/Accounts/AC467367f2bd485ea727199ffd2774cdf9/Messages/MM593d0f790b13a0b47e72a7225603310c/Media/ME11ddff5a243fa8fc58e990cccfb0ad8f"
+      }
+    },
+    {
+      "301d7fce7dddc40fd763f07994bfff05:e98622973875e076b893f378d13896b4": {
+        "geometry": [],
+        "activity": "Registration",
+        "step": 0,
+        "level": 0,
+        "name": "",
+        "pic": ""
+      }
+    }
   ]
 }

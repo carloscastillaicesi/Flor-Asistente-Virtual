@@ -1,26 +1,12 @@
-const UserT = require('../Models/usertestModel');
+const User = require('../Models/userModel');
+const Details = require('../Models/detailsModel');
 const userLocal = require('./localCRUD');
 
-/*
-from: id,
-     messageType: mediaType,
-      */
 
-// function UserData(data) {
-
-//  return userData = {
-//   from: Object.keys(data)[0],
-//   currentActivity: data.currentStep,
-//   currentStep: data.currentStep,
-//   registered: data.registered
-//  }
-
-// };
-
-userModify = (userI, id) => {
+function userModify(userI, id) {
       try {
             return new Promise(async (resolve, reject) => {
-                  var response = await UserT.findOneAndUpdate(id, userI, { new: true });
+                  var response = await User.findOneAndUpdate(id, userI, { new: true });
                   var doc = response._doc;
                   const { createdAt, updatedAt, __v, _id, ...target } = doc;
                   console.log("responseUser", target);
@@ -30,37 +16,35 @@ userModify = (userI, id) => {
             })
       } catch (error) {
             console.log("Cannot Modify User")
+      }
+}
+
+function detailModify(userD, id) {
+      try {
+            return new Promise(async (resolve, reject) => {
+                  var response = await Details.findOneAndUpdate(id, userD, { new: true });
+                  const { createdAt, updatedAt, __v, _id, ...target } = response;
+                  resolve(target)
+            })
+      } catch (error) {
+            console.log("Cannot Modify User")
+      }
+}
+
+
+function getDetails(id) {
+      try {
+            return new Promise(async (resolve, reject) => {
+                  var response = await Details.findById(id).exec();
+                  const { createdAt, updatedAt, __v, _id, ...target } = response._doc;
+                  resolve(target)
+            })
+      } catch (error) {
+            console.log("Cannot Modify User")
 
       }
 }
 
 
-
-
-// var data = userLocal.dataObject(mssg.from);
-// if (data === mssg.from) {
-//  var user = new User({
-//   _id: mssg.from,
-//   currentActivity: "Registration",
-//   currentStep: 0,
-//   registered: 0,
-//   name: ""
-//  });
-//  user.save().then((response) => {
-//   userLocal.createUser(response._id, response.currentActivity, response.currentStep, response.registered, response.name)
-//    .then((result) => {
-//     var target = new UserData(result);
-//     console.log(`New Local User = ${target.from} & Mongo User : ${response._id} `);
-//     newMssgUser = Object.assign(mssg, target)
-//    })
-
-//  });
-// } else {
-//  var data = userLocal.dataObject(mssg.from);
-//  newMssgUser = Object.assign(mssg, data)
-// }
-
-
-
-module.exports = { userModify };
+module.exports = { userModify, getDetails, detailModify };
 

@@ -6,18 +6,25 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  currentActivity: {
+  activity: {
     type: String,
   },
-  currentStep: {
+  step: {
     type: Number,
   },
-  registered: {
+  level: {
     type: Number,
   },
   name: {
     type: String,
+  },
+  geometry: {
+    type: Array
+  },
+  pic: {
+    type: String
   }
+
 }, { timestamps: true });
 
 /**
