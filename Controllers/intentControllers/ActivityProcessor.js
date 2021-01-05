@@ -1,11 +1,12 @@
 const registration = require("./Registration")
 const detailed = require("./Detailed")
 const menu = require("./Menu")
-const tengo = require("./Tengo")
+const barter = require("./Barter")
+const options = require("./Options")
 var mssg;
 
 activityClassifier = (activity) => {
-  if (activity.intent === "none") {
+  if (activity.intent === "error") {
     mssg = "No entendí lo que dijiste. Por favor, repítelo 🙈"
   } else {
     switch (activity.activity) {
@@ -16,11 +17,15 @@ activityClassifier = (activity) => {
         mssg = detailed(activity);
         break;
       case "Menu":
-        console.log("hit the spot");
+        console.log("Menu Activity");
         mssg = menu(activity);
+        break;
       case "Tengo":
-        console.log("hit the spot");
-        mssg = tengo(activity);
+      case "Necesito":
+        mssg = barter(activity);
+        break;
+      case "Options":
+        mssg = options(activity);
         break;
       default:
         break;

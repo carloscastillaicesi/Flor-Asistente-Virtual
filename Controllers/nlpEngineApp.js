@@ -56,7 +56,7 @@ var main = async (input) => {
   }
 
   let target = {
-    "intent": response.intent,
+    "intent": response.score > 0.55 ? response.intent : 'None',
     "score": response.score,
   }
 

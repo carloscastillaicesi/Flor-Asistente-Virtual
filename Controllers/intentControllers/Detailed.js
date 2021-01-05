@@ -18,63 +18,97 @@ function register({ geometry, activity, nextStep, level, name, pic }) {
   return { geometry: geometry ? geometry : [], activity: activity, step: nextStep, level: level, name: name ? name : "", pic: pic ? pic : "" };
 }
 
+function changeNone(dialog) {
+  var intentR
 
-async function processedEntity(dialog) {
-  var details;
-  switch (dialog.intent) {
-    case "ubicacionHuerta":
-      d = await getDetails(dialog.id);
-      details = Object.assign(d, { ubicacionHuerta: dialog.body })
-      await detailModify(details, dialog.id);
-      await userModify(register(dialog), dialog.id);
+  switch (dialog.step) {
+    case 6:
+      intentR = "ubicacionHuerta"
       break;
-    case "image":
-      d = await getDetails(dialog.id);
-      var galeria = [...d.gallery]
-      galeria.push(dialog.body)
-      details = Object.assign(d, { gallery: galeria })
-      await detailModify(details, dialog.id);
-      await userModify(register(dialog), dialog.id);
+    case 10:
+      intentR = "encargadosHuerta"
       break;
-    case "encargadosHuerta":
-      d = await getDetails(dialog.id);
-      details = Object.assign(d, { encargadosHuerta: dialog.body })
-      await detailModify(details, dialog.id);
-      await userModify(register(dialog), dialog.id);
+    case 11:
+      intentR = "tiempoDedicadoHuerta"
       break;
-    case "tiempoDedicadoHuerta":
-      d = await getDetails(dialog.id);
-      details = Object.assign(d, { tiempoDedicadoHuerta: dialog.body })
-      await detailModify(details, dialog.id);
-      await userModify(register(dialog), dialog.id);
+    case 13:
+      intentR = "tiempoExperiencia"
       break;
-    case "tiempoExperiencia":
-      d = await getDetails(dialog.id);
-      details = Object.assign(d, { tiempoExperiencia: dialog.body })
-      await detailModify(details, dialog.id);
-      await userModify(register(dialog), dialog.id);
+    case 14:
+      intentR = "conocimiento"
       break;
-    case "conocimiento":
-      d = await getDetails(dialog.id);
-      details = Object.assign(d, { conocimiento: dialog.body })
-      await detailModify(details, dialog.id);
-      await userModify(register(dialog), dialog.id);
+    case 15:
+      intentR = "beneficiosSalud"
       break;
-    case "beneficiosSalud":
-      d = await getDetails(dialog.id);
-      details = Object.assign(d, { beneficiosSalud: dialog.body })
-      await detailModify(details, dialog.id);
-      await userModify(register(dialog), dialog.id);
-      break;
-    case "expectativaHuerta":
-      d = await getDetails(dialog.id);
-      details = Object.assign(d, { expectativaHuerta: dialog.body })
-      await detailModify(details, dialog.id);
-      pDialog = Object.assign(dialog, { activity: "Menu" })
-      await userModify(register(pDialog), dialog.id);
+    case 16:
+      intentR = "expectativaHuerta"
       break;
     default:
-      await userModify(register(dialog), dialog.id);
+      intentR = dialog.intent;
+      break;
+  }
+
+  return Object.assign(dialog, { intent: intentR });
+}
+
+
+async function processedEntity(dialog) {
+  dialogNew = changeNone(dialog);
+  var details;
+  switch (dialogNew.intent) {
+    case "ubicacionHuerta":
+      d = await getDetails(dialogNew.id);
+      details = Object.assign(d, { ubicacionHuerta: dialogNew.body })
+      await detailModify(details, dialogNew.id);
+      await userModify(register(dialogNew), dialogNew.id);
+      break;
+    case "image":
+      d = await getDetails(dialogNew.id);
+      var galeria = [...d.gallery]
+      galeria.push(dialogNew.body)
+      details = Object.assign(d, { gallery: galeria })
+      await detailModify(details, dialogNew.id);
+      await userModify(register(dialogNew), dialogNew.id);
+      break;
+    case "encargadosHuerta":
+      d = await getDetails(dialogNew.id);
+      details = Object.assign(d, { encargadosHuerta: dialogNew.body })
+      await detailModify(details, dialogNew.id);
+      await userModify(register(dialogNew), dialogNew.id);
+      break;
+    case "tiempoDedicadoHuerta":
+      d = await getDetails(dialogNew.id);
+      details = Object.assign(d, { tiempoDedicadoHuerta: dialogNew.body })
+      await detailModify(details, dialogNew.id);
+      await userModify(register(dialogNew), dialogNew.id);
+      break;
+    case "tiempoExperiencia":
+      d = await getDetails(dialogNew.id);
+      details = Object.assign(d, { tiempoExperiencia: dialogNew.body })
+      await detailModify(details, dialogNew.id);
+      await userModify(register(dialogNew), dialogNew.id);
+      break;
+    case "conocimiento":
+      d = await getDetails(dialogNew.id);
+      details = Object.assign(d, { conocimiento: dialogNew.body })
+      await detailModify(details, dialogNew.id);
+      await userModify(register(dialogNew), dialogNew.id);
+      break;
+    case "beneficiosSalud":
+      d = await getDetails(dialogNew.id);
+      details = Object.assign(d, { beneficiosSalud: dialogNew.body })
+      await detailModify(details, dialogNew.id);
+      await userModify(register(dialogNew), dialogNew.id);
+      break;
+    case "expectativaHuerta":
+      d = await getDetails(dialogNew.id);
+      details = Object.assign(d, { expectativaHuerta: dialogNew.body })
+      await detailModify(details, dialogNew.id);
+      pdialogNew = Object.assign(dialogNew, { activity: "Menu", step: 0 })
+      await userModify(register(pdialogNew), dialogNew.id);
+      break;
+    default:
+      await userModify(register(dialogNew), dialogNew.id);
       break;
   }
   return details;
@@ -85,17 +119,17 @@ function customAnswer(dialog) {
   console.log("dialog.uEntity", dialog.uEntity);
   if (dialog.uEntity.includes("{link}")) {
     answer = dialog.answer;
-    answer = { answer: answer.replace("{link}", `https://aefd1c3b5181.ngrok.io/user/${dialog.id}`), message: " *¿Quieres continuar con el registro?* 🙈 💚🌱esto ayudar a que crezca tu semilla. Recuerda que para que nuestra semilla crezca hay que cuidarla y fortalecerla con nuestra información", time: 10000, image: "https://i.ibb.co/N93mzML/etapa1.png" };
+    answer = { answer: answer.replace("{link}", `https://203a227a4379.ngrok.io/user/${dialog.id}`), message: " *¿Quieres continuar con el registro?* 🙈 💚🌱esto ayudar a que crezca tu semilla. Recuerda que para que nuestra semilla crezca hay que cuidarla y fortalecerla con nuestra información", time: 10000, image: "https://i.ibb.co/N93mzML/etapa1.png" };
 
   } else if (dialog.uEntity.includes("{link2}")) {
     answer = dialog.answer;
     answer = {
-      answer: answer.replace("{link2}", `https://aefd1c3b5181.ngrok.io/user/${dialog.id}`), message: "😊💚 *¿Quieres continuar con el registro?* esto ayudará a crecer tu germinado. Recuerda que para que nuestra planta crezca hay que cuidarla, no queremos que pase algo malo.", time: 10000, image: "https://i.ibb.co/zHFVhZ6/etapa2.png"
+      answer: answer.replace("{link2}", `https://203a227a4379.ngrok.io/user/${dialog.id}`), message: "😊💚 *¿Quieres continuar con el registro?* esto ayudará a crecer tu germinado. Recuerda que para que nuestra planta crezca hay que cuidarla, no queremos que pase algo malo.", time: 10000, image: "https://i.ibb.co/zHFVhZ6/etapa2.png"
     };
   } else if (dialog.uEntity.includes("{link3}")) {
     answer = dialog.answer;
     answer = {
-      answer: answer.replace("{link3}", `https://aefd1c3b5181.ngrok.io/user/${dialog.id}`), message: "Genial,  ya terminaste con tu registro puede ahora subir documentos y hacer intercambios. Por lo tanto, te puedo ayudar si\n\n_*¿Buscas* algo para intercambiar?_\n_*¿Registrar* algo que tienes para intercambiar?_\n_¿*Anunciar* algo que necesitas?_\n_*¿Subir un documento* a nuestra biblioteca digital?_\n_*¿Buscar un documento* en nuestra biblioteca digital?_\n_*¿Modificar* información de tu perfil?_\n\n Espero poderte ayudar en lo que necesites 😀💚", time: 10000, image: "https://i.ibb.co/MVb1X1C/etapa3.png"
+      answer: answer.replace("{link3}", `https://203a227a4379.ngrok.io/user/${dialog.id}`), message: "Genial,  ya terminaste con tu registro puede ahora subir documentos y hacer intercambios. Por lo tanto, te puedo ayudar si\n\n_*¿Buscas* algo para intercambiar?_\n_*¿Registrar* algo que tienes para intercambiar?_\n_¿*Anunciar* algo que necesitas?_\n_*¿Subir un documento* a nuestra biblioteca digital?_\n_*¿Buscar un documento* en nuestra biblioteca digital?_\n_*¿Modificar* información de tu perfil?_\n\n Espero poderte ayudar en lo que necesites 😀💚", time: 10000, image: "https://i.ibb.co/MVb1X1C/etapa3.png"
     };
 
   } else {

@@ -12,33 +12,28 @@ const inboundReceiver = async (req, res) => {
   var user = await userMessageController.userCheck(newMssg);
   console.log("userCheck", user)
   if (user === "new user") {
-
-    sendCustomTMessageImage("¡Hola! Soy *Flor* la asistente virtual de Sembrando Vida 👩‍🌾. Me gusta ayudar a las personas y orientarlas desde mis experiencias y saberes🙌🌱", req.body.From, "https://i.ibb.co/dpjWTjT/Saludo.png")
+    sendTMessage(res, ` ¡Hola! Soy *Flor* la asistente virtual de Sembrando Vida 👩‍🌾. Me gusta ayudar a las personas y orientarlas desde mis experiencias y saberes 🙌🌱\n \n*¡Quisiera conocerte mejor!* 😊 \n \nLa información que te pediré a continuación alimentará la *Red de Sembrando Vida*, se utilizará con fines sin ánimo de lucro y para el desarrollo de actividades de la red. \n \n_Esta información será usada para crear tu perfil en el mapa y que otras personas puedan encontrarte._`, "https://i.ibb.co/dpjWTjT/Saludo.png")
 
     setTimeout(() => {
-      sendTMessage(res, ` *¡Quisiera conocerte mejor!* 😊 \n \nLa información que te pediré a continuación alimentará la *Red de Sembrando Vida*, se utilizará con fines sin ánimo de lucro y para el desarrollo de actividades de la red. \n \n Alguna de esta información será para crear tu perfil y que otras personas puedan encontrarte. Piensa que es como sembrar una semilla de información, que hará cada día más fuerte a Sembrando Vida. Tu información alimentará el proceso de fortalecer dicha semilla para que crezca fuerte 🌱*`)
+      sendCustomTMessage(`Tu información alimentará tu semilla de información para que crezca fuerte, lo que hará cada día más fuerte a Sembrando Vida 🌱\n\n_Para poder comenzar, dime_\n \n*¿Puedo guardar tu número de celular y disponer de la información que me compartas en esta conversacion?*  `, req.body.From);
     }, 5000);
-    setTimeout(() => {
-      sendCustomTMessage(`Para poder comenzar, dime *¿Puedo guardar tu número de celular y disponer de la información que me compartas?*`, req.body.From);
-    }, 5500);
 
   } else {
+
     var nlp = await nlpEngineApp(user)
     console.log("\n inbound intent \n", nlp)
     var dialog = dialogController(nlp)
     console.log("\ninbound dialog\n", dialog)
-    var mssg = await activityClassifier(dialog);
+    var mssg = dialog ? await activityClassifier(dialog) : "No entendí lo que dijiste.Por favor, repítelo 🙈";
     console.log("\ninbound mssg\n", mssg)
-
     if (typeof mssg === "string") {
-      sendTMessage(res, mssg);
+      sendTMessage(res, mssg ? mssg : "No entendí lo que dijiste.Por favor, repítelo 🙈");
     } else {
-      sendCustomTMessageImage(mssg.answer, req.body.From, mssg.image);
+      sendTMessage(res, mssg.answer ? mssg.answer : "No entendí lo que dijiste.Por favor, repítelo 🙈", mssg.image);
       setTimeout(() => {
-        sendCustomTMessage(mssg.message, req.body.From);
-      }, 10000);
+        sendCustomTMessage(mssg.message ? mssg.message : "No entendí lo que dijiste.Por favor, repítelo 🙈", req.body.From);
+      }, mssg.time);
     }
-
   }
 }
 

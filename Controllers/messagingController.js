@@ -1,4 +1,4 @@
-const MessagingResponse = require("twilio").twiml.MessagingResponse;
+const { MessagingResponse } = require('twilio').twiml;
 const { encrypt, decrypt } = require('./crypto');
 /* Other way to send messages in twilio
 const { ModelBuildContext } = require("twilio/lib/rest/preview/understand/assistant/modelBuild");*/
@@ -119,13 +119,15 @@ const receiveTMessage = (req) => {
   return new Mssg(mediaTypeClassifier(req), req, encrypt(getNumber(req.From)));
 };
 
-const sendTMessage = (res, mssg) => {
-  const twiml = new MessagingResponse();
-  const messages = twiml.message();
-  let NewUserMessage = mssg ? mssg.toString() : "error";
-  messages.body(NewUserMessage);
-  res.writeHead(200, { "Content-Type": "text/xml" });
-  res.end(twiml.toString());
+const sendTMessage = (res, mssg, image) => {
+  // const twiml = new MessagingResponse();
+  // const messages = twiml.message();
+  // // let NewUserMessage = 
+  // messages.body(NewUserMessage);
+  message = new MessagingResponse().message(mssg ? mssg.toString() : "error");
+  image && message.media(image);
+  res.set('Content-Type', 'text/xml');
+  res.send(message.toString()).status(200);
 };
 
 const sendCustomTMessageImage = (body, number, media) => {

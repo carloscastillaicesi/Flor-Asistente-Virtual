@@ -3,7 +3,6 @@ const Details = require('../Models/detailsModel');
 const Barters = require('../Models/bartersModels');
 const userLocal = require('./localCRUD');
 
-
 function userModify(userI, id) {
       try {
             return new Promise(async (resolve, reject) => {
@@ -20,11 +19,12 @@ function userModify(userI, id) {
       }
 }
 
-function detailModify(userD, id) {
+
+function getUser(id) {
       try {
             return new Promise(async (resolve, reject) => {
-                  var response = await Details.findByIdAndUpdate(id, userD, { new: true });
-                  const { createdAt, updatedAt, __v, _id, ...target } = response;
+                  var response = await User.findById(id).exec();
+                  const { createdAt, updatedAt, __v, _id, ...target } = response._doc;
                   resolve(target)
             })
       } catch (error) {
@@ -32,6 +32,17 @@ function detailModify(userD, id) {
       }
 }
 
+function detailModify(userD, id) {
+      try {
+            return new Promise(async (resolve, reject) => {
+                  var response = await Details.findByIdAndUpdate(id, userD, { new: true });
+                  const { createdAt, updatedAt, __v, _id, ...target } = response._doc;
+                  resolve(target)
+            })
+      } catch (error) {
+            console.log("Cannot Modify User")
+      }
+}
 
 function getDetails(id) {
       try {
@@ -45,11 +56,12 @@ function getDetails(id) {
       }
 }
 
-function barterModify(userD, id) {
+function barterModify(userB, id) {
+      console.log("barterModify id", id)
       try {
             return new Promise(async (resolve, reject) => {
-                  var response = await Barters.findByIdAndUpdate(id, userD, { new: true });
-                  const { createdAt, updatedAt, __v, _id, ...target } = response;
+                  var response = await Barters.findByIdAndUpdate(id, userB, { new: true });
+                  const { createdAt, updatedAt, __v, _id, ...target } = response._doc;
                   resolve(target)
             })
       } catch (error) {
@@ -81,8 +93,6 @@ function createBarter(uId, tipo, nombre) {
       }
 }
 
-
-
 function getBarter(id) {
       try {
             return new Promise(async (resolve, reject) => {
@@ -99,5 +109,5 @@ function getBarter(id) {
 
 
 
-module.exports = { userModify, getDetails, detailModify, getBarter, barterModify, createBarter };
+module.exports = { userModify, getDetails, detailModify, getBarter, barterModify, createBarter, getUser };
 

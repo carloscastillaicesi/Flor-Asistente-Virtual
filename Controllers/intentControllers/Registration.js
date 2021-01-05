@@ -39,7 +39,7 @@ function processedEntity(dialog) {
       pDialog = Object.assign(dialog, { pic: image, answer: dialog.answer })
       break;
     case "geometry":
-      var geometry = [dialog.latitude, dialog.longitude];
+      var geometry = [parseFloat(dialog.latitude), parseFloat(dialog.longitude)];
       pDialog = Object.assign(dialog, { geometry: geometry, answer: dialog.answer, activity: "Detailed" })
       break;
     default:

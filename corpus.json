@@ -1,275 +1,449 @@
 {
-  "name": "Corpus with entities",
-  "locale": "es",
-  "data": [
-    {
-      "intent": "geometry",
-      "utterances": [
-        "geometry"
-      ],
-      "answers": [
-        ""
-      ]
-   },{
-      "intent": "image",
-      "utterances": [
-        "image"
-      ],
-      "answers": [
-        ""
-      ]
-   },
-   {
-      "intent": "name",
-      "utterances": [
-        "me llamo",
-        "soy ",
-        "me dicen",      
-        "nombre es",
-        "nombre completo"
-      ],
-      "answers": [
-        ""
-      ]
-   },{
-      "intent": "saludo",
-      "utterances": [
-        "buenas","hola","hola","buenos","buen","buens","bueans","buen as",
-        "buneas","hoola","ho la","h ola","hol a","bu enas","buen as",
-        "quiubo","que hubo","que mas","quemas","hablame","que dice","buen os","como le va", "como esta", "holis", "q mas", "hoals", "holes", "holus","alos",  "halos", "hlao", "holas",  "holi", "hoal", "hole", "holu", "alo", "halo", "hlao",  "hola", "alo", "aol"
-      ],
-      "answers": [
-        ""
-      ]
-   }, {
-      "intent": "si",
-      "utterances": [
-        "claro", 
-        "de una",
-        "hagale",
-        "claro que si",
-        "si", 
-         "zi", 
-         "ci",
-        "bueno",
-        "dale", 
-          "buenito",
-         "genial",
-         "si quisiera",
-         "me gustaría"
-      ],
-      "answers": [
-        ""
-      
-      ]
-   }, {
-      "intent": "no",
-      "utterances": [
-         "que no ", 
-        "no",
-        "no quisiera",
-        "no quiero",
-        "nonas", 
-        "para nada", 
-        "no me gustaria",
-        "no me gusta",
-        "claro que no",
-         "no no "
-      ],
-      "answers": [
-        ""
-      ]
-   },{
-      "intent": "ubicacionHuerta",
-      "utterances": [
-        "en una", 
-        "en mi",
-        "ubicada en",
-        "esta ubicada",
-        "encuentra ubicada en",
-        "la huerta esta ubicada",
-        "encuentra en",
-        "huerta esta",
-        "la huerta esta",
-        "mi huerta esta"
-      ],
-      "answers": [
-        ""
-      ]
-   }, {
-      "intent": "encargadosHuerta",
-      "utterances": [
-        "nos encargamos", 
-         "se encarga", 
-         "me encargo", 
-         "encargados", 
-         "encargadas", 
-         "quien se encarga", 
-         "quienes se encargan", 
-         "responsables", 
-         "responsabilidad de", 
-         "a cargo de"
-      ],
-      "answers": [
-        ""
-      ]
-   }, {
-      "intent": "tiempoDedicadoHuerta",
-      "utterances": [
-        "le dedico", 
-        "horas", 
-        "a la semana", 
-        "al dia", 
-        "dedicarle", 
-        "dedicado", 
-        "horas a mi huerta"
-      ],
-      "answers": [
-        ""
-      ]
-   }, {
-      "intent": "tiempoExperiencia",
-      "utterances": [
-        "llevo", 
-        "años", 
-        "meses", 
-        "experiencia", 
-        "experiencias", 
-        "tengo",
-        "experiencia cultivando"
-      ],
-      "answers": [
-        ""
-      ]
-   }, {
-      "intent": "conocimiento",
-      "utterances": [
-        "aprendi", 
-        "aprendi de", 
-        "estudie", "unversidad", "tecnico", "cursos", "curso", "bachillerato", 
-        "me enseñaron", 
-        "mis conocimientos", 
-        "mi conocimiento",
-        "conocimiento", "conocimientos", 
-        "saberes", 
-        "saber", 
-        "conocer", "conocido", "desconocido",
-        "aprender", "aprendizaje", "aprendiz", "aprendido" 
-      ],
-      "answers": [
-        ""
-      ]
-   }, {
-      "intent": "beneficiosSalud",
-      "utterances": [
-        "salud", 
-        "bienestar", 
-        "beneficios para la salud", "beneficios para mi salud", "la salud", "el bienestar", "medicina", "natural", "homeopatico" 
-      ],
-      "answers": [
-        ""
-      ]
-   }, {
-      "intent": "expectativaHuerta",
-      "utterances": [
-        "reducir", 
-        "gasto", 
-        "dinero", "plata", "ahorro", "bolsillo", "platica", "producir", "productor", "vender", "vender productos", "produccion", "ganar","consumo propio", "consumo"
-      ],
-      "answers": [
-        ""
-      ]
-   }, {
-      "intent": "tengo",
-      "utterances": [
-        "tengo",
-        "intercambio", 
-        "intercambiar"
-      ],
-      "answers": [
-        ""
-      ]
-   }, {
-      "intent": "necesito",
-      "utterances": [
-        "necesito", 
-        "anunciar"
-      ],
-      "answers": [
-        ""
-      ]
-   },{
-      "intent": "categoria",
-      "utterances": [
-        "este producto", 
-        "este producto tiene", 
-        "este producto es", 
-        "categoria",
-        "categorias",
-        "categorias:",
-        "categoría",
-        "categorías",
-        "categorías:"
-      ],
-      "answers": [
-        ""
-      ]
-   },{
-      "intent": "next",
-      "utterances": [
-        "siguiente", 
-        "continuar",
-        "continuemos",
-        "quiero continuar",
-        "continua",
-        "sigamos",
-        "seguir"
-      ],
-      "answers": [
-        ""
-      ]
-   }, {
-      "intent": "doubt",
-      "utterances": [
-        "para que", 
-        "pa que",
-        "eso pa que",
-        "para que seria ",
-        "como asi", 
-        "que información"
-      ],
-      "answers": [
-        ""
-      ]
-   }, {
-      "intent": "None",
-      "utterances": [
-      ],
-      "answers": [
-        "No te entendi", 
-        "podrías repetirlo",
-        "Dimelo de Nuevo",
-        "No he entendido lo que has dicho"
-      ]
-   }   
-  ],
-  "entities": {
-         "media": {
-      "options": {
-        "image": ["image"],
-        "video": ["video"],
-        "audio": ["audio"]
-      }},   
-       "name": {
-      "options": {
-        "me llamo": ["jaja"],
-        "soy": ["soy"],
-        "dicen": ["dicen"],
-        "es": ["es"]
-      }},
-       "email": {
-      "locale": ["en", "es"],
-      "regex": "/\\b(\\w[-._\\w]*\\w@\\w[-._\\w]*\\w\\.\\w{2,3})\\b/gi"
-    }
- }
+   "name":"Corpus with entities",
+   "locale":"es",
+   "data":[
+      {
+         "intent":"geometry",
+         "utterances":[
+            "geometry"
+         ],
+         "answers":[
+            ""
+         ]
+      },
+      {
+         "intent":"image",
+         "utterances":[
+            "image"
+         ],
+         "answers":[
+            ""
+         ]
+      },
+      {
+         "intent":"name",
+         "utterances":[
+            "me llamo",
+            "soy",
+            "me dicen",
+            "nombre es",
+            "nombre completo", 
+            "me pondre",
+            "le pondre", 
+            "pongamosle", 
+            "el nombre del"
+         ],
+         "answers":[
+            ""
+         ]
+      },
+      {
+         "intent":"saludo",
+         "utterances":[
+            "buenas",
+            "hola",
+            "hola",
+            "buenos",
+            "buen",
+            "buens",
+            "bueans",
+            "buen as",
+            "buneas",
+            "hoola",
+            "ho la",
+            "h ola",
+            "hol a",
+            "bu enas",
+            "buen as",
+            "quiubo",
+            "que hubo",
+            "que mas",
+            "quemas",
+            "hablame",
+            "que dice",
+            "buen os",
+            "como le va",
+            "como esta",
+            "holis",
+            "q mas",
+            "hoals",
+            "holes",
+            "holus",
+            "alos",
+            "halos",
+            "hlao",
+            "holas",
+            "holi",
+            "hoal",
+            "hole",
+            "holu",
+            "alo",
+            "halo",
+            "hlao",
+            "hola",
+            "alo",
+            "aol"
+         ],
+         "answers":[
+            ""
+         ]
+      },
+      {
+         "intent":"si",
+         "utterances":[
+            "claro",
+            "de una",
+            "hagale",
+            "claro que si",
+            "si",
+            "zi",
+            "ci",
+            "bueno",
+            "dale",
+            "buenito",
+            "genial",
+            "si quisiera",
+            "me gustaría"
+         ],
+         "answers":[
+            ""
+         ]
+      },
+      {
+         "intent":"no",
+         "utterances":[
+            "que no ",
+            "no",
+            "no quisiera",
+            "no quiero",
+            "nonas",
+            "para nada",
+            "no me gustaria",
+            "no me gusta",
+            "claro que no",
+            "no no "
+         ],
+         "answers":[
+            ""
+         ]
+      },
+      {
+         "intent":"ubicacionHuerta",
+         "utterances":[
+            "en una",
+            "en mi",
+            "ubicada en",
+            "esta ubicada",
+            "encuentra ubicada en",
+            "la huerta esta ubicada",
+            "encuentra en",
+            "huerta esta",
+            "la huerta esta",
+            "mi huerta esta"
+         ],
+         "answers":[
+            ""
+         ]
+      },
+      {
+         "intent":"encargadosHuerta",
+         "utterances":[
+            "nos encargamos",
+            "se encarga",
+            "me encargo",
+            "encargados",
+            "encargadas",
+            "quien se encarga",
+            "quienes se encargan",
+            "responsables",
+            "responsabilidad de",
+            "a cargo de"
+         ],
+         "answers":[
+            ""
+         ]
+      },
+      {
+         "intent":"tiempoDedicadoHuerta",
+         "utterances":[
+            "le dedico",
+            "horas",
+            "a la semana",
+            "al dia",
+            "dedicarle",
+            "dedicado",
+            "horas a mi huerta"
+         ],
+         "answers":[
+            ""
+         ]
+      },
+      {
+         "intent":"tiempoExperiencia",
+         "utterances":[
+            "llevo",
+            "años",
+            "meses",
+            "experiencia",
+            "experiencias",
+            "experiencia cultivando"
+         ],
+         "answers":[
+            ""
+         ]
+      },
+      {
+         "intent":"conocimiento",
+         "utterances":[
+            "aprendi",
+            "aprendi de",
+            "estudie",
+            "universidad",
+            "tecnico",
+            "cursos",
+            "curso",
+            "bachillerato",
+            "me enseñaron",
+            "mis conocimientos",
+            "mi conocimiento",
+            "conocimiento",
+            "conocimientos",
+            "saberes",
+            "saber",
+            "conocer",
+            "conocido",
+            "desconocido",
+            "aprender",
+            "aprendizaje",
+            "aprendiz",
+            "aprendido"
+         ],
+         "answers":[
+            ""
+         ]
+      },
+      {
+         "intent":"beneficiosSalud",
+         "utterances":[
+            "salud",
+            "bienestar",
+            "beneficios para la salud",
+            "beneficios para mi salud",
+            "la salud",
+            "el bienestar",
+            "medicina",
+            "natural",
+            "homeopatico"
+         ],
+         "answers":[
+            ""
+         ]
+      },
+      {
+         "intent":"expectativaHuerta",
+         "utterances":[
+            "reducir",
+            "gasto",
+            "dinero",
+            "plata",
+            "ahorro",
+            "bolsillo",
+            "platica",
+            "producir",
+            "productor",
+            "vender",
+            "vender productos",
+            "produccion",
+            "ganar",
+            "consumo propio",
+            "consumo"
+         ],
+         "answers":[
+            ""
+         ]
+      },
+      {
+         "intent":"tengo",
+         "utterances":[
+            "tengo",
+            "tener",
+            "intercambio",
+            "intercambiar",
+            "para intercambiar"
+         ],
+         "answers":[
+            ""
+         ]
+      },
+      {
+         "intent":"necesito",
+         "utterances":[
+            "necesito",
+            "anunciar", 
+            "anuncio"
+         ],
+         "answers":[
+            ""
+         ]
+      },
+      {
+         "intent":"categorias",
+         "utterances":[
+            "este producto",
+            "este producto tiene",
+            "este producto es",
+            "categoria",
+            "categorias",
+            "categorias:",
+            "categoría",
+            "categorías",
+            "categorías:", 
+            "pertenece a"
+         ],
+         "answers":[
+            ""
+         ]
+      },
+      {
+         "intent":"descripcion",
+         "utterances":[
+            "descripcion",
+            "descripción",
+            "la descripción",
+            "descripcion es",
+            "describir",
+            "descripción", 
+            "quisiera obtener", 
+            "quisiera conseguir"
+         ],
+         "answers":[
+            ""
+         ]
+      },
+      {
+         "intent":"cambio",
+         "utterances":[
+            "a cambio de",
+            "cambiarlo por",
+            "a cambio puedo",
+            "cambiaria por",
+            "puedo dar",
+            "quisiera cambiarlo por",
+            "me gustaría cambiarlo por", 
+            "gratis", 
+            "sin costo"
+         ],
+         "answers":[
+            ""
+         ]
+      },
+      {
+         "intent":"next",
+         "utterances":[
+            "siguiente",
+            "continuar",
+            "continuemos",
+            "quiero continuar",
+            "continua",
+            "sigamos",
+            "seguir"
+         ],
+         "answers":[
+            ""
+         ]
+      },
+      {
+         "intent":"doubt",
+         "utterances":[
+            "para que",
+            "pa que",
+            "eso pa que",
+            "para que seria ",
+            "como asi",
+            "que información"
+         ],
+         "answers":[
+            ""
+         ]
+      },
+      {
+         "intent":"out",
+         "utterances":[
+            "salir",
+            "adios",
+            "cancelar",
+            "hasta luego",
+            "chao",
+            "nos vemos"
+         ],
+         "answers":[
+            ""
+         ]
+      },
+      {
+         "intent":"menu",
+         "utterances":[
+            "ir a menu",
+            "menu",
+            "vamos al menu",
+            "al menu",
+            "opciones",
+            "menu",
+            "home"
+         ],
+         "answers":[
+            ""
+         ]
+      },
+      {
+         "intent":"None",
+         "utterances":[
+            
+         ],
+         "answers":[
+            "No te entendi",
+            "podrías repetirlo",
+            "Dimelo de Nuevo",
+            "No he entendido lo que has dicho"
+         ]
+      }
+   ],
+   "entities":{
+      "media":{
+         "options":{
+            "image":[
+               "image"
+            ],
+            "video":[
+               "video"
+            ],
+            "audio":[
+               "audio"
+            ]
+         }
+      },
+      "name":{
+         "options":{
+            "me llamo":[
+               "jaja"
+            ],
+            "soy":[
+               "soy"
+            ],
+            "dicen":[
+               "dicen"
+            ],
+            "es":[
+               "es"
+            ]
+         }
+      },
+      "email":{
+         "locale":[
+            "en",
+            "es"
+         ],
+         "regex":"/\\b(\\w[-._\\w]*\\w@\\w[-._\\w]*\\w\\.\\w{2,3})\\b/gi"
+      }
+   }
 }
