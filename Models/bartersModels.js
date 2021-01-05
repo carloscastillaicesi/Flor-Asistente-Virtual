@@ -2,10 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const BartersSchema = new Schema({
- _id: {
-  type: String,
-  required: true,
- },
  uId: {
   type: String
  },

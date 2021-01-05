@@ -23,9 +23,6 @@ const detailsSchema = new Schema({
  tiempoDedicadoHuerta: {
   type: String
  },
- serviciosHuerta: {
-  type: String
- },
  tiempoExperiencia: {
   type: String
  },

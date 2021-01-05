@@ -23,6 +23,10 @@ const userSchema = new Schema({
   },
   pic: {
     type: String
+  }, currentItem: {
+    type: String
+  }, currentDoc: {
+    type: String
   }
 
 }, { timestamps: true });

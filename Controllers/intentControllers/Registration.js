@@ -17,6 +17,7 @@ function register({ geometry, activity, nextStep, level, name, pic }) {
 
 function processedEntity(dialog) {
   var pDialog;
+  console.log("\n\n dialog.intent[0] \n\n", dialog.intent)
   switch (dialog.intent) {
     case "name":
       var searchTerm;
@@ -26,6 +27,8 @@ function processedEntity(dialog) {
         searchTerm = "llamo";
       } else if (dialog.body.toLowerCase().includes("soy")) {
         searchTerm = "soy ";
+      } else if (dialog.body.toLowerCase().includes("dicen")) {
+        searchTerm = "dicen";
       }
       const indexOfFirst = dialog.body.indexOf(searchTerm) + searchTerm.length;
       var name = toTitleCase(dialog.body).slice(indexOfFirst + 1, dialog.body.length)
@@ -61,19 +64,14 @@ function customAnswer(dialog, replace) {
   return answer
 }
 
-registration = async (intent, dialog) => {
-  // var fn = intent.toString().trim().toLowerCase();
-  // if (fn in global && typeof global[fn] === "function") {
-  //   return global[fn](dialog);
-  // } else {
+registration = async (dialog) => {
 
   dialogP = processedEntity(dialog)
-  console.log("processedEntity", register(dialogP))
   await userModify(register(dialogP), dialog.id);
   return dialog.answer;
 
 }
-// }
+
 
 
 module.exports = registration; 

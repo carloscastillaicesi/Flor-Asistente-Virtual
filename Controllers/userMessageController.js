@@ -17,7 +17,9 @@ function userCheck(mssg) {
           level: 0,
           name: "",
           geometry: [],
-          pic: ""
+          pic: "",
+          currentItem: "",
+          currentDoc: ""
         });
         user.save().then((response) => {
           var doc = response._doc;
@@ -36,7 +38,6 @@ function userCheck(mssg) {
           expectativaHuerta: "",
           encargadosHuerta: "",
           tiempoDedicadoHuerta: "",
-          serviciosHuerta: "",
           tiempoExperiencia: "",
           conocimiento: "",
         });

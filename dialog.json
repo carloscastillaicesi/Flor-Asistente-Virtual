@@ -3,8 +3,8 @@
       {
          "activity":"Registration",
          "step":0,
-         "intent":"si",
-         "answer":"*¡Genial!*👩🏽‍🌾✨ para sembrar tu semilla en el mapa de Sembrando Vida primero ☝🏼 dime \n \n *¿Cual es tu nombre completo?*\n \n _Ejemplo: puedes escribir Me llamo ó Mi nombre es seguido de tu *Nombre* y *Apellido*_",
+         "intent":["si"],
+         "answer":"*¡Genial!*👩🏽‍🌾✨ para sembrar tu semilla en el mapa de Sembrando Vida primero ☝🏼 dime \n \n *¿Cual es tu nombre completo?*\n \n _Ejemplo: puedes escribir_ *'Me llamo'* _ó_ *'Mi nombre'* _es seguido de tu *Nombre* y *Apellido*_",
          "nextStep":1,
          "level":0,
          "uEntity":""
@@ -12,7 +12,7 @@
       {
          "activity":"Registration",
          "step":0,
-         "intent":"no",
+         "intent":["no"],
          "answer":"Que mal, recuerda que para que una semilla 🌱✨ crezca hay que alimentarla todos los días. *Si no deseas seguir con el proceso de registro, por favor escribe *Terminar*. De lo contrario, escribe *Si* para continuar con el registro*",
          "nextStep":0,
          "level":0,
@@ -21,7 +21,7 @@
       {
          "activity":"Registration",
          "step":0,
-         "intent":"finish",
+         "intent":["finish"],
          "answer":"",
          "nextStep":0,
          "level":0,
@@ -30,7 +30,7 @@
       {
          "activity":"Registration",
          "step":1,
-         "intent":"name",
+         "intent":["name"],
          "answer":" El nombre que he registrado es : \n\n *{name}*  \n\n ¿Es correcto?🙌🏼",
          "nextStep":2,
          "level":0,
@@ -39,7 +39,7 @@
       {
          "activity":"Registration",
          "step":2,
-         "intent":"si",
+         "intent":["si"],
          "answer":"👏🏻 *¡Genial!* Ahora para que los demás te puedan identificar, mandame una foto tuya que te gustaría que los demás vieran. 😊✨* 👩🏽‍🌾🌱",
          "nextStep":3,
          "level":0,
@@ -48,7 +48,7 @@
       {
          "activity":"Registration",
          "step":2,
-         "intent":"no",
+         "intent":["no"],
          "answer":"Por favor, dime de nuevo *¿Cual es tu nombre completo?*\n \n _Ejemplo: puedes escribir Me llamo ó Mi nombre es seguido de tu *Nombre* y *Apellido*_",
          "nextStep":1,
          "level":0,
@@ -57,7 +57,7 @@
       {
          "activity":"Registration",
          "step":3,
-         "intent":"image",
+         "intent":["image"],
          "answer":"👏🏻 Ahora dime *¿Actualmente tienes una huerta o un espacio donde siembras?* 👩🏽‍🌾🌱",
          "nextStep":4,
          "level":0,
@@ -65,8 +65,26 @@
       },
       {
          "activity":"Registration",
+         "step":3,
+         "intent":["saludo"],
+         "answer":"No entiendo lo que me mandaste 🙈,intenta de nuevo mandandome una *imagen* 😀👐",
+         "nextStep":3,
+         "level":0,
+         "uEntity":""
+      },
+      {
+         "activity":"Registration",
+         "step":3,
+         "intent":["saludo"],
+         "answer":"Hola!👩🏽‍🌾🌱 mandame una foto tuya que te gustaría que los demás vieran. 😊✨*  ",
+         "nextStep":3,
+         "level":0,
+         "uEntity":""
+      },
+      {
+         "activity":"Registration",
          "step":4,
-         "intent":"si",
+         "intent":["si"],
          "answer":"¡Listo!👌🏼 ya registré tu información. 🙌🏼 Ahora, para poder ubicar tu huerta en el mapa de Sembrando Vida *¿Camina con tu teléfono hacia donde esta ubicada tu huerta o el espacio donde siembras y comparteme la ubicación a través de Whatsapp *💚🌱 \n\n _Para enviarme tu ubicación vía Whatsapp puedes seguir las siguientes instrucciones:_ \n\n  *1) Encuentra y presiona el ícono de clip 📎 en tu pantalla. * \n *2) Busca la opción 'ubicación'* \n *3) Por último presiona la opción  'Enviar mi ubicación actual' y así podré registrar la ubicación de tu huerta* \n\n _Si no estas cerca de tu huerta o el lugar donde siembras, no te preocupes. Acá estaré cuando vuelvas_✨",
          "nextStep":5,
          "level":0,
@@ -75,7 +93,7 @@
       {
          "activity":"Registration",
          "step":4,
-         "intent":"no",
+         "intent":["no"],
          "answer":"¡Listo!👌🏼 ya registré tu información. 🙌🏼 Al parecer no tienes una huerta o un espacio para sembrar actualmente. Sin embargo, para poder ubicarte en el mapa de Sembrando Vida *Ve hacia donde estaría ubicada tu huerta o el espacio donde sembrarías y comparteme la ubicación a través de Whatsapp *💚🌱 \n\n _Para enviarme tu ubicación vía Whatsapp puedes seguir las siguientes instrucciones:_ \n\n  *1) Encuentra y presiona el ícono de clip 📎 en tu pantalla. * \n *2) Busca la opción 'ubicación'* \n *3) Por último presiona la opción 'Enviar mi ubicación actual y así podré registrar la ubicación de tu huerta* \n\n _Si no estas cerca del lugar donde sembrarías, no te preocupes. Acá estaré cuando vuelvas_✨",
          "nextStep":5,
          "level":0,
@@ -84,8 +102,8 @@
       {
          "activity":"Registration",
          "step":5,
-         "intent":"geometry",
-         "answer":" ¡Listo! 🙌🏼 Me encantaría conocer tu huerta \n\n *¿Te gustaría mandarme algunas fotos de tus plantas?* sería genial que me pudieras compartir varias imágenes del lugar 😊✨🌳 \n\n *Por Favor, para que pueda registrar todas las imágenes de tu huerta, por favor envía solamente una imágen y espera a mi señal para enviar la siguiente.*",
+         "intent":["geometry"],
+         "answer":"👌🏼 *¡Excelente!* Ahora, para continuar dime *¿Dónde está ubicada tu huerta?* 👩🏽‍🌾🌱 (en tu casa, en tu apartamento, en una Finca, en un espacio comunitario o en un colegio)",
          "uEntity":"",
          "nextStep":6,
          "level":0
@@ -93,38 +111,223 @@
       {
          "activity":"Detailed",
          "step":6,
-         "intent":"image",
-         "answer":"¡Que lindas plantas tienes!👩🏽‍🌾🌱\n \n ¿Deseas añadir otra imágen? \n \n _Si deseas mostrarme más imágenes de tus plantas, puedes enviar otra imágen después de leer este mensaje. De lo contrario, contesta 'no' a este mensaje_",
+         "intent":["ubicacionHuerta"],
+         "answer":"¡Listo! 🙌🏼 Me encantaría conocer tu huerta \n\n *¿Te gustaría mandarme algunas fotos de tus plantas?* sería genial que me pudieras compartir varias imágenes del lugar 😊✨🌳 \n\n *Por Favor, para que pueda registrar todas las imágenes de tu huerta, por favor envía solamente una imágen y espera a mi señal para enviar la siguiente.*",
          "nextStep":7,
          "level":0,
          "uEntity":""
       },
       {
          "activity":"Detailed",
-         "step":6,
-         "intent":"no",
-         "answer":"👌🏼Listo! Tu semilla de información ya esta sembrada 💚🌱 \n\n *Con el siguiente link podrás entrar al mapa:* \n\n {link}",
-         "nextStep":8,
-         "level":1,
-         "uEntity":"{link}"
-      } , 
-      {
-         "activity":"Detailed",
          "step":7,
-         "intent":"image",
-         "answer":"¡Me encantan tus maticas!👩🏽‍🌾🌱\n \n ¿Deseas añadir otra imágen? \n \n _Si deseas mostrarme más imágenes de tus plantas, puedes enviar otra imágen después de leer este mensaje. De lo contrario, contesta 'no' a este mensaje_",
-         "nextStep":6,
+         "intent":["image"],
+         "answer":"¡Que lindas plantas tienes!👩🏽‍🌾🌱\n \n ¿Deseas añadir otra imágen? \n \n _Si deseas mostrarme más imágenes de tus plantas, puedes enviar otra imágen después de leer este mensaje. De lo contrario, contesta 'no' a este mensaje_",
+         "nextStep":8,
          "level":0,
          "uEntity":""
-      }, 
+      },
       {
          "activity":"Detailed",
          "step":7,
-         "intent":"no",
-         "answer":"👌🏼Listo! Tu semilla de información ya esta puesta en el mapa 💚🌱\n\n *Con el siguiente link podrás entrar al mapa:* \n\n {link}",
-         "nextStep":8,
+         "intent":["no"],
+         "answer":"👌🏼Listo! Tu semilla de información ya esta sembrada 💚🌱 \n\n *Con el siguiente link podrás entrar al mapa:* \n\n {link}",
+         "nextStep":9,
          "level":1,
          "uEntity":"{link}"
+      },
+      {
+         "activity":"Detailed",
+         "step":8,
+         "intent":["image"],
+         "answer":"¡Me encantan tus maticas!👩🏽‍🌾🌱\n \n ¿Deseas añadir otra imágen? \n \n _Si deseas mostrarme más imágenes de tus plantas, puedes enviar otra imágen después de leer este mensaje. De lo contrario, contesta 'no' a este mensaje_",
+         "nextStep":7,
+         "level":0,
+         "uEntity":""
+      },
+      {
+         "activity":"Detailed",
+         "step":8,
+         "intent":["no"],
+         "answer":"Has terminado la la fase 1 🙌 \n\n  Tu semilla de información ya esta sembrada en el mapa 💚🌱\n\n *Con el siguiente link podrás entrar al mapa y ver tu progreso:* \n\n {link}",
+         "nextStep":9,
+         "level":1,
+         "uEntity":"{link}"
+      },
+      {
+         "activity":"Detailed",
+         "step":9,
+         "intent":["next","si"],
+         "answer":"👏🏻 ¡Excelente! para comenzar esta siguiente etapa y hacer darle alimento a esta semilla de información que plantamos en el mapa de Sembrando Vida, me podrías porfavor decir 💚 \n\n *¿Quién o quienes se hacen cargo de los cuidados de tu huerta, plantas o el espacio donde cultivas?* ✨👩🏽‍🌾",
+         "nextStep":10,
+         "level":1,
+         "uEntity":""
+      },
+      {
+         "activity":"Detailed",
+         "step":10,
+         "intent":["encargadosHuerta"],
+         "answer":" 🙌🏼 Genial! Cuando cuidas de tu huerta, plantas o el espacio donde cultivas 💚 \n\n *¿Cuánto tiempo le dedicas?* 😊",
+         "nextStep":11,
+         "level":1,
+         "uEntity":""
+      },
+      {
+         "activity":"Detailed",
+         "step":11,
+         "intent":["tiempoDedicadoHuerta"],
+         "answer":" Puedes entrar a este \n\n {link2} \n\n   Encontraras a tu semilla germinada 🌱✨, Gracias a que la nutriste con tu informaciòn👐",
+         "nextStep":12,
+         "level":2,
+         "uEntity":"{link2}"
+      },
+      {
+         "activity":"Detailed",
+         "step":12,
+         "intent":["next","si"],
+         "answer":"👏🏻 ¡Excelente! para comenzar esta siguiente etapa me gustaría conocer 💚 \n\n *¿Cuánto tiempo de experiencia tienes cultivando?* ✨👩🏽‍🌾",
+         "nextStep":13,
+         "level":2,
+         "uEntity":""
+      },
+      {
+         "activity":"Detailed",
+         "step":13,
+         "intent":["tiempoExperiencia"],
+         "answer":"👏🏻 *¡Super!* y los conocimientos que tienes *¿Dónde los aprendiste, en una academia/estudios o fueron heredados de algún familiar?* ✨👩🏽‍🌾",
+         "nextStep":14,
+         "level":2,
+         "uEntity":""
+      },
+      {
+         "activity":"Detailed",
+         "step":14,
+         "intent":["conocimiento"],
+         "answer":"👏🏻 Bueno ahora quisiera que me contaras *¿Qué beneficios para tu salud crees que puedes obtener o vas a obtener con tu huerta?* _ Ejemplo: fisicos, psicologicos_ 😊",
+         "nextStep":15,
+         "level":2,
+         "uEntity":""
+      },
+      {
+         "activity":"Detailed",
+         "step":15,
+         "intent":["beneficiosSalud"],
+         "answer":"🙌🏼 *¡Genial!* y en cuanto a lo económico ¿Qué beneficios esperas obtener de tu huerta?* _Por Ejemplo: reducir tus gastos o vender productos_ 💚",
+         "nextStep":16,
+         "level":2,
+         "uEntity":""
+      },
+      {
+         "activity":"Detailed",
+         "step":16,
+         "intent":["expectativaHuerta"],
+         "answer":"😊 Encontraras tu semilla de información convertida en una plántula gracias a que la nutriste con tu información, puedes entrar a este link y ver tu información en la pestaña *Acerca de Mi* en tu perfil💚 \n\n {link3}",
+         "nextStep":0,
+         "level":3,
+         "uEntity":"{link3}"
+      },
+      {
+         "activity":"Detailed",
+         "step":0,
+         "intent":["expectativaHuerta"],
+         "answer":"😊 Encontraras tu semilla de información convertida en una plántula gracias a que la nutriste con tu información, puedes entrar a este link y ver tu información en la pestaña *Acerca de Mi* en tu perfil💚 \n\n {link3}",
+         "nextStep":0,
+         "level":3,
+         "uEntity":"{link3}"
+      },
+      {
+         "activity":"Menu",
+         "step":0,
+         "intent":["tengo",
+            "necesito",
+            "buscoDocumento",
+            "documento",
+            "buscoNecesito",
+            "Modificar"],
+         "answer":"",
+         "nextStep":0,
+         "level":3,
+         "uEntity":""
+      },
+      {
+         "activity":"Tengo",
+         "step":0,
+         "intent":["name"],
+         "answer":" El nombre que he registrado es : \n\n *{name}*  \n\n ¿Es correcto?🙌🏼",
+         "nextStep":1,
+         "level":3,
+         "uEntity":"{name}"
+      },
+      {
+         "activity":"Tengo",
+         "step":1,
+         "intent":["si"],
+         "answer":"👏🏻 *Super* 😀 ahora para poder hacer un buen registro de lo que quieres intercambiar hay que ser precisos. \n\n *¿A que categoría pertenece lo que quieres registrar?* \n\n Para registrarlo correctamente escribe una frase que contenga con:*'Categoría'*, seguido de la categoría que consideres. \n \n _Si consideras que pertenece a más de una, sepáralas con una coma de la siguiente manera:_ *Semilla, Fruta, Abono,...?* ✨👩🏽‍🌾",
+         "nextStep":2,
+         "level":3,
+         "uEntity":""
+      },
+      {
+         "activity":"Tengo",
+         "step":1,
+         "intent":["no"],
+         "answer":"Por favor, dime de nuevo *¿Qué nombre deseas ponerle a tu anuncio?*\n \n _Ejemplo: *el nombre del producto es*_",
+         "nextStep":0,
+         "level":3,
+         "uEntity":""
+      },
+      {
+         "activity":"Tengo",
+         "step":2,
+         "intent":["categorias"],
+         "answer":"*Super! 😊 Ahora debemos subir unas fotos de lo que quieres intercambiar, para que los demás lo puedan ver. \n\n *Mandame una foto para que otros Sembradores de Vida puedan verlo* ✨👩🏽‍🌾",
+         "nextStep":3,
+         "level":3,
+         "uEntity":""
+      },
+      {
+         "activity":"Tengo",
+         "step":3,
+         "intent":["image"],
+         "answer":"¿Deseas añadir otra imágen de tu producto?👩🏽‍🌾🌱 \n \n _Si deseas mostrarme más imágenes de este producto para que las guarde, puedes enviar otra imágen después de leer este mensaje. De lo contrario, contesta 'no' a este mensaje_",
+         "nextStep":4,
+         "level":3,
+         "uEntity":""
+      },
+      {
+         "activity":"Tengo",
+         "step":4,
+         "intent":["image"],
+         "answer":"*🙌 Genial.\n \n ¿Deseas añadir otra imágen de tu producto?👩🏽‍🌾🌱 \n \n _Si deseas mostrarme más imágenes de este producto para que las guarde, puedes enviar otra imágen después de leer este mensaje. De lo contrario, contesta 'no' a este mensaje_",
+         "nextStep":3,
+         "level":3,
+         "uEntity":""
+      },
+      {
+         "activity":"Tengo",
+         "step":4,
+         "intent":["no"],
+         "answer":"*🌻🌳 ¡Perfecto! ahora \n\n *escribe una pequeña descripción* del producto o servicio que tienes para intercambiar con otros *Sembradores de Vida* \n\n _Para registrar la descripción correctamente escribe una frase que comience con la palabra *'descripción'*_",
+         "nextStep":5,
+         "level":3,
+         "uEntity":""
+      },
+      {
+         "activity":"Tengo",
+         "step":5,
+         "intent":["descripcion"],
+         "answer":"*Genial! para terminar, 😀 *Escribe algo por lo que quisieras intercambiar tu producto o servicio* 🙉 _ Escribe_  *'Me gustaría intercambiar'* y *'Quisiera obtener'*_, después describe qué quisieras a cambio para que quien vea este producto sepa que por que otra cosa lo quisieras intercambiar_✨",
+         "nextStep":7,
+         "level":4,
+         "uEntity":""
+      },
+      {
+         "activity":"Tengo",
+         "step":6,
+         "intent":["cambio"],
+         "answer":"✨🙌 Genial Terminamos, si quieres puedes entrar a este link ver y gestionar tus públicaciones🙊✨\n\n 🙌 ¡Super! Hemos terminado. Si necesitas algo mas no dudes en hablarme, estaré pendiente, Chao! ✨",
+         "nextStep":7,
+         "level":4,
+         "uEntity":""
       }
    ]
 }

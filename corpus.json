@@ -40,7 +40,6 @@
       ],
       "answers": [
         ""
-
       ]
    }, {
       "intent": "si",
@@ -80,6 +79,155 @@
       "answers": [
         ""
       ]
+   },{
+      "intent": "ubicacionHuerta",
+      "utterances": [
+        "en una", 
+        "en mi",
+        "ubicada en",
+        "esta ubicada",
+        "encuentra ubicada en",
+        "la huerta esta ubicada",
+        "encuentra en",
+        "huerta esta",
+        "la huerta esta",
+        "mi huerta esta"
+      ],
+      "answers": [
+        ""
+      ]
+   }, {
+      "intent": "encargadosHuerta",
+      "utterances": [
+        "nos encargamos", 
+         "se encarga", 
+         "me encargo", 
+         "encargados", 
+         "encargadas", 
+         "quien se encarga", 
+         "quienes se encargan", 
+         "responsables", 
+         "responsabilidad de", 
+         "a cargo de"
+      ],
+      "answers": [
+        ""
+      ]
+   }, {
+      "intent": "tiempoDedicadoHuerta",
+      "utterances": [
+        "le dedico", 
+        "horas", 
+        "a la semana", 
+        "al dia", 
+        "dedicarle", 
+        "dedicado", 
+        "horas a mi huerta"
+      ],
+      "answers": [
+        ""
+      ]
+   }, {
+      "intent": "tiempoExperiencia",
+      "utterances": [
+        "llevo", 
+        "años", 
+        "meses", 
+        "experiencia", 
+        "experiencias", 
+        "tengo",
+        "experiencia cultivando"
+      ],
+      "answers": [
+        ""
+      ]
+   }, {
+      "intent": "conocimiento",
+      "utterances": [
+        "aprendi", 
+        "aprendi de", 
+        "estudie", "unversidad", "tecnico", "cursos", "curso", "bachillerato", 
+        "me enseñaron", 
+        "mis conocimientos", 
+        "mi conocimiento",
+        "conocimiento", "conocimientos", 
+        "saberes", 
+        "saber", 
+        "conocer", "conocido", "desconocido",
+        "aprender", "aprendizaje", "aprendiz", "aprendido" 
+      ],
+      "answers": [
+        ""
+      ]
+   }, {
+      "intent": "beneficiosSalud",
+      "utterances": [
+        "salud", 
+        "bienestar", 
+        "beneficios para la salud", "beneficios para mi salud", "la salud", "el bienestar", "medicina", "natural", "homeopatico" 
+      ],
+      "answers": [
+        ""
+      ]
+   }, {
+      "intent": "expectativaHuerta",
+      "utterances": [
+        "reducir", 
+        "gasto", 
+        "dinero", "plata", "ahorro", "bolsillo", "platica", "producir", "productor", "vender", "vender productos", "produccion", "ganar","consumo propio", "consumo"
+      ],
+      "answers": [
+        ""
+      ]
+   }, {
+      "intent": "tengo",
+      "utterances": [
+        "tengo",
+        "intercambio", 
+        "intercambiar"
+      ],
+      "answers": [
+        ""
+      ]
+   }, {
+      "intent": "necesito",
+      "utterances": [
+        "necesito", 
+        "anunciar"
+      ],
+      "answers": [
+        ""
+      ]
+   },{
+      "intent": "categoria",
+      "utterances": [
+        "este producto", 
+        "este producto tiene", 
+        "este producto es", 
+        "categoria",
+        "categorias",
+        "categorias:",
+        "categoría",
+        "categorías",
+        "categorías:"
+      ],
+      "answers": [
+        ""
+      ]
+   },{
+      "intent": "next",
+      "utterances": [
+        "siguiente", 
+        "continuar",
+        "continuemos",
+        "quiero continuar",
+        "continua",
+        "sigamos",
+        "seguir"
+      ],
+      "answers": [
+        ""
+      ]
    }, {
       "intent": "doubt",
       "utterances": [
@@ -89,7 +237,6 @@
         "para que seria ",
         "como asi", 
         "que información"
-    
       ],
       "answers": [
         ""

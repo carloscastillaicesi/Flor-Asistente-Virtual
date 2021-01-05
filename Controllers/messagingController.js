@@ -128,15 +128,25 @@ const sendTMessage = (res, mssg) => {
   res.end(twiml.toString());
 };
 
-const sendCustomTMessage = (body, number) => {
+const sendCustomTMessageImage = (body, number, media) => {
   client.messages.create({
-    mediaUrl: ['https://images.unsplash.com/photo-1545093149-618ce3bcf49d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80'],
+    mediaUrl: media ? [media] : "",
     from: 'whatsapp:+14155238886',
     to: number,
-    body: body
+    body: body ? body : ""
+  }).then(message => console.log(message.sid));
+
+};
+
+const sendCustomTMessage = (body, number) => {
+  client.messages.create({
+    from: 'whatsapp:+14155238886',
+    to: number,
+    body: body ? body : ""
   }).then(message => console.log(message.sid));
 
 };
 
 
-module.exports = { sendTMessage, receiveTMessage, sendCustomTMessage }; 
+
+module.exports = { sendTMessage, receiveTMessage, sendCustomTMessage, sendCustomTMessageImage }; 
