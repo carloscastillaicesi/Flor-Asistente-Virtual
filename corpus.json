@@ -21,6 +21,15 @@
          ]
       },
       {
+         "intent":"url",
+         "utterances":[
+            "pdf"
+         ],
+         "answers":[
+            ""
+         ]
+      },
+      {
          "intent":"name",
          "utterances":[
             "me llamo",
@@ -285,6 +294,41 @@
          "answers":[
             ""
          ]
+      },{
+         "intent":"documento",
+         "utterances":[
+            "subir un documento",
+            "subir a la biblioteca", 
+            "subir a biblioteca", 
+            "bliblioteca"
+         ],
+         "answers":[
+            ""
+         ]
+      },{
+         "intent":"mapa",
+         "utterances":[
+            "ir al mapa",
+            "mapita", 
+            "ver mapa", 
+            "mapa"
+         ],
+         "answers":[
+            ""
+         ]
+      },{
+         "intent":"titulo",
+         "utterances":[
+            "titulo",
+            "título",
+            "el titulo es", 
+            "como titulo", 
+            "se titulara", 
+            "se titulará"
+         ],
+         "answers":[
+            ""
+         ]
       },
       {
          "intent":"categorias",
@@ -294,11 +338,7 @@
             "este producto es",
             "categoria",
             "categorias",
-            "categorias:",
-            "categoría",
-            "categorías",
-            "categorías:", 
-            "pertenece a"
+            "categorias:"
          ],
          "answers":[
             ""
@@ -360,7 +400,15 @@
             "eso pa que",
             "para que seria ",
             "como asi",
-            "que información"
+            "que información", 
+            "ayuda", 
+            "no entiendo", 
+            "como asi", 
+            "explica", 
+            "explicame", 
+            "no entiendo nada", 
+            "porque", 
+                "por que"
          ],
          "answers":[
             ""

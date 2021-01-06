@@ -129,7 +129,7 @@ function customAnswer(dialog) {
   } else if (dialog.uEntity.includes("{link3}")) {
     answer = dialog.answer;
     answer = {
-      answer: answer.replace("{link3}", `https://203a227a4379.ngrok.io/user/${dialog.id}`), message: "Genial,  ya terminaste con tu registro puede ahora subir documentos y hacer intercambios. Por lo tanto, te puedo ayudar si\n\n_*¿Buscas* algo para intercambiar?_\n_*¿Registrar* algo que tienes para intercambiar?_\n_¿*Anunciar* algo que necesitas?_\n_*¿Subir un documento* a nuestra biblioteca digital?_\n_*¿Buscar un documento* en nuestra biblioteca digital?_\n_*¿Modificar* información de tu perfil?_\n\n Espero poderte ayudar en lo que necesites 😀💚", time: 10000, image: "https://i.ibb.co/MVb1X1C/etapa3.png"
+      answer: answer.replace("{link3}", `https://203a227a4379.ngrok.io/user/${dialog.id}`), message: "Genial,  ya terminaste con tu registro puede ahora subir documentos y hacer intercambios. Por lo tanto, te puedo ayudar si quieres\n\n_*¿Registrar* algo que tienes para intercambiar?_\n_*¿Anunciar* algo que necesitas?_\n_*¿Subir un documento* a nuestra biblioteca digital?_\n_*¿Ir al mapa* de Sembrando Vida_\n\nEspero poderte ayudar en lo que necesites 😀💚", time: 10000, image: "https://i.ibb.co/MVb1X1C/etapa3.png"
     };
 
   } else {

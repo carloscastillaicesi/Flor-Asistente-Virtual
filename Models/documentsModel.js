@@ -2,10 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const documentsSchema = new Schema({
- _id: {
-  type: String,
-  required: true,
- }, uId: {
+ uId: {
   type: String
  },
  categorias: {

@@ -1,19 +1,5 @@
 {
   "users": [
-    {
-      "129f62c77beddb0876778f2f0805f784:aa2a6323964e06c0ed060395558cccf2": {
-        "geometry": [
-          3.3756652,
-          -76.5274269
-        ],
-        "activity": "Menu",
-        "step": 0,
-        "level": 4,
-        "name": "Carlos Castilla",
-        "pic": "https://api.twilio.com/2010-04-01/Accounts/AC467367f2bd485ea727199ffd2774cdf9/Messages/MMe23733e6434b71d370ea2e9147792888/Media/ME21ff7a6029d274149a437f028c82031e",
-        "currentItem": "",
-        "currentDoc": ""
-      }
-    }
+  
   ]
 }

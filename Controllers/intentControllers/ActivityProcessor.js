@@ -3,6 +3,7 @@ const detailed = require("./Detailed")
 const menu = require("./Menu")
 const barter = require("./Barter")
 const options = require("./Options")
+const documento = require("./Document")
 var mssg;
 
 activityClassifier = (activity) => {
@@ -26,6 +27,9 @@ activityClassifier = (activity) => {
         break;
       case "Options":
         mssg = options(activity);
+        break;
+      case "Document":
+        mssg = documento(activity);
         break;
       default:
         break;

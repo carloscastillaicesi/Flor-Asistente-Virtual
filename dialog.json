@@ -10,6 +10,17 @@
          "nextStep":1,
          "level":0,
          "uEntity":""
+      },{
+         "activity":"Registration",
+         "step":0,
+         "intent":[
+            "error", 
+            "doubt"
+         ],
+         "answer":"Que mal, recuerda que para que una semilla 🌱✨ crezca hay que alimentarla todos los días. *Si no deseas seguir con el proceso de registro, por favor escribe *Terminar*. De lo contrario, escribe *Si* para continuar con el registro*",
+         "nextStep":0,
+         "level":0,
+         "uEntity":""
       },
       {
          "activity":"Registration",
@@ -451,6 +462,37 @@
          "intent":[
             "cambio",
             "None"
+         ],
+         "answer":"",
+         "nextStep":0,
+         "level":4,
+         "uEntity":""
+      }, {
+         "activity":"Document",
+         "step":0,
+         "intent":[
+            "url"
+         ],
+         "answer":"*Super* 🙌✨  ahora vamos a crear categorias para este documento, Dime *¿Sobre que se trata el contenido del codument?* \n\n Para registrarlas correctamente escribe una frase que contenga la palabra:*'Categoría'*, seguido de la categoría que consideres. \n \n _Si consideras que pertenece a más de una, sepáralas con una coma de la siguiente manera:_ *Semilla, Fruta, Abono,...?* ✨👩🏽‍🌾",
+         "nextStep":1,
+         "level":3,
+         "uEntity":""
+      }, {
+         "activity":"Document",
+         "step":1,
+         "intent":[
+            "categorias"
+         ],
+         "answer":"Excelente* 🙌✨ ahora para terminar dime *¿Cual es el título del documento?* \n\n Para registrar el título del documento correctamente escribe una frase que contenga la palabra:*'Título'*, seguido de un título que detalle de qué se trata el documento. ✨👩🏽‍🌾",
+         "nextStep":2,
+         "level":4,
+         "uEntity":""
+      }
+      , {
+         "activity":"Document",
+         "step":2,
+         "intent":[
+            "titulo"
          ],
          "answer":"",
          "nextStep":0,

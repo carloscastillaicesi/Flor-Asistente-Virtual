@@ -1,6 +1,7 @@
 const User = require('../Models/userModel');
 const Details = require('../Models/detailsModel');
 const Barters = require('../Models/bartersModels');
+const Documents = require('../Models/documentsModel');
 const userLocal = require('./localCRUD');
 
 function userModify(userI, id) {
@@ -107,7 +108,57 @@ function getBarter(id) {
 }
 
 
+function documentModify(userB, id) {
+      console.log("barterModify id", id)
+      try {
+            return new Promise(async (resolve, reject) => {
+                  var response = await Documents.findByIdAndUpdate(id, userB, { new: true });
+                  const { createdAt, updatedAt, __v, _id, ...target } = response._doc;
+                  resolve(target)
+            })
+      } catch (error) {
+            console.log("Cannot Modify Document")
+      }
+}
 
 
-module.exports = { userModify, getDetails, detailModify, getBarter, barterModify, createBarter, getUser };
+function createDocument(uId, url) {
+      try {
+            return new Promise(async (resolve, reject) => {
+                  var barter = new Documents({
+                        uId: uId,
+                        nombre: "",
+                        categorias: [],
+                        url: url,
+
+                  });
+                  barter.save().then((response) => {
+                        var doc = response._doc;
+                        const { createdAt, updatedAt, __v, ...target } = doc;
+                        resolve(target)
+                  });
+            })
+      } catch (error) {
+            console.log("Cannot Modify Document")
+      }
+}
+
+function getDocument(id) {
+      try {
+            return new Promise(async (resolve, reject) => {
+                  var response = await Documents.findById(id).exec();
+                  const { createdAt, updatedAt, __v, _id, ...target } = response._doc;
+                  resolve(target)
+            })
+      } catch (error) {
+            console.log("Cannot Modify Document")
+
+      }
+}
+
+
+
+
+
+module.exports = { userModify, getDetails, detailModify, getBarter, barterModify, createBarter, getUser, documentModify, createDocument, getDocument };
 
