@@ -1,15 +1,14 @@
 import React from 'react'
-import { Link } from "react-router-dom";
 import defaultPic from "../../../assets/defaultphotouser.png";
 import huerta from "../../../assets/Huertas.svg";
 import conocimientoI from "../../../assets/Conocimiento.svg";
 import experienciaI from "../../../assets/Experiencia.svg";
 import expectativaI from "../../../assets/Expectativas.svg";
 import Information from "./Information";
-export default function Detailed({ pic, user, name, huertaPic }) {
+export default function Detailed({ pic, user, name }) {
 
  const { ubicacionHuerta, tiempoDedicadoHuerta, encargadosHuerta, gallery
-  , conocimiento, tiempoExperiencia, expectativaHuerta
+  , conocimiento, tiempoExperiencia, expectativaHuerta, beneficiosSalud
  } = user
  return (
   <div className="component-detailed">
@@ -31,7 +30,7 @@ export default function Detailed({ pic, user, name, huertaPic }) {
      <Information icon={experienciaI} imagen={null} info={tiempoExperiencia} titulo={"Experiencia"} />
      <Information icon={expectativaI} imagen={null} info={expectativaHuerta
      } titulo={"¿Qué beneficios buscas para tu salud?"} />
-     <Information icon={expectativaI} imagen={null} info={expectativaHuerta
+     <Information icon={expectativaI} imagen={null} info={beneficiosSalud
      } titulo={"Expectativa"} />
 
     </div>

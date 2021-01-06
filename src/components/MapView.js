@@ -52,7 +52,8 @@ const MapView = () => {
   const [posActual, setposActual] = useState(false);
 
   const { fullScreenMode, toggleFullscreen, setModal } = useContext(SettingContext);
-  const { locations, locationsStatus } = useContext(LocationContext);
+  const { locations } = useContext(LocationContext);
+
   const location = useLocation();
 
   const history = useHistory();
@@ -76,7 +77,6 @@ const MapView = () => {
         if (result) {
           //geomtry here is a number, and in the other context object is something else 
           setpickedUser([result[0].geometry[0].toString(), result[0].geometry[1].toString()]);
-          centerMapViewUser();
           setTimeout(() => {
             history.push("/map");
           }, 500);
@@ -100,7 +100,7 @@ const MapView = () => {
         }
       }
     }
-  }, [location, history, setModal, pickedUser, userId, isLoading, locations]);
+  }, [location, history, setModal, pickedUser, userId, isLoading, locations, setCurrentLocation]);
 
 
   function centerMapView(e) {
@@ -115,7 +115,6 @@ const MapView = () => {
   function centerMapViewUser() {
     const { leafletElement } = mapRef.current;
     if (pickedUser !== '') {
-
       let latlng = { lat: pickedUser[0], lng: pickedUser[1] }
       leafletElement.setView(latlng, 16);
       const point = leafletElement.project(latlng);

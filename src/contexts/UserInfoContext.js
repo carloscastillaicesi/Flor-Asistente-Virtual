@@ -24,7 +24,7 @@ const UserInfoContextProvider = (props) => {
   setuserStatus(usersQuery.status);
   console.log("users", users)
   console.log("userstatus", userStatus)
- }, [usersQuery])
+ }, [usersQuery, users, userStatus])
 
  return (
   <UserInfoContext.Provider value={{ users, userStatus }}>

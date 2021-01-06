@@ -45,7 +45,6 @@ function Documents({ documents, name, pic, setModal }) {
 
   }
   useEffect(() => {
-    console.log("Hide Document: ", pickedDocID);
     console.log("Deletion Process of Document: ", deletionpickedDocID);
     console.log("Deleted Documents: ", deletedpickedDocID);
   }, [pickedDocID, deletedpickedDocID, deletionpickedDocID])
@@ -79,7 +78,7 @@ function Documents({ documents, name, pic, setModal }) {
               <img src={pic} alt="" />
               <h5> <strong>{name.split(" ")[0]} </strong>subió este documento</h5>
             </div>
-            <a href={pickedDocument.url} target={"_blank"}>  <div className="picked-actions">Ver Documento</div> </a>
+            <a href={pickedDocument.url} target={"_blank"} rel="noopener noreferrer">  <div className="picked-actions">Ver Documento</div> </a>
             <div className="picked-actions" onClick={setModal.bind()}>Contactar a {name.split(" ")[0]}</div>
           </div>
         </div>

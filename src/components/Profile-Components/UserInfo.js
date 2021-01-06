@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
 import defaultPic from "../../assets/defaultphotouser.png";
 import stageOne from "../../assets/seed_marker.svg";
@@ -6,7 +6,6 @@ import stageTwo from "../../assets/seed_marker_two.svg";
 import stageThree from "../../assets/seed_marker_three.svg";
 import stageFour from "../../assets/seed_marker_four.svg";
 import intercambiar from "../../assets/intercambiar.svg";
-import plantas from "../../assets/misplantas.svg";
 import biblioteca from "../../assets/biblioteca.svg";
 
 function UserInfo({ user, pic, name, level }) {

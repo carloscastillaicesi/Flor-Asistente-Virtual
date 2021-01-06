@@ -7,7 +7,7 @@ import stageFour from "../../assets/seed_marker_four.svg";
 
 function Badge({ name, pic, level }) {
 
-  const progress = [(level * 20) - 20, "%"].join('');
+
   const [selectedBadge, setselectedBadge] = useState()
   const [selectedBadgeText, setselectedBadgeText] = useState("No has seleccionando ninguna etapa")
 

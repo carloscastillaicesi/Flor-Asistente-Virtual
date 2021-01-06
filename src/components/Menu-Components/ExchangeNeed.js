@@ -60,8 +60,6 @@ function ExchangeNeed() {
 
 
   useEffect(() => {
-
-    console.log(localStore._id)
     console.log("Hide Product: ", pickedProdID);
     console.log("Deletion Process of Product: ", deletionpickedProdID);
     console.log("Deleted Products: ", deletedpickedProdID);

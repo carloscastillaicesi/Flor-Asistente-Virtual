@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import document from "../../assets/ver-documento.svg";
 import Hdocument from "../../assets/ocultar-documento.svg";
 import deleteI from "../../assets/delete.svg";
@@ -97,7 +97,7 @@ function LibraryCategory({ documents, userInfo }) {
               <img src={pickedDocument.userPic} alt="" />
               <h5> <strong>{pickedDocument.userName.split(" ")[0]} </strong>subió este documento</h5>
             </div>
-            <a href={pickedDocument.url} target={"_blank"}>  <div className="picked-actions"><h6>Ver Documento</h6></div> </a>
+            <a href={pickedDocument.url} target={"_blank"} rel="noopener noreferrer">  <div className="picked-actions"><h6>Ver Documento</h6></div> </a>
             <div className="picked-actions"> <h6>Contactar a {pickedDocument.userName.split(" ")[0]}</h6></div>
           </div>
         </div>

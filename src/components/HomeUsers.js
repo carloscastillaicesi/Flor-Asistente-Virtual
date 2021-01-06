@@ -65,7 +65,7 @@ const HomeUsers = () => {
     if (data === null) {
       history.push("/usernotfound");
     }
-  }, [history, status, userData, toggleFullscreen, geometry])
+  }, [history, status, userData, toggleFullscreen, geometry, data])
 
   return (
     <div>

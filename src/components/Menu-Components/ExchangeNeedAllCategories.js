@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 function ExchangeNeedAllCategories({ products }) {
 
   //Loops through and gets all the products from all the users 
@@ -9,7 +9,7 @@ function ExchangeNeedAllCategories({ products }) {
   var categorias = prods.map((prods) => prods.categorias).flat();
 
   //Filters unique string in the "categorias" array
-  categorias = categorias.filter((x, i, a) => a.indexOf(x) == i);
+  categorias = categorias.filter((x, i, a) => a.indexOf(x) === i);
 
   //Loops through and gets just the "categorias" key from "documentos" from all the users and join its in a single string
   var categoriasJoin = prods.map((prods) => prods.categorias.join(","));

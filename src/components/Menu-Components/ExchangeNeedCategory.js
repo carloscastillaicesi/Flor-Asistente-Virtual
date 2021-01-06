@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react'
-import { Link, useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import document from "../../assets/ver-documento.svg";
 import Hdocument from "../../assets/ocultar-documento.svg";
 import deleteI from "../../assets/delete.svg";

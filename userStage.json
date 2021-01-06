@@ -16,13 +16,13 @@
       }
     },
     {
-      "4a70b268789c1e55f717ae1e67dcd60b:1febf2a414333836bcc05f92564c70b1": {
+      "4a78d9e9d00ed467e7459b9777ed6529:68c83eaea32392cf96ffc26de5ad012b": {
         "geometry": [],
         "activity": "Registration",
-        "step": 0,
+        "step": 5,
         "level": 0,
-        "name": "",
-        "pic": "",
+        "name": "Carlos Castilla",
+        "pic": "https://api.twilio.com/2010-04-01/Accounts/AC467367f2bd485ea727199ffd2774cdf9/Messages/MM312444124e77118d7e6695e7899d5461/Media/ME4788031fc96c6a27396d4925b1760321",
         "currentItem": "",
         "currentDoc": ""
       }

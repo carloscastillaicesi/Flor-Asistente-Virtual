@@ -46,7 +46,7 @@ export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMap
         setPage(true);
       }
     }
-  }, [state, history, location])
+  }, [state, history, location, setOpen])
 
 
   function handleOpen() {
@@ -134,7 +134,7 @@ export default function MarkerPopup({ open, setOpen, name, pic, setpickedUserMap
             <UserInfo user={pickedUser} name={name} pic={pic} level={level} />
           </Route>
         </div> :
-        <div className={message === "Cargando..." ? "marker-popup-loading" : "marker-popup-error"}><h3>{message === "Cargando..." ? "Cargando..." : <div className={"marker-popup-error-item"}>  <h2>OOPS!</h2><img src={errorI} alt={"https://api.whatsapp.com/send?phone=573165058770"} target={"_blank"} /> <h3>{`Hubo un error cargando el perfil de ${name.split(" ")[0]}`}</h3> <h6>Comunícate con el <a href="">administrador</a></h6></div>}</h3>
+        <div className={message === "Cargando..." ? "marker-popup-loading" : "marker-popup-error"}><h3>{message === "Cargando..." ? "Cargando..." : <div className={"marker-popup-error-item"}>  <h2>OOPS!</h2><img src={errorI} alt={""} target={"_blank"} /> <h3>{`Hubo un error cargando el perfil de ${name.split(" ")[0]}`}</h3> <h6>Comunícate con el <a href="https://api.whatsapp.com/send?phone=573165058770">administrador</a></h6></div>}</h3>
         </div>}
     </Popup>
   );

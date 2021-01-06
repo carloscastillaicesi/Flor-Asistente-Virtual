@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from 'react'
-import FlexApi from 'twilio/lib/rest/FlexApi';
 import { SettingContext } from "../contexts/SettingContext";
 
 function Modal() {

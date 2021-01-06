@@ -24,7 +24,7 @@ const BarterContextProvider = (props) => {
   setBarterStatus(bartersQuery.status);
   console.log("Barters", barters)
   console.log("BarterStatus", barterStatus)
- }, [bartersQuery])
+ }, [bartersQuery, barters, barterStatus])
 
  return (
   <BarterContext.Provider value={{ barters, barterStatus }}>

@@ -25,7 +25,7 @@ const LocationContextProvider = (props) => {
   setlocationsStatus(locationsQuery.status);
   console.log("locations", locations)
   console.log("locationStatus", locationsStatus)
- }, [locationsQuery])
+ }, [locationsQuery, locations, locationsStatus])
 
  return (
   <LocationContext.Provider value={{ locations, locationsStatus }}>

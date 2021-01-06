@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { useHistory, useLocation } from "react-router-dom";
 import { SettingContext } from "../../contexts/SettingContext";
 
@@ -6,7 +6,7 @@ import { SettingContext } from "../../contexts/SettingContext";
 function TopProfileBar({ setOpen, setPage }) {
   const history = useHistory();
   let location = useLocation();
-  const { modal, toggleModal } = useContext(SettingContext);
+  const { toggleModal } = useContext(SettingContext);
 
   function goBack() {
 

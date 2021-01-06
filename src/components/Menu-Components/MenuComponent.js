@@ -26,7 +26,7 @@ function MenuComponent() {
 
   const [loading, setloading] = useState(true)
 
-  const { modal, toggleModal } = useContext(SettingContext);
+  const { modal } = useContext(SettingContext);
   const { documents, documentStatus } = useContext(DocumentContext);
   const { barters, barterStatus } = useContext(BarterContext);
   const { locations, locationsStatus } = useContext(LocationContext);
@@ -39,7 +39,7 @@ function MenuComponent() {
         console.log(documents)
       }
     }
-  }, [documents, barters, locations, modal])
+  }, [documents, barters, locations, modal, barterStatus, documentStatus, locationsStatus])
 
   function goBack() {
     history.goBack();

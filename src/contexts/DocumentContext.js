@@ -25,7 +25,7 @@ const DocumentContextProvider = (props) => {
   setdocumentStatus(documentsQuery.status);
   console.log("documents", documents)
   console.log("documentStatus", documentStatus)
- }, [documentsQuery])
+ }, [documentsQuery, documents, documentStatus])
 
  return (
   <DocumentContext.Provider value={{ documents, documentStatus }}>
