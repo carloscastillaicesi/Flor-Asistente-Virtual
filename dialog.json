@@ -7,9 +7,14 @@
             "si"
          ],
          "answer":"*¡Genial!*👩🏽‍🌾✨ para sembrar tu semilla en el mapa de Sembrando Vida primero ☝🏼 dime \n \n *¿Cual es tu nombre completo?*\n \n _*Tip:*Escribe_ *'Me llamo'* ó *'Mi nombre es'* _seguido de tu *Nombre* y *Apellido*_",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":1,
          "level":0,
-         "uEntity":""
+         "uEntity":"", 
+         "message":"", 
+         "messageImage":"", 
+         "messageTime":0
       },{
          "activity":"Registration",
          "step":0,
@@ -18,9 +23,14 @@
             "doubt"
          ],
          "answer":"Que mal, recuerda que para que una semilla 🌱✨ crezca hay que alimentarla todos los días. *Si no deseas seguir con el proceso de registro, por favor escribe *Terminar*. De lo contrario, escribe *Si* para continuar con el registro*",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":0,
          "level":0,
-         "uEntity":""
+         "uEntity":"", 
+         "message":"", 
+         "messageImage":"", 
+         "messageTime":0
       },
       {
          "activity":"Registration",
@@ -28,10 +38,15 @@
          "intent":[
             "no"
          ],
-         "answer":"Que mal, recuerda que para que una semilla 🌱✨ crezca hay que alimentarla todos los días. *Si no deseas seguir con el proceso de registro, por favor escribe *Terminar*. De lo contrario, escribe *Si* para continuar con el registro*",
+         "answer":"",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":0,
          "level":0,
-         "uEntity":""
+         "uEntity":"", 
+         "message":"Que mal, recuerda que para que una semilla 🌱✨ crezca hay que alimentarla todos los días. *Si no deseas seguir con el proceso de registro, por favor escribe *Terminar*. De lo contrario, escribe *Si* para continuar con el registro*", 
+         "messageImage":"", 
+         "messageTime":0
       },
       {
          "activity":"Registration",
@@ -40,9 +55,14 @@
             "finish"
          ],
          "answer":"",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":0,
          "level":0,
-         "uEntity":""
+         "uEntity":"", 
+         "message":"", 
+         "messageImage":"", 
+         "messageTime":0
       },
       {
          "activity":"Registration",
@@ -51,6 +71,8 @@
             "name"
          ],
          "answer":" El nombre que he registrado es : \n\n *{name}*  \n\n ¿Es correcto?🙌🏼",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":2,
          "level":0,
          "uEntity":"{name}"
@@ -62,9 +84,14 @@
             "si"
          ],
          "answer":"👏🏻 *¡Genial!* Ahora para que los demás te puedan identificar, mandame una foto tuya que te gustaría que los demás vieran. 😊✨* 👩🏽‍🌾🌱",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":3,
          "level":0,
-         "uEntity":""
+         "uEntity":"", 
+         "message":"", 
+         "messageImage":"", 
+         "messageTime":0
       },
       {
          "activity":"Registration",
@@ -73,9 +100,14 @@
             "no"
          ],
          "answer":"Por favor, dime de nuevo *¿Cual es tu nombre completo?*\n \n _Ejemplo: puedes escribir Me llamo ó Mi nombre es seguido de tu *Nombre* y *Apellido*_",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":1,
          "level":0,
-         "uEntity":""
+         "uEntity":"", 
+         "message":"", 
+         "messageImage":"", 
+         "messageTime":0
       },
       {
          "activity":"Registration",
@@ -84,9 +116,14 @@
             "image"
          ],
          "answer":"👏🏻 Ahora dime *¿Actualmente tienes una huerta o un espacio donde siembras?* 👩🏽‍🌾🌱",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":4,
          "level":0,
-         "uEntity":""
+         "uEntity":"", 
+         "message":"", 
+         "messageImage":"", 
+         "messageTime":0
       },
       {
          "activity":"Registration",
@@ -95,9 +132,14 @@
             "si"
          ],
          "answer":"¡Listo!👌🏼 ya registré tu información. 🙌🏼 Ahora, para poder ubicar tu huerta en el mapa de Sembrando Vida *¿Camina con tu teléfono hacia donde esta ubicada tu huerta o el espacio donde siembras y comparteme la ubicación a través de Whatsapp *💚🌱 \n\n _Para enviarme tu ubicación vía Whatsapp puedes seguir las siguientes instrucciones:_ \n\n  *1) Encuentra y presiona el ícono de clip 📎 en tu pantalla. * \n *2) Busca la opción 'ubicación'* \n *3) Por último presiona la opción  'Enviar mi ubicación actual' y así podré registrar la ubicación de tu huerta* \n\n _Si no estas cerca de tu huerta o el lugar donde siembras, no te preocupes. Acá estaré cuando vuelvas_✨",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":5,
          "level":0,
-         "uEntity":""
+         "uEntity":"", 
+         "message":"", 
+         "messageImage":"", 
+         "messageTime":0
       },
       {
          "activity":"Registration",
@@ -106,9 +148,14 @@
             "no"
          ],
          "answer":"¡Listo!👌🏼 ya registré tu información. 🙌🏼 Al parecer no tienes una huerta o un espacio para sembrar actualmente. Sin embargo, para poder ubicarte en el mapa de Sembrando Vida *Ve hacia donde estaría ubicada tu huerta o el espacio donde sembrarías y comparteme la ubicación a través de Whatsapp *💚🌱 \n\n _Para enviarme tu ubicación vía Whatsapp puedes seguir las siguientes instrucciones:_ \n\n  *1) Encuentra y presiona el ícono de clip 📎 en tu pantalla. * \n *2) Busca la opción 'ubicación'* \n *3) Por último presiona la opción 'Enviar mi ubicación actual y así podré registrar la ubicación de tu huerta* \n\n _Si no estas cerca del lugar donde sembrarías, no te preocupes. Acá estaré cuando vuelvas_✨",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":5,
          "level":0,
-         "uEntity":""
+         "uEntity":"", 
+         "message":"", 
+         "messageImage":"", 
+         "messageTime":0
       },
       {
          "activity":"Registration",
@@ -118,6 +165,8 @@
          ],
          "answer":"👌🏼 *¡Excelente!* Ahora, para continuar dime *¿Dónde está ubicada tu huerta?* 👩🏽‍🌾🌱 (en tu casa, en tu apartamento, en una Finca, en un espacio comunitario o en un colegio)",
          "uEntity":"",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":6,
          "level":0
       },
@@ -129,9 +178,14 @@
             "None"
          ],
          "answer":"¡Listo! 🙌🏼 Me encantaría conocer tu huerta \n\n *¿Te gustaría mandarme algunas fotos de tus plantas?* sería genial que me pudieras compartir varias imágenes del lugar 😊✨🌳 \n\n *Por Favor, para que pueda registrar todas las imágenes de tu huerta, por favor envía solamente una imágen y espera a mi señal para enviar la siguiente.*",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":7,
          "level":0,
-         "uEntity":""
+         "uEntity":"", 
+         "message":"", 
+         "messageImage":"", 
+         "messageTime":0
       },
       {
          "activity":"Detailed",
@@ -140,9 +194,14 @@
             "image"
          ],
          "answer":"¡Que lindas plantas tienes!👩🏽‍🌾🌱\n \n ¿Deseas añadir otra imágen? \n \n _Si deseas mostrarme más imágenes de tus plantas, puedes enviar otra imágen después de leer este mensaje. De lo contrario, contesta 'no' a este mensaje_",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":8,
          "level":0,
-         "uEntity":""
+         "uEntity":"", 
+         "message":"", 
+         "messageImage":"", 
+         "messageTime":0
       },
       {
          "activity":"Detailed",
@@ -151,6 +210,8 @@
             "no"
          ],
          "answer":"👌🏼Listo! Tu semilla de información ya esta sembrada 💚🌱 \n\n *Con el siguiente link podrás entrar al mapa:* \n\n {link}",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":9,
          "level":1,
          "uEntity":"{link}"
@@ -162,9 +223,14 @@
             "image"
          ],
          "answer":"¡Me encantan tus maticas!👩🏽‍🌾🌱\n \n ¿Deseas añadir otra imágen? \n \n _Si deseas mostrarme más imágenes de tus plantas, puedes enviar otra imágen después de leer este mensaje. De lo contrario, contesta 'no' a este mensaje_",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":7,
          "level":0,
-         "uEntity":""
+         "uEntity":"", 
+         "message":"", 
+         "messageImage":"", 
+         "messageTime":0
       },
       {
          "activity":"Detailed",
@@ -173,6 +239,8 @@
             "no"
          ],
          "answer":"Has terminado la la fase 1 🙌 \n\n  Tu semilla de información ya esta sembrada en el mapa 💚🌱\n\n *Con el siguiente link podrás entrar al mapa y ver tu progreso:* \n\n {link}",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":9,
          "level":1,
          "uEntity":"{link}"
@@ -185,9 +253,14 @@
             "si"
          ],
          "answer":"👏🏻 ¡Excelente! para comenzar esta siguiente etapa y hacer darle alimento a esta semilla de información que plantamos en el mapa de Sembrando Vida, me podrías porfavor decir 💚 \n\n *¿Quién o quienes se hacen cargo de los cuidados de tu huerta, plantas o el espacio donde cultivas?* ✨👩🏽‍🌾",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":10,
          "level":1,
-         "uEntity":""
+         "uEntity":"", 
+         "message":"", 
+         "messageImage":"", 
+         "messageTime":0
       },
       {
          "activity":"Detailed",
@@ -197,9 +270,14 @@
             "None"
          ],
          "answer":" 🙌🏼 Genial! Cuando cuidas de tu huerta, plantas o el espacio donde cultivas 💚 \n\n *¿Cuánto tiempo le dedicas?* 😊",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":11,
          "level":1,
-         "uEntity":""
+         "uEntity":"", 
+         "message":"", 
+         "messageImage":"", 
+         "messageTime":0
       },
       {
          "activity":"Detailed",
@@ -209,6 +287,8 @@
             "None"
          ],
          "answer":" Puedes entrar a este \n\n {link2} \n\n   Encontraras a tu semilla germinada 🌱✨, Gracias a que la nutriste con tu informaciòn👐",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":12,
          "level":2,
          "uEntity":"{link2}"
@@ -221,9 +301,14 @@
             "si"
          ],
          "answer":"👏🏻 ¡Excelente! para comenzar esta siguiente etapa me gustaría conocer 💚 \n\n *¿Cuánto tiempo de experiencia tienes cultivando?* ✨👩🏽‍🌾",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":13,
          "level":2,
-         "uEntity":""
+         "uEntity":"", 
+         "message":"", 
+         "messageImage":"", 
+         "messageTime":0
       },
       {
          "activity":"Detailed",
@@ -233,9 +318,14 @@
             "None"
          ],
          "answer":"👏🏻 *¡Super!* y los conocimientos que tienes *¿Dónde los aprendiste, en una academia/estudios o fueron heredados de algún familiar?* ✨👩🏽‍🌾",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":14,
          "level":2,
-         "uEntity":""
+         "uEntity":"", 
+         "message":"", 
+         "messageImage":"", 
+         "messageTime":0
       },
       {
          "activity":"Detailed",
@@ -245,9 +335,14 @@
             "None"
          ],
          "answer":"👏🏻 Bueno ahora quisiera que me contaras *¿Qué beneficios para tu salud crees que puedes obtener o vas a obtener con tu huerta?* _ Ejemplo: fisicos, psicologicos_ 😊",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":15,
          "level":2,
-         "uEntity":""
+         "uEntity":"", 
+         "message":"", 
+         "messageImage":"", 
+         "messageTime":0
       },
       {
          "activity":"Detailed",
@@ -257,9 +352,14 @@
             "None"
          ],
          "answer":"🙌🏼 *¡Genial!* y en cuanto a lo económico ¿Qué beneficios esperas obtener de tu huerta?* _Por Ejemplo: reducir tus gastos o vender productos_ 💚",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":16,
          "level":2,
-         "uEntity":""
+         "uEntity":"", 
+         "message":"", 
+         "messageImage":"", 
+         "messageTime":0
       },
       {
          "activity":"Detailed",
@@ -269,6 +369,8 @@
             "None"
          ],
          "answer":"😊 Encontraras tu semilla de información convertida en una plántula gracias a que la nutriste con tu información, puedes entrar a este link y ver tu información en la pestaña *Acerca de Mi* en tu perfil💚 \n\n {link3}",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":0,
          "level":3,
          "uEntity":"{link3}"
@@ -285,9 +387,14 @@
             "Modificar"
          ],
          "answer":"",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":0,
          "level":3,
-         "uEntity":""
+         "uEntity":"", 
+         "message":"", 
+         "messageImage":"", 
+         "messageTime":0
       },
       {
          "activity":"Menu",
@@ -297,9 +404,14 @@
             "None"
          ],
          "answer":"\n\n_*¿Buscas* algo para intercambiar?_\n_*¿Registrar* algo que tienes para intercambiar?_\n_¿*Anunciar* algo que necesitas?_\n_*¿Subir un documento* a nuestra biblioteca digital?_\n_*¿Buscar un documento* en nuestra biblioteca digital?_\n_*¿Modificar* información de tu perfil?_\n\n Espero poderte ayudar en lo que necesites 😀💚",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":0,
          "level":3,
-         "uEntity":""
+         "uEntity":"", 
+         "message":"", 
+         "messageImage":"", 
+         "messageTime":0
       },
       {
          "activity":"Tengo",
@@ -308,6 +420,8 @@
             "name"
          ],
          "answer":" El nombre que he registrado es : \n\n *{name}*  \n\n ¿Es correcto?🙌🏼",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":1,
          "level":3,
          "uEntity":"{name}"
@@ -319,9 +433,14 @@
             "si"
          ],
          "answer":"👏🏻 *Super* 😀 ahora para poder hacer un buen registro de lo que quieres intercambiar hay que ser precisos. \n\n *¿A que categoría pertenece lo que quieres registrar?* \n\n Para registrarlo correctamente escribe una frase que contenga con:*'Categoría'*, seguido de la categoría que consideres. \n \n _Si consideras que pertenece a más de una, sepáralas con una coma de la siguiente manera:_ *Semilla, Fruta, Abono,...?* ✨👩🏽‍🌾",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":2,
          "level":3,
-         "uEntity":""
+         "uEntity":"", 
+         "message":"", 
+         "messageImage":"", 
+         "messageTime":0
       },
       {
          "activity":"Tengo",
@@ -330,9 +449,14 @@
             "no"
          ],
          "answer":"Por favor, dime de nuevo *¿Qué nombre deseas ponerle a tu anuncio?*\n \n _Ejemplo: *el nombre del producto es*_",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":0,
          "level":3,
-         "uEntity":""
+         "uEntity":"", 
+         "message":"", 
+         "messageImage":"", 
+         "messageTime":0
       },
       {
          "activity":"Tengo",
@@ -341,9 +465,14 @@
             "categorias"
          ],
          "answer":"*Super! 😊 Ahora debemos subir unas fotos de lo que quieres intercambiar, para que los demás lo puedan ver. \n\n *Mandame una foto para que otros Sembradores de Vida puedan verlo* ✨👩🏽‍🌾",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":3,
          "level":3,
-         "uEntity":""
+         "uEntity":"", 
+         "message":"", 
+         "messageImage":"", 
+         "messageTime":0
       },
       {
          "activity":"Tengo",
@@ -352,9 +481,14 @@
             "image"
          ],
          "answer":"¿Deseas añadir otra imágen de tu producto?👩🏽‍🌾🌱 \n \n _Si deseas mostrarme más imágenes de este producto para que las guarde, puedes enviar otra imágen después de leer este mensaje. De lo contrario, contesta 'no' a este mensaje_",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":4,
          "level":3,
-         "uEntity":""
+         "uEntity":"", 
+         "message":"", 
+         "messageImage":"", 
+         "messageTime":0
       },
       {
          "activity":"Tengo",
@@ -363,9 +497,14 @@
             "no"
          ],
          "answer":"*🌻🌳 ¡Perfecto! ahora \n\n *escribe una pequeña descripción* del producto o servicio que tienes para intercambiar con otros *Sembradores de Vida* \n\n _Para registrar la descripción correctamente escribe una frase que comience con la palabra *'descripción'*_",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":5,
          "level":3,
-         "uEntity":""
+         "uEntity":"", 
+         "message":"", 
+         "messageImage":"", 
+         "messageTime":0
       },
       {
          "activity":"Tengo",
@@ -374,9 +513,14 @@
             "image"
          ],
          "answer":"*🙌 Genial.\n \n ¿Deseas añadir otra imágen de tu producto?👩🏽‍🌾🌱 \n \n _Si deseas mostrarme más imágenes de este producto para que las guarde, puedes enviar otra imágen después de leer este mensaje. De lo contrario, contesta 'no' a este mensaje_",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":3,
          "level":3,
-         "uEntity":""
+         "uEntity":"", 
+         "message":"", 
+         "messageImage":"", 
+         "messageTime":0
       },
       {
          "activity":"Tengo",
@@ -385,20 +529,31 @@
             "no"
          ],
          "answer":"*🌻🌳 ¡Perfecto! ahora \n\n *escribe una pequeña descripción* del producto o servicio que tienes para intercambiar con otros *Sembradores de Vida* \n\n _Para registrar la descripción correctamente escribe una frase que comience con la palabra *'descripción'*_",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":5,
          "level":3,
-         "uEntity":""
+         "uEntity":"", 
+         "message":"", 
+         "messageImage":"", 
+         "messageTime":0
       },
       {
          "activity":"Tengo",
          "step":5,
          "intent":[
-            "descripcion"
+            "descripcion",
+            "None"
          ],
          "answer":"*Genial! para terminar, 😀 *Escribe algo por lo que quisieras intercambiar tu producto o servicio* 🙉 _ Escribe_  *'Me gustaría intercambiar'* y *'Quisiera obtener'*_, después describe qué quisieras a cambio para que quien vea este producto sepa que por que otra cosa lo quisieras intercambiar_✨",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":6,
          "level":3,
-         "uEntity":""
+         "uEntity":"", 
+         "message":"", 
+         "messageImage":"", 
+         "messageTime":0
       },
       {
          "activity":"Tengo",
@@ -408,9 +563,14 @@
             "None"
          ],
          "answer":"✨🙌 Genial Terminamos, si quieres puedes entrar a este link ver y gestionar tus públicaciones🙊✨\n\n 🙌 ¡Super! Hemos terminado. Si necesitas algo mas no dudes en hablarme, estaré pendiente, Chao! ✨",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":0,
          "level":4,
-         "uEntity":""
+         "uEntity":"", 
+         "message":"", 
+         "messageImage":"", 
+         "messageTime":0
       },
       {
          "activity":"Necesito",
@@ -420,6 +580,8 @@
             "None"
          ],
          "answer":" El nombre que he registrado es : \n\n *{name}*  \n\n ¿Es correcto?🙌🏼",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":1,
          "level":3,
          "uEntity":"{name}"
@@ -431,9 +593,14 @@
             "si"
          ],
          "answer":"👏🏻 *Super* 😀 ahora para poder hacer un buen registro de lo que quieres intercambiar hay que ser precisos. \n\n *¿A que categoría pertenece lo que quieres registrar?* \n\n Para registrarlo correctamente escribe una frase que contenga con:*'Categoría'*, seguido de la categoría que consideres. \n \n _Si consideras que pertenece a más de una, sepáralas con una coma de la siguiente manera:_ *Semilla, Fruta, Abono,...?* ✨👩🏽‍🌾",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":2,
          "level":3,
-         "uEntity":""
+         "uEntity":"", 
+         "message":"", 
+         "messageImage":"", 
+         "messageTime":0
       },
       {
          "activity":"Necesito",
@@ -442,16 +609,23 @@
             "no"
          ],
          "answer":"Por favor, dime de nuevo *¿Qué nombre deseas ponerle a tu anuncio?*\n \n _Ejemplo: *el nombre del anuncio es*_",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":0,
          "level":0,
-         "uEntity":""
+         "uEntity":"", 
+         "message":"", 
+         "messageImage":"", 
+         "messageTime":0
       }, {
          "activity":"Necesito",
          "step":2,
          "intent":[
-            "categorias"
+            "categorias", "None"
          ],
          "answer":"*Genial!* estamos casi por terminar 😀👐, dime *¿De las cosas que tienes, que estarías dispuest@ a intercambiar para poder obtener lo que necesitas?* 🌳_Esta infromación la podra ver otro Sembradore de vida, puede que alguien tenga lo que necesitas y te contacte, recuerda escribir bien el nombre_🙌✨",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":3,
          "level":3,
          "uEntity":""
@@ -464,9 +638,14 @@
             "None"
          ],
          "answer":"",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":0,
          "level":4,
-         "uEntity":""
+         "uEntity":"", 
+         "message":"", 
+         "messageImage":"", 
+         "messageTime":0
       }, {
          "activity":"Document",
          "step":0,
@@ -474,9 +653,14 @@
             "url"
          ],
          "answer":"*Super* 🙌✨  ahora vamos a crear categorias para este documento, Dime *¿Sobre que se trata el contenido del codument?* \n\n Para registrarlas correctamente escribe una frase que contenga la palabra:*'Categoría'*, seguido de la categoría que consideres. \n \n _Si consideras que pertenece a más de una, sepáralas con una coma de la siguiente manera:_ *Semilla, Fruta, Abono,...?* ✨👩🏽‍🌾",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":1,
          "level":3,
-         "uEntity":""
+         "uEntity":"", 
+         "message":"", 
+         "messageImage":"", 
+         "messageTime":0
       }, {
          "activity":"Document",
          "step":1,
@@ -484,6 +668,8 @@
             "categorias"
          ],
          "answer":"Excelente* 🙌✨ ahora para terminar dime *¿Cual es el título del documento?* \n\n Para registrar el título del documento correctamente escribe una frase que contenga la palabra:*'Título'*, seguido de un título que detalle de qué se trata el documento. ✨👩🏽‍🌾",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":2,
          "level":4,
          "uEntity":""
@@ -492,9 +678,12 @@
          "activity":"Document",
          "step":2,
          "intent":[
-            "titulo"
+            "titulo",
+            "None"
          ],
          "answer":"",
+         "answerImage":"",
+         "answerTime":0, 
          "nextStep":0,
          "level":4,
          "uEntity":""

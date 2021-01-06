@@ -1,5 +1,31 @@
 {
   "users": [
-  
+    {
+      "624244894d880e8620a3ea2e248bc301:e4fc46b54c861827ceb18b1045b1485a": {
+        "geometry": [
+          3.4534134,
+          -76.5568021
+        ],
+        "activity": "Necesito",
+        "step": 3,
+        "level": 3,
+        "name": "Orbay Beltrán C",
+        "pic": "https://api.twilio.com/2010-04-01/Accounts/AC467367f2bd485ea727199ffd2774cdf9/Messages/MM90d8786e868537409cf3195021f75ee6/Media/ME6a34e9493395f5f42f1d2875c1568c24",
+        "currentItem": "5ff5213dcea6d8232cf339e8",
+        "currentDoc": ""
+      }
+    },
+    {
+      "4a70b268789c1e55f717ae1e67dcd60b:1febf2a414333836bcc05f92564c70b1": {
+        "geometry": [],
+        "activity": "Registration",
+        "step": 0,
+        "level": 0,
+        "name": "",
+        "pic": "",
+        "currentItem": "",
+        "currentDoc": ""
+      }
+    }
   ]
 }

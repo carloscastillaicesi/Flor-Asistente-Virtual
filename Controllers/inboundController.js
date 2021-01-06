@@ -19,7 +19,6 @@ const inboundReceiver = async (req, res) => {
     }, 5000);
 
   } else {
-
     var nlp = await nlpEngineApp(user)
     console.log("\n inbound intent \n", nlp)
     var dialog = dialogController(nlp)
