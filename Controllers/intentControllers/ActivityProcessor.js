@@ -21,17 +21,18 @@ activityClassifier = (activity) => {
         console.log("Menu Activity");
         mssg = menu(activity);
         break;
-      case "Tengo":
-      case "Necesito":
-        mssg = barter(activity);
-        break;
       case "Options":
         mssg = options(activity);
         break;
       case "Document":
         mssg = documento(activity);
         break;
+      case "Tengo":
+      case "Necesito":
+        mssg = barter(activity);
+        break;
       default:
+        mssg = "No entendí lo que dijiste.Por favor, repítelo 🙈"
         break;
     }
   }

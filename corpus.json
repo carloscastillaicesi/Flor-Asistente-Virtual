@@ -112,7 +112,9 @@
             "buenito",
             "genial",
             "si quisiera",
-            "me gustaría"
+            "me gustaría", 
+            "acepto", 
+            "aceptar"
          ],
          "answers":[
             ""
@@ -121,7 +123,7 @@
       {
          "intent":"no",
          "utterances":[
-            "que no ",
+            "que no",
             "no",
             "no quisiera",
             "no quiero",
@@ -130,7 +132,7 @@
             "no me gustaria",
             "no me gusta",
             "claro que no",
-            "no no "
+            "no no"
          ],
          "answers":[
             ""
@@ -148,7 +150,46 @@
             "encuentra en",
             "huerta esta",
             "la huerta esta",
-            "mi huerta esta"
+            "mi huerta esta", 
+            "finca",
+            "colegio", 
+            "centro asistencial", 
+            "espacio comunitario", 
+            "sede comunal", 
+            "patio", 
+            "jardin", 
+            "cocina", 
+            "lote"
+
+         ],
+         "answers":[
+            ""
+         ]
+      },
+      {
+         "intent":"casa",
+         "utterances":[
+            "casa",
+            "en mi apartamento",
+            "ubicada en mi casa",
+            "ubicado en mi casa",
+            "esta ubicada en un apartamento",
+            "esta ubicado en un apartamento",
+            "esta en un apartamento",
+            "esta en una casa",
+            "esta en un apartamento",
+            "en mi casa",
+            "en la casa",
+            "en el apartamento",
+            "en apartamento",
+            "en casa", 
+            "del apto",
+            "del apartamento", 
+            "dela casa", 
+            "de la casa", 
+            "en mi apto", 
+            "ubicada en el apto"
+
          ],
          "answers":[
             ""
@@ -278,7 +319,9 @@
             "tener",
             "intercambio",
             "intercambiar",
-            "para intercambiar"
+            "para intercambiar", 
+            "registrar", 
+            "registro"
          ],
          "answers":[
             ""
@@ -402,13 +445,18 @@
             "como asi",
             "que información", 
             "ayuda", 
+            "ayudame", 
+            "ayudita",
+            "help",
             "no entiendo", 
-            "como asi", 
+            "entender",
+            "no se",
+            "no entendi", 
             "explica", 
             "explicame", 
             "no entiendo nada", 
             "porque", 
-                "por que"
+            "por que"
          ],
          "answers":[
             ""
@@ -422,7 +470,8 @@
             "cancelar",
             "hasta luego",
             "chao",
-            "nos vemos"
+            "nos vemos", 
+            "terminar"
          ],
          "answers":[
             ""

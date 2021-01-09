@@ -1,28 +1,16 @@
 {
   "users": [
     {
-      "624244894d880e8620a3ea2e248bc301:e4fc46b54c861827ceb18b1045b1485a": {
+      "146effd360ca74b3fb92ec35233e9ff9:d7a31fc2ceb577627d4e48fe4014e636": {
         "geometry": [
-          3.4534134,
-          -76.5568021
+          3.3756552,
+          -76.5274328
         ],
-        "activity": "Necesito",
-        "step": 3,
-        "level": 3,
-        "name": "Orbay Beltrán C",
-        "pic": "https://api.twilio.com/2010-04-01/Accounts/AC467367f2bd485ea727199ffd2774cdf9/Messages/MM90d8786e868537409cf3195021f75ee6/Media/ME6a34e9493395f5f42f1d2875c1568c24",
-        "currentItem": "5ff5213dcea6d8232cf339e8",
-        "currentDoc": ""
-      }
-    },
-    {
-      "4a78d9e9d00ed467e7459b9777ed6529:68c83eaea32392cf96ffc26de5ad012b": {
-        "geometry": [],
-        "activity": "Registration",
-        "step": 5,
-        "level": 0,
+        "activity": "Detailed",
+        "step": 10,
+        "level": 1,
         "name": "Carlos Castilla",
-        "pic": "https://api.twilio.com/2010-04-01/Accounts/AC467367f2bd485ea727199ffd2774cdf9/Messages/MM312444124e77118d7e6695e7899d5461/Media/ME4788031fc96c6a27396d4925b1760321",
+        "pic": "https://api.twilio.com/2010-04-01/Accounts/AC467367f2bd485ea727199ffd2774cdf9/Messages/MMbf07f5da774c8da42cc56bd120159ad8/Media/ME996961007fe47a0c1c75ff6cf681bc23",
         "currentItem": "",
         "currentDoc": ""
       }

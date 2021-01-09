@@ -2,30 +2,38 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const usertSchema = new Schema({
- _id: {
-  type: String,
-  required: true,
- },
- activity: {
-  type: String,
- },
  step: {
-  type: Number,
+  type: String,
+ },
+ uId: {
+  type: String,
  },
  level: {
   type: Number,
  },
+ time: {
+  type: String
+ },
+ date: {
+  type: String
+ },
  name: {
-  type: String,
+  type: String
  },
- geometry: {
-  type: Array
+ activity: {
+  type: String
  },
- pic: {
+ intent: {
+  type: String
+ },
+ body: {
+  type: String
+ },
+ messageType: {
   type: String
  }
 
-}, { timestamps: true });
+});
 
 /**
  * This issue is probably coming from the fact that you are creating a mongoose model without specifying the name of the collection.

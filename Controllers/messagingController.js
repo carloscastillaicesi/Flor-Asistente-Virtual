@@ -149,6 +149,26 @@ const sendCustomTMessage = (body, number) => {
 
 };
 
+var vCardsJS = require('vcards-js');
 
 
-module.exports = { sendTMessage, receiveTMessage, sendCustomTMessage, sendCustomTMessageImage }; 
+
+
+const sendCustomTVCard = (body, number, targetPhone) => {
+  // var vCard = vCardsJS();
+  // vCard.firstName = name;
+  // vCard.photo.attachFromUrl(pic, 'JPEG');
+  // vCard.workPhone = decrypt(targetPhone);
+  // vCard.saveToFile(`./${name}.vcf`);
+  // console.log(vCard.getFormattedString());
+  client.messages.create({
+    from: 'whatsapp:+14155238886',
+    to: `whatsapp:${decrypt(number)}`,
+    body: `${body} ${decrypt(targetPhone)}`,
+
+  }).then(message => console.log(message.sid));
+};
+
+
+
+module.exports = { sendTMessage, receiveTMessage, sendCustomTMessage, sendCustomTMessageImage, sendCustomTVCard }; 

@@ -23,17 +23,17 @@ function register({ geometry, activity, step, level, name, pic }) {
 }
 
 
-async function processedEntity(dialog) {
+function processedEntity(dialog) {
   var pDialog;
-  console.log("\n\n dialog.intent[0] \n\n", dialog)
+
   switch (dialog.intent) {
     case "out":
       if (dialog.level === 0) {
-        pDialog = Object.assign(dialog, { activity: "Registration", step: dialog.step, answer: "¡Hasta la próxima! estaré pendiente para que continuemos el registro de tu información para poder plantar esta semilla en el mapa de sembrando Vida. ¡Hasta la próxima! 😀 🙌" })
+        pDialog = Object.assign(dialog, { activity: "Registration", nextStep: dialog.step, answer: "¡Hasta la próxima! estaré pendiente para que continuemos el registro de tu información para poder plantar esta semilla en el mapa de sembrando Vida. ¡Hasta la próxima! 😀 🙌" })
       } else if (dialog.level === 1) {
-        pDialog = Object.assign(dialog, { activity: "Registration", step: dialog.step, answer: "Si necesitas algo mas no dudes en saludarme de nuevo, estaré pendiente para que continuemos el registro de la información para pasar hacer germinar tu semilla de información. ¡Hasta luego! 😀 🙌" })
+        pDialog = Object.assign(dialog, { activity: "Registration", nextStep: dialog.step, answer: "Si necesitas algo mas no dudes en saludarme de nuevo, estaré pendiente para que continuemos el registro de la información para pasar hacer germinar tu semilla de información. ¡Hasta luego! 😀 🙌" })
       } else if (dialog.level === 2) {
-        pDialog = Object.assign(dialog, { activity: "Registration", step: dialog.step, answer: "Si necesitas algo mas no dudes en saludarme de nuevo, estaré pendiente para que continuemos el registro de la información para que tu semilla de informacion se convierta en una plántula. ¡Hablamos pronto! 😀 🙌" })
+        pDialog = Object.assign(dialog, { activity: "Registration", nextStep: dialog.step, answer: "Si necesitas algo mas no dudes en saludarme de nuevo, estaré pendiente para que continuemos el registro de la información para que tu semilla de informacion se convierta en una plántula. ¡Hablamos pronto! 😀 🙌" })
       } else if (dialog.level >= 3) {
         pDialog = Object.assign(dialog, { activity: "Options", step: 1, answer: "Si necesitas algo más, no dudes en saludarme de nuevo, estaré pendiente a lo que necesites. ¡Hasta pronto! 😀 🙌" })
 
@@ -47,13 +47,19 @@ async function processedEntity(dialog) {
       }
       break;
     case "saludo":
-      if (dialog.level < 3) {
-        pDialog = Object.assign(dialog, { activity: "Registration", step: dialog.step, answer: { answer: `*¡Hola ${dialog.name && dialog.name.split(" ").length >= 4 ? dialog.name.split(" ").slice(0, 3).join(" ") : dialog.name.split(" ")[0]}!*  🌳👩‍🌾 \n Actualmente estamos en el registro de tu infomación \n `, message: `*Quedamos en esta parte de la conversación* \n\n ${check("Registration", dialog.step - 1)[0].answer}`, time: 1000, image: "" } });
+      if (dialog.step < 5 && dialog.level < 3) {
+        console.log("\n\n dialog.intent[0] \n\n", dialog)
+        pDialog = Object.assign(dialog, { activity: "Registration", nextStep: dialog.step, answer: { answer: `*¡Hola ${dialog.name && dialog.name.split(" ").length >= 4 ? dialog.name.split(" ").slice(0, 3).join(" ") : dialog.name.split(" ")[0]}!*  🌳👩‍🌾 \n Actualmente estamos en el registro de tu infomación \n `, message: `*Quedamos en esta parte de la conversación* \n\n ${check("Registration", dialog.step)[0].answer}`, time: 1000, image: "" } });
+
+      } else if (dialog.step >= 5 && dialog.level < 3) {
+
+        pDialog = Object.assign(dialog, { activity: "Detailed", nextStep: dialog.step + 1, answer: { answer: `*¡Hola ${dialog.name && dialog.name.split(" ").length >= 4 ? dialog.name.split(" ").slice(0, 3).join(" ") : dialog.name.split(" ")[0]}!*  🌳👩‍🌾 \n Actualmente estamos en el registro de tu infomación \n `, message: `*Quedamos en esta parte de la conversación* \n\n ${check("Detailed", dialog.step)[0].answer}`, time: 1000, image: "" } })
+
       } else if (dialog.level >= 3) {
-        pDialog = Object.assign(dialog, { activity: "Registration", step: dialog.step, answer: `*¡Hola, ${dialog.name.split(" ").length >= 4 ? dialog.name.split(" ").slice(0, 3).join(" ") : dialog.name.split(" ")[0]}!*  🌳👩‍🌾\n\n *Te puedo ayudar a* \n\n_*¿Registrar* algo que tienes para intercambiar?_\n_*¿Anunciar* algo que necesitas?_\n_*¿Subir un documento* a nuestra biblioteca digital?_\n_*Ir al mapa* de Sembrando Vida_\n\n Espero poderte ayudar en lo que necesites 😀💚` })
+        pDialog = Object.assign(dialog, { activity: "Registration", nextStep: dialog.step, answer: `*¡Hola, ${dialog.name.split(" ").length >= 4 ? dialog.name.split(" ").slice(0, 3).join(" ") : dialog.name.split(" ")[0]}!*  🌳👩‍🌾\n\n *Te puedo ayudar a* \n\n_*¿Registrar* algo que tienes para intercambiar?_\n_*¿Anunciar* algo que necesitas?_\n_*¿Subir un documento* a nuestra biblioteca digital?_\n_*Ir al mapa* de Sembrando Vida_\n\n Espero poderte ayudar en lo que necesites 😀💚` })
       } else if (dialog.intent === "Tengo" || dialog.intent === "Necesito" || dialog.intent === "Document") {
-        b = await getBarter(dialog.currentItem);
-        pDialog = Object.assign(dialog, { activity: dialog.currentDoc ? "Biblioteca" : b.tipo === "0" ? "Tengo" : "Necesito", step: dialog.step, answer: `*¡Hola, ${dialog.name.split(" ").length >= 4 ? dialog.name.split(" ").slice(0, 3).join(" ") : dialog.name.split(" ")[0]}!*  🌳👩‍🌾\n\n Actualmente estamos en ${dialog.currentDoc ? "*registrando un documento*" : b.tipo === "0" ? "*un artículo o servicio que tienes*" : "*un artículo o servicio que necesitas*"} \n \n¿deseas *continuar* con este registro, ir al *menu* o *terminar* la conversación por el momento? 😀💚` })
+
+        pDialog = Object.assign(dialog, { nextStep: dialog.step, answer: `*¡Hola, ${dialog.name.split(" ").length >= 4 ? dialog.name.split(" ").slice(0, 3).join(" ") : dialog.name.split(" ")[0]}!*  🌳👩‍🌾\n\n Estamos en el curso de un registrp"} \n \n¿deseas *continuar* con este registro, ir al *Menu* o *Terminar* la conversación por el momento? 😀💚` })
       }
       break;
     default:
@@ -65,7 +71,7 @@ async function processedEntity(dialog) {
 
 
 options = async (dialog) => {
-  dialogP = await processedEntity(dialog)
+  dialogP = processedEntity(dialog)
   await userModify(register(dialogP), dialog.id);
   return dialogP.answer;
 }

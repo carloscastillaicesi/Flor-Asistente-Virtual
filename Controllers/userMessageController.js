@@ -2,7 +2,7 @@ const { response } = require('express');
 const User = require('../Models/userModel');
 const Details = require('../Models/detailsModel');
 const userLocal = require('./localCRUD');
-
+const UserT = require('../Models/usertestModel');
 
 function userCheck(mssg) {
   return new Promise(function (resolve, reject) {
@@ -16,7 +16,7 @@ function userCheck(mssg) {
           step: 0,
           level: 0,
           name: "",
-          geometry: [],
+          geometry: [0, 0],
           pic: "",
           currentItem: "",
           currentDoc: ""
@@ -47,6 +47,29 @@ function userCheck(mssg) {
           const { createdAt, updatedAt, __v, _id, ...target } = doc;
           console.log("new user Details", target);
         })
+        var now = new Date();
+        var jsonDate = now.toJSON();
+        var then = new Date(jsonDate);
+        var test = new UserT({
+          step: 0,
+          uId: mssg.from,
+          level: 0,
+          time: `${then.getHours()}: ${then.getMinutes()}: ${then.getSeconds()}`,
+          date: `${then.getMonth()}/ ${then.getDate()}`,
+          name: "",
+          activity: "Registration",
+          intent: "saludo",
+          body: mssg.Body,
+          messageType: "noMedia"
+
+        });
+
+        test.save().then((response) => {
+          var doc = response._doc;
+          const { __v, ...target } = doc;
+          console.log(target)
+        });
+
         newMssgUser = "new user";
       } else {
         newMssgUser = Object.assign(mssg, data)

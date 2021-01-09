@@ -8,7 +8,7 @@ const Details = require('../Models/detailsModel');
 const Documents = require('../Models/documentsModel');
 const Barters = require('../Models/bartersModels');
 const inboundRoutes = require('../Routes/inboundRouter');
-
+const { sendCustomTMessage, sendCustomTVCard } = require("../Controllers/messagingController");
 
 /** Create something to get the user info and then the message info an then append de the NLP processing
  */
@@ -40,7 +40,8 @@ app.get('/map/documents', function (req, res) {
   Documents.find({}, function (err, user) {
     if (err) throw err;
     res.status(200);
-    res.json(user); // returns null
+    res.json(user);
+    // returns null
   });
 
 })
@@ -51,8 +52,21 @@ app.get('/map/barters', function (req, res) {
     res.status(200);
     res.json(user); // returns null
   });
+})
+
+
+app.get('/sendcontact/:sender', function (req, res) {
+  console.log(req.params.sender)
+  User.find({ _id: req.params.sender.split("-")[1] }, function (err, user) {
+    if (err) throw console.log(err);
+    res.status(200);
+    res.json(user);
+    sendCustomTVCard(`*¡Hola!* 💚🌱\n\nPor favor, recuerda introducirte mencionando que haces parte de la red de Sembrando Vida. Acá esta el contacto que me has pedido: \n\n 🧍 *Nombre*: ${user[0].name} \n\n 📱 *Teléfono*: `, req.params.sender.split("-")[0], req.params.sender.split("-")[1])
+  });
+
 
 })
+
 app.get('/map/aboutme', function (req, res) {
   Details
     .find({}, function (err, user) {

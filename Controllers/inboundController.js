@@ -1,6 +1,6 @@
 const nlpEngineApp = require('../Controllers/nlpEngineApp');
 const { activityClassifier } = require('./intentControllers/ActivityProcessor');
-
+var { userTData } = require('./globalCRUD');
 const { receiveTMessage, sendTMessage, sendCustomTMessage, sendCustomTMessageImage } = require("./messagingController");
 var userMessageController = require('./userMessageController');
 var { dialogController } = require('./dialogController');
@@ -12,28 +12,35 @@ const inboundReceiver = async (req, res) => {
   var user = await userMessageController.userCheck(newMssg);
   console.log("userCheck", user)
   if (user === "new user") {
-    sendTMessage(res, ` ¡Hola! Soy *Flor* la asistente virtual de Sembrando Vida 👩‍🌾. Me gusta ayudar a las personas y orientarlas desde mis experiencias y saberes 🙌🌱\n \n*¡Quisiera conocerte mejor!* 😊 \n \nLa información que te pediré a continuación alimentará la *Red de Sembrando Vida*, se utilizará con fines sin ánimo de lucro y para el desarrollo de actividades de la red. \n \n_Esta información será usada para crear tu perfil en el mapa y que otras personas puedan encontrarte._`, "https://i.ibb.co/dpjWTjT/Saludo.png")
+    sendTMessage(res, `¡Hola! Soy Flor la asistente virtual de Sembrando Vida 👩‍🌾. Me gusta ayudar a las personas y orientarlas desde mis experiencias y saberes 🙌🌱\n \n*¡Quisiera conocerte mejor!* 😊 \n \n _La información que te pediré a continuación será usada para crear tu perfil en el mapa y que otras personas puedan encontrarte._`, "https://i.ibb.co/dpjWTjT/Saludo.png")
 
     setTimeout(() => {
-      sendCustomTMessage(`Tu información alimentará tu semilla de información para que crezca fuerte, lo que hará cada día más fuerte a Sembrando Vida 🌱\n\n_Para poder comenzar, dime_\n \n*¿Puedo guardar tu número de celular y disponer de la información que me compartas en esta conversacion?*  `, req.body.From);
+      sendCustomTMessage(`Para poder comenzar, dime\n\n*¿Puedo guardar tu número de celular y disponer de la información que me compartas en esta conversación?*`, req.body.From);
+      // sendCustomTMessage(`Tu información alimentará tu semilla de información para que crezca fuerte, lo que hará cada día más fuerte a Sembrando Vida 🌱\n\nPara poder comenzar, dime\n\n*¿Puedo guardar tu número de celular y disponer de la información que me compartas en esta conversación?*`, req.body.From);
     }, 5000);
-
   } else {
     var nlp = await nlpEngineApp(user)
     console.log("\n inbound intent \n", nlp)
     var dialog = dialogController(nlp)
+    userTData(user, nlp);
     console.log("\ninbound dialog\n", dialog)
-    var mssg = dialog ? await activityClassifier(dialog) : "No entendí lo que dijiste.Por favor, repítelo 🙈";
+    var mssg = await activityClassifier(dialog);
     console.log("\ninbound mssg\n", mssg)
     if (typeof mssg === "string") {
-      sendTMessage(res, mssg ? mssg : "No entendí lo que dijiste.Por favor, repítelo 🙈");
-    } else {
-      sendTMessage(res, mssg.answer ? mssg.answer : "No entendí lo que dijiste.Por favor, repítelo 🙈", mssg.image);
       setTimeout(() => {
-        sendCustomTMessage(mssg.message ? mssg.message : "No entendí lo que dijiste.Por favor, repítelo 🙈", req.body.From);
-      }, mssg.time);
+        sendTMessage(res, mssg);
+      }, 1000);
+    } else {
+      setTimeout(() => {
+        sendTMessage(res, mssg.answer, mssg.image);
+      }, 1000);
+      setTimeout(() => {
+        sendCustomTMessage(mssg.message, req.body.From);
+      }, mssg.time ? mssg.time : 1000);
     }
+
   }
+
 }
 
 module.exports = {

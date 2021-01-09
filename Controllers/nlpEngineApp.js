@@ -12,6 +12,8 @@ var main = async (input) => {
 
   let body = input.messageType === "noMedia" ? input.body.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '') : input.messageType;
   body = body.toLowerCase();
+  body = body.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  console.log("\n\nCuerpo del mensaje\n\n", body)
   const dock = await dockStart({
     "settings": {
       "nlp": {

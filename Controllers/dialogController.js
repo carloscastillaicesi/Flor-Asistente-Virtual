@@ -4,16 +4,20 @@ function check({ activity, step, intent }) {
  var fileData = fs.readFileSync('dialog.json');
  var file = JSON.parse(fileData);
  var dialog = file.dialog
- return dialog.filter(f => f.activity === activity && f.step === step && f.intent.includes(intent))
+ var int = intent === "None" ? "none" : intent
+ console.log("\n\n INTEEENT \n\n ", int)
+ return dialog.filter(f => f.activity === activity && f.step === step && f.intent.includes(int))
 }
 
 function errorDialog(obj) {
- return { intent: obj.intent === "None" ? "none" : "error", step: obj.step, activity: obj.activity, level: obj.level };
+ return {
+  intent: obj.intent === "None" ? "none" : "error", step: obj.step, activity: obj.activity, level: obj.level, id: obj.id, answer: "No entendí lo que dijiste.Por favor, repítelo 🙈"
+ };
 }
 
 function optionsDialog(obj) {
- const { answers, entities, from, score, mediaType, activity, ...objF } = obj
- dialog = { activity: "Options" }
+ const { answers, entities, from, score, activity, ...objF } = obj
+ dialog = { activity: "Options", answer: "Selected Options" }
  return { ...dialog, ...objF }
 }
 
@@ -26,7 +30,7 @@ function dialogP(dialog, obj) {
 function dialogPError(dialog, obj) {
  const { answers, entities, from, score, mediaType, step, level, intent, ...objF } = obj
  const { answer, ...dialogF } = dialog
- return { ...dialogF, answer: dialog.answer, entities: obj.entities, ...objF }
+ return { ...dialogF, answer: dialog.answer, entities: obj.entities, nextStep: obj.step, ...objF }
 }
 
 function dialogController(obj) {
@@ -39,15 +43,10 @@ function dialogController(obj) {
     dialog = dialogP(check(obj)[0], obj)
    } else {
     dialogE = errorDialog(obj);
-    console.log("dialogE", dialogE)
-    if (check(dialogE).length > 0) {
-     dialog = dialogPError(check(dialogE)[0], obj)
-     console.log("dialogE2", dialog)
-    } else {
-     dialog = errorDialog(obj);
-    }
-
+    dialog = dialogPError(dialogE, obj)
    }
+
+
   }
   return dialog;
 

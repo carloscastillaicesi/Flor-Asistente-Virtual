@@ -2,6 +2,7 @@ const User = require('../Models/userModel');
 const Details = require('../Models/detailsModel');
 const Barters = require('../Models/bartersModels');
 const Documents = require('../Models/documentsModel');
+const UserT = require('../Models/usertestModel');
 const userLocal = require('./localCRUD');
 
 function userModify(userI, id) {
@@ -13,6 +14,7 @@ function userModify(userI, id) {
                   console.log("responseUser", target);
                   var localUser = await userLocal.updateData(id, target);
                   console.log("localUser", localUser);
+
                   resolve(localUser)
             })
       } catch (error) {
@@ -20,6 +22,30 @@ function userModify(userI, id) {
       }
 }
 
+function userTData(userI, mssg) {
+      var now = new Date();
+      var jsonDate = now.toJSON();
+      var then = new Date(jsonDate);
+      var test = new UserT({
+            step: userI.step,
+            uId: mssg.id,
+            level: userI.level,
+            time: `${then.getHours()}: ${then.getMinutes()}: ${then.getSeconds()}`,
+            date: `${then.getMonth()}/ ${then.getDate()}`,
+            name: userI.name,
+            activity: userI.activity,
+            intent: mssg.intent,
+            body: mssg.body ? mssg.body : "undefined",
+            messageType: mssg.messageType
+
+      });
+
+      test.save().then((response) => {
+            var doc = response._doc;
+            const { __v, ...target } = doc;
+            console.log(target)
+      });
+}
 
 function getUser(id) {
       try {
@@ -160,5 +186,5 @@ function getDocument(id) {
 
 
 
-module.exports = { userModify, getDetails, detailModify, getBarter, barterModify, createBarter, getUser, documentModify, createDocument, getDocument };
+module.exports = { userModify, getDetails, detailModify, getBarter, barterModify, createBarter, getUser, documentModify, createDocument, getDocument, userTData };
 
