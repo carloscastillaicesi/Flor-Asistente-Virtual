@@ -6,12 +6,14 @@ const cors = require('cors');
 const User = require('../Models/userModel');
 const Details = require('../Models/detailsModel');
 const Documents = require('../Models/documentsModel');
+
 const Barters = require('../Models/bartersModels');
 const inboundRoutes = require('../Routes/inboundRouter');
 const { sendCustomTMessage, sendCustomTVCard } = require("../Controllers/messagingController");
 
 /** Create something to get the user info and then the message info an then append de the NLP processing
  */
+
 
 
 /**conection to db */

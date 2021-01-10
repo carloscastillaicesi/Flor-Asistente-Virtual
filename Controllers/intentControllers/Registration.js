@@ -30,9 +30,16 @@ function processedEntity(dialog) {
       } else if (dialog.body.toLowerCase().includes("dicen")) {
         searchTerm = "dicen";
       }
-      const indexOfFirst = dialog.body.indexOf(searchTerm) + searchTerm.length;
-      var name = toTitleCase(dialog.body).slice(indexOfFirst + 1, dialog.body.length)
-      pDialog = Object.assign(dialog, { name: name, answer: customAnswer(dialog, name) })
+      if (searchTerm) {
+        const indexOfFirst = dialog.body.indexOf(searchTerm) + searchTerm.length;
+        var name = toTitleCase(dialog.body).slice(indexOfFirst + 1, dialog.body.length)
+        pDialog = Object.assign(dialog, { name: name, answer: customAnswer(dialog, name) })
+      } else {
+        pDialog = Object.assign(dialog, {
+          name: name, nextStep: dialog.step, answer: "No pude identificar correctamente tu nombre.\n\nPara poder registrar tu nombre correctamente escribe *''Me llamo''* ó *''Mi nombre es''* seguido de tu _Nombre_ y _Apellido_"
+        })
+      }
+
       break;
     case "image":
       var image = dialog.body;
