@@ -22,6 +22,9 @@ const BartersSchema = new Schema({
  },
  cambio: {
   type: String
+ },
+ show: {
+  type: Boolean
  }
 }, { timestamps: true });
 

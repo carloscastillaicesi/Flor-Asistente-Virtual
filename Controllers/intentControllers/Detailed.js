@@ -120,19 +120,18 @@ function customAnswer(dialog) {
   if (dialog.uEntity.includes("{link}")) {
     answer = dialog.answer;
     answer = {
-      answer: answer.replace("{link}", `https://a44060d3fd8b.ngrok.io/user/${dialog.id}`), message: " ¿Quieres continuar con el registro? 🙈 💚🌱Esto ayudará a que tu semilla germine", time: 10000, image: "https://i.ibb.co/N93mzML/etapa1.png"
+      answer: answer.replace("{link}", `https://8793760af6dd.ngrok.io/user/${dialog.id}`), message: " ¿Quieres continuar con el registro? 🙈 💚🌱Esto ayudará a que tu semilla germine", time: 10000, image: "https://i.ibb.co/N93mzML/etapa1.png"
     };
 
   } else if (dialog.uEntity.includes("{link2}")) {
     answer = dialog.answer;
     answer = {
-      answer: answer.replace("{link2}", `https://a44060d3fd8b.ngrok.io/user/${dialog.id}`), message: "😊💚 *¿Quieres continuar con el registro?* esto ayudará a crecer tu germinado. Recuerda que para que nuestra planta crezca hay que cuidarla, no queremos que pase algo malo.", time: 10000, image: "https://i.ibb.co/zHFVhZ6/etapa2.png"
+      answer: answer.replace("{link2}", `https://8793760af6dd.ngrok.io/user/${dialog.id}`), message: "😊💚 *¿Quieres continuar con el registro?* esto ayudará a crecer tu germinado. Recuerda que para que nuestra planta crezca hay que cuidarla, no queremos que pase algo malo.", time: 10000, image: "https://i.ibb.co/zHFVhZ6/etapa2.png"
     };
   } else if (dialog.uEntity.includes("{link3}")) {
     answer = dialog.answer;
     answer = {
-      answer: answer.replace("{link3}", `https://a44060d3fd8b.ngrok.io/user/${dialog.id}`), message: "Genial, ya hemos terminado con esta prueba. ¡Muchas gracias! 😀💚\n\n Por Favor, contáctate con el equipo de desarrollo a través del grupo de Whatsapp", time: 1000, image: "https://i.ibb.co/MVb1X1C/etapa3.png"
-      // answer: answer.replace("{link3}", `https://a44060d3fd8b.ngrok.io/user/${dialog.id}`), message: "Genial,  ya terminaste Ya. Por lo tanto, te puedo ayudar si quieres\n\n_*¿Registrar* algo que tienes para intercambiar?_\n_*¿Anunciar* algo que necesitas?_\n_*¿Subir un documento* a nuestra biblioteca digital?_\n_*¿Ir al mapa* de Sembrando Vida_\n\nEspero poderte ayudar en lo que necesites 😀💚", time: 10000, image: "https://i.ibb.co/MVb1X1C/etapa3.png"
+      answer: answer.replace("{link3}", `https://8793760af6dd.ngrok.io/user/${dialog.id}`), message: "Genial,  ya terminaste Ya. Por lo tanto, te puedo ayudar si quieres\n\n_*¿Registrar* algo que tienes para intercambiar?_\n_*¿Anunciar* algo que necesitas?_\n_*¿Subir un documento* a nuestra biblioteca digital?_\n_*¿Ir al mapa* de Sembrando Vida_\n\nEspero poderte ayudar en lo que necesites 😀💚", time: 10000, image: "https://i.ibb.co/MVb1X1C/etapa3.png"
     };
 
   } else {

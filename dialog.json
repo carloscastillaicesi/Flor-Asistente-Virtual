@@ -158,7 +158,7 @@
          "activity":"Registration",
          "step":4,
          "intent":[
-            "si", "tengo", "none"
+            "si", "tengo", "none", "ubicacionHuerta"
          ],
          "answer":"¡Listo!👌🏼 ya registré tu información. 🙌🏼 Ahora, para poder ubicar tu huerta en el mapa de Sembrando Vida *¿Camina con tu teléfono hacia donde esta ubicada tu huerta o el espacio donde siembras y comparteme la ubicación a través de Whatsapp *💚🌱 \n\n _Para enviarme tu ubicación vía Whatsapp puedes seguir las siguientes instrucciones:_ \n\n  *1) Encuentra y presiona el ícono de clip 📎 en tu pantalla y presiona la opción 'ubicación'* \n *2) Dentro encontrarás la opción 'Enviar mi ubicación actual', presiónala para enviarme la ubicación de dónde estaría tu huerta* \n\n _Si no estas cerca de tu huerta o el lugar donde siembras, no te preocupes. Acá estaré_✨",
          "answerImage":"",
@@ -508,7 +508,7 @@
             "buscoDocumento",
             "documento",
             "buscoNecesito",
-            "Modificar"
+            "mapa"
          ],
          "answer":"",
          "answerImage":"",

@@ -9,12 +9,7 @@ const Documents = require('../Models/documentsModel');
 
 const Barters = require('../Models/bartersModels');
 const inboundRoutes = require('../Routes/inboundRouter');
-const { sendCustomTMessage, sendCustomTVCard } = require("../Controllers/messagingController");
-
-/** Create something to get the user info and then the message info an then append de the NLP processing
- */
-
-
+const { sendCustomTMessage, sendCustomTVCard, sendCustomTDocument } = require("../Controllers/messagingController");
 
 /**conection to db */
 const dbURI = 'mongodb+srv://admin:Guitarcenter1@flor.vqk0u.mongodb.net/Flor_DB?retryWrites=true&w=majority';
@@ -56,7 +51,6 @@ app.get('/map/barters', function (req, res) {
   });
 })
 
-
 app.get('/sendcontact/:sender', function (req, res) {
   console.log(req.params.sender)
   User.find({ _id: req.params.sender.split("-")[1] }, function (err, user) {
@@ -65,9 +59,18 @@ app.get('/sendcontact/:sender', function (req, res) {
     res.json(user);
     sendCustomTVCard(`*¡Hola!* 💚🌱\n\nPor favor, recuerda introducirte mencionando que haces parte de la red de Sembrando Vida. Acá esta el contacto que me has pedido: \n\n 🧍 *Nombre*: ${user[0].name} \n\n 📱 *Teléfono*: `, req.params.sender.split("-")[0], req.params.sender.split("-")[1])
   });
-
-
 })
+
+app.get('/sendocument/:sender', function (req, res) {
+  console.log(req.params.sender)
+  Documents.findOne({ _id: req.params.sender.split("-")[1] }, function (err, doc) {
+    if (err) throw console.log(err);
+    res.status(200);
+    res.json(doc);
+    sendCustomTDocument(`*¡Hola!* 💚🌱\n\nEspero que este documento sea de tu ayuda\n\n 📄 *Nombre del documento*: ${doc.nombre} \n\n 📚 *Categorías del documento*: ${doc.categorias.join(",")} \n\n 🔗 *Link*: ${doc.url}\n\n Tambien puedes ver el documento en el siguiente link: \n\n 06477217792d.ngrok.io/menu/doc/${req.params.sender.split("-")[1]} `, req.params.sender.split("-")[0])
+  });
+})
+
 
 app.get('/map/aboutme', function (req, res) {
   Details

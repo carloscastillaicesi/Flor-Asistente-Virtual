@@ -34,7 +34,7 @@ function processedEntity(dialog) {
       break;
 
     case "mapa":
-      pDialog = Object.assign(dialog, { activity: "Options", step: 1, answer: `*Hola , ${dialog.name}*, 🙌✨\n\n *En el siguiente link puede ingresar al mapa de Sembrando Vida:* \n\n https://203a227a4379.ngrok.io/user/${dialog.id} \n\nSi necesitas algo más, no dudes en saludarme de nuevo, estaré pendiente a lo que necesites. ¡Hasta pronto! 😀 🙌` })
+      pDialog = Object.assign(dialog, { activity: "Menu", step: 0, answer: `*Hola , ${dialog.name}*, 🙌✨\n\n *En el siguiente link puede ingresar al mapa de Sembrando Vida:* \n\n https://be0017f44db5.ngrok.io/user/${dialog.id} \n\nSi necesitas algo más, no dudes en saludarme de nuevo, estaré pendiente a lo que necesites. ¡Hasta pronto! 😀 🙌` })
       break;
 
 

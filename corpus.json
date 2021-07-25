@@ -115,7 +115,10 @@
             "me gustaría", 
             "acepto", 
             "aceptar", 
-            "tengo una huerta"
+            "tengo una huerta", 
+            "ok", 
+            "correcto", 
+            "bien"
          ],
          "answers":[
             ""
@@ -355,7 +358,8 @@
             "ir al mapa",
             "mapita", 
             "ver mapa", 
-            "mapa"
+            "mapa", 
+            "ir al mapa"
          ],
          "answers":[
             ""

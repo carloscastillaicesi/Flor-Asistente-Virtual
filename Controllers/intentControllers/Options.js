@@ -35,13 +35,13 @@ function processedEntity(dialog) {
       } else if (dialog.level === 2) {
         pDialog = Object.assign(dialog, { activity: "Registration", nextStep: dialog.step, answer: "Si necesitas algo mas no dudes en saludarme de nuevo, estaré pendiente para que continuemos el registro de la información para que tu semilla de informacion se convierta en una plántula. ¡Hablamos pronto! 😀 🙌" })
       } else if (dialog.level >= 3) {
-        pDialog = Object.assign(dialog, { activity: "Options", step: 1, answer: "Si necesitas algo más, no dudes en saludarme de nuevo, estaré pendiente a lo que necesites. ¡Hasta pronto! 😀 🙌" })
+        pDialog = Object.assign(dialog, { activity: "Menu", step: 0, answer: "Si necesitas algo más, no dudes en saludarme de nuevo, estaré pendiente a lo que necesites. ¡Hasta pronto! 😀 🙌" })
 
       }
       break;
     case "menu":
       if (dialog.level < 3) {
-        pDialog = Object.assign(dialog, { activity: "Registration", step: dialog.step, answer: { answer: "Todavía no puedes usar el menu hasta que termines el registro. Para poder acceder al menu continuemos el registro de tu información y así poder plantar esta semilla en el mapa de sembrando Vida. ¿Continuamos? 🌳👩‍🌾 \n\n **Quedamos en este paso antes de que me pidieras ir al menú:**", message: `${check("Registration", dialog.step - 1)[0].answer}`, time: 3000, image: "" } });
+        pDialog = Object.assign(dialog, { activity: "Menu", step: 0, answer: { answer: "Todavía no puedes usar el menu hasta que termines el registro. Para poder acceder al menu continuemos el registro de tu información y así poder plantar esta semilla en el mapa de sembrando Vida. ¿Continuamos? 🌳👩‍🌾 \n\n **Quedamos en este paso antes de que me pidieras ir al menú:**", message: `${check("Registration", dialog.step - 1)[0].answer}`, time: 3000, image: "" } });
       } else if (dialog.level >= 3) {
         pDialog = Object.assign(dialog, { activity: "Menu", step: 0, answer: "*¡Hola!*  🌳👩‍🌾\n\n *Te puedo ayudar con* \n\n_*¿Registrar* algo que tienes para intercambiar?_\n_*¿Anunciar* algo que necesitas?_\n_*¿Subir un documento* a nuestra biblioteca digital?_\n_*Ir al mapa* de Sembrando Vida_\n\n Espero poderte ayudar en lo que necesites 😀💚" })
       }
@@ -56,7 +56,7 @@ function processedEntity(dialog) {
         pDialog = Object.assign(dialog, { activity: "Detailed", nextStep: dialog.step + 1, answer: { answer: `*¡Hola ${dialog.name && dialog.name.split(" ").length >= 4 ? dialog.name.split(" ").slice(0, 3).join(" ") : dialog.name.split(" ")[0]}!*  🌳👩‍🌾 \n Actualmente estamos en el registro de tu infomación \n `, message: `*Quedamos en esta parte de la conversación* \n\n ${check("Detailed", dialog.step)[0].answer}`, time: 1000, image: "" } })
 
       } else if (dialog.level >= 3) {
-        pDialog = Object.assign(dialog, { activity: "Registration", nextStep: dialog.step, answer: `*¡Hola, ${dialog.name.split(" ").length >= 4 ? dialog.name.split(" ").slice(0, 3).join(" ") : dialog.name.split(" ")[0]}!*  🌳👩‍🌾\n\n *Te puedo ayudar a* \n\n_*¿Registrar* algo que tienes para intercambiar?_\n_*¿Anunciar* algo que necesitas?_\n_*¿Subir un documento* a nuestra biblioteca digital?_\n_*Ir al mapa* de Sembrando Vida_\n\n Espero poderte ayudar en lo que necesites 😀💚` })
+        pDialog = Object.assign(dialog, { activity: "Menu", nextStep: 0, answer: `*¡Hola, ${dialog.name.split(" ").length >= 4 ? dialog.name.split(" ").slice(0, 3).join(" ") : dialog.name.split(" ")[0]}!*  🌳👩‍🌾\n\n *Te puedo ayudar a* \n\n_*¿Registrar* algo que tienes para intercambiar?_\n_*¿Anunciar* algo que necesitas?_\n_*¿Subir un documento* a nuestra biblioteca digital?_\n_*Ir al mapa* de Sembrando Vida_\n\n Espero poderte ayudar en lo que necesites 😀💚` })
       } else if (dialog.intent === "Tengo" || dialog.intent === "Necesito" || dialog.intent === "Document") {
 
         pDialog = Object.assign(dialog, { nextStep: dialog.step, answer: `*¡Hola, ${dialog.name.split(" ").length >= 4 ? dialog.name.split(" ").slice(0, 3).join(" ") : dialog.name.split(" ")[0]}!*  🌳👩‍🌾\n\n Estamos en el curso de un registrp"} \n \n¿deseas *continuar* con este registro, ir al *Menu* o *Terminar* la conversación por el momento? 😀💚` })

@@ -13,6 +13,9 @@ const documentsSchema = new Schema({
  },
  nombre: {
   type: String
+ },
+ show: {
+  type: Boolean
  }
 }, { timestamps: true });
 

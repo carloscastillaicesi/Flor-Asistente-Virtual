@@ -149,6 +149,15 @@ const sendCustomTMessage = (body, number) => {
 
 };
 
+const sendCustomTDocument = (body, number) => {
+  client.messages.create({
+    from: 'whatsapp:+14155238886',
+    to: `whatsapp:${decrypt(number)}`,
+    body: body ? body : ""
+  }).then(message => console.log(message.sid));
+
+};
+
 var vCardsJS = require('vcards-js');
 
 
@@ -171,4 +180,4 @@ const sendCustomTVCard = (body, number, targetPhone) => {
 
 
 
-module.exports = { sendTMessage, receiveTMessage, sendCustomTMessage, sendCustomTMessageImage, sendCustomTVCard }; 
+module.exports = { sendTMessage, receiveTMessage, sendCustomTMessage, sendCustomTMessageImage, sendCustomTVCard, sendCustomTDocument }; 

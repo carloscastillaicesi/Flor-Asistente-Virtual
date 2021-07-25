@@ -1,36 +1,6 @@
 {
   "users": [
     {
-      "c339a722303275833ab750b2712b3775:cb7230c91d2d83cb8de23bd889cf8a87": {
-        "geometry": [
-          0,
-          0
-        ],
-        "activity": "Registration",
-        "step": 4,
-        "level": 0,
-        "name": "Adriana María Pérez",
-        "pic": "https://api.twilio.com/2010-04-01/Accounts/AC467367f2bd485ea727199ffd2774cdf9/Messages/MMdad429404bdcc1c35b3876d2368bd41d/Media/ME9748376898631498c5ae28d969ef972f",
-        "currentItem": "",
-        "currentDoc": ""
-      }
-    },
-    {
-      "4c6ed063bcfa1367067dedb8fa5c359a:b8d9556576d6ffb952dd3c5d2b94a41b": {
-        "geometry": [
-          0,
-          0
-        ],
-        "activity": "Registration",
-        "step": 3,
-        "level": 0,
-        "name": "María Del Mar Serna",
-        "pic": "",
-        "currentItem": "",
-        "currentDoc": ""
-      }
-    },
-    {
       "25c59e99178de326ca3f915511a05576:cf821ed84c2095a4fe4c76f26669612e": {
         "geometry": [
           3.4531414,
@@ -46,16 +16,151 @@
       }
     },
     {
-      "9554f5973d472900178377aaf9adf960:ec8a16ac91ec9121c9e2e3545a67b269": {
+      "a9c4fa9989cbcb46eb6097c98dbe10ab:0fc29a4e23bf5cc823c17aa95c520cda": {
+        "geometry": [
+          3.4133276,
+          -76.5336456
+        ],
+        "activity": "Menu",
+        "step": 0,
+        "level": 3,
+        "name": "Wendy",
+        "pic": "https://api.twilio.com/2010-04-01/Accounts/AC467367f2bd485ea727199ffd2774cdf9/Messages/MM532472ee1abf88a8f03e415e78fa74fc/Media/ME35a89b50c0fbdd57ccc40aa5a036b3cc",
+        "currentItem": "",
+        "currentDoc": ""
+      }
+    },
+    {
+      "6391f1960ce7b5fb4ce4629b02d07a5d:9c64a787093fd2fef220d7597c8b7ac0": {
+        "geometry": [
+          3.4100744,
+          -76.5275207
+        ],
+        "activity": "Registration",
+        "step": 0,
+        "level": 4,
+        "name": "Natani Rodríguez",
+        "pic": "https://api.twilio.com/2010-04-01/Accounts/AC467367f2bd485ea727199ffd2774cdf9/Messages/MMc2e30d4c5944698961826adbbda892a9/Media/ME9bae018f88d729784c24c9a690bc0e18",
+        "currentItem": "5ffcbe60c038304dc05a7f8f",
+        "currentDoc": ""
+      }
+    },
+    {
+      "4c6ed063bcfa1367067dedb8fa5c359a:b8d9556576d6ffb952dd3c5d2b94a41b": {
+        "geometry": [
+          3.4532511,
+          -76.5613449
+        ],
+        "activity": "Options",
+        "step": 0,
+        "level": 3,
+        "name": "María Del Mar Serna",
+        "pic": "https://api.twilio.com/2010-04-01/Accounts/AC467367f2bd485ea727199ffd2774cdf9/Messages/MM11544e6537aef32669136034acca0309/Media/MEd4e2ce2321d32c8bb9c8545bb14b8707",
+        "currentItem": "",
+        "currentDoc": ""
+      }
+    },
+    {
+      "624244894d880e8620a3ea2e248bc301:e4fc46b54c861827ceb18b1045b1485a": {
+        "geometry": [
+          3.4534134,
+          -76.5568021
+        ],
+        "activity": "Menu",
+        "step": 0,
+        "level": 3,
+        "name": "Orbay Beltrán C",
+        "pic": "https://api.twilio.com/2010-04-01/Accounts/AC467367f2bd485ea727199ffd2774cdf9/Messages/MM90d8786e868537409cf3195021f75ee6/Media/ME6a34e9493395f5f42f1d2875c1568c24",
+        "currentItem": "5ff5213dcea6d8232cf339e8",
+        "currentDoc": ""
+      }
+    },
+    {
+      "a6cc2553112d4001eaf3c64f030de279:6686000b5d8df22e791f0b428bdeb552": {
+        "geometry": [
+          3.4540994,
+          -76.5554985
+        ],
+        "activity": "Menu",
+        "step": 0,
+        "level": 3,
+        "name": "Mery Castro",
+        "pic": "https://api.twilio.com/2010-04-01/Accounts/AC467367f2bd485ea727199ffd2774cdf9/Messages/MM9922c88d015d9b2dd47bfd16c1c1e263/Media/ME69a028340d76db092bf8fb2751b3dc39",
+        "currentItem": "",
+        "currentDoc": ""
+      }
+    },
+    {
+      "f654e93e0c9a41d80a583ebb615738dc:d441c015f43c70c3da846d2e10dff39a": {
+        "geometry": [
+          3.4133815837214,
+          -76.492583282956
+        ],
+        "activity": "Menu",
+        "step": 0,
+        "level": 3,
+        "name": "Alexander Gómez Narváez",
+        "pic": "https://api.twilio.com/2010-04-01/Accounts/AC467367f2bd485ea727199ffd2774cdf9/Messages/MMabe758f1dd89baab53ce37aa4cc82179/Media/ME080a798792ab1a19cbe6e41e31f1ec65",
+        "currentItem": "",
+        "currentDoc": ""
+      }
+    },
+    {
+      "c339a722303275833ab750b2712b3775:cb7230c91d2d83cb8de23bd889cf8a87": {
+        "geometry": [
+          3.4555731,
+          -76.5617697
+        ],
+        "activity": "Menu",
+        "step": 0,
+        "level": 3,
+        "name": "Adriana María Pérez",
+        "pic": "https://api.twilio.com/2010-04-01/Accounts/AC467367f2bd485ea727199ffd2774cdf9/Messages/MMdad429404bdcc1c35b3876d2368bd41d/Media/ME9748376898631498c5ae28d969ef972f",
+        "currentItem": "",
+        "currentDoc": ""
+      }
+    },
+    {
+      "419167faa0d1bb0e392b7f166c187a50:0f26f3360bf58d49382bc1f5ec7cffef": {
+        "geometry": [
+          3.3693407,
+          -76.5202995
+        ],
+        "activity": "Detailed",
+        "step": 9,
+        "level": 1,
+        "name": "Daniel Manso",
+        "pic": "https://api.twilio.com/2010-04-01/Accounts/AC467367f2bd485ea727199ffd2774cdf9/Messages/MM3f13f10acdd29f0a89e78d6b2cc1bd85/Media/ME67c7b681f32fdd75d4aad0ae3ffc2dd0",
+        "currentItem": "",
+        "currentDoc": ""
+      }
+    },
+    {
+      "9c20b3248712bf8f85c38e36923ac51f:5cddcfee861f165521dd95a51579efaf": {
         "geometry": [
           0,
           0
         ],
         "activity": "Registration",
-        "step": 3,
+        "step": 0,
         "level": 0,
-        "name": "Carlos Castilla",
+        "name": "",
         "pic": "",
+        "currentItem": "",
+        "currentDoc": ""
+      }
+    },
+    {
+      "7d40ba30799fae0f93f10753efb019d2:c8fad5fcddfb2266775f1f0f051d648a": {
+        "geometry": [
+          3.4087785,
+          -76.5492853
+        ],
+        "activity": "Detailed",
+        "step": 9,
+        "level": 1,
+        "name": "Carlos Castilla",
+        "pic": "https://api.twilio.com/2010-04-01/Accounts/AC467367f2bd485ea727199ffd2774cdf9/Messages/MM37ed638ba2ecee07bb831d2677407d5e/Media/ME5844c2c631bb745bb3ec7a96ae0044a3",
         "currentItem": "",
         "currentDoc": ""
       }
