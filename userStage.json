@@ -61,21 +61,6 @@
       }
     },
     {
-      "624244894d880e8620a3ea2e248bc301:e4fc46b54c861827ceb18b1045b1485a": {
-        "geometry": [
-          3.4534134,
-          -76.5568021
-        ],
-        "activity": "Menu",
-        "step": 0,
-        "level": 3,
-        "name": "Orbay Beltrán C",
-        "pic": "https://api.twilio.com/2010-04-01/Accounts/AC467367f2bd485ea727199ffd2774cdf9/Messages/MM90d8786e868537409cf3195021f75ee6/Media/ME6a34e9493395f5f42f1d2875c1568c24",
-        "currentItem": "5ff5213dcea6d8232cf339e8",
-        "currentDoc": ""
-      }
-    },
-    {
       "a6cc2553112d4001eaf3c64f030de279:6686000b5d8df22e791f0b428bdeb552": {
         "geometry": [
           3.4540994,
@@ -151,16 +136,46 @@
       }
     },
     {
-      "7d40ba30799fae0f93f10753efb019d2:c8fad5fcddfb2266775f1f0f051d648a": {
+      "6843b092b519d8f00fe7ea233334e02a:8a7e44ac1e1730b1d14d99260950bc6e": {
         "geometry": [
-          3.4087785,
-          -76.5492853
+          3.4087436,
+          -76.5492842
         ],
         "activity": "Detailed",
         "step": 9,
         "level": 1,
-        "name": "Carlos Castilla",
-        "pic": "https://api.twilio.com/2010-04-01/Accounts/AC467367f2bd485ea727199ffd2774cdf9/Messages/MM37ed638ba2ecee07bb831d2677407d5e/Media/ME5844c2c631bb745bb3ec7a96ae0044a3",
+        "name": "Stefanía Ruiz",
+        "pic": "https://api.twilio.com/2010-04-01/Accounts/AC20eca658cb6112caa77b1d9680878ac2/Messages/MMe9096eec94be3787c049ecfe90e1a3a2/Media/MEfcc7462928746686807e394008c3ac7d",
+        "currentItem": "",
+        "currentDoc": ""
+      }
+    },
+    {
+      "fbbdbbaabe357c8c64c14edf6278e810:4c0c2c67b2ff12fed3daf6a85937a0ef": {
+        "geometry": [
+          0,
+          0
+        ],
+        "activity": "Registration",
+        "step": 0,
+        "level": 0,
+        "name": "",
+        "pic": "",
+        "currentItem": "",
+        "currentDoc": ""
+      }
+    },
+    {
+      "72891e858bd886c58cb1dc8efaa725b3:122318aa70605aa5b09e538c50d0dc80": {
+        "geometry": [
+          0,
+          0
+        ],
+        "activity": "Registration",
+        "step": 0,
+        "level": 0,
+        "name": "",
+        "pic": "",
         "currentItem": "",
         "currentDoc": ""
       }

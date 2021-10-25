@@ -176,9 +176,7 @@
             "casa",
             "en mi apartamento",
             "ubicada en mi casa",
-            "ubicado en mi casa",
             "esta ubicada en un apartamento",
-            "esta ubicado en un apartamento",
             "esta en un apartamento",
             "esta en una casa",
             "esta en un apartamento",
@@ -358,8 +356,7 @@
             "ir al mapa",
             "mapita", 
             "ver mapa", 
-            "mapa", 
-            "ir al mapa"
+            "mapa"
          ],
          "answers":[
             ""

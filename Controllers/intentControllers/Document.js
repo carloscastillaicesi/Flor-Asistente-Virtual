@@ -39,7 +39,7 @@ async function processedEntity(dialog) {
       await documentModify(documents, itemId);
       pDialog = Object.assign(dialog, { activity: "Menu", step: 0, currentItem: "" })
       await userModify(register(pDialog), dialog.id);
-      finishDialog = Object.assign(dialog, { answer: `*Genial*  🙌✨  El documento ya está en la biblioteca digital de sembrando vida nuestra biblioteca digital, si quieres puedes entrar al siguiente Link y verlo \n\n En el siguiente link puedes verlo: \n\n https://203a227a4379.ngrok.io/menu/library/${d.categorias[0]} \n\n\n*Cuentame, en qué más te puedo ayudar hoy*\n\n_*¿Registrar* algo que tienes para intercambiar?_\n_*¿Anunciar* algo que necesitas?_\n_*¿Subir un documento* a nuestra biblioteca digital?_\n_*¿Ir al mapa* de Sembrando Vida_\n\nEspero poderte ayudar en lo que necesites 😀💚` })
+      finishDialog = Object.assign(dialog, { answer: `*Genial*  🙌✨  El documento ya está en la biblioteca digital de sembrando vida nuestra biblioteca digital, si quieres puedes entrar al siguiente Link y verlo \n\n En el siguiente link puedes verlo: \n\n https://b4e864c53ad7.ngrok.io/menu/library/${d.categorias[0]} \n\n\n*Cuentame, en qué más te puedo ayudar hoy*\n\n_*¿Registrar* algo que tienes para intercambiar?_\n_*¿Anunciar* algo que necesitas?_\n_*¿Subir un documento* a nuestra biblioteca digital?_\n_*¿Ir al mapa* de Sembrando Vida_\n\nEspero poderte ayudar en lo que necesites 😀💚` })
       document = finishDialog;
       break;
     case "url":
@@ -86,7 +86,7 @@ async function processedEntity(dialog) {
     default:
       await userModify(register(dialog), dialog.id);
       var d = await createDocument(dialog.id, dialog.body);
-      finishDialog = Object.assign(dialog, { answer: `*Genial*  🙌✨  El documento ya está en la biblioteca digital de sembrando vida nuestra biblioteca digital, si quieres puedes entrar al siguiente Link y verlo \n\n En el siguiente link puedes verlo: \n\n https://203a227a4379.ngrok.io/menu/library/${d.categorias[0]} \n\n\n*Cuentame, en qué más te puedo ayudar hoy*\n\n_*¿Registrar* algo que tienes para intercambiar?_\n_*¿Anunciar* algo que necesitas?_\n_*¿Subir un documento* a nuestra biblioteca digital?_\n_*¿Ir al mapa* de Sembrando Vida_\n\nEspero poderte ayudar en lo que necesites 😀💚` })
+      finishDialog = Object.assign(dialog, { answer: `*Genial*  🙌✨  El documento ya está en la biblioteca digital de sembrando vida nuestra biblioteca digital, si quieres puedes entrar al siguiente Link y verlo \n\n En el siguiente link puedes verlo: \n\n https://b4e864c53ad7.ngrok.io/menu/library/${d.categorias[0]} \n\n\n*Cuentame, en qué más te puedo ayudar hoy*\n\n_*¿Registrar* algo que tienes para intercambiar?_\n_*¿Anunciar* algo que necesitas?_\n_*¿Subir un documento* a nuestra biblioteca digital?_\n_*¿Ir al mapa* de Sembrando Vida_\n\nEspero poderte ayudar en lo que necesites 😀💚` })
       document = finishDialog;
       document = dialog
       break;
@@ -113,4 +113,4 @@ documento = async (dialog) => {
 
 
 
-module.exports = documento; 
+module.exports = documento;
