@@ -83,7 +83,7 @@ async function processedEntity(dialog) {
       await barterModify(barters, itemId);
       pDialog = Object.assign(dialog, { activity: "Menu", step: 0, currentItem: "" })
       await userModify(register(pDialog), dialog.id);
-      finishDialog = Object.assign(dialog, { answer: `¡Genial!  ya terminaste con el registro de tu intercambio \n\n En el siguiente link puedes verlo: \n\n https://b4e864c53ad7.ngrok.io/menu/exchange/${b.tipo === 1 ? "need/user" : "got"}/${dialog.id} \n\n\n*Cuentame, en qué más te puedo ayudar hoy* \n\n_*¿Registrar* algo que tienes para intercambiar?_\n_*¿Anunciar* algo que necesitas?_\n_*¿Subir un documento* a nuestra biblioteca digital?_\n_*¿Ir al mapa* de Sembrando Vida_\n\n Espero poderte ayudar en lo que necesites 😀💚` })
+      finishDialog = Object.assign(dialog, { answer: `¡Genial!!  ya terminaste con el registro de tu intercambio \n\n En el siguiente link puedes verlo: \n\n https://b4e864c53ad7.ngrok.io/menu/exchange/${b.tipo === 1 ? "need/user" : "got"}/${dialog.id} \n\n\n*Cuentame, en qué más te puedo ayudar hoy* \n\n_*¿Registrar* algo que tienes para intercambiar?_\n_*¿Anunciar* algo que necesitas?_\n_*¿Subir un documento* a nuestra biblioteca digital?_\n_*¿Ir al mapa* de Sembrando Vida_\n\n Espero poderte ayudar en lo que necesites 😀💚` })
       barter = finishDialog;
       break;
 
