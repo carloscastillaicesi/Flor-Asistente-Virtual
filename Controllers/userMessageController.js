@@ -8,6 +8,7 @@ function userCheck(mssg) {
   return new Promise(function (resolve, reject) {
     var newMssgUser;
     var data = userLocal.dataObject(mssg.from);
+    console.log("data userMessage", data)
     try {
       if (data === mssg.from) {
         var user = new User({

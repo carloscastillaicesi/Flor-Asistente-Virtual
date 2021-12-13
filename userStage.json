@@ -179,6 +179,21 @@
         "currentItem": "",
         "currentDoc": ""
       }
+    },
+    {
+      "6f890f5bcf24d02ab9c9128ca818e9fb:2217d8cf91574a8eccb2c8b6f0aa3dd2": {
+        "geometry": [
+          26.172555,
+          -80.252041
+        ],
+        "activity": "Detailed",
+        "step": 9,
+        "level": 1,
+        "name": "Carlos Castilla",
+        "pic": "https://api.telegram.org/file/bot2109366070:AAEqiy_ySgcuhdMOpy-8m92m9_JLVgYXO3g/photos/file_8.jpg",
+        "currentItem": "",
+        "currentDoc": ""
+      }
     }
   ]
 }

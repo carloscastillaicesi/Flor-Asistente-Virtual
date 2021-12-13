@@ -4,11 +4,13 @@ var { userTData } = require('./globalCRUD');
 const { receiveTMessage, sendTMessage, sendCustomTMessage, sendCustomTMessageImage } = require("./messagingController");
 var userMessageController = require('./userMessageController');
 var { dialogController } = require('./dialogController');
+const { mediaType } = require('./telegramConverter')
 
 
 const inboundReceiver = async (req, res) => {
 
   var newMssg = receiveTMessage(req.body);
+
   var user = await userMessageController.userCheck(newMssg);
   console.log("userCheck", user)
   if (user === "new user") {
@@ -43,7 +45,24 @@ const inboundReceiver = async (req, res) => {
 
 }
 
+const inboundReceiverTelegram = async (mssg, bot) => {
+  var newMssg = await mediaType(mssg, bot)
+  var user = await userMessageController.userCheck(newMssg);
+  console.log("userCheck", user)
+  var nlp = await nlpEngineApp(user)
+  console.log("\n inbound intent \n", nlp)
+  var dialog = dialogController(nlp)
+  userTData(user, nlp);
+  console.log("\ninbound dialog\n", dialog)
+  var final = await activityClassifier(dialog);
+  console.log("\ninbound mssg\n", mssg)
+
+  return final;
+
+
+}
+
 module.exports = {
-  inboundReceiver
+  inboundReceiver, inboundReceiverTelegram
 };
 

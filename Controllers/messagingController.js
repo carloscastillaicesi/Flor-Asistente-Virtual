@@ -180,4 +180,4 @@ const sendCustomTVCard = (body, number, targetPhone) => {
 
 
 
-module.exports = { sendTMessage, receiveTMessage, sendCustomTMessage, sendCustomTMessageImage, sendCustomTVCard, sendCustomTDocument }; 
+module.exports = { sendTMessage, receiveTMessage, sendCustomTMessage, sendCustomTMessageImage, sendCustomTVCard, sendCustomTDocument };
