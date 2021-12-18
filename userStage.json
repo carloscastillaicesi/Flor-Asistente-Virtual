@@ -121,21 +121,6 @@
       }
     },
     {
-      "9c20b3248712bf8f85c38e36923ac51f:5cddcfee861f165521dd95a51579efaf": {
-        "geometry": [
-          0,
-          0
-        ],
-        "activity": "Registration",
-        "step": 0,
-        "level": 0,
-        "name": "",
-        "pic": "",
-        "currentItem": "",
-        "currentDoc": ""
-      }
-    },
-    {
       "6843b092b519d8f00fe7ea233334e02a:8a7e44ac1e1730b1d14d99260950bc6e": {
         "geometry": [
           3.4087436,
@@ -151,37 +136,7 @@
       }
     },
     {
-      "fbbdbbaabe357c8c64c14edf6278e810:4c0c2c67b2ff12fed3daf6a85937a0ef": {
-        "geometry": [
-          0,
-          0
-        ],
-        "activity": "Registration",
-        "step": 0,
-        "level": 0,
-        "name": "",
-        "pic": "",
-        "currentItem": "",
-        "currentDoc": ""
-      }
-    },
-    {
-      "72891e858bd886c58cb1dc8efaa725b3:122318aa70605aa5b09e538c50d0dc80": {
-        "geometry": [
-          0,
-          0
-        ],
-        "activity": "Registration",
-        "step": 0,
-        "level": 0,
-        "name": "",
-        "pic": "",
-        "currentItem": "",
-        "currentDoc": ""
-      }
-    },
-    {
-      "6f890f5bcf24d02ab9c9128ca818e9fb:2217d8cf91574a8eccb2c8b6f0aa3dd2": {
+      "0291474b3f78c0a52a396e7380f771b3:f8701b1d40c3bc0a48ff9dc7ab79b51b": {
         "geometry": [
           26.172555,
           -80.252041
@@ -189,8 +144,8 @@
         "activity": "Detailed",
         "step": 9,
         "level": 1,
-        "name": "Carlos Castilla",
-        "pic": "https://api.telegram.org/file/bot2109366070:AAEqiy_ySgcuhdMOpy-8m92m9_JLVgYXO3g/photos/file_8.jpg",
+        "name": "Carlos Castilla Orozco",
+        "pic": "https://api.telegram.org/file/bot2109366070:AAEqiy_ySgcuhdMOpy-8m92m9_JLVgYXO3g/photos/file_12.jpg",
         "currentItem": "",
         "currentDoc": ""
       }

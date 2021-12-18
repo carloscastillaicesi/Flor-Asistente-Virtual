@@ -20,7 +20,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(pino);
 
-
 //Telegram 
 
 const { NGROK, TELEGRAM_TOKEN } = process.env;
@@ -31,8 +30,7 @@ const WEBHOOK_URL = NGROK + URL
 const bot = new Telegraf(TELEGRAM_TOKEN)
 
 bot.on('message', async (ctx, next) => {
-
-  var mRepply = await inboundReceiverTelegram(ctx.message, bot);
+  var mRepply = await inboundReceiverTelegram(ctx, bot);
   ctx.reply(mRepply);
   // Message Type is: STICKER or Message Type is: TEXT
 });

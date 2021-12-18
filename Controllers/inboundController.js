@@ -12,6 +12,7 @@ const inboundReceiver = async (req, res) => {
   var newMssg = receiveTMessage(req.body);
 
   var user = await userMessageController.userCheck(newMssg);
+
   console.log("userCheck", user)
   if (user === "new user") {
     sendTMessage(res, `¡Hola! Soy Flor la asistente virtual de Sembrando Vida 👩‍🌾. Me gusta ayudar a las personas y orientarlas desde mis experiencias y saberes 🙌🌱\n \n*¡Quisiera conocerte mejor!* 😊 \n \n _La información que te pediré a continuación será usada para crear tu perfil en el mapa y que otras personas puedan encontrarte._`, "https://i.ibb.co/dpjWTjT/Saludo.png")
@@ -46,20 +47,25 @@ const inboundReceiver = async (req, res) => {
 }
 
 const inboundReceiverTelegram = async (mssg, bot) => {
-  var newMssg = await mediaType(mssg, bot)
+  var final;
+  var newMssg = await mediaType(mssg.message, bot)
   var user = await userMessageController.userCheck(newMssg);
   console.log("userCheck", user)
-  var nlp = await nlpEngineApp(user)
-  console.log("\n inbound intent \n", nlp)
-  var dialog = dialogController(nlp)
-  userTData(user, nlp);
-  console.log("\ninbound dialog\n", dialog)
-  var final = await activityClassifier(dialog);
-  console.log("\ninbound mssg\n", mssg)
-
+  if (user === "new user") {
+    mssg.replyWithPhoto({
+      url: 'https://i.ibb.co/dpjWTjT/Saludo.png'
+    });
+    final = '¡Hola! Soy Flor la asistente virtual de Sembrando Vida 👩‍🌾. Me gusta ayudar a las personas y orientarlas desde mis experiencias y saberes 🙌🌱\n \n**¡Quisiera conocerte mejor!** 😊 \n \n __La información que te pediré a continuación será usada para crear tu perfil en el mapa y que otras personas puedan encontrarte.__';
+  } else {
+    var nlp = await nlpEngineApp(user)
+    console.log("\n inbound intent \n", nlp)
+    var dialog = dialogController(nlp)
+    userTData(user, nlp);
+    console.log("\ninbound dialog\n", dialog)
+    final = await activityClassifier(dialog);
+    console.log("\ninbound mssg\n", mssg)
+  }
   return final;
-
-
 }
 
 module.exports = {
