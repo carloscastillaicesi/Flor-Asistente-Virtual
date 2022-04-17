@@ -130,9 +130,6 @@ const sendTMessage = (res, mssg, image) => {
   res.send(message.toString()).status(200);
 };
 
-const sendTelegramMessage = (bot, mssg, image) => {
-
-};
 
 const sendCustomTMessageImage = (body, number, media) => {
   client.messages.create({
@@ -165,8 +162,6 @@ const sendCustomTDocument = (body, number) => {
 var vCardsJS = require('vcards-js');
 
 
-
-
 const sendCustomTVCard = (body, number, targetPhone) => {
   // var vCard = vCardsJS();
   // vCard.firstName = name;
@@ -184,4 +179,4 @@ const sendCustomTVCard = (body, number, targetPhone) => {
 
 
 
-module.exports = { sendTMessage, receiveTMessage, sendCustomTMessage, sendCustomTMessageImage, sendCustomTVCard, sendCustomTDocument, sendTelegramMessage };
+module.exports = { sendTMessage, receiveTMessage, sendCustomTMessage, sendCustomTMessageImage, sendCustomTVCard, sendCustomTDocument };

@@ -31,7 +31,11 @@ const bot = new Telegraf(TELEGRAM_TOKEN)
 
 bot.on('message', async (ctx, next) => {
   var mRepply = await inboundReceiverTelegram(ctx, bot);
-  ctx.reply(mRepply);
+
+  if (mRepply) {
+    ctx.replyWithMarkdown(mRepply);
+  }
+
   // Message Type is: STICKER or Message Type is: TEXT
 });
 
@@ -41,6 +45,8 @@ bot.launch();
 
 
 /*
+
+// Axios no longer beign used. Now using the Telegraph API to communicate with Telegram. 
     await init()
 const init = async () => {
   const res = await axios(`${TELEGRAM_API}/setWebhook?url=${WEBHOOK_URL}`);
@@ -180,10 +186,10 @@ app.get('/map/users', function (req, res) {
 // app.use(inboundRoutes);
 
 
-// /**404 route*/
-// app.use((req, res) => {
-//   res.status(400).send('<p>404</p>');
-// });
+/**404 route*/
+app.use((req, res) => {
+  res.status(400).send('<p>404</p>');
+});
 
 
 

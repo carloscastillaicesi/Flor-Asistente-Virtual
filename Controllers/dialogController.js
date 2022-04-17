@@ -5,13 +5,13 @@ function check({ activity, step, intent }) {
  var file = JSON.parse(fileData);
  var dialog = file.dialog
  var int = intent === "None" ? "none" : intent
- console.log("\n\n INTEEENT \n\n ", int)
+ console.log("\n\n Intent \n\n ", int)
  return dialog.filter(f => f.activity === activity && f.step === step && f.intent.includes(int))
 }
 
 function errorDialog(obj) {
  return {
-  intent: obj.intent === "None" ? "none" : "error", step: obj.step, activity: obj.activity, level: obj.level, id: obj.id, answer: "No entendí lo que dijiste.Por favor, repítelo 🙈"
+  intent: obj.intent === "None" ? "none" : "error", step: obj.step, activity: obj.activity, level: obj.level, id: obj.id, answer: "No entendí lo que dijiste. Por favor, repítelo 🙈"
  };
 }
 
@@ -45,8 +45,6 @@ function dialogController(obj) {
     dialogE = errorDialog(obj);
     dialog = dialogPError(dialogE, obj)
    }
-
-
   }
   return dialog;
 

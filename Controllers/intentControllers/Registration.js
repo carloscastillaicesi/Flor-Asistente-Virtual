@@ -72,7 +72,6 @@ function customAnswer(dialog, replace) {
 }
 
 registration = async (dialog) => {
-
   dialogP = processedEntity(dialog)
   await userModify(register(dialogP), dialog.id);
   return dialog.answer;

@@ -36,7 +36,6 @@ function processedEntity(dialog) {
         pDialog = Object.assign(dialog, { activity: "Registration", nextStep: dialog.step, answer: "Si necesitas algo mas no dudes en saludarme de nuevo, estaré pendiente para que continuemos el registro de la información para que tu semilla de informacion se convierta en una plántula. ¡Hablamos pronto! 😀 🙌" })
       } else if (dialog.level >= 3) {
         pDialog = Object.assign(dialog, { activity: "Menu", step: 0, answer: "Si necesitas algo más, no dudes en saludarme de nuevo, estaré pendiente a lo que necesites. ¡Hasta pronto! 😀 🙌" })
-
       }
       break;
     case "menu":
@@ -47,11 +46,11 @@ function processedEntity(dialog) {
       }
       break;
     case "saludo":
-      if (dialog.step < 5 && dialog.level < 3) {
+      if (dialog.step <= 5 && dialog.level < 3) {
         console.log("\n\n dialog.intent[0] \n\n", dialog)
-        pDialog = Object.assign(dialog, { activity: "Registration", nextStep: dialog.step, answer: { answer: `*¡Hola ${dialog.name && dialog.name.split(" ").length >= 4 ? dialog.name.split(" ").slice(0, 3).join(" ") : dialog.name.split(" ")[0]}!*  🌳👩‍🌾 \n Actualmente estamos en el registro de tu infomación \n `, message: `*Quedamos en esta parte de la conversación* \n\n ${check("Registration", dialog.step)[0].answer}`, time: 1000, image: "" } });
+        pDialog = Object.assign(dialog, { activity: "Registration", nextStep: dialog.step, answer: { answer: `*¡Hola ${dialog.name && dialog.name.split(" ").length >= 4 ? dialog.name.split(" ").slice(0, 3).join(" ") : dialog.name.split(" ")[0]}!*  🌳👩‍🌾 \n Actualmente estamos en el registro de tu infomación \n`, message: `*Quedamos en esta parte de la conversación* \n\n ${check("Registration", dialog.step)[0].answer}`, time: 1000, image: "" } });
 
-      } else if (dialog.step >= 5 && dialog.level < 3) {
+      } else if (dialog.step > 5 && dialog.level < 3) {
 
         pDialog = Object.assign(dialog, { activity: "Detailed", nextStep: dialog.step + 1, answer: { answer: `*¡Hola ${dialog.name && dialog.name.split(" ").length >= 4 ? dialog.name.split(" ").slice(0, 3).join(" ") : dialog.name.split(" ")[0]}!*  🌳👩‍🌾 \n Actualmente estamos en el registro de tu infomación \n `, message: `*Quedamos en esta parte de la conversación* \n\n ${check("Detailed", dialog.step)[0].answer}`, time: 1000, image: "" } })
 
@@ -59,7 +58,7 @@ function processedEntity(dialog) {
         pDialog = Object.assign(dialog, { activity: "Menu", nextStep: 0, answer: `*¡Hola, ${dialog.name.split(" ").length >= 4 ? dialog.name.split(" ").slice(0, 3).join(" ") : dialog.name.split(" ")[0]}!*  🌳👩‍🌾\n\n *Te puedo ayudar a* \n\n_*¿Registrar* algo que tienes para intercambiar?_\n_*¿Anunciar* algo que necesitas?_\n_*¿Subir un documento* a nuestra biblioteca digital?_\n_*Ir al mapa* de Sembrando Vida_\n\n Espero poderte ayudar en lo que necesites 😀💚` })
       } else if (dialog.intent === "Tengo" || dialog.intent === "Necesito" || dialog.intent === "Document") {
 
-        pDialog = Object.assign(dialog, { nextStep: dialog.step, answer: `*¡Hola, ${dialog.name.split(" ").length >= 4 ? dialog.name.split(" ").slice(0, 3).join(" ") : dialog.name.split(" ")[0]}!*  🌳👩‍🌾\n\n Estamos en el curso de un registrp"} \n \n¿deseas *continuar* con este registro, ir al *Menu* o *Terminar* la conversación por el momento? 😀💚` })
+        pDialog = Object.assign(dialog, { nextStep: dialog.step, answer: `*¡Hola, ${dialog.name.split(" ").length >= 4 ? dialog.name.split(" ").slice(0, 3).join(" ") : dialog.name.split(" ")[0]}!*  🌳👩‍🌾\n\n Estamos en el curso de un registro"} \n \n¿deseas *continuar* con este registro, ir al *Menu* o *Terminar* la conversación por el momento? 😀💚` })
       }
       break;
     default:

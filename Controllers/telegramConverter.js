@@ -38,7 +38,6 @@ const mediaType = async (message, bot) => {
 
       default:
         newMssg = {
-          from: id,
           messageType: type,
           body: type,
         };

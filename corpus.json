@@ -1,54 +1,54 @@
 {
-   "name":"Corpus with entities",
-   "locale":"es",
-   "data":[
+   "name": "Corpus with entities",
+   "locale": "es",
+   "data": [
       {
-         "intent":"geometry",
-         "utterances":[
+         "intent": "geometry",
+         "utterances": [
             "geometry"
          ],
-         "answers":[
+         "answers": [
             ""
          ]
       },
       {
-         "intent":"image",
-         "utterances":[
+         "intent": "image",
+         "utterances": [
             "image"
          ],
-         "answers":[
+         "answers": [
             ""
          ]
       },
       {
-         "intent":"url",
-         "utterances":[
+         "intent": "url",
+         "utterances": [
             "pdf"
          ],
-         "answers":[
+         "answers": [
             ""
          ]
       },
       {
-         "intent":"name",
-         "utterances":[
+         "intent": "name",
+         "utterances": [
             "me llamo",
             "soy",
             "me dicen",
             "nombre es",
-            "nombre completo", 
+            "nombre completo",
             "me pondre",
-            "le pondre", 
-            "pongamosle", 
+            "le pondre",
+            "pongamosle",
             "el nombre del"
          ],
-         "answers":[
+         "answers": [
             ""
          ]
       },
       {
-         "intent":"saludo",
-         "utterances":[
+         "intent": "saludo",
+         "utterances": [
             "buenas",
             "hola",
             "hola",
@@ -93,13 +93,13 @@
             "alo",
             "aol"
          ],
-         "answers":[
+         "answers": [
             ""
          ]
       },
       {
-         "intent":"si",
-         "utterances":[
+         "intent": "si",
+         "utterances": [
             "claro",
             "de una",
             "hagale",
@@ -112,21 +112,21 @@
             "buenito",
             "genial",
             "si quisiera",
-            "me gustaría", 
-            "acepto", 
-            "aceptar", 
-            "tengo una huerta", 
-            "ok", 
-            "correcto", 
+            "me gustaría",
+            "acepto",
+            "aceptar",
+            "tengo una huerta",
+            "ok",
+            "correcto",
             "bien"
          ],
-         "answers":[
+         "answers": [
             ""
          ]
       },
       {
-         "intent":"no",
-         "utterances":[
+         "intent": "no",
+         "utterances": [
             "que no",
             "no",
             "no quisiera",
@@ -138,13 +138,13 @@
             "claro que no",
             "no no"
          ],
-         "answers":[
+         "answers": [
             ""
          ]
       },
       {
-         "intent":"ubicacionHuerta",
-         "utterances":[
+         "intent": "ubicacionHuerta",
+         "utterances": [
             "en una",
             "en mi",
             "ubicada en",
@@ -154,25 +154,25 @@
             "encuentra en",
             "huerta esta",
             "la huerta esta",
-            "mi huerta esta", 
+            "mi huerta esta",
             "finca",
-            "colegio", 
-            "centro asistencial", 
-            "espacio comunitario", 
-            "sede comunal", 
-            "patio", 
-            "jardin", 
-            "cocina", 
+            "colegio",
+            "centro asistencial",
+            "espacio comunitario",
+            "sede comunal",
+            "patio",
+            "jardin",
+            "cocina",
+            "terraza",
             "lote"
-
          ],
-         "answers":[
+         "answers": [
             ""
          ]
       },
       {
-         "intent":"casa",
-         "utterances":[
+         "intent": "casa",
+         "utterances": [
             "casa",
             "en mi apartamento",
             "ubicada en mi casa",
@@ -184,22 +184,21 @@
             "en la casa",
             "en el apartamento",
             "en apartamento",
-            "en casa", 
+            "en casa",
             "del apto",
-            "del apartamento", 
-            "dela casa", 
-            "de la casa", 
-            "en mi apto", 
+            "del apartamento",
+            "dela casa",
+            "de la casa",
+            "en mi apto",
             "ubicada en el apto"
-
          ],
-         "answers":[
+         "answers": [
             ""
          ]
       },
       {
-         "intent":"encargadosHuerta",
-         "utterances":[
+         "intent": "encargadosHuerta",
+         "utterances": [
             "nos encargamos",
             "se encarga",
             "me encargo",
@@ -211,13 +210,13 @@
             "responsabilidad de",
             "a cargo de"
          ],
-         "answers":[
+         "answers": [
             ""
          ]
       },
       {
-         "intent":"tiempoDedicadoHuerta",
-         "utterances":[
+         "intent": "tiempoDedicadoHuerta",
+         "utterances": [
             "le dedico",
             "horas",
             "a la semana",
@@ -226,13 +225,13 @@
             "dedicado",
             "horas a mi huerta"
          ],
-         "answers":[
+         "answers": [
             ""
          ]
       },
       {
-         "intent":"tiempoExperiencia",
-         "utterances":[
+         "intent": "tiempoExperiencia",
+         "utterances": [
             "llevo",
             "años",
             "meses",
@@ -240,13 +239,13 @@
             "experiencias",
             "experiencia cultivando"
          ],
-         "answers":[
+         "answers": [
             ""
          ]
       },
       {
-         "intent":"conocimiento",
-         "utterances":[
+         "intent": "conocimiento",
+         "utterances": [
             "aprendi",
             "aprendi de",
             "estudie",
@@ -270,13 +269,13 @@
             "aprendiz",
             "aprendido"
          ],
-         "answers":[
+         "answers": [
             ""
          ]
       },
       {
-         "intent":"beneficiosSalud",
-         "utterances":[
+         "intent": "beneficiosSalud",
+         "utterances": [
             "salud",
             "bienestar",
             "beneficios para la salud",
@@ -287,13 +286,13 @@
             "natural",
             "homeopatico"
          ],
-         "answers":[
+         "answers": [
             ""
          ]
       },
       {
-         "intent":"expectativaHuerta",
-         "utterances":[
+         "intent": "expectativaHuerta",
+         "utterances": [
             "reducir",
             "gasto",
             "dinero",
@@ -310,74 +309,77 @@
             "consumo propio",
             "consumo"
          ],
-         "answers":[
+         "answers": [
             ""
          ]
       },
       {
-         "intent":"tengo",
-         "utterances":[
+         "intent": "tengo",
+         "utterances": [
             "tengo",
             "tener",
             "intercambio",
             "intercambiar",
-            "para intercambiar", 
-            "registrar", 
+            "para intercambiar",
+            "registrar",
             "registro"
          ],
-         "answers":[
+         "answers": [
             ""
          ]
       },
       {
-         "intent":"necesito",
-         "utterances":[
+         "intent": "necesito",
+         "utterances": [
             "necesito",
-            "anunciar", 
+            "anunciar",
             "anuncio"
          ],
-         "answers":[
-            ""
-         ]
-      },{
-         "intent":"documento",
-         "utterances":[
-            "subir un documento",
-            "subir a la biblioteca", 
-            "subir a biblioteca", 
-            "bliblioteca"
-         ],
-         "answers":[
-            ""
-         ]
-      },{
-         "intent":"mapa",
-         "utterances":[
-            "ir al mapa",
-            "mapita", 
-            "ver mapa", 
-            "mapa"
-         ],
-         "answers":[
-            ""
-         ]
-      },{
-         "intent":"titulo",
-         "utterances":[
-            "titulo",
-            "título",
-            "el titulo es", 
-            "como titulo", 
-            "se titulara", 
-            "se titulará"
-         ],
-         "answers":[
+         "answers": [
             ""
          ]
       },
       {
-         "intent":"categorias",
-         "utterances":[
+         "intent": "documento",
+         "utterances": [
+            "subir un documento",
+            "subir a la biblioteca",
+            "subir a biblioteca",
+            "bliblioteca"
+         ],
+         "answers": [
+            ""
+         ]
+      },
+      {
+         "intent": "mapa",
+         "utterances": [
+            "ir al mapa",
+            "mapita",
+            "ver mapa",
+            "mapa"
+         ],
+         "answers": [
+            ""
+         ]
+      },
+      {
+         "intent": "titulo",
+         "utterances": [
+            "titulo",
+            "título",
+            "el titulo es",
+            "como titulo",
+            "se titulara",
+            "se titulará"
+         ],
+         "answers": [
+            ""
+         ]
+      },
+      {
+         "intent": "categorias",
+         "utterances": [
             "este producto",
             "este producto tiene",
             "este producto es",
@@ -385,46 +387,46 @@
             "categorias",
             "categorias:"
          ],
-         "answers":[
+         "answers": [
             ""
          ]
       },
       {
-         "intent":"descripcion",
-         "utterances":[
+         "intent": "descripcion",
+         "utterances": [
             "descripcion",
             "descripción",
             "la descripción",
             "descripcion es",
             "describir",
-            "descripción", 
-            "quisiera obtener", 
+            "descripción",
+            "quisiera obtener",
             "quisiera conseguir"
          ],
-         "answers":[
+         "answers": [
             ""
          ]
       },
       {
-         "intent":"cambio",
-         "utterances":[
+         "intent": "cambio",
+         "utterances": [
             "a cambio de",
             "cambiarlo por",
             "a cambio puedo",
             "cambiaria por",
             "puedo dar",
             "quisiera cambiarlo por",
-            "me gustaría cambiarlo por", 
-            "gratis", 
+            "me gustaría cambiarlo por",
+            "gratis",
             "sin costo"
          ],
-         "answers":[
+         "answers": [
             ""
          ]
       },
       {
-         "intent":"next",
-         "utterances":[
+         "intent": "next",
+         "utterances": [
             "siguiente",
             "continuar",
             "continuemos",
@@ -433,55 +435,55 @@
             "sigamos",
             "seguir"
          ],
-         "answers":[
+         "answers": [
             ""
          ]
       },
       {
-         "intent":"doubt",
-         "utterances":[
+         "intent": "doubt",
+         "utterances": [
             "para que",
             "pa que",
             "eso pa que",
             "para que seria ",
             "como asi",
-            "que información", 
-            "ayuda", 
-            "ayudame", 
+            "que información",
+            "ayuda",
+            "ayudame",
             "ayudita",
             "help",
-            "no entiendo", 
+            "no entiendo",
             "entender",
             "no se",
-            "no entendi", 
-            "explica", 
-            "explicame", 
-            "no entiendo nada", 
-            "porque", 
+            "no entendi",
+            "explica",
+            "explicame",
+            "no entiendo nada",
+            "porque",
             "por que"
          ],
-         "answers":[
+         "answers": [
             ""
          ]
       },
       {
-         "intent":"out",
-         "utterances":[
+         "intent": "out",
+         "utterances": [
             "salir",
             "adios",
             "cancelar",
             "hasta luego",
             "chao",
-            "nos vemos", 
+            "nos vemos",
             "terminar"
          ],
-         "answers":[
+         "answers": [
             ""
          ]
       },
       {
-         "intent":"menu",
-         "utterances":[
+         "intent": "menu",
+         "utterances": [
             "ir a menu",
             "menu",
             "vamos al menu",
@@ -490,16 +492,14 @@
             "menu",
             "home"
          ],
-         "answers":[
+         "answers": [
             ""
          ]
       },
       {
-         "intent":"None",
-         "utterances":[
-            
-         ],
-         "answers":[
+         "intent": "None",
+         "utterances": [],
+         "answers": [
             "No te entendi",
             "podrías repetirlo",
             "Dimelo de Nuevo",
@@ -507,42 +507,42 @@
          ]
       }
    ],
-   "entities":{
-      "media":{
-         "options":{
-            "image":[
+   "entities": {
+      "media": {
+         "options": {
+            "image": [
                "image"
             ],
-            "video":[
+            "video": [
                "video"
             ],
-            "audio":[
+            "audio": [
                "audio"
             ]
          }
       },
-      "name":{
-         "options":{
-            "me llamo":[
+      "name": {
+         "options": {
+            "me llamo": [
                "jaja"
             ],
-            "soy":[
+            "soy": [
                "soy"
             ],
-            "dicen":[
+            "dicen": [
                "dicen"
             ],
-            "es":[
+            "es": [
                "es"
             ]
          }
       },
-      "email":{
-         "locale":[
+      "email": {
+         "locale": [
             "en",
             "es"
          ],
-         "regex":"/\\b(\\w[-._\\w]*\\w@\\w[-._\\w]*\\w\\.\\w{2,3})\\b/gi"
+         "regex": "/\\b(\\w[-._\\w]*\\w@\\w[-._\\w]*\\w\\.\\w{2,3})\\b/gi"
       }
    }
 }

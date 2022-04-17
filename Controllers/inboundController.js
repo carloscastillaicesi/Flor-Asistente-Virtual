@@ -47,7 +47,7 @@ const inboundReceiver = async (req, res) => {
 }
 
 const inboundReceiverTelegram = async (mssg, bot) => {
-  var final;
+
   var newMssg = await mediaType(mssg.message, bot)
   var user = await userMessageController.userCheck(newMssg);
   console.log("userCheck", user)
@@ -55,17 +55,41 @@ const inboundReceiverTelegram = async (mssg, bot) => {
     mssg.replyWithPhoto({
       url: 'https://i.ibb.co/dpjWTjT/Saludo.png'
     });
-    final = '¡Hola! Soy Flor la asistente virtual de Sembrando Vida 👩‍🌾. Me gusta ayudar a las personas y orientarlas desde mis experiencias y saberes 🙌🌱\n \n**¡Quisiera conocerte mejor!** 😊 \n \n __La información que te pediré a continuación será usada para crear tu perfil en el mapa y que otras personas puedan encontrarte.__';
+    setTimeout(() => {
+      mssg.replyWithMarkdown(`¡Hola! Soy Flor la asistente virtual de Sembrando Vida 👩‍🌾. Me gusta ayudar a las personas y orientarlas desde mis experiencias y saberes 🙌🌱\n \n*¡Quisiera conocerte mejor!* 😊 \n\n _La información que te pediré a continuación será usada para crear tu perfil en el mapa y que otras personas puedan encontrarte._`);
+    }, 1000);
+    setTimeout(() => {
+      mssg.replyWithMarkdown(`Para poder comenzar, dime\n\n*¿Puedo guardar tu número de celular y disponer de la información que me compartas en esta conversación?*`);
+    }, 3000);
+
   } else {
     var nlp = await nlpEngineApp(user)
-    console.log("\n inbound intent \n", nlp)
+    //console.log("\n inbound intent \n", nlp)
     var dialog = dialogController(nlp)
     userTData(user, nlp);
-    console.log("\ninbound dialog\n", dialog)
-    final = await activityClassifier(dialog);
-    console.log("\ninbound mssg\n", mssg)
+    // console.log("\ninbound dialog\n", dialog)
+    var activity = await activityClassifier(dialog);
+
+    if (typeof activity === "string") {
+      console.log("\ninbound mssg\n", activity)
+      return activity.toString();
+
+    } else {
+      activity.image && mssg.replyWithPhoto({
+        url: activity.image
+      });
+      setTimeout(() => {
+        activity.answer && mssg.replyWithMarkdown(activity.answer.toString());
+      }, activity.time ? activity.time : 1000);
+
+      setTimeout(() => {
+        activity.message && mssg.replyWithMarkdown(activity.message.toString());
+      }, activity.time ? activity.time : 2000);
+
+
+    }
   }
-  return final;
+
 }
 
 module.exports = {
