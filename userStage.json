@@ -10,7 +10,7 @@
         "step": 0,
         "level": 3,
         "name": "Edemberg Ospina Paniagua",
-        "pic": "https://api.twilio.com/2010-04-01/Accounts/AC467367f2bd485ea727199ffd2774cdf9/Messages/MMf52c5270f5c36ede64d21d00e74b42ec/Media/ME55dff8b15ec65b9292a253dfe9e2c860",
+        "pic": "https://i.ibb.co/tDM7H9V/edemberg.jpg",
         "currentItem": "",
         "currentDoc": ""
       }
@@ -24,8 +24,8 @@
         "activity": "Menu",
         "step": 0,
         "level": 3,
-        "name": "Wendy",
-        "pic": "https://api.twilio.com/2010-04-01/Accounts/AC467367f2bd485ea727199ffd2774cdf9/Messages/MM532472ee1abf88a8f03e415e78fa74fc/Media/ME35a89b50c0fbdd57ccc40aa5a036b3cc",
+        "name": "Wendy Henao ",
+        "pic": "https://media-exp1.licdn.com/dms/image/C4E03AQGwfXS3ZXl6sw/profile-displayphoto-shrink_400_400/0/1554734915587?e=1655942400&v=beta&t=PcdGybw9GA9TYoFcqLC2_kXLkNVRMMSp1GaR8OHzT34",
         "currentItem": "",
         "currentDoc": ""
       }
@@ -40,7 +40,7 @@
         "step": 0,
         "level": 4,
         "name": "Natani Rodríguez",
-        "pic": "https://api.twilio.com/2010-04-01/Accounts/AC467367f2bd485ea727199ffd2774cdf9/Messages/MMc2e30d4c5944698961826adbbda892a9/Media/ME9bae018f88d729784c24c9a690bc0e18",
+        "pic": "https://i.ibb.co/fpq3ZDt/natani.jpg",
         "currentItem": "5ffcbe60c038304dc05a7f8f",
         "currentDoc": ""
       }
@@ -55,7 +55,7 @@
         "step": 0,
         "level": 3,
         "name": "María Del Mar Serna",
-        "pic": "https://api.twilio.com/2010-04-01/Accounts/AC467367f2bd485ea727199ffd2774cdf9/Messages/MM11544e6537aef32669136034acca0309/Media/MEd4e2ce2321d32c8bb9c8545bb14b8707",
+        "pic": "https://i.ibb.co/8NjvSnf/maria-del-mar.jpg",
         "currentItem": "",
         "currentDoc": ""
       }
@@ -70,7 +70,7 @@
         "step": 0,
         "level": 3,
         "name": "Mery Castro",
-        "pic": "https://api.twilio.com/2010-04-01/Accounts/AC467367f2bd485ea727199ffd2774cdf9/Messages/MM9922c88d015d9b2dd47bfd16c1c1e263/Media/ME69a028340d76db092bf8fb2751b3dc39",
+        "pic": "https://case.fiu.edu/about/directory/people/_assets/profiles/mery-castro.jpg",
         "currentItem": "",
         "currentDoc": ""
       }
@@ -85,7 +85,7 @@
         "step": 0,
         "level": 3,
         "name": "Alexander Gómez Narváez",
-        "pic": "https://api.twilio.com/2010-04-01/Accounts/AC467367f2bd485ea727199ffd2774cdf9/Messages/MMabe758f1dd89baab53ce37aa4cc82179/Media/ME080a798792ab1a19cbe6e41e31f1ec65",
+        "pic": "https://i.ibb.co/hY10bkg/Alexander.jpg",
         "currentItem": "",
         "currentDoc": ""
       }
@@ -101,21 +101,6 @@
         "level": 3,
         "name": "Adriana María Pérez",
         "pic": "https://api.twilio.com/2010-04-01/Accounts/AC467367f2bd485ea727199ffd2774cdf9/Messages/MMdad429404bdcc1c35b3876d2368bd41d/Media/ME9748376898631498c5ae28d969ef972f",
-        "currentItem": "",
-        "currentDoc": ""
-      }
-    },
-    {
-      "419167faa0d1bb0e392b7f166c187a50:0f26f3360bf58d49382bc1f5ec7cffef": {
-        "geometry": [
-          3.3693407,
-          -76.5202995
-        ],
-        "activity": "Detailed",
-        "step": 9,
-        "level": 1,
-        "name": "Daniel Manso",
-        "pic": "https://api.twilio.com/2010-04-01/Accounts/AC467367f2bd485ea727199ffd2774cdf9/Messages/MM3f13f10acdd29f0a89e78d6b2cc1bd85/Media/ME67c7b681f32fdd75d4aad0ae3ffc2dd0",
         "currentItem": "",
         "currentDoc": ""
       }
