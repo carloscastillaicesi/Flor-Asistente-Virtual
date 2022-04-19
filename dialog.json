@@ -172,7 +172,7 @@
             "none",
             "ubicacionHuerta"
          ],
-         "answer": "¡Listo!👌🏼 ya registré tu información. 🙌🏼 Ahora, para ubicar tu huerta en el mapa de Sembrando Vida *¿Camina con tu teléfono hacia donde esta ubicada tu huerta o el espacio donde siembras y comparteme la ubicación a través de Whatsapp *💚🌱 \n\n _Para enviarme tu ubicación vía Whatsapp puedes seguir las siguientes instrucciones:_ \n\n  *1) Encuentra y presiona el ícono de clip 📎 en tu pantalla y presiona la opción 'ubicación'* \n *2) Dentro encontrarás la opción 'Enviar mi ubicación actual', presiónala para enviarme la ubicación de dónde estaría tu huerta* \n\n _Si no estas cerca de tu huerta o el lugar donde siembras, no te preocupes. Acá estaré_✨",
+         "answer": "¡Listo!👌🏼 ya registré tu información. 🙌🏼 Ahora, para ubicar tu huerta en el mapa de Sembrando Vida *¿Camina con tu teléfono hacia donde esta ubicada tu huerta o el espacio donde siembras y comparteme la ubicación a través de Telegram*💚🌱 \n\n _Para enviarme tu ubicación vía Whatsapp puedes seguir las siguientes instrucciones:_ \n\n  *1) Encuentra y presiona el ícono de clip 📎 en tu pantalla y presiona la opción 'ubicación'* \n *2) Dentro encontrarás la opción 'Enviar mi ubicación actual', presiónala para enviarme la ubicación de dónde estaría tu huerta* \n\n _Si no estas cerca de tu huerta o el lugar donde siembras, no te preocupes. Acá estaré_✨",
          "answerImage": "",
          "answerTime": 0,
          "nextStep": 5,
@@ -284,7 +284,7 @@
          "intent": [
             "si"
          ],
-         "answer": "¡Genial!👩🏽‍🌾🌱\n \n Enviame la imágen, porfavor. \n \n *Si deseas mostrarme más imágenes de tus plantas, puedes enviar otra imágen después de leer este mensaje. De lo contrario, contesta 'no' para seguir el registro*",
+         "answer": "¡Genial!👩🏽‍🌾🌱\n \nEnviame la imágen, porfavor. \n \n *Si deseas mostrarme más imágenes de tus plantas, puedes enviar otra imágen después de leer este mensaje. De lo contrario, contesta 'no' para seguir el registro*",
          "answerImage": "",
          "answerTime": 0,
          "nextStep": 7,
@@ -318,7 +318,7 @@
          "intent": [
             "image"
          ],
-         "answer": "¡Que lindas plantas tienes!👩🏽‍🌾🌱\n \n ¿Deseas añadir otra imágen? \n \n _Si deseas mostrarme más imágenes de tus plantas, puedes enviar otra imágen después de leer este mensaje. De lo contrario, contesta 'no' a este mensaje para seguir el registro_",
+         "answer": "¡Que lindas plantas tienes!👩🏽‍🌾🌱\n \n¿Deseas añadir otra imágen? \n \n _Si deseas mostrarme más imágenes de tus plantas, puedes enviar otra imágen después de leer este mensaje. De lo contrario, contesta 'no' a este mensaje para seguir el registro_",
          "answerImage": "",
          "answerTime": 0,
          "nextStep": 8,
@@ -334,7 +334,7 @@
          "intent": [
             "no"
          ],
-         "answer": "👌🏼Listo! Tu semilla de información ya esta sembrada 💚🌱 \n\n *Con el siguiente link podrás entrar al mapa:* \n\n {link}",
+         "answer": "👌🏼Listo!Tu semilla de información ya esta sembrada 💚🌱 \n\n *Con el siguiente link podrás entrar al mapa:* \n\n {link}",
          "answerImage": "",
          "answerTime": 0,
          "nextStep": 9,
@@ -347,7 +347,7 @@
          "intent": [
             "no"
          ],
-         "answer": "Has terminado la la fase 1 🙌 \n\n  Tu semilla de información ya esta sembrada en el mapa 💚🌱\n\n *Con el siguiente link podrás entrar al mapa y ver tu progreso:* \n\n {link}",
+         "answer": "Has terminado la fase 1 🙌 \n\n  Tu semilla de información ya esta sembrada en el mapa 💚🌱\n\n *Con el siguiente link podrás entrar al mapa y ver tu progreso:* \n\n {link}",
          "answerImage": "",
          "answerTime": 0,
          "nextStep": 9,
